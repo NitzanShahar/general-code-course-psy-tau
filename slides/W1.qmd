@@ -73,10 +73,10 @@ C:\Users\dana\yesodot\week1\hello.py
 :::
 
 ::: {.sh}
-<p class="lang">Git Bash · Mac Terminal</p>
+<p class="lang">Git Bash</p>
 
 ```text
-/c/Users/dana/        (Mac: /Users/dana/)
+/c/Users/dana/
 └── yesodot/
     └── week1/
         ├── hello.R
@@ -99,14 +99,14 @@ C:\Users\dana\yesodot\week1\hello.py
 <b>טרמינל</b>
 <p class="big">חלון</p>
 <p>מעביר טקסט: מה שאני מקליד — הלאה, ומה שחוזר — אל המסך. הוא עצמו לא מבין כלום.</p>
-<p>Windows: Git Bash — תוכנה שנותנת ל-Windows טרמינל bash (השם מגיע מ-git, שנפגוש בשבוע 6) · Mac: Terminal</p>
+<p>Git Bash — תוכנה שנותנת ל-Windows טרמינל bash (השם מגיע מ-git, שנפגוש בשבוע 6)</p>
 :::
 
 ::: {.step .sh}
 <b>shell = bash</b>
 <p class="big">מקשיב</p>
 <p>קורא את השורה כשאני מקיש Enter, מבין אותה, ופועל: מבצע בעצמו, או מפעיל תוכנה אחרת.</p>
-<p>bash היא בעצמה שפת תכנות</p>
+<p>bash (Bourne Again SHell, 1989) היא תוכנה — והיא בעצמה שפת תכנות. ה-shell הסטנדרטי בלינוקס, בשרתים ובמחשבי-על</p>
 :::
 
 ::: {.step}
@@ -118,7 +118,7 @@ C:\Users\dana\yesodot\week1\hello.py
 
 <table class="df he" style="font-size:.52em;margin-top:1em">
 <tr><th>תחילת השורה (prompt)</th><th>מי מקשיב עכשיו</th><th>איך יוצאים</th></tr>
-<tr><td dir="ltr">$&nbsp;&nbsp;&nbsp;(Mac: %)</td><td>bash</td><td>—</td></tr>
+<tr><td dir="ltr">$</td><td>bash</td><td>—</td></tr>
 <tr><td dir="ltr">&gt;&gt;&gt;</td><td>פייתון</td><td dir="ltr">exit()</td></tr>
 <tr><td dir="ltr">&gt;</td><td>R</td><td dir="ltr">q()</td></tr>
 </table>
@@ -249,7 +249,7 @@ $ x = 5
 :::
 
 ::: {.board}
-<p class="lang">bash · Mac: python3</p>
+<p class="lang">bash</p>
 
 ```bash
 #### 1. Interactive ####
@@ -308,7 +308,7 @@ nano hello.py             # edit (Ctrl+O save, Ctrl+X exit)
 ## מטלה שבועית
 
 ::: {.hwbox}
-**המטלה השבועית (שבוע 1)** — רק בטרמינל (Git Bash ב-Windows, Terminal ב-Mac עם `python3`), קבצים כותבים עם `nano`, ובשתי השפות.
+**המטלה השבועית (שבוע 1)** — רק בטרמינל (Git Bash), קבצים כותבים עם `nano`, ובשתי השפות.
 
 **חלק א – תיקיות:** `pwd`; יצירת `yesodot/week1` בתיקיית הבית ומעבר אליה. **חלק ב – מי מקשיב לי?** `type cd`, `type cat`, `which python` — משפט על כל אחד; `echo $PATH` במילים שלכם; `which Rscript` מוצא את R (ב-Windows כנראה צריך להוסיף ל-PATH — תעדו).
 
