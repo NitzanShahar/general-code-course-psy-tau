@@ -10,6 +10,13 @@
  "units": [
   {
    "book": "r",
+   "ch": 2,
+   "secs": [
+    "תקנון"
+   ]
+  },
+  {
+   "book": "r",
    "ch": 8,
    "secs": [
     "חלוקה ל־Train / Test והערכת ניבוי (Out-of-sample)"

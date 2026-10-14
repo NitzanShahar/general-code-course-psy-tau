@@ -70,8 +70,26 @@ def load_book():
             else:
                 c = pool[ref]
             secs = [s for s in c["secs"] if s["h"] and s["h"] not in drop]
-            book[b].append({"n": n, "book": b, "title": names.get(c["title"], c["title"]), "secs": secs})
+            book[b].append({"n": n, "idx": n, "book": b, "title": names.get(c["title"], c["title"]), "secs": secs})
     return book
+
+
+def prune_book(book, weeks):
+    """Keep only the units that some week uses (and chapters that still have units); renumber what is left.
+    Week files refer to chapters by their place in book_layout ("idx"); "n" is the number shown on the site."""
+    used = {(u["book"], u["ch"], s) for c in weeks.values() for u in c.get("units", []) for s in u["secs"]}
+    out = {}
+    for b, chs in book.items():
+        out[b] = []
+        for ch in chs:
+            secs = [s for s in ch["secs"] if (b, ch["idx"], s["h"]) in used]
+            if secs:
+                out[b].append(dict(ch, n=len(out[b]) + 1, secs=secs))
+    return out
+
+
+def chapter(book, b, idx):
+    return next((c for c in book[b] if c["idx"] == idx), None)
 
 
 def load_files():
@@ -362,7 +380,10 @@ def week_page(w, c, avail, book, depth, staff):
             continue
         units.append(f'<div class="wbook b-{bk}" data-book="{bk}"><p class="wbh"><span class="btag">{BOOK_TAG[bk]}</span>{BOOK_NAME[bk]}</p>')
         for u in mine:
-            ch = book[bk][u["ch"] - 1]
+            ch = chapter(book, bk, u["ch"])
+            if ch is None:
+                print(f"  ! week {n}: no units of {bk} chapter {u['ch']} in the book")
+                continue
             index = {s["h"]: k for k, s in enumerate(ch["secs"], 1)}
             for s in u["secs"]:
                 if s not in index:
@@ -454,7 +475,7 @@ def book_page(book, weeks):
         body.append(f'<p class="grp b-{bk}" id="book-{bk}"><span class="btag">{tag}</span>{name}</p>')
         for ch in chs:
             nav.append(f'<a href="#{bk}{ch["n"]}" class="b-{bk}"><span class="num">{ch["n"]}</span>{esc(ch["title"])}</a>')
-            secs = [book_section(ch, k, s, used.get((bk, ch["n"], s["h"]), [])) for k, s in enumerate(ch["secs"], 1)]
+            secs = [book_section(ch, k, s, used.get((bk, ch["idx"], s["h"]), [])) for k, s in enumerate(ch["secs"], 1)]
             body.append(f'<section class="chap b-{bk}" id="{bk}{ch["n"]}"><div class="ch"><span class="num">{ch["n"]}</span>'
                         f'<h2>{esc(ch["title"])}</h2><span>{len(ch["secs"])} יחידות</span></div>{"".join(secs)}</section>')
 
@@ -579,8 +600,8 @@ def build_solo():
 
 
 def main():
-    book = load_book()
     weeks = load_weeks()
+    book = prune_book(load_book(), weeks)
     staff = CFG["staff_dir"].strip("/")
     (ROOT / "assets").mkdir(exist_ok=True)
     shutil.copy2(SRC / "site.css", ROOT / "assets" / "site.css")
