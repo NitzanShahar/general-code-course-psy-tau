@@ -1,0 +1,204 @@
+---
+title: "רגרסיה לוגיסטית ועקומת ROC"
+course-week: "שבוע 9"
+---
+
+## רגרסיה לוגיסטית
+
+::: {.nbox}
+<p class="nh">שבוע 9 · חומר הלימוד</p>
+
+השבוע נתנסה באימון מודל שחוזה אירועים דיכוטומיים (כן / לא) באמצעות רגרסיה לוגיסטית.
+
+נלמד לאמן מודל על חלק אחד של הנתונים, ולהשתמש בו כדי לחזות את התוצאה בחלק אחר שהמודל לא ראה — הרעיון המרכזי של למידת מכונה. נעריך את איכות החיזוי בעזרת confusion matrix, רגישות וסגוליות, ועקומת ROC.
+
+נעבוד עם נתונים אמיתיים של חולי לב, ובשבועיים הבאים נשתמש בהם שוב כדי להשוות בין מודלים.
+:::
+
+## קובץ הנתונים: מחלת לב
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">נתונים אמיתיים על חולי לב</p>
+<p><span class="ltr">age</span> — גיל</p>
+<p><span class="ltr">sex</span> — מין</p>
+<p><span class="ltr">restbps</span> — לחץ דם במנוחה</p>
+<p><span class="ltr">chol</span> — כולסטרול בדם</p>
+<p><span class="ltr">bs</span> — רמת סוכר בדם</p>
+<p><span class="ltr">maxhr</span> — הדופק הגבוה ביותר</p>
+<p><span class="ltr">target</span> — האם אירע אירוע לבבי</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### TRAINING & TEST ####
+
+df = read.csv('heart.csv')
+
+set.seed(1)
+n = nrow(df)
+rows = sample(1:n,
+              size = round(0.7 * n))
+df_training = df[rows, ]
+df_test = df[-rows, ]
+
+nrow(df_training) / n
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+#### TRAINING & TEST ####
+
+df = pd.read_csv('heart.csv')
+
+df_training, df_test = train_test_split(
+    df, test_size=0.3, random_state=1)
+
+len(df_training) / len(df)
+```
+:::
+:::
+
+<p class="bnote">מאמנים על 70% מהנבדקים, ובודקים על 30% שהמודל לא ראה</p>
+:::
+:::
+
+## התאמת המודל וניבוי
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">מודלים לסיווג</p>
+<p>הכנת סט נתונים לאימון מודל</p>
+<p>התאמת רגרסיה לוגיסטית</p>
+<p>ניבוי ממודל רגרסיה לוגיסטית</p>
+<p>דיווח ממצאי מודל קלסיפיקציה</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### FIT & PREDICT ####
+
+# 1. Fit on the training set
+model = glm(target ~ age + chol + maxhr,
+            data = df_training,
+            family = binomial)
+summary(model)
+
+# 2. Predict the test set
+p = predict(model, newdata = df_test,
+            type = 'response')
+predicted = ifelse(p > 0.5, 1, 0)
+
+# 3. Confusion matrix
+table(predicted = predicted,
+      observed = df_test$target)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+#### FIT & PREDICT ####
+
+# 1. Fit on the training set
+x_cols = ['age', 'chol', 'maxhr']
+model = LogisticRegression(max_iter=1000)
+model.fit(df_training[x_cols],
+          df_training['target'])
+
+# 2. Predict the test set
+p = model.predict_proba(df_test[x_cols])[:, 1]
+predicted = (p > 0.5).astype(int)
+
+# 3. Confusion matrix
+confusion_matrix(df_test['target'], predicted)
+```
+:::
+:::
+:::
+:::
+
+## עקומת ROC
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">הערכת המודל</p>
+<p>רגישות וסגוליות</p>
+<p>עקומת ROC ו-AUC</p>
+<p>תרשים ROC</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R · pROC</p>
+
+```r
+library(pROC)
+
+roc_curve = roc(df_test$target, p)
+auc(roc_curve)
+plot(roc_curve)
+```
+:::
+
+::: {.py}
+<p class="lang">Python · sklearn</p>
+
+```python
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, roc_auc_score
+
+
+fpr, tpr, _ = roc_curve(df_test['target'], p)
+roc_auc_score(df_test['target'], p)
+plt.plot(fpr, tpr)
+plt.show()
+```
+:::
+:::
+
+<svg width="300" height="220" viewBox="0 0 300 230" aria-label="ROC curve">
+<line x1="40" y1="200" x2="280" y2="200" stroke="#536373"/><line x1="40" y1="20" x2="40" y2="200" stroke="#536373"/>
+<line x1="40" y1="200" x2="280" y2="20" stroke="#b5bfc4" stroke-dasharray="5 5"/>
+<path d="M40 200 C 50 90, 120 40, 280 20" fill="none" stroke="#2b6597" stroke-width="3"/>
+<text x="160" y="222" text-anchor="middle" font-size="12" fill="#536373" font-family="JetBrains Mono">False Positive Rate</text>
+</svg>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 9)** — קובץ הנתונים: heart.csv (באתר הקורס).
+
+**חלק א:** טעינה וחקירת הנתונים; משתנה בינארי לרמת סוכר ≥ 120; חלוקה ל-df_training (כ-70%) ול-df_test (כ-30%), ובדיקת המספר והאחוז בכל אחד.
+
+**חלק ב:** רגרסיה לוגיסטית על df_training, עם אירוע לבבי כמשתנה התלוי. **חלק ג:** הסתברויות חזויות ל-df_test, סיווג לפי סף 0.5, ו-Confusion Matrix. **בונוס:** מקדמי הרגרסיה, AUC, רגישות וסגוליות, ותרשים ROC עם כותרת ותוויות צירים.
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 20.12.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

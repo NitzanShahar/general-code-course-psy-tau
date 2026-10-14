@@ -1,0 +1,136 @@
+{
+ "_הסבר": "תוכן שבוע 7. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נלמד לגרום לקוד לעבוד בשבילנו: בקרת זרימה ופונקציות.\n\nנכתוב תנאים (if / else) כדי שהקוד יפעל אחרת במצבים שונים, ולולאות (for) כדי לחזור על פעולה על הרבה קבצים או נבדקים. אחר כך נכתוב פונקציות משלנו — עם שם, קלט ופלט — ונלמד לאתר שגיאות (debugging).\n\nבחוט של ניהול הקוד נעבוד עם Git מתוך הטרמינל ומתוך RStudio, ובמטלה הזו נעלה את הקוד לראשונה למאגר ב-GitHub.",
+ "deck": {
+  "title": "מצגת שבוע 7",
+  "note": "8 שקפים · נפתחת בדפדפן",
+  "url": "decks/W7.html"
+ },
+ "videos": [],
+ "units": [
+  {
+   "book": "code",
+   "ch": 3,
+   "secs": [
+    "החלטות וחזרות במילים"
+   ]
+  },
+  {
+   "book": "code",
+   "ch": 6,
+   "secs": [
+    "בונוס: github דרך הטרמינל",
+    "בונוס: github ב rstudio"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 9,
+   "secs": [
+    "לולאות for",
+    "פונקציית ifelse",
+    "פונקציית grepl"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 1,
+   "secs": [
+    "ניהול שמות קבצים בתיקיית עבודה"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 10,
+   "secs": [
+    "יצירת פונקציות",
+    "מציאת שגיאות"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 7,
+   "secs": [
+    "מבוא ללולאות",
+    "לולאות for",
+    "לולאות while",
+    "תנאי if elif ו - else",
+    "מעקב אחר אינדקס בלולאה"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "יצירת מבנה נתונים מתיקייה עם קבצי csv",
+    "זיהוי ערכים יחודיים בעמודה"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 8,
+   "secs": [
+    "יצירת פונקציות"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 7)",
+  "context": [],
+  "lines": [
+   "חלק א - טעינת ואיחוד קבצים.",
+   "1. עשו שימוש בלולאת for על מנת להעלות ולאחד את קבצי הסטרופ של כל הנבדקים לקובץ אחד.",
+   "1. סיפרו את כמות הנבדקים שיש בנתונים, את כמות התנאים שיש במשתנה “condition”",
+   "1. בדקו בעזרת פקודות משיעורים קודמים אם יש זמני תגובה חסרים, ודווחו על מספרם ועל אחוזם",
+   "1. ציירו היסטוגרמה של כלל זמני התגובה לתנאי תואם, וכלל זמני התגובה לתנאי לא תואם",
+   "חלק ב - ניקוי נתונים ואיתור Outliers",
+   "1. צרו פונקציה שלכם שמסמנת זמני תגובה חריגים.",
+   "  - הפונקציה מקבלת כקלט וקטור של  זמני התגובה.",
+   "  - מחשבת ממוצע וס\"ת לזמני התגובה שהוזנו בה.",
+   "  - מייצרת וקטור לוגי שמסמן כTRUE כל זמן תגובה שהוא גדול מממוצע זמני התגובה + 2 סטיות תקן.",
+   "  - פולטת את הוקטור הלוגי שמסמן זמני תגובה חריגים",
+   "1. עברו עם לולאת for על מבנה הנתונים וסמנו ערכים חריגים בעזרת הפונקציה שלכם, שצריכה לחשב ממוצע וס\"ת לכל נבדק. שימו לב שלשם כך עליכם:",
+   "  - להזין לפונקציה שיצרתם רק את זמני התגובה של כל נבדק, לפי הסדר",
+   "  - לשמור את הפלט של הפונקציה",
+   "  - לאחד את הוקטור שמסמן זמני תגובה לאותו נבדק, עם וקטור כללי שמכיל זאת עבור כל הנבדקים.",
+   "  - התוצאה צריכה להיות הוספת עמודה במבנה הנתונים העיקרי, שמסמנת זמני תגובה חריגים לכל נבדק, לפי ממוצע וס”ת האינדיבידואליים שלו.",
+   "חלק ג - הצגת הנתונים",
+   "1. ספרו והדפיסו את מספר הערכים שסומנו כאאוטליירים לכל נבדק",
+   "1. חזרו על הדפסת ההיסטוגרמה לתנאי תואם/לא תואם הפעם אחרי ניקוי אאוטליירים",
+   "חלק ד - ניהול גרסאות",
+   "1. צרו ב-GitHub מאגר (repository) ציבורי בשם `yesodot-hw`, והוסיפו לו קובץ README קצר שמתאר מה יש בו (אפשר ליצור את המאגר באתר ואז להוריד אותו עם `git clone`, או ליצור אותו בטרמינל עם `git init`).",
+   "1. העלו אליו את הסקריפט של המטלה הזו, ב-commit עם הודעה שמתארת את השינוי.",
+   "1. בצעו שינוי קטן נוסף בסקריפט (למשל שיפור של הערה או של שם משתנה) והעלו אותו ב-commit שני.",
+   "1. צרפו ל-PDF את הקישור למאגר ואת צילום המסך של היסטוריית ה-commits (בטרמינל: `git log --oneline`)."
+  ],
+  "files": [
+   "26fdccfe-d059-801e-ba2b-d13b3b350dc5"
+  ],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 6.12.2026, בשעה 12:00"
+ },
+ "solution": {
+  "sh": [
+   {
+    "code": "# Part D - version control (run in Git Bash / Terminal)\n\n# 0. Only once per computer: tell git who you are\ngit config --global user.name \"First Last\"\ngit config --global user.email \"you@example.com\"\n\n# 1. Create a folder for the repository, with a short README\nmkdir ~/yesodot-hw\ncd ~/yesodot-hw\ngit init\necho \"# yesodot-hw\" > README.md\necho \"Homework for Foundations of programming for empirical science\" >> README.md\ngit add README.md\ngit commit -m \"Add README\"\n\n# connect to the empty public repository yesodot-hw created on github.com, and upload\ngit branch -M main\ngit remote add origin https://github.com/<user-name>/yesodot-hw.git\ngit push -u origin main\n\n# 2. Add this week's script in a commit\ncp ~/yesodot/week7/week7.R .      # or week7.py\ngit add week7.R\ngit commit -m \"Add week 7 script: merge stroop files and flag RT outliers\"\ngit push\n\n# 3. Make a small change in the script (e.g., improve a comment), then a second commit\ngit add week7.R\ngit commit -m \"Improve comments in the outlier function\"\ngit push\n\n# 4. Show the commit history (screenshot this for the PDF)\ngit log --oneline\n"
+   },
+   {
+    "text": "אפשרות חלופית דרך אתר GitHub: New repository, בוחרים Public ומסמנים Add a README file. את הסקריפט מעלים עם Add file > Upload files וכותבים הודעת commit; את השינוי השני עושים בעריכה באתר (סמל העיפרון) ו-Commit changes. היסטוריית ה-commits מופיעה בלשונית Commits של המאגר (צילום מסך שלה מחליף את git log --oneline). אם יצרתם את המאגר באתר כבר עם README, במקום git init ו-git remote add מריצים git clone https://github.com/<user-name>/yesodot-hw.git ואז cd yesodot-hw. בדחיפה (push) הראשונה GitHub יבקש התחברות בדפדפן או Personal Access Token — סיסמה רגילה לא תעבוד."
+   }
+  ],
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 7\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\n\n#### LOAD AND MERGE FILES ####\n\n# 1. Read all subject files with a for loop and bind them into one data frame\n#    (the csv files are in the folder \"stroop_data\", inside the working folder)\nfile_list = list.files(path = \"stroop_data\", pattern = \".csv\", full.names = TRUE)\n\ndf = data.frame()\nfor (file in file_list) {\n  df_temp = read.csv(file)\n  df      = rbind(df, df_temp)\n}\n\n# 2. Number of subjects and number of conditions\nn_subjects   = length(unique(df$subject))\nn_conditions = length(unique(df$condition))\ncat(\"Number of subjects:\", n_subjects, \"\\n\")\ncat(\"Number of conditions:\", n_conditions, \"\\n\")\n\n# 3. Number and percent of missing RTs\ncat(\"Missing RTs:\", sum(is.na(df$rt)), \"\\n\")\ncat(\"Percent missing RTs:\", mean(is.na(df$rt)) * 100, \"\\n\")\n\n# 4. RT histograms for congruent and incongruent trials\nggplot(df, aes(x = rt)) +\n  geom_histogram(bins = 30) +\n  facet_wrap(~condition) +\n  labs(title = \"RT by condition\", x = \"RT (ms)\", y = \"Count\")\n\n\n#### OUTLIERS ####\n\n# 1. A function that flags RTs above mean + 2 SD\nflag_outliers = function(rt) {\n  m   = mean(rt, na.rm = TRUE)\n  s   = sd(rt, na.rm = TRUE)\n  out = rt > m + 2 * s\n  return(out)\n}\n\n# 2. Loop over subjects: flag each subject's RTs by his own mean and SD,\n#    and append the flags to one long vector (rows are ordered by subject)\noutlier_flags = c()\nfor (s in unique(df$subject)) {\n  rt_subj       = df$rt[df$subject == s]\n  outliers_subj = flag_outliers(rt_subj)\n  outlier_flags = c(outlier_flags, outliers_subj)\n}\n\ndf$outlier = outlier_flags\n\n\n#### PRESENT DATA ####\n\n# 1. Number of outliers per subject\ndf |>\n  group_by(subject) |>\n  summarise(n_outliers = sum(outlier, na.rm = TRUE)) |>\n  print(n = Inf)\n\n# 2. RT histograms again, after removing the outliers\ndf_clean = df |>\n  filter(outlier == FALSE)\n\nggplot(df_clean, aes(x = rt)) +\n  geom_histogram(bins = 30) +\n  facet_wrap(~condition) +\n  labs(title = \"RT by condition, outliers removed\", x = \"RT (ms)\", y = \"Count\")\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 7\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport os\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n\n#### LOAD AND MERGE FILES ####\n\n# 1. Read all subject files with a for loop and concatenate them into one data frame\n#    (the csv files are in the folder \"stroop_data\", inside the working folder)\nfolder_path = \"stroop_data\"\ndf_list = []\nfor file in sorted(os.listdir(folder_path)):\n    if file.endswith(\".csv\"):\n        df_temp = pd.read_csv(os.path.join(folder_path, file))\n        df_list.append(df_temp)\n\ndf = pd.concat(df_list, ignore_index=True)\n\n# 2. Number of subjects and number of conditions\nprint(\"Number of subjects:\", df[\"subject\"].nunique())\nprint(\"Number of conditions:\", df[\"condition\"].nunique())\n\n# 3. Number and percent of missing RTs\nprint(\"Missing RTs:\", df[\"rt\"].isna().sum())\nprint(\"Percent missing RTs:\", df[\"rt\"].isna().mean() * 100)\n\n# 4. RT histograms for congruent and incongruent trials\nfor condition in [\"congruent\", \"incongruent\"]:\n    plt.figure()\n    plt.hist(df[df[\"condition\"] == condition][\"rt\"].dropna(), bins=30)\n    plt.title(f\"RT - {condition}\")\n    plt.xlabel(\"RT (ms)\")\n    plt.ylabel(\"Count\")\n    plt.show()\n\n\n#### OUTLIERS ####\n\n# 1. A function that flags RTs above mean + 2 SD\ndef flag_outliers(rt):\n    m = rt.mean()\n    s = rt.std()\n    out = rt > m + 2 * s\n    return out\n\n# 2. Loop over subjects: flag each subject's RTs by his own mean and SD,\n#    and append the flags to one long list (rows are ordered by subject)\noutlier_flags = []\nfor s in df[\"subject\"].unique():\n    rt_subj = df[df[\"subject\"] == s][\"rt\"]\n    outliers_subj = flag_outliers(rt_subj)\n    outlier_flags.extend(outliers_subj)\n\ndf[\"outlier\"] = outlier_flags\n\n\n#### PRESENT DATA ####\n\n# 1. Number of outliers per subject\nprint(df.groupby(\"subject\")[\"outlier\"].sum())\n\n# 2. RT histograms again, after removing the outliers\ndf_clean = df[df[\"outlier\"] == False]\n\nfor condition in [\"congruent\", \"incongruent\"]:\n    plt.figure()\n    plt.hist(df_clean[df_clean[\"condition\"] == condition][\"rt\"], bins=30)\n    plt.title(f\"RT - {condition}, outliers removed\")\n    plt.xlabel(\"RT (ms)\")\n    plt.ylabel(\"Count\")\n    plt.show()\n"
+   }
+  ]
+ }
+}

@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>שבוע 10 · יסודות התכנות במדע אמפירי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/tau-logo.png">
+</head>
+<body>
+<div class="wrap">
+<header class="hdr">
+<img class="logo" src="../assets/tau-logo.png" alt="אוניברסיטת תל אביב">
+<span class="sep"></span>
+<a class="home" href="index.html"><span class="t1">יסודות התכנות במדע אמפירי</span><span class="t2">R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span></a>
+<span class="staffbadge">גרסת מתרגלים</span><nav class="gen"><a href="index.html" class="on">השבועות</a><a href="book.html" class="">ספר היחידות</a><a href="syllabus.pdf" class="">סילבוס</a></nav>
+</header><details class="mweeks card"><summary><span class="c" style="background:var(--ink);color:#fff;border-color:var(--ink)">10</span><span><b>שבוע 10</b> · בעיות קלסיפיקציה א: KNN וכיוונון המודל</span><span class="more">כל השבועות ▾</span></summary><div class="list"><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk sel"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></div></details><div class="layout"><aside class="rail card"><h3>שבועות הקורס</h3><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk sel"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></aside><main class="card">
+<section class="hero"><p class="eyebrow">שבוע 10 · יום ראשון 20.12.2026</p><h1>בעיות קלסיפיקציה א: KNN וכיוונון המודל</h1><p class="intro">השבוע נכיר מודל סיווג חדש ואינטואיטיבי מאוד: KNN (K השכנים הקרובים). כדי לסווג נבדק חדש, המודל מסתכל על הנבדקים הדומים לו ביותר ושואל — לאיזו קבוצה רובם שייכים?</p><p class="intro">למודל יש פרמטר אחד, K, שקובע בכמה שכנים להתחשב. נלמד לבחור אותו בצורה מושכלת: בלולאה שמאמנת את המודל עם כל ערך של K, בודקת את הדיוק על סט בדיקה, ומציגה את התוצאות בגרף. זה בדיוק התהליך שנקרא כיוונון היפר-פרמטרים.</p><p class="intro">נעבוד עם נתונים על שלושה זנים של פינגווינים — ונראה כמה טוב אפשר לנחש זן לפי מידות המקור והכנף.</p></section>
+<section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media"><a href="../decks/W10.html" class="deck"><small>מצגת</small><b>מצגת שבוע 10</b><small>7 שקפים · נפתחת בדפדפן</small><code>## WEEK 10 · R + Python</code></a></div></section>
+<section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div><div class="langs" role="group" aria-label="איזו שפה להציג"><span>להציג:</span><button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button><button type="button" data-lang="py">Python</button></div><div class="wbook b-r" data-book="r"><p class="wbh"><span class="btag">R</span>ספר R</p><div class="wch"><span class="num">8</span><b>רגרסיה שכיחותנית</b><a class="tobook" href="book.html?w=10#r8">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r8-9"><summary><span class="un">R 8.9</span>חלוקה ל־Train / Test והערכת ניבוי (Out-of-sample)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. תסביר את העיקרון של הערכת ניבוי על נתונים שהמודל לא לקח בחשבון בעת התאמת המודל, לעומת טיב התאמה לנתונים שהמודל התאמן עליהם.</div><div>1. תייצר קוד R שמחלק נתוני רגרסיה ל80% סט אימון ו20% סט מבחן. תוודא שאני מבין איזה נתונים אני צריך להכניס כדאטה לרגרסיה. תסביר מה העיקרון מאחורי חלוקה של הדאטה לסט אימון וסט מבחן. תסביר את החשיבות של חוסר תלות בין נתוני האימון לבין נתוני המבחן, עם דוגמה חיובית לחלוקה ודוגמה שלילית לחלוקה (שבה מידע מסט האימון פולש לסט המבחן).</div><div>1. תסביר בפשטות מה זה SSE ומה זה MSE.</div><div>1. בעזרת קוד R, תשווה את הMSE של הניבוי על סט האימון לעומת על סט המבחן.</div><div>1. תסביר את העקרונות של אנדר פיטינג, אובר פיטינג. תשתמש במונחים של הטיה (bias) ושונות (variance) ותתאר את הטריידאוף ביניהם.</div><div>1. חכה לכל התשובות ואז כתוב ששלב הלימוד הסתיים.</div><div>1. עשה את השלבים האלו אחד אחד לפי הסדר. עצור באופן תכוף בכל שלב לראות שהבנתי והצלחתי, ורק אז המשך לשלב הבא. הקפד על כתיבה בעברית מימין משמאל, גם כשיש אותיות באנגלית במשפט. אל תשתמש במודלים עם פולינומים. רק הוספת משתני X נוספים.</div></div><textarea hidden>1. תסביר את העיקרון של הערכת ניבוי על נתונים שהמודל לא לקח בחשבון בעת התאמת המודל, לעומת טיב התאמה לנתונים שהמודל התאמן עליהם.
+1. תייצר קוד R שמחלק נתוני רגרסיה ל80% סט אימון ו20% סט מבחן. תוודא שאני מבין איזה נתונים אני צריך להכניס כדאטה לרגרסיה. תסביר מה העיקרון מאחורי חלוקה של הדאטה לסט אימון וסט מבחן. תסביר את החשיבות של חוסר תלות בין נתוני האימון לבין נתוני המבחן, עם דוגמה חיובית לחלוקה ודוגמה שלילית לחלוקה (שבה מידע מסט האימון פולש לסט המבחן).
+1. תסביר בפשטות מה זה SSE ומה זה MSE.
+1. בעזרת קוד R, תשווה את הMSE של הניבוי על סט האימון לעומת על סט המבחן.
+1. תסביר את העקרונות של אנדר פיטינג, אובר פיטינג. תשתמש במונחים של הטיה (bias) ושונות (variance) ותתאר את הטריידאוף ביניהם.
+1. חכה לכל התשובות ואז כתוב ששלב הלימוד הסתיים.
+1. עשה את השלבים האלו אחד אחד לפי הסדר. עצור באופן תכוף בכל שלב לראות שהבנתי והצלחתי, ורק אז המשך לשלב הבא. הקפד על כתיבה בעברית מימין משמאל, גם כשיש אותיות באנגלית במשפט. אל תשתמש במודלים עם פולינומים. רק הוספת משתני X נוספים.</textarea></div><p class="bsfoot">יחידה 8.9 בספר R · <a href="book.html#r8-9">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">11</span><b>מודלים לסיווג (קלסיפיקציה)</b><a class="tobook" href="book.html?w=10#r11">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r11-1"><summary><span class="un">R 11.1</span>מבוא למודל KNN</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה להבין את הרעיון של מודל KNN (K-Nearest Neighbors), בלי לכתוב קוד.</div><div>1. הסבר לי מה זו בעיית סיווג, בדוגמה מפסיכולוגיה: לנבא אם נבדק מדוכא או לא לפי שעות השינה וזמן התגובה שלו. הסבר את ההבדל בין סיווג (קטגוריה) לבין ניבוי של ערך רציף. עצור וחכה לתשובה שלי.</div><div>1. מה זה &quot;שכנים קרובים&quot;? תאר לי מישור דו-ממדי שבו ציר אחד הוא שעות שינה והציר השני הוא זמן תגובה, וכל נבדק הוא נקודה. הסבר במילים מה זה מרחק בין שתי נקודות.</div><div>1. איך KNN מחליט איך לסווג נבדק חדש? הסבר את הרעיון של הצבעת רוב בין K השכנים הקרובים ביותר.</div><div>1. מה המשמעות של K? מה קורה עם K=1 לעומת K=15? שאל אותי מה החיסרון של K קטן מדי ושל K גדול מדי. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הסבר ש-KNN לא לומד משוואה כמו רגרסיה לוגיסטית, אלא שומר את נתוני האימון ומשווה אליהם כל נבדק חדש. הסבר גם, בלי קוד, למה חשוב שכל המשתנים יהיו באותו סדר גודל (שעות שינה לעומת מילישניות). נלמד לתקן זאת ביחידה הבאה.</div><div>1. עצור ותן לי דוגמה לבעיה אחרת במחקר בפסיכולוגיה שבה KNN יכול לעזור, ושאל אותי מה יהיו המשתנים בה. אם עניתי נכונה, כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה להבין את הרעיון של מודל KNN (K-Nearest Neighbors), בלי לכתוב קוד.
+1. הסבר לי מה זו בעיית סיווג, בדוגמה מפסיכולוגיה: לנבא אם נבדק מדוכא או לא לפי שעות השינה וזמן התגובה שלו. הסבר את ההבדל בין סיווג (קטגוריה) לבין ניבוי של ערך רציף. עצור וחכה לתשובה שלי.
+1. מה זה &quot;שכנים קרובים&quot;? תאר לי מישור דו-ממדי שבו ציר אחד הוא שעות שינה והציר השני הוא זמן תגובה, וכל נבדק הוא נקודה. הסבר במילים מה זה מרחק בין שתי נקודות.
+1. איך KNN מחליט איך לסווג נבדק חדש? הסבר את הרעיון של הצבעת רוב בין K השכנים הקרובים ביותר.
+1. מה המשמעות של K? מה קורה עם K=1 לעומת K=15? שאל אותי מה החיסרון של K קטן מדי ושל K גדול מדי. בדוק שעניתי נכונה ורק אז המשך.
+1. הסבר ש-KNN לא לומד משוואה כמו רגרסיה לוגיסטית, אלא שומר את נתוני האימון ומשווה אליהם כל נבדק חדש. הסבר גם, בלי קוד, למה חשוב שכל המשתנים יהיו באותו סדר גודל (שעות שינה לעומת מילישניות). נלמד לתקן זאת ביחידה הבאה.
+1. עצור ותן לי דוגמה לבעיה אחרת במחקר בפסיכולוגיה שבה KNN יכול לעזור, ושאל אותי מה יהיו המשתנים בה. אם עניתי נכונה, כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://www.youtube.com/watch?v=HVXime0nQeI" target="_blank" rel="noopener">StatQuest: K-nearest neighbors, Clearly Explained</a></li><li><a href="https://www.youtube.com/watch?v=zeFt_JCA3b4" target="_blank" rel="noopener">Simple Explanation of the K-Nearest Neighbors (KNN) Algorithm</a></li></ul><p class="bsfoot">יחידה 11.1 בספר R · <a href="book.html#r11-1">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r11-2"><summary><span class="un">R 11.2</span>מודל KNN ב-R</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד להריץ מודל KNN עם הפונקציה knn מחבילת class, ולהבין למה צריך לתקנן משתנים עם scale.</div><div>1. הדפס את הקוד הבא, שיוצר נתונים מדומים של 300 נבדקים ומחלק אותם לסט אימון (200) וסט מבחן (100), והסבר אותו בקצרה:</div><div class="cl">set.seed(7)</div><div class="cl">n = 300</div><div class="cl">sleep_hours = rnorm(n, mean = 7, sd = 1)</div><div class="cl">rt_ms = rnorm(n, mean = 600, sd = 100)</div><div class="cl">age = runif(n, 20, 40)</div><div class="cl">depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)</div><div class="cl">df = data.frame(sleep_hours, rt_ms, age, depressed)</div><div class="cl">train_rows = sample(1:n, 200)</div><div class="cl">train = df[train_rows, ]</div><div class="cl">test = df[-train_rows, ]</div><div>1. הדפס את הקוד הבא והסבר את train, test, cl ו-k. הסבר ש-knn מחזירה ישר ניבויים לסט המבחן, בלי שלב אימון נפרד:</div><div class="cl">library(class)</div><div class="cl">predictors = c(&quot;sleep_hours&quot;, &quot;rt_ms&quot;)</div><div class="cl">pred = knn(train = train[, predictors], test = test[, predictors], cl = train$depressed, k = 5)</div><div class="cl">mean(pred == test$depressed)</div><div>1. שאל אותי: שעות שינה משתנות בכמה שעות וזמן תגובה במאות מילישניות. איזה משתנה ישלוט במרחק? בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הסבר מה עושה scale (ממוצע 0 וסטיית תקן 1), הדפס את הקוד הבא והסבר למה הדיוק השתנה:</div><div class="cl">x = scale(df[, predictors])</div><div class="cl">pred_z = knn(train = x[train_rows, ], test = x[-train_rows, ], cl = train$depressed, k = 5)</div><div class="cl">mean(pred_z == test$depressed)</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני להריץ את המודל המתוקנן עם k = 1 ועם k = 25 ולהשוות את הדיוק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד להריץ מודל KNN עם הפונקציה knn מחבילת class, ולהבין למה צריך לתקנן משתנים עם scale.
+1. הדפס את הקוד הבא, שיוצר נתונים מדומים של 300 נבדקים ומחלק אותם לסט אימון (200) וסט מבחן (100), והסבר אותו בקצרה:
+set.seed(7)
+n = 300
+sleep_hours = rnorm(n, mean = 7, sd = 1)
+rt_ms = rnorm(n, mean = 600, sd = 100)
+age = runif(n, 20, 40)
+depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)
+df = data.frame(sleep_hours, rt_ms, age, depressed)
+train_rows = sample(1:n, 200)
+train = df[train_rows, ]
+test = df[-train_rows, ]
+1. הדפס את הקוד הבא והסבר את train, test, cl ו-k. הסבר ש-knn מחזירה ישר ניבויים לסט המבחן, בלי שלב אימון נפרד:
+library(class)
+predictors = c(&quot;sleep_hours&quot;, &quot;rt_ms&quot;)
+pred = knn(train = train[, predictors], test = test[, predictors], cl = train$depressed, k = 5)
+mean(pred == test$depressed)
+1. שאל אותי: שעות שינה משתנות בכמה שעות וזמן תגובה במאות מילישניות. איזה משתנה ישלוט במרחק? בדוק שעניתי נכונה ורק אז המשך.
+1. הסבר מה עושה scale (ממוצע 0 וסטיית תקן 1), הדפס את הקוד הבא והסבר למה הדיוק השתנה:
+x = scale(df[, predictors])
+pred_z = knn(train = x[train_rows, ], test = x[-train_rows, ], cl = train$depressed, k = 5)
+mean(pred_z == test$depressed)
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני להריץ את המודל המתוקנן עם k = 1 ועם k = 25 ולהשוות את הדיוק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html" target="_blank" rel="noopener" class="ltr">https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html</a></li></ul><p class="bsfoot">יחידה 11.2 בספר R · <a href="book.html#r11-2">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r11-3"><summary><span class="un">R 11.3</span>בחירת K בלולאה</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד לבחור את K של מודל KNN בעזרת לולאה (כיוונון היפר-פרמטר).</div><div>1. הסבר במילים מה ההבדל בין פרמטר שהמודל לומד (כמו מקדם ברגרסיה) להיפר-פרמטר שאנחנו בוחרים (כמו K). עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא (נתונים מדומים, חלוקה לאימון ומבחן ותקנון) ובקש ממני להריץ אותו:</div><div class="cl">set.seed(7)</div><div class="cl">n = 300</div><div class="cl">sleep_hours = rnorm(n, mean = 7, sd = 1)</div><div class="cl">rt_ms = rnorm(n, mean = 600, sd = 100)</div><div class="cl">age = runif(n, 20, 40)</div><div class="cl">depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)</div><div class="cl">df = data.frame(sleep_hours, rt_ms, age, depressed)</div><div class="cl">train_rows = sample(1:n, 200)</div><div class="cl">train = df[train_rows, ]</div><div class="cl">test = df[-train_rows, ]</div><div class="cl">library(class)</div><div class="cl">library(ggplot2)</div><div class="cl">x = scale(df[, c(&quot;sleep_hours&quot;, &quot;rt_ms&quot;)])</div><div>1. הדפס את הלולאה הבאה והסבר כל שורה, בדגש על שמירת הדיוק של כל K בוקטור accuracy:</div><div class="cl">k_values = 1:30</div><div class="cl">accuracy = c()</div><div class="cl">for (k in k_values) {</div><div class="cl">  pred = knn(train = x[train_rows, ], test = x[-train_rows, ], cl = train$depressed, k = k)</div><div class="cl">  accuracy[k] = mean(pred == test$depressed)</div><div>}</div><div class="cl">results = data.frame(k = k_values, accuracy = accuracy)</div><div class="cl">ggplot(results, aes(x = k, y = accuracy)) + geom_line() + geom_point()</div><div class="cl">k_values[which.max(accuracy)]</div><div>שאל אותי מה אני רואה בגרף ב-K קטן מאוד וב-K גדול מאוד. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הסבר שבחירת K לפי סט המבחן נותנת דיוק אופטימי מדי, ושעדיף cross-validation על סט האימון, למשל עם knn.cv(train, cl, k).</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לשנות את הלולאה כך שתשתמש ב-knn.cv על סט האימון, לבחור K, ורק אז לבדוק אותו פעם אחת על סט המבחן. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד לבחור את K של מודל KNN בעזרת לולאה (כיוונון היפר-פרמטר).
+1. הסבר במילים מה ההבדל בין פרמטר שהמודל לומד (כמו מקדם ברגרסיה) להיפר-פרמטר שאנחנו בוחרים (כמו K). עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא (נתונים מדומים, חלוקה לאימון ומבחן ותקנון) ובקש ממני להריץ אותו:
+set.seed(7)
+n = 300
+sleep_hours = rnorm(n, mean = 7, sd = 1)
+rt_ms = rnorm(n, mean = 600, sd = 100)
+age = runif(n, 20, 40)
+depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)
+df = data.frame(sleep_hours, rt_ms, age, depressed)
+train_rows = sample(1:n, 200)
+train = df[train_rows, ]
+test = df[-train_rows, ]
+library(class)
+library(ggplot2)
+x = scale(df[, c(&quot;sleep_hours&quot;, &quot;rt_ms&quot;)])
+1. הדפס את הלולאה הבאה והסבר כל שורה, בדגש על שמירת הדיוק של כל K בוקטור accuracy:
+k_values = 1:30
+accuracy = c()
+for (k in k_values) {
+  pred = knn(train = x[train_rows, ], test = x[-train_rows, ], cl = train$depressed, k = k)
+  accuracy[k] = mean(pred == test$depressed)
+}
+results = data.frame(k = k_values, accuracy = accuracy)
+ggplot(results, aes(x = k, y = accuracy)) + geom_line() + geom_point()
+k_values[which.max(accuracy)]
+שאל אותי מה אני רואה בגרף ב-K קטן מאוד וב-K גדול מאוד. בדוק שעניתי נכונה ורק אז המשך.
+1. הסבר שבחירת K לפי סט המבחן נותנת דיוק אופטימי מדי, ושעדיף cross-validation על סט האימון, למשל עם knn.cv(train, cl, k).
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לשנות את הלולאה כך שתשתמש ב-knn.cv על סט האימון, לבחור K, ורק אז לבדוק אותו פעם אחת על סט המבחן. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html" target="_blank" rel="noopener" class="ltr">https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html</a></li></ul><p class="bsfoot">יחידה 11.3 בספר R · <a href="book.html#r11-3">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div><div class="wbook b-py" data-book="py"><p class="wbh"><span class="btag">Python</span>ספר פייתון</p><div class="wch"><span class="num">6</span><b>מודלים וניתוחים סטטיסטיים</b><a class="tobook" href="book.html?w=10#py6">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py6-6"><summary><span class="un">Python 6.6</span>מבוא למודל KNN</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>KNN (K-Nearest Neighbors) הוא אחד המודלים הפשוטים והאינטואיטיביים ביותר ב-Machine Learning</div><div>בשיעור זה נבין את הרעיון הבסיסי מאחורי KNN בלי להיכנס לפרטים טכניים</div><div>1. מה זה &quot;שכנים קרובים&quot; בהקשר של נתונים? תאר לי בדוגמה פשוטה איך נקודות נתונים יכולות להיות &quot;קרובות&quot; זו לזו (התמקד במישור דו מימדי)</div><div>1. איך KNN מחליט איך לסווג נקודה חדשה? הסבר את הרעיון של הצבעה של השכנים הקרובים ביותר.</div><div>1. מה המשמעות של האות K ב-KNN? מה קורה אם נבחר K=1 לעומת K=5? </div><div>עתה עצור, תתן לי דוגמה מעשית של בעיה שבה KNN יכול לעזור (למשל, המלצה על מוצרים). אם עניתי נכונה המשך.</div><div>צפה בסרטון המצורף שמדגים את העקרונות בצורה ויזואלית</div></div><textarea hidden>KNN (K-Nearest Neighbors) הוא אחד המודלים הפשוטים והאינטואיטיביים ביותר ב-Machine Learning
+בשיעור זה נבין את הרעיון הבסיסי מאחורי KNN בלי להיכנס לפרטים טכניים
+1. מה זה &quot;שכנים קרובים&quot; בהקשר של נתונים? תאר לי בדוגמה פשוטה איך נקודות נתונים יכולות להיות &quot;קרובות&quot; זו לזו (התמקד במישור דו מימדי)
+1. איך KNN מחליט איך לסווג נקודה חדשה? הסבר את הרעיון של הצבעה של השכנים הקרובים ביותר.
+1. מה המשמעות של האות K ב-KNN? מה קורה אם נבחר K=1 לעומת K=5? 
+עתה עצור, תתן לי דוגמה מעשית של בעיה שבה KNN יכול לעזור (למשל, המלצה על מוצרים). אם עניתי נכונה המשך.
+צפה בסרטון המצורף שמדגים את העקרונות בצורה ויזואלית</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://www.youtube.com/watch?v=zeFt_JCA3b4" target="_blank" rel="noopener">Simple Explanation of the K-Nearest Neighbors (KNN) Algorithm</a></li></ul><p class="bsfoot">יחידה 6.6 בספר פייתון · <a href="book.html#py6-6">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py6-7"><summary><span class="un">Python 6.7</span>מודל KNN ב - sklearn</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>בשיעור זה נלמד להשתמש ב-KNN עם sklearn כדי לבנות מודל סיווג ולהבין איך הפרמטר k משפיע על התוצאות.</div><div>בתור התחלה, הסבר לי בקצרה איך KNN עובד? איך הוא מחליט איך לסווג נקודה חדשה?</div><div>1. איך מייבאים את KNeighborsClassifier מ-sklearn? </div><div>1. איך יוצרים מודל KNN? מה המשמעות של הפרמטר n_neighbors ומה קורה אם לא נגדיר אותו?</div><div>1. איך מאמנים את מודל ה-KNN ועושים חיזויים? הדגם לי עם fit() ו-predict().</div><div>1. הסבר לי על הפקודה .score(), מה היא מקבלת ומה היא מחזירה</div><div>עצור, תן לי דוגמא שלמה לאימון מודל עם k מסויים והדפס את טיב ההתאמה באמצעות score</div><div>עתה עצור, תתן לי שאלה על בחירת הערך של k (מה קורה עם k גבוה מדי או נמוך מדי?). אם עניתי נכונה המשך.</div><div>עתה נדון בשיפור המודל:</div><div>1. איך בודקים איך ערכי k שונים משפיעים על הביצועים? הצע דרך לבדוק מספר ערכי k ולמצוא את הטוב ביותר.</div></div><textarea hidden>בשיעור זה נלמד להשתמש ב-KNN עם sklearn כדי לבנות מודל סיווג ולהבין איך הפרמטר k משפיע על התוצאות.
+בתור התחלה, הסבר לי בקצרה איך KNN עובד? איך הוא מחליט איך לסווג נקודה חדשה?
+1. איך מייבאים את KNeighborsClassifier מ-sklearn? 
+1. איך יוצרים מודל KNN? מה המשמעות של הפרמטר n_neighbors ומה קורה אם לא נגדיר אותו?
+1. איך מאמנים את מודל ה-KNN ועושים חיזויים? הדגם לי עם fit() ו-predict().
+1. הסבר לי על הפקודה .score(), מה היא מקבלת ומה היא מחזירה
+עצור, תן לי דוגמא שלמה לאימון מודל עם k מסויים והדפס את טיב ההתאמה באמצעות score
+עתה עצור, תתן לי שאלה על בחירת הערך של k (מה קורה עם k גבוה מדי או נמוך מדי?). אם עניתי נכונה המשך.
+עתה נדון בשיפור המודל:
+1. איך בודקים איך ערכי k שונים משפיעים על הביצועים? הצע דרך לבדוק מספר ערכי k ולמצוא את הטוב ביותר.</textarea></div><p class="bsfoot">יחידה 6.7 בספר פייתון · <a href="book.html#py6-7">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">4</span><b>מבנה נתונים (Pandas) וסטטיסטיקה תיאורית</b><a class="tobook" href="book.html?w=10#py4">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py4-9"><summary><span class="un">Python 4.9</span>מיון נתונים</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>הסבר לי בבקשה שבעבודה עם נתונים, לעיתים קרובות נרצה לארגן את המידע בצורה מסודרת כדי לזהות דפוסים, לראות ערכים קיצוניים או סץם להציג את הנתונים בצורה ברורה יותר.  </div><div>&nbsp;</div><div>1. הצג לי בצורה ברורה את הפקודה sort_values() של pandas</div><div>1. תדון איתי בפרמטר  אשר שולט בכיוון המיון, הראה לי איך שולטים בו</div><div>&nbsp;</div><div>עתה עצור, הצג לי כי אני יכול למיין נתונים גם בnumpy, הראה לי את הפקודה np.sort </div><div>ותבקש ממני לענות מתי אעדיף להשתמש בכל פקודה.</div></div><textarea hidden>הסבר לי בבקשה שבעבודה עם נתונים, לעיתים קרובות נרצה לארגן את המידע בצורה מסודרת כדי לזהות דפוסים, לראות ערכים קיצוניים או סץם להציג את הנתונים בצורה ברורה יותר.  
+
+1. הצג לי בצורה ברורה את הפקודה sort_values() של pandas
+1. תדון איתי בפרמטר  אשר שולט בכיוון המיון, הראה לי איך שולטים בו
+
+עתה עצור, הצג לי כי אני יכול למיין נתונים גם בnumpy, הראה לי את הפקודה np.sort 
+ותבקש ממני לענות מתי אעדיף להשתמש בכל פקודה.</textarea></div><p class="bsfoot">יחידה 4.9 בספר פייתון · <a href="book.html#py4-9">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div>
+</section>
+
+<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div><div class="hw"><b class="ht">המטלה השבועית (שבוע 10)</b><div class="ctx"><p>קובץ הנתונים מכיל מדידות של 343 פינגווינים משלושה זנים. המשתנים:</p><ol><li>species — זן הפינגווין (משתנה המטרה)</li><li>bill_length_mm — אורך המקור</li><li>bill_depth_mm — עומק המקור</li><li>flipper_length_mm — אורך הכנף</li><li>body_mass_g — משקל הגוף</li></ol></div><p class="dfiles">קובצי נתונים: <a class="dfile" href="../files/notion/258dccfe-penguins.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>penguins.csv</a></p><div class="hwb"><p class="hp">חלק א - היכרות עם הנתונים</p><ol><li>טענו את הקובץ penguins.csv, הסירו שורות עם ערכים חסרים, והציגו את מימדי הנתונים, סטטיסטיקה תיאורית כללית, ואת מספר הפינגווינים מכל זן.</li><li>צרו תרשים פיזור של שני משתנים רציפים, כשהצבע מסמן את הזן.</li></ol><p class="hp">חלק ב - אימון מודל KNN</p><p>בחלק זה המטרה היא לנבא את זן הפינגווין לפי שני משתנים בלבד: עומק המקור (bill_depth_mm) ואורך הכנף (flipper_length_mm). (עם כל ארבעת המשתנים המודל מגיע כמעט ל-100% דיוק בכל K, וקשה לראות את ההשפעה של K.) למודל יש פרמטר K, שקובע בכמה שכנים להתחשב: K קטן מאוד רגיש מאוד לנתונים (ונוטה ל-overfit).</p><ol><li>קבעו זרע אקראי (seed), וחלקו את הנתונים לסט אימון (80%) וסט בדיקה (20%). הפרידו את משתנה המטרה משני המנבאים.</li><li>תקננו את המנבאים (ממוצע 0 וסטיית תקן 1) לפי סט האימון. כתבו בהערה: למה KNN רגיש לסקאלה של המשתנים?</li><li>צרו לולאה שעוברת על ערכי K מ-1 עד 20. בכל סבב של הלולאה:<ul><li>אמנו מודל KNN על סט האימון עם ה-K הנוכחי</li><li>חשבו את הדיוק (accuracy) על סט הבדיקה</li><li>שמרו את הדיוק בווקטור (או רשימה), במקום שמתאים ל-K הזה</li></ul></li><li>הציגו בגרף את התוצאות: בציר X ערך K, ובציר Y הדיוק. הוסיפו כותרת ותוויות צירים, וסמנו בגרף את ה-K הטוב ביותר.</li><li>הדפיסו את ה-K הטוב ביותר ואת הדיוק שלו. אם כמה ערכי K מגיעים לאותו דיוק, בחרו את הקטן מביניהם.</li></ol><p class="hp">בונוס (רשות):</p><ol><li>חזרו על הלולאה בלי לתקנן את המשתנים. מה קרה לדיוק, ולמה?</li></ol></div><p class="sm">שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.</p><p class="sm">כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.</p><p class="sm">פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה.</p><p class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>להגשה עד יום ראשון, 27.12.2026, בשעה 12:00</p></div><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון ב-R <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 10
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+library(ggplot2)
+library(class)
+
+
+#### EXPLORE DATA ####
+
+# 1. Load the data, remove missing values, describe
+df = read.csv(&quot;penguins.csv&quot;)
+df = na.omit(df)
+
+dim(df)
+summary(df)
+table(df$species)
+
+# 2. Scatter plot of two continuous variables, colored by species
+ggplot(df, aes(x = bill_depth_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  labs(title = &quot;Bill depth and flipper length by species&quot;,
+       x = &quot;Bill depth (mm)&quot;, y = &quot;Flipper length (mm)&quot;)
+
+
+#### KNN MODEL ####
+
+# 1. Seed, 80/20 split, the two predictors apart from the target
+set.seed(42)
+n           = nrow(df)
+train_index = sample(1:n, size = round(0.8 * n))
+
+predictors = c(&quot;bill_depth_mm&quot;, &quot;flipper_length_mm&quot;)
+x_train = df[train_index, predictors]
+x_test  = df[-train_index, predictors]
+y_train = df$species[train_index]
+y_test  = df$species[-train_index]
+
+# 2. Standardize by the mean and sd of the training set
+# Why: KNN classifies by the distance between penguins. Without standardization,
+# the variable with the larger spread dominates the distance: flipper length
+# varies by tens of mm, bill depth only by a few mm, so bill depth hardly counts.
+train_mean = colMeans(x_train)
+train_sd   = apply(x_train, 2, sd)
+
+x_train_s = scale(x_train, center = train_mean, scale = train_sd)
+x_test_s  = scale(x_test,  center = train_mean, scale = train_sd)
+
+# 3. Loop over K = 1..20: train, predict the test set, save the accuracy
+k_values = 1:20
+accuracy = rep(NA, length(k_values))
+
+for (k in k_values) {
+  pred        = knn(train = x_train_s, test = x_test_s, cl = y_train, k = k)
+  accuracy[k] = mean(pred == y_test)
+}
+
+# 4. Plot accuracy by K, with the best K marked in red
+best_k  = which.max(accuracy)          # if several K tie, which.max takes the smallest
+results = data.frame(k = k_values, accuracy = accuracy)
+
+ggplot(results, aes(x = k, y = accuracy)) +
+  geom_line() +
+  geom_point() +
+  geom_point(data = results[best_k, ], color = &quot;red&quot;, size = 4) +
+  labs(title = &quot;KNN test accuracy by K&quot;,
+       x = &quot;K (number of neighbors)&quot;, y = &quot;Accuracy&quot;)
+
+# 5. Print the best K and its accuracy
+cat(&quot;Best K:&quot;, best_k, &quot;accuracy:&quot;, accuracy[best_k], &quot;\n&quot;)
+
+
+#### BONUS ####
+
+# 1. The same loop without standardization
+accuracy_raw = rep(NA, length(k_values))
+
+for (k in k_values) {
+  pred            = knn(train = x_train, test = x_test, cl = y_train, k = k)
+  accuracy_raw[k] = mean(pred == y_test)
+}
+
+print(round(accuracy_raw, 3))
+# The best accuracy is lower: without standardization the distance is almost only
+# flipper length, so the model nearly ignores bill depth, which helps to separate
+# the species.
+</code></pre></div></details><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון בפייתון <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 10
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
+
+#### EXPLORE DATA ####
+
+# 1. Load the data, remove missing values, describe
+df = pd.read_csv(&quot;penguins.csv&quot;)
+df = df.dropna()
+
+print(df.shape)
+print(df.describe())
+print(df[&quot;species&quot;].value_counts())
+
+# 2. Scatter plot of two continuous variables, colored by species
+sns.scatterplot(data=df, x=&quot;bill_depth_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
+plt.title(&quot;Bill depth and flipper length by species&quot;)
+plt.xlabel(&quot;Bill depth (mm)&quot;)
+plt.ylabel(&quot;Flipper length (mm)&quot;)
+plt.show()
+
+
+#### KNN MODEL ####
+
+# 1. Seed (random_state), 80/20 split, the two predictors apart from the target
+df_train, df_test = train_test_split(df, test_size=0.2, random_state=42)
+
+predictors = [&quot;bill_depth_mm&quot;, &quot;flipper_length_mm&quot;]
+x_train = df_train[predictors]
+x_test  = df_test[predictors]
+y_train = df_train[&quot;species&quot;]
+y_test  = df_test[&quot;species&quot;]
+
+# 2. Standardize by the mean and sd of the training set
+# Why: KNN classifies by the distance between penguins. Without standardization,
+# the variable with the larger spread dominates the distance: flipper length
+# varies by tens of mm, bill depth only by a few mm, so bill depth hardly counts.
+train_mean = x_train.mean()
+train_sd   = x_train.std()
+
+x_train_s = (x_train - train_mean) / train_sd
+x_test_s  = (x_test - train_mean) / train_sd
+
+# 3. Loop over K = 1..20: train, predict the test set, save the accuracy
+k_values = list(range(1, 21))
+accuracy = []
+
+for k in k_values:
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(x_train_s, y_train)
+    accuracy.append(model.score(x_test_s, y_test))
+
+# 4. Plot accuracy by K, with the best K marked in red
+best_index = np.argmax(accuracy)        # if several K tie, argmax takes the smallest
+best_k = k_values[best_index]
+
+plt.plot(k_values, accuracy, marker=&quot;o&quot;)
+plt.scatter(best_k, accuracy[best_index], color=&quot;red&quot;, s=120, zorder=3)
+plt.title(&quot;KNN test accuracy by K&quot;)
+plt.xlabel(&quot;K (number of neighbors)&quot;)
+plt.ylabel(&quot;Accuracy&quot;)
+plt.xticks(k_values)
+plt.show()
+
+# 5. Print the best K and its accuracy
+print(&quot;Best K:&quot;, best_k, &quot;accuracy:&quot;, accuracy[best_index])
+
+
+#### BONUS ####
+
+# 1. The same loop without standardization
+accuracy_raw = []
+
+for k in k_values:
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(x_train, y_train)
+    accuracy_raw.append(model.score(x_test, y_test))
+
+print(np.round(accuracy_raw, 3))
+# The best accuracy is lower: without standardization the distance is almost only
+# flipper length, so the model nearly ignores bill depth, which helps to separate
+# the species.
+</code></pre></div></details></section>
+<nav class="nav"><a href="week-9.html">→ שבוע 9: רגרסיה לוגיסטית ועקומת ROC</a><a href="week-11.html">שבוע 11: בעיות קלסיפיקציה ב: השוואת מסווגים ←</a></nav>
+</main></div><footer class="foot"><img class="flogo" src="../assets/tau-logo.png" alt=""><b>יסודות התכנות במדע אמפירי</b><span>R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span><a class="ln" href="../index.html">לאתר הסטודנטים</a></footer>
+</div>
+<script>
+// copy an AI-tutor prompt
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('textarea').value, s=b.querySelector('span');
+    function ok(){ b.classList.add('ok'); s.textContent='הועתק'; setTimeout(function(){b.classList.remove('ok'); s.textContent='העתקה';},1600); }
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok,function(){});
+    else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy'); ok();}catch(e){} a.remove(); }
+  });
+});
+// week page: show both languages, or only R / only Python (remembered in this browser)
+(function(){
+  var box=document.querySelector('.langs'); if(!box) return;
+  function set(l){
+    box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+    document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
+    try{ localStorage.setItem('yesodot-lang', l); }catch(e){}
+  }
+  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
+  var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
+  if(saved==='r'||saved==='py') set(saved);
+})();
+// TA sign-in: the password is the name of the staff site's folder.
+document.querySelectorAll('.tlogf').forEach(function(f){
+  f.addEventListener('submit',function(e){ e.preventDefault();
+    var v=f.querySelector('input').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,''), er=f.querySelector('.terr');
+    if(!v) return;
+    if(location.protocol==='file:'){ location.href=v+'/index.html'; return; }
+    fetch(v+'/index.html',{method:'HEAD',cache:'no-store'}).then(function(r){ if(r.ok) location.href=v+'/'; else er.hidden=false; }).catch(function(){er.hidden=false});
+  });
+});
+</script>
+</body>
+</html>

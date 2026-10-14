@@ -1,0 +1,172 @@
+{
+ "_הסבר": "תוכן שבוע 2. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע מתחילים לעבוד עם נתונים. ניצור קובץ נתונים ראשון — בדיוק כמו גיליון אקסל, אבל בקוד.\n\nנכיר אובייקטים בסיסיים (מספר ומחרוזת), נבין מהו וקטור (ובפייתון — רשימה), ונאגד כמה וקטורים לטבלת נתונים (data frame). את הטבלה נשמור כקובץ csv ונפתח אותו באקסל.\n\nבמקביל נכיר את סביבת העבודה: ההבדל בין סקריפט לקונסולה, ומחברות (notebooks) ב-Google Colab. נלמד גם לכתוב קוד שאנשים אחרים — ואתם בעוד חודש — יוכלו לקרוא: הערות, כותרות ושמות משתנים טובים. ולבסוף: מה עושים כשמופיעה הודעת שגיאה.",
+ "deck": {
+  "title": "מצגת שבוע 2",
+  "note": "9 שקפים · נפתחת בדפדפן",
+  "url": "decks/W2.html"
+ },
+ "videos": [
+  {
+   "title": "ממשק Rstudio",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-ממשק-Rstudio.mp4",
+   "book": "r"
+  },
+  {
+   "title": "יצירת פרוייקט",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-יצירת-פרוייקט.mp4",
+   "book": "r"
+  },
+  {
+   "title": "פעולות חשבון בנומרי בסיסי",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-פעולות-חשבון-בנומרי-בסיסי.mp4",
+   "book": "r"
+  },
+  {
+   "title": "פעולות חשבון בוקטור מספרי",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-פעולות-חשבון-בוקטור-מספרי.mp4",
+   "book": "r"
+  },
+  {
+   "title": "יצירת טבלת נתונים",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-יצירת-טבלת-נתונים.mp4",
+   "book": "r"
+  },
+  {
+   "title": "שמירה של קובץ בתיקייה דרך קולאב",
+   "note": "סרטון הסבר",
+   "book": "py",
+   "url": "files/notion/2a6dccfe-שמירה-של-קובץ-בתיקייה-דרך-קולאב.mp4"
+  }
+ ],
+ "units": [
+  {
+   "book": "code",
+   "ch": 4,
+   "secs": [
+    "סקריפט, קונסולה ומחברת"
+   ]
+  },
+  {
+   "book": "code",
+   "ch": 5,
+   "secs": [
+    "שילוב הערות בכתיבת קוד",
+    "כתיבת כותרות קוד",
+    "שימוש ברווחים ושמות משתנים"
+   ]
+  },
+  {
+   "book": "code",
+   "ch": 3,
+   "secs": [
+    "שגיאות הן חלק מהעבודה"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 1,
+   "secs": [
+    "מה הן חבילות והתקנות ראשונות",
+    "יצירת הערות וכותרות בסקריפט",
+    "הרצת הסקירפט"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 2,
+   "secs": [
+    "מבוא",
+    "אובייקט מספרי א(numeric)",
+    "אובייקט מחרוזת א(string)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 3,
+   "secs": [
+    "מבוא לווקטורים",
+    "מהו וקטור מספרי (numeric)",
+    "מהו וקטור מחרוזת (string)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 4,
+   "secs": [
+    "יצירת טבלת נתונים",
+    "שמירת טבלת נתונים"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 1,
+   "secs": [
+    "עבודה עם Google Colab",
+    "יחידות קוד נפרדות בGoogle Colab",
+    "יצירת הערות וכותרות בסקריפט"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 2,
+   "secs": [
+    "מבוא",
+    "אובייקט מספרי  (numeric)  - פעולות חשבון",
+    "אובייקט מחרוזת (string)"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 3,
+   "secs": [
+    "מבוא לרשימות",
+    "פעולות על רשימות",
+    "מילון (dict)"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "היכרות בסיסית עם חבילת Pandas",
+    "יצירת מבנה נתונים עם pd.DataFrame",
+    "שמירה קובץ עם to_csv"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 2)",
+  "context": [],
+  "lines": [
+   "צרו סקריפט אשר מייצר קובץ csv בו יש 6 נבדקים",
+   "1. הזינו את המשתנים הבאים; מספר נבדק 1 עד 6 (סדר עולה), משתנה מגדר, גיל אשר בין 15-40, דיכאון (1 / 0).",
+   "1. אגדו את המשתנים לתוך מבנה נתונים אחד",
+   "1. שמרו את מבנה הנתונים בתוך קובץ csv וודאו שניתן לפתוח את הקובץ בתוכנה חיצונית (למשל, באקסל)."
+  ],
+  "files": [],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 1.11.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 2\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\n\n#### CREATE DATAFRAME ####\n\n# 1. Generate data\nsubj       = c(1, 2, 3, 4, 5, 6)\ngender     = c(\"male\", \"male\", \"female\", \"female\", \"female\", \"male\")\nage        = c(15, 29, 31, 28, 20, 35)\ndepression = c(0, 1, 0, 0, 1, 1)\n\n# 2. Combine into a data frame\ndf = data.frame(\n  subj       = subj,\n  gender     = gender,\n  age        = age,\n  depression = depression\n)\nprint(df)\n\n# 3. Save data frame to CSV\nwrite.csv(df, \"data.csv\", row.names = FALSE)\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 2\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport pandas as pd\n\n\n#### CREATE DATAFRAME ####\n\n# 1. Generate data\nsubj       = [1, 2, 3, 4, 5, 6]\ngender     = [\"male\", \"male\", \"female\", \"female\", \"female\", \"male\"]\nage        = [15, 29, 31, 28, 20, 35]\ndepression = [0, 1, 0, 0, 1, 1]\n\n# 2. Combine into a data frame\ndf = pd.DataFrame({\n    \"subj\": subj,\n    \"gender\": gender,\n    \"age\": age,\n    \"depression\": depression\n})\nprint(df)\n\n# 3. Save data frame to CSV (index=False: do not save the row numbers as an extra column)\ndf.to_csv(\"data.csv\", index=False)\n"
+   }
+  ]
+ }
+}

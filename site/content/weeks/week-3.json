@@ -1,0 +1,152 @@
+{
+ "_הסבר": "תוכן שבוע 3. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נלמד ליצור נתונים מדומים בצורה מבוקרת — כלי חשוב מאוד כשעובדים עם נתונים. אם בשבוע שעבר הקלדנו את הנתונים בעצמנו, השבוע נייצר אותם בקוד: סדרות של מספרים, דגימה מהתפלגות נורמלית, אחידה וברנולי, ודגימה אקראית מתוך קבוצת ערכים.\n\nאחר כך נתאר את הנתונים: ממוצע, סטיית תקן, חציון, וטבלת סיכום — ונצייר היסטוגרמה ראשונה.\n\nבחוט של סביבת העבודה נכיר את תיקיית העבודה: איפה הקוד שלנו „נמצא״, איך קוראים ושומרים קבצים בנתיב יחסי, ולמה כדאי לעבוד בתיקייה (או פרויקט) אחת לכל עבודה.",
+ "deck": {
+  "title": "מצגת שבוע 3",
+  "note": "8 שקפים · נפתחת בדפדפן",
+  "url": "decks/W3.html"
+ },
+ "videos": [
+  {
+   "title": "שימוש בפקודת seq",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-שימוש-בפקודת-seq.mp4",
+   "book": "r"
+  },
+  {
+   "title": "דגימה מהתפלגות ברנולי",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-דגימה-מהתפלגות-ברנולי.mp4",
+   "book": "r"
+  },
+  {
+   "title": "תיאור משתנים בטבלת נתונים",
+   "note": "סרטון הסבר",
+   "url": "files/notion/1d0dccfe-תיאור-משתנים-בטבלת-נתונים.mp4",
+   "book": "r"
+  }
+ ],
+ "units": [
+  {
+   "book": "code",
+   "ch": 4,
+   "secs": [
+    "תיקיית העבודה ונתיבים בקוד"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 1,
+   "secs": [
+    "פתיחת פרוייקט כאמצעי לשלוט על תיקיית העבודה"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 3,
+   "secs": [
+    "יצירת וקטור מספרי סדרתי (seq)",
+    "דגימה הסתברותית מוקטור מספרי (sample)",
+    "דגימה הסתברותית מוקטור מחרוזת (sample)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 5,
+   "secs": [
+    "דגימה מהתפלגות נורמלית(normal)",
+    "דגימה מהתפלגות ברנולי (rbinom)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 4,
+   "secs": [
+    "גישה למשתנה בודד במבנה נתונים",
+    "סטטיסטיקה תאורית עם חבילת base"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 6,
+   "secs": [
+    "תאור משתנה בודד רציף עם חבילת הבסיס"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 3,
+   "secs": [
+    "היכרות בסיסית עם חבילת Numpy",
+    "Numpy array",
+    "שיטות דגימות בNumpy"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 2,
+   "secs": [
+    "משתנה קטגוריאלי"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "גישה לערכים מתוך DataFrame א’",
+    "סטטיסטיקה תיאורית ב־Pandas א’"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 5,
+   "secs": [
+    "ייצוג גרפי פשוט עם Pandas"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 3)",
+  "context": [],
+  "lines": [
+   "עליכם השבוע ליצור סקריפט אשר מרחיב את יצירת מבנה הנתונים משיעור שעבר, ומאפשר יצירת סטטיסטיקה תיאורית בסיסית.",
+   "חלק א - יצירת הנתונים",
+   "1. יצרו את המשתנים הבאים :",
+   "  - משתנה נומרי עם מספר נבדק 1 עד 100 (סדר עולה).",
+   "  - את המשתנה גיל דיגמו מהתפלגות אחידה (uniform) בדידה, בין הערכים 15 ל 40.",
+   "  - את משתנה המגדר צרו בצורה ראנדומלית (סיכוי שווה).",
+   "  - משתנה IQ באמצעות דגימה נורמלית עם ממוצע 100 וס\"ת של 15",
+   "  - משתנה דיכאון (1 / 0) מהתפלגות ברנולי עם סיכוי של 15% לדיכאון.",
+   "  - משתנה חרדה מהתפלגות אחידה (uniform) בין הערכים 0 ל 100.",
+   "1. יצירת מבנה נתונים (זהה לשבוע שעבר):",
+   "  - הפיכת המשתנים האלו לאובייקט מבנה נתונים",
+   "  - שמירת מבנה הנתונים כקובץ csv",
+   "חלק ב - הצגת הנתונים",
+   "1. יצירת סטטיסטיקה תיאורית:",
+   "  - הדפיסו את הממוצע, ס\"ת, חציון, מינימום ומקסימום למשתנה הגיל בלבד",
+   "  - הדפיסו טבלת סטטיסטיקה תיאורית מסכמת עבור כל מבנה הנתונים",
+   "1. הצגה גרפית:",
+   "  - צרו תרשים היסטוגרמה לגיל",
+   "  - כתבו כותרת age בציר האיקס"
+  ],
+  "files": [],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 8.11.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 3\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\n\n#### CREATE DATA FRAME ####\n\n# 1. Generate vectors\nn_subjects = 100\nsubject    = 1:n_subjects\nage        = sample(15:40, n_subjects, replace = TRUE)        # discrete uniform\ngender     = sample(c(\"male\", \"female\"), n_subjects, replace = TRUE)\niq         = rnorm(n_subjects, mean = 100, sd = 15)\ndepression = rbinom(n_subjects, size = 1, prob = 0.15)         # Bernoulli\nanxiety    = runif(n_subjects, min = 0, max = 100)\n\n# 2. Combine vectors into a data frame and save it\ndf = data.frame(\n  subject    = subject,\n  age        = age,\n  gender     = gender,\n  iq         = iq,\n  depression = depression,\n  anxiety    = anxiety\n)\n\nwrite.csv(df, \"data.csv\", row.names = FALSE)\n\n\n#### DATA SUMMARY ####\n\n# 1. Descriptive statistics for age\nmean(df$age)\nsd(df$age)\nmedian(df$age)\nmin(df$age)\nmax(df$age)\n\n# 2. Summary table for the whole data frame\nsummary(df)\n\n# 3. Histogram of age\nhist(df$age, main = \"Histogram of age\", xlab = \"age\")\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 3\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n\n#### CREATE DATA FRAME ####\n\n# 1. Generate vectors\nn_subjects = 100\nsubject    = np.arange(1, n_subjects + 1)\nage        = np.random.randint(15, 41, n_subjects)              # discrete uniform, 15 to 40\ngender     = np.random.choice([\"male\", \"female\"], n_subjects)\niq         = np.random.normal(100, 15, n_subjects)\ndepression = np.random.binomial(1, 0.15, n_subjects)            # Bernoulli\nanxiety    = np.random.uniform(0, 100, n_subjects)\n\n# 2. Combine vectors into a data frame and save it\ndf = pd.DataFrame({\n    \"subject\": subject,\n    \"age\": age,\n    \"gender\": gender,\n    \"iq\": iq,\n    \"depression\": depression,\n    \"anxiety\": anxiety\n})\n\ndf.to_csv(\"data.csv\", index=False)\n\n\n#### DATA SUMMARY ####\n\n# 1. Descriptive statistics for age\nprint(\"mean:\", df[\"age\"].mean())\nprint(\"sd:\", df[\"age\"].std())\nprint(\"median:\", df[\"age\"].median())\nprint(\"min:\", df[\"age\"].min())\nprint(\"max:\", df[\"age\"].max())\n\n# 2. Summary table for the whole data frame\nprint(df.describe(include=\"all\"))\n\n# 3. Histogram of age\nplt.hist(df[\"age\"])\nplt.title(\"Histogram of age\")\nplt.xlabel(\"age\")\nplt.show()\n"
+   }
+  ]
+ }
+}

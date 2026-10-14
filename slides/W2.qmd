@@ -1,0 +1,289 @@
+---
+title: "מסד נתונים א: קובץ נתונים ראשון"
+course-week: "שבוע 2"
+---
+
+## קובץ נתונים ראשון
+
+::: {.nbox}
+<p class="nh">שבוע 2 · חומר הלימוד</p>
+
+השבוע מתחילים לעבוד עם נתונים. ניצור קובץ נתונים ראשון — בדיוק כמו גיליון אקסל, אבל בקוד.
+
+נכיר אובייקטים בסיסיים (מספר ומחרוזת), נבין מהו וקטור (ובפייתון — רשימה), ונאגד כמה וקטורים לטבלת נתונים (data frame). את הטבלה נשמור כקובץ csv ונפתח אותו באקסל.
+
+במקביל נכיר את סביבת העבודה: ההבדל בין סקריפט לקונסולה, ומחברות (notebooks) ב-Google Colab. נלמד גם לכתוב קוד שאנשים אחרים — ואתם בעוד חודש — יוכלו לקרוא: הערות, כותרות ושמות משתנים טובים. ולבסוף: מה עושים כשמופיעה הודעת שגיאה.
+:::
+
+## סקריפט, קונסולה ומחברת
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">סביבת עבודה א</p>
+<p>סקריפט, קונסולה ומחברת</p>
+<p>RStudio: הממשק וחבילות ראשונות</p>
+<p>Google Colab ויחידות קוד נפרדות</p>
+<p>הרצת הסקריפט</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R · RStudio</p>
+
+```r
+#### FIRST STEPS ####
+
+# 1. In the console
+2 + 2
+
+# 2. In a script (Ctrl+Enter)
+x = 1
+x
+```
+:::
+
+::: {.py}
+<p class="lang">Python · Colab</p>
+
+```python
+#### FIRST STEPS ####
+
+# 1. In a notebook cell
+2 + 2
+
+# 2. In a script
+x = 1
+print(x)
+```
+:::
+:::
+
+<p class="bnote">סקריפט = הקוד נשמר בקובץ · קונסולה = שורה אחת ונשכחת · מחברת = תאים, והפלט מתחת לכל תא</p>
+:::
+:::
+
+## אובייקטים בסיסיים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">אובייקטים בסיסיים</p>
+<p>אובייקט מספרי (numeric) ופעולות חשבון</p>
+<p>אובייקט מחרוזת (string)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### BASIC OBJECTS ####
+
+# 1. Numeric
+x = 1
+x = x + 1
+x * 10
+
+# 2. String
+name = 'Nitzan Shahar'
+class(name)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+#### BASIC OBJECTS ####
+
+# 1. Numeric
+x = 1
+x = x + 1
+x * 10
+
+# 2. String
+name = 'Nitzan Shahar'
+type(name)
+```
+:::
+:::
+
+<p class="bnote">אותו רעיון בדיוק: שם ← סימן = ← ערך</p>
+:::
+:::
+
+## וקטורים ורשימות
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">וקטורים ורשימות</p>
+<p>וקטור מספרי ווקטור מחרוזת (R)</p>
+<p>רשימה ופעולות על רשימות (פייתון)</p>
+<p>מילון (dict)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R · vector</p>
+
+```r
+#### VECTORS ####
+
+age = c(23, 31, 27)
+age + 1
+length(age)
+
+gender = c('female', 'male', 'female')
+gender[2]
+```
+<p class="out">24 32 28</p>
+:::
+
+::: {.py}
+<p class="lang">Python · list</p>
+
+```python
+#### LISTS ####
+
+age = [23, 31, 27]
+age.append(40)
+len(age)
+
+gender = ['female', 'male', 'female']
+gender[1]
+
+subject = {'name': 'Noa', 'age': 27}
+```
+:::
+:::
+
+<p class="bnote">ב-R הספירה מתחילה מ-1, ובפייתון מ-0 · ‏<span class="ltr">age + 1</span> עובד על וקטור ב-R, אבל לא על רשימה בפייתון</p>
+:::
+:::
+
+## טבלת נתונים וקובץ csv
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">מבנה נתונים</p>
+<p>יצירת טבלת נתונים מכמה וקטורים</p>
+<p>חבילת pandas ו-pd.DataFrame</p>
+<p>שמירת הטבלה כקובץ csv</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### CREATE DATA ####
+
+subject = c(1, 2, 3)
+gender  = c('female', 'male', 'female')
+age     = c(23, 31, 27)
+
+df = data.frame(subject, gender, age)
+
+write.csv(df, 'data.csv', row.names = FALSE)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import pandas as pd
+
+#### CREATE DATA ####
+
+df = pd.DataFrame({
+    'subject': [1, 2, 3],
+    'gender': ['female', 'male', 'female'],
+    'age': [23, 31, 27]
+})
+
+df.to_csv('data.csv', index=False)
+```
+:::
+:::
+
+<table class="df">
+<tr><th>subject</th><th>gender</th><th>age</th></tr>
+<tr><td>1</td><td>female</td><td>23</td></tr>
+<tr><td>2</td><td>male</td><td>31</td></tr>
+<tr><td>3</td><td>female</td><td>27</td></tr>
+</table>
+:::
+:::
+
+## קווים מנחים והודעות שגיאה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">קווים מנחים בכתיבת קוד</p>
+<p>הערות בקוד</p>
+<p>כותרות גדולות וקטנות</p>
+<p>רווחים ושמות משתנים</p>
+<p class="th" style="margin-top:.5em">לוגיקת תכנות</p>
+<p>שגיאות הן חלק מהעבודה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+# Foundations of programming, week 2
+# Noa Levi, id 123456789
+
+#### CREATE DATA ####
+
+# 1. Assign values
+age = c(23, 31, 27)
+mean(agee)
+```
+<p class="out err">Error: object &#39;agee&#39; not found</p>
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+# Foundations of programming, week 2
+# Noa Levi, id 123456789
+
+#### CREATE DATA ####
+
+# 1. Assign values
+age = [23, 31, 27]
+print(agee)
+```
+<p class="out err">NameError: name &#39;agee&#39; is not defined</p>
+:::
+:::
+
+<p class="bnote">הודעת שגיאה היא רמז: קוראים אותה, מוצאים את השורה, ומתקנים (כאן — שגיאת כתיב בשם)</p>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 2)** — סקריפט שמייצר קובץ csv ובו 6 נבדקים:
+
+1. הזינו את המשתנים: מספר נבדק 1 עד 6 (בסדר עולה), מגדר, גיל בין 15 ל-40, ודיכאון (0/1).
+2. אגדו את המשתנים לתוך מבנה נתונים אחד.
+3. שמרו את מבנה הנתונים בקובץ csv וודאו שאפשר לפתוח אותו בתוכנה חיצונית (למשל באקסל).
+
+**שפה:** R או פייתון, לבחירתכם · **כותרות** בפורמט הקורס (שם הקורס, השבוע, תעודת זהות ושם) · **הגשה:** קובץ PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 1.11.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

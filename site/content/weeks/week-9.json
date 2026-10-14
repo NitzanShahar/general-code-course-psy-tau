@@ -1,0 +1,97 @@
+{
+ "_הסבר": "תוכן שבוע 9. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נתנסה באימון מודל שחוזה אירועים דיכוטומיים (כן / לא) באמצעות רגרסיה לוגיסטית.\n\nנלמד לאמן מודל על חלק אחד של הנתונים, ולהשתמש בו כדי לחזות את התוצאה בחלק אחר שהמודל לא ראה — הרעיון המרכזי של למידת מכונה. נעריך את איכות החיזוי בעזרת confusion matrix, רגישות וסגוליות, ועקומת ROC.\n\nנעבוד עם נתונים אמיתיים של חולי לב, ובשבועיים הבאים נשתמש בהם שוב כדי להשוות בין מודלים.",
+ "deck": {
+  "title": "מצגת שבוע 9",
+  "note": "7 שקפים · נפתחת בדפדפן",
+  "url": "decks/W9.html"
+ },
+ "videos": [],
+ "units": [
+  {
+   "book": "r",
+   "ch": 8,
+   "secs": [
+    "התאמת רגרסיה לוגיסטית",
+    "ניבוי נתונים ממודל רגרסיה לוגיסטית",
+    "עקומת ROC"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "קידוד משתנה רציף"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 6,
+   "secs": [
+    "הכנת סט נתונים לאימון מודל",
+    "רגרסיה לוגיסטית עם sklearn",
+    "דיווח ממצאי מודל קלסיפיקציה"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 5,
+   "secs": [
+    "תרשים ROC"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 9)",
+  "context": [
+   "קובץ נתונים- מחלת לב",
+   "מידע על סט הנתונים: הקובץ מכיל נתונים אמיתיים על חולי לב.",
+   "משתנים:",
+   "1. age : גיל הנבדק",
+   "1. sex : מין הנבדק",
+   "1. restbps : לחץ הדם של הנבדק במנוחה",
+   "1. chol : כולסטרול בדם בעת הבדיקה (mg/L)",
+   "1. bs : רמת סוכר בדם בעת הבדיקה",
+   "1. maxhr : דופק גבוה ביותר שנמד",
+   "1. target : האם אירע לנבדק אירוע לבבי"
+  ],
+  "lines": [
+   "חלק א – הכנת הנתונים",
+   "1. טענו את קובץ הנתונים וחיקרו את טיבו במספר פקודות",
+   "1. הגדירו משתנה חדש בינארי  המקבל ערך 1 כאשר רמת הסוכר בדם ≥ 120 ו‑0 אחרת.",
+   "1. חלקו את המסד לשני מסדי נתונים:\nהראשון יקרא df_training והוא יכיל כ70% מהתצפיות\nהשני יקרא df_test והוא יכיל כ30% מהתצפיות",
+   "1. וודאו את מספר ואחוז התצפיות בכל מבנה נתונים",
+   "חלק ב – התאמת המודל",
+   "1. התאימו מודל רגרסיה לוגיסטית על מסד נתוני האימון (df_training) שבו אירוע לבבי  הוא המשתנה התלוי ואילו שאר המשתנים (כולם או חלקם לבחירתך) בקובץ הם המשתנים המנבאים.",
+   "חלק ג – הערכת ביצועים",
+   "1. חשבו את ההסתברויות החזויות למדגם הבדיקה (df_test) עבור כל תצפית.",
+   "1. קודדו משתנה מנובא לסיכוי גבוה / נמוך למחלת לב לפי סף סיכוי של 0.5",
+   "1. הדפיסו Confusion Matrix",
+   "בונוס (רשות):",
+   "1. הוסיפו בחלק ב שורת קוד אשר תדפיס את מקדמי הרגרסיה",
+   "1. הוסיפו בחלק ג חישוב של AUC, ואחוזי דיוק עבור אלו שחלו (רגישות) ואלו שלא חלו (סגוליות)",
+   "1. צרו תרשים ROC עבור מדגם הבדיקה. תנו כותרת איור, וכתבו תוויות לצירים: “False Positive Rate” ו‑“True Positive Rate”."
+  ],
+  "files": [
+   "255dccfe-d059-80a0-9fdc-cdb2f147b5d9"
+  ],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 20.12.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 9\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\n\n#### DATA PREPARATION ####\n\n# 1. Load the data and explore it\ndf = read.csv(\"heart.csv\")\n\nhead(df)\nstr(df)\nsummary(df)\ntable(df$target)\n\n# 2. Binary variable: 1 if blood sugar >= 120, 0 otherwise\ndf$bs_high = ifelse(df$bs >= 120, 1, 0)\n\n# 3. Split into training (70%) and test (30%)\nset.seed(123)\nn           = nrow(df)\ntrain_index = sample(1:n, size = round(0.7 * n))\n\ndf_training = df[train_index, ]\ndf_test     = df[-train_index, ]\n\n# 4. Number and percent of observations in each data frame\ncat(\"Training:\", nrow(df_training), \"rows,\", round(nrow(df_training) / n * 100, 1), \"%\\n\")\ncat(\"Test:\", nrow(df_test), \"rows,\", round(nrow(df_test) / n * 100, 1), \"%\\n\")\n\n\n#### MODEL FITTING ####\n\n# 1. Logistic regression: heart event predicted by the other variables\nmodel = glm(target ~ age + sex + restbps + chol + bs_high + maxhr,\n            data = df_training, family = binomial)\n\n# 2. Bonus: print the regression coefficients\nsummary(model)\n\n\n#### MODEL EVALUATION ####\n\n# 1. Predicted probabilities for the test set\ndf_test$pred_prob = predict(model, newdata = df_test, type = \"response\")\n\n# 2. Predicted class by a 0.5 threshold (1 = high risk)\ndf_test$pred_class = ifelse(df_test$pred_prob >= 0.5, 1, 0)\n\n# 3. Confusion matrix\ncm = table(Actual = df_test$target, Predicted = df_test$pred_class)\nprint(cm)\n\n\n#### BONUS ####\n\nlibrary(pROC)\n\n# 1. AUC, sensitivity (accuracy for the sick) and specificity (accuracy for the healthy)\nroc_obj = roc(df_test$target, df_test$pred_prob)\nauc(roc_obj)\n\nsensitivity = cm[\"1\", \"1\"] / sum(cm[\"1\", ])\nspecificity = cm[\"0\", \"0\"] / sum(cm[\"0\", ])\nsensitivity\nspecificity\n\n# 2. ROC curve for the test set\nplot(1 - roc_obj$specificities, roc_obj$sensitivities, type = \"l\",\n     main = \"ROC curve - test set\",\n     xlab = \"False Positive Rate\", ylab = \"True Positive Rate\")\nabline(0, 1, lty = 2)\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 9\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import confusion_matrix, roc_curve, roc_auc_score\n\n\n#### DATA PREPARATION ####\n\n# 1. Load the data and explore it\ndf = pd.read_csv(\"heart.csv\")\n\nprint(df.head())\nprint(df.info())\nprint(df.describe())\nprint(df[\"target\"].value_counts())\n\n# 2. Binary variable: 1 if blood sugar >= 120, 0 otherwise\ndf[\"bs_high\"] = np.where(df[\"bs\"] >= 120, 1, 0)\n\n# 3. Split into training (70%) and test (30%)\ndf_training, df_test = train_test_split(df, test_size=0.3, random_state=42)\n\n# 4. Number and percent of observations in each data frame\nprint(\"Training:\", len(df_training), \"rows,\", round(len(df_training) / len(df) * 100, 1), \"%\")\nprint(\"Test:\", len(df_test), \"rows,\", round(len(df_test) / len(df) * 100, 1), \"%\")\n\n\n#### MODEL FITTING ####\n\n# 1. Logistic regression: heart event predicted by the other variables\npredictors = [\"age\", \"sex\", \"restbps\", \"chol\", \"bs_high\", \"maxhr\"]\nmodel = LogisticRegression(max_iter=1000)\nmodel.fit(df_training[predictors], df_training[\"target\"])\n\n# 2. Bonus: print the regression coefficients\nprint(\"Intercept:\", model.intercept_)\nprint(pd.Series(model.coef_[0], index=predictors))\n\n\n#### MODEL EVALUATION ####\n\n# 1. Predicted probabilities for the test set\npred_prob = model.predict_proba(df_test[predictors])[:, 1]\n\n# 2. Predicted class by a 0.5 threshold (1 = high risk)\npred_class = np.where(pred_prob >= 0.5, 1, 0)\n\n# 3. Confusion matrix (rows = actual 0/1, columns = predicted 0/1)\ncm = confusion_matrix(df_test[\"target\"], pred_class)\nprint(cm)\n\n\n#### BONUS ####\n\n# 1. AUC, sensitivity (accuracy for the sick) and specificity (accuracy for the healthy)\nprint(\"AUC:\", roc_auc_score(df_test[\"target\"], pred_prob))\n\ntn, fp, fn, tp = cm.ravel()\nprint(\"Sensitivity:\", tp / (tp + fn))\nprint(\"Specificity:\", tn / (tn + fp))\n\n# 2. ROC curve for the test set\nfpr, tpr, thresholds = roc_curve(df_test[\"target\"], pred_prob)\nplt.plot(fpr, tpr)\nplt.plot([0, 1], [0, 1], linestyle=\"--\")\nplt.title(\"ROC curve - test set\")\nplt.xlabel(\"False Positive Rate\")\nplt.ylabel(\"True Positive Rate\")\nplt.show()\n"
+   }
+  ]
+ }
+}

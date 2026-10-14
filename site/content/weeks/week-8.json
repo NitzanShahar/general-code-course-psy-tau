@@ -1,0 +1,78 @@
+{
+ "_הסבר": "תוכן שבוע 8. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נתמקד בהצגה גרפית מתקדמת: גרף טוב הוא לפעמים התוצאה החשובה ביותר במאמר.\n\nניצור גרפים מסכמים עם טעויות תקן, נציג התפלגויות לפי קבוצות (box plot, violin plot ו-raincloud), נוסיף הערות וחיצים שמדגישים את המסר, נשלב כמה תרשימים בפאנל אחד, ונשמור את התוצאה כקובץ PNG ו-PDF באיכות גבוהה. ב-R נעבוד עם ggplot2 ו-ggdist, ובפייתון עם matplotlib ו-seaborn.\n\nהשבוע חל בחנוכה — מפגש הזום של יום ראשון יתקיים כרגיל, אלא אם תימסר הודעה אחרת.",
+ "deck": {
+  "title": "מצגת שבוע 8",
+  "note": "7 שקפים · נפתחת בדפדפן",
+  "url": "decks/W8.html"
+ },
+ "videos": [],
+ "units": [
+  {
+   "book": "r",
+   "ch": 6,
+   "secs": [
+    "צבע וניראות כללית",
+    "היכרות עם ggdist",
+    "שימוש בggdist עם stat_",
+    "הוספת משתנה קבוצה בggdist",
+    "המערך הפקטוריאלי",
+    "שימוש בחבילת ggpubr",
+    "הוספת Annotations לגרף",
+    "שילוב מספר פאנלים בתרשים אחד  (Faceting / Subplots)",
+    "שמירת הגרפים"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 5,
+   "secs": [
+    "Subplotting",
+    "גרפים עם seaborn",
+    "הוספת annotations לגרף",
+    "שמירת הגרפים"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 8)",
+  "context": [],
+  "lines": [
+   "חלק א - הצגה גרפית בסיסית:",
+   "1. העלו את קובץ הטיטניק",
+   "1. צרו גרף ממוצעים לסיכויי ההשרדות לפי מחלקה ומגדר. הוסיפו טעויות תקן.",
+   "1. שרטטו  את הגיל לפי מחלקה ומגדר באמצעות Box plot  / Violin plot",
+   "1. הוסיפו שירטוט נוסף לבחירתכם כדי להדגים את הנתונים",
+   "1. הוסיפו Annotations (למשל: חיצים, טקסט) לפחות באחד הגרפים כדי להדגיש או להסביר מידע חשוב (לדוגמה: ממוצעים או הבדלים משמעותיים בין קבוצות).",
+   "חלק ב - שילוב מספר פאנלים בתרשים אחד (Faceting / Subplots):",
+   "1. ארגנו את הגרפים שיצרתם בשלב הקודם לתרשים אחד עם מספר פאנלים.",
+   "1. התאימו את הפריסה (מספר השורות והעמודות) ואת הפרופורציות בין הפאנלים להצגה נוחה של הנתונים, והוסיפו כותרת ראשית לתרשים כולו.",
+   "חלק ג - שמירת הגרפים:",
+   "1. שמרו את כל הלוח המשולב בפורמטים הבאים:",
+   "  - קובץ תמונה (PNG)",
+   "  - קובץ PDF באיכות גבוהה",
+   "הקפידו על שמות ברורים לקבצים, וכן על תיעוד בקוד המפרט כל שלב ביצירת הגרפים."
+  ],
+  "files": [
+   "2c9dccfe-d059-8085-b7f5-db6a1ef2c0b7"
+  ],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 13.12.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 8\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(patchwork)\n\n\n#### BASIC PLOTS ####\n\n# 1. Load the Titanic data and keep passengers with a known age\ndf = read.csv(\"titanic.csv\")\ndf = df |>\n  filter(!is.na(Age))\ndf$Pclass = as.factor(df$Pclass)\n\n# 2. Mean survival by class and sex, with standard errors\ndf_surv = df |>\n  group_by(Pclass, Sex) |>\n  summarise(\n    mean_surv = mean(Survived),\n    se_surv   = sd(Survived) / sqrt(n()),\n    .groups   = \"drop\"\n  )\n\nplot1 = ggplot(df_surv, aes(x = Pclass, y = mean_surv, fill = Sex)) +\n  geom_col(position = position_dodge(width = 0.9)) +\n  geom_errorbar(aes(ymin = mean_surv - se_surv, ymax = mean_surv + se_surv),\n                position = position_dodge(width = 0.9), width = 0.2) +\n  labs(title = \"Survival by class and sex\", x = \"Class\", y = \"Survival rate (mean +- SE)\")\n\n# 3. Age by class and sex (boxplot)\nplot2 = ggplot(df, aes(x = Pclass, y = Age, fill = Sex)) +\n  geom_boxplot() +\n  labs(title = \"Age by class and sex\", x = \"Class\", y = \"Age\")\n\n# 4. Another plot: age by survival (violin)\nplot3 = ggplot(df, aes(x = factor(Survived), y = Age, fill = Sex)) +\n  geom_violin() +\n  labs(title = \"Age by survival and sex\", x = \"Survived (0 = no, 1 = yes)\", y = \"Age\")\n\n# 5. Annotation: arrow and text on the survival plot\nplot1 = plot1 +\n  annotate(\"text\", x = 1.25, y = 0.7, label = \"Most women in 1st\\nclass survived\") +\n  annotate(\"segment\", x = 1.1, xend = 0.8, y = 0.78, yend = 0.97,\n           arrow = arrow(length = unit(0.2, \"cm\")))\n\n\n#### MULTI-PANEL FIGURE ####\n\n# 1. Survival plot on top (full width), the two age plots below it\n# 2. Layout proportions and a main title\ncombined_plot = plot1 / (plot2 | plot3) +\n  plot_layout(heights = c(1, 1.2)) +\n  plot_annotation(title = \"Titanic: survival and age by class and sex\")\ncombined_plot\n\n\n#### SAVE ####\n\n# 1. Save the combined figure as PNG and as a high quality PDF\nggsave(\"titanic_panels.png\", combined_plot, width = 12, height = 10, dpi = 300)\nggsave(\"titanic_panels.pdf\", combined_plot, width = 12, height = 10)\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 8\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n\n#### BASIC PLOTS ####\n\n# 1. Load the Titanic data and keep passengers with a known age\ndf = pd.read_csv(\"titanic.csv\")\ndf = df.dropna(subset=[\"Age\"])\n\n# Multi-panel figure: survival plot on top (full width), the two age plots below it,\n# with a taller bottom row\nfig = plt.figure(figsize=(12, 10))\ngrid = fig.add_gridspec(2, 2, height_ratios=[1, 1.2])\nax1 = fig.add_subplot(grid[0, :])\nax2 = fig.add_subplot(grid[1, 0])\nax3 = fig.add_subplot(grid[1, 1])\n\n# 2. Mean survival by class and sex, with standard errors\nsns.barplot(data=df, x=\"Pclass\", y=\"Survived\", hue=\"Sex\", errorbar=\"se\", ax=ax1)\nax1.set_title(\"Survival by class and sex\")\nax1.set_xlabel(\"Class\")\nax1.set_ylabel(\"Survival rate (mean +- SE)\")\n\n# 3. Age by class and sex (boxplot)\nsns.boxplot(data=df, x=\"Pclass\", y=\"Age\", hue=\"Sex\", ax=ax2)\nax2.set_title(\"Age by class and sex\")\nax2.set_xlabel(\"Class\")\n\n# 4. Another plot: age by survival (violin)\nsns.violinplot(data=df, x=\"Survived\", y=\"Age\", hue=\"Sex\", hue_order=[\"female\", \"male\"], cut=0, ax=ax3)\nax3.set_title(\"Age by survival and sex\")\nax3.set_xlabel(\"Survived (0 = no, 1 = yes)\")\n\n# 5. Annotation: arrow and text on the survival plot\nax1.annotate(\"Most women in 1st\\nclass survived\",\n             xy=(-0.2, 0.97), xytext=(0.03, 0.62),\n             arrowprops=dict(arrowstyle=\"->\"))\n\n\n#### MULTI-PANEL FIGURE ####\n\n# 1. Main title for the whole figure\nfig.suptitle(\"Titanic: survival and age by class and sex\", fontsize=16)\nfig.tight_layout()\n\n\n#### SAVE ####\n\n# 1. Save the combined figure as PNG and as a high quality PDF\nfig.savefig(\"titanic_panels.png\", dpi=300)\nfig.savefig(\"titanic_panels.pdf\")\nplt.show()\n"
+   }
+  ]
+ }
+}

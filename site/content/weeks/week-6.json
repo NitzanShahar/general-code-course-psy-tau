@@ -1,0 +1,83 @@
+{
+ "_הסבר": "תוכן שבוע 6. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נתמקד בווקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.\n\nבמקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub — כלים שמאפשרים לשמור את ההיסטוריה של הקוד, לחזור לגרסה קודמת כשמשהו נשבר, ולשתף קוד עם אחרים. בשבוע הבא נשתמש בהם במטלה.",
+ "deck": {
+  "title": "מצגת שבוע 6",
+  "note": "8 שקפים · נפתחת בדפדפן",
+  "url": "decks/W6.html"
+ },
+ "videos": [],
+ "units": [
+  {
+   "book": "code",
+   "ch": 6,
+   "secs": [
+    "רקע כללי",
+    "פקודות בסיסיות בgithub",
+    "קובץ read.me"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 3,
+   "secs": [
+    "חיבור ואיחוד ווקטורים ומטריצות cbind rbind",
+    "כפל של וקטור ומטריצה בסקאלר",
+    "גישה ושינוי ערכים בוקטור ומטריצה",
+    "סטטיסטיקה תאורית בוקטורים ומטריצות"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 3,
+   "secs": [
+    "שילוב וקטורים למטריצה",
+    "פעולות חשבוניות על וקטורים ומטריצות",
+    "גישה לערכים בNumpy א’",
+    "גישה לערכים בNumpy ב’",
+    "סטטיסטיקה תיאורית בNumpy"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 6)",
+  "context": [],
+  "lines": [
+   "צרו סקריפט המדגים שימוש בווקטורים ובמטריצות לפי השלבים הבאים:",
+   "חלק א - יצירת וקטורים ומטריצות",
+   "1. צרו שני וקטורים נומריים עם לפחות 15 ערכים בכל אחד, באמצעות דגימה מהתפלגות כלשהי (בהתאם לחומר שנלמד בשיעורים קודמים).",
+   "1. שלבו את שני הווקטורים שיצרתם למטריצה חדשה שבה כל וקטור הוא עמודה נפרדת.",
+   "חלק ב - ביצוע פעולות חשבוניות",
+   "1. בצעו פעולות חיבור, חיסור, כפל וחילוק בסקלר על אחד הווקטורים שיצרתם, והציגו את התוצאות.",
+   "1. צרו מטריצה שנייה באותו גודל כמו הראשונה, ובצעו פעולות חיבור, חיסור וכפל בין שתי המטריצות. הציגו את התוצאות.",
+   "חלק ג - גישה ושינוי של אלמנטים במטריצה",
+   "1. הדפיסו את הערך בשורה 4 ועמודה 2 במטריצה הראשונה. שנו את הערך הזה למספר חדש לפי בחירתכם, והציגו את המטריצה לאחר השינוי.",
+   "1. חלצו וקטור המכיל את השורה החמישית של המטריצה השנייה, וכן וקטור נוסף המכיל את העמודה הראשונה שלה, והדפיסו אותם.",
+   "חלק ד - ניתוח סטטיסטי עם מטריצות",
+   "1. חשבו והציגו ממוצעים, וסכומים של השורות ושל העמודות במטריצה הראשונה.",
+   "1. בונוס: חשבו וקטור שיכיל את סכום הסטיה בריבוע של כל ערך מהממוצע לכל עמודה במטריצה",
+   "1. הכניסו באופן אקראי עד 4 נתונים חסרים (missing values) במטריצה הראשונה, ספרו והציגו את מספר הערכים החסרים.",
+   "חלק ה - המרה בין מבני נתונים",
+   "1. המירו את המטריצה הראשונה למבנה נתונים והציגו אותו."
+  ],
+  "files": [],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 29.11.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 6\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\n\n#### CREATE VECTORS AND MATRIX ####\n\n# 1. Sample two vectors\nx1 = rnorm(15, mean = 50, sd = 10)\nx2 = runif(15, min = 0, max = 100)\n\n# 2. Combine them into a matrix (each vector is a column)\nx = cbind(x1, x2)\nprint(x)\n\n\n#### ARITHMETIC OPERATIONS ####\n\n# 1. Scalar operations on x1\nprint(x1 + 5)\nprint(x1 - 5)\nprint(x1 * 5)\nprint(x1 / 5)\n\n# 2. A second matrix of the same size, and matrix operations\ny = cbind(x1 + 2, x2 * 0.5)\n\nprint(x + y)\nprint(x - y)\nprint(x * y)     # element-wise multiplication\n\n\n#### ACCESS AND MODIFY ELEMENTS ####\n\n# 1. Print and change the value in row 4, column 2\nprint(x[4, 2])\nx[4, 2] = 33\nprint(x)\n\n# 2. Extract row 5 and column 1 of the second matrix\nrow5 = y[5, ]\ncol1 = y[, 1]\nprint(row5)\nprint(col1)\n\n\n#### STATISTICS WITH MATRICES ####\n\n# 1. Means and sums of rows and columns\nprint(rowMeans(x))\nprint(rowSums(x))\nprint(colMeans(x))\nprint(colSums(x))\n\n# 2. Bonus: sum of squared deviations from the mean, per column\nssd_col = apply(x, 2, function(col) sum((col - mean(col))^2))\nprint(ssd_col)\n\n# 3. Insert 4 missing values in random cells, then count them\nx[sample(length(x), 4)] = NA\nprint(x)\nprint(sum(is.na(x)))\n\n\n#### CONVERT TO DATA FRAME ####\n\ndf = as.data.frame(x)\nprint(df)\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 6\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport numpy as np\nimport pandas as pd\n\n\n#### CREATE VECTORS AND MATRIX ####\n\n# 1. Sample two vectors\nx1 = np.random.normal(loc=50, scale=10, size=15)\nx2 = np.random.uniform(low=0, high=100, size=15)\n\n# 2. Combine them into a matrix (each vector is a column)\nx = np.column_stack((x1, x2))\nprint(x)\n\n\n#### ARITHMETIC OPERATIONS ####\n\n# 1. Scalar operations on x1\nprint(x1 + 5)\nprint(x1 - 5)\nprint(x1 * 5)\nprint(x1 / 5)\n\n# 2. A second matrix of the same size, and matrix operations\ny = np.column_stack((x1 + 2, x2 * 0.5))\n\nprint(x + y)\nprint(x - y)\nprint(x * y)     # element-wise multiplication\n\n\n#### ACCESS AND MODIFY ELEMENTS ####\n# Python counts from 0, so row 4 / column 2 is [3, 1]\n\n# 1. Print and change the value in row 4, column 2\nprint(x[3, 1])\nx[3, 1] = 33\nprint(x)\n\n# 2. Extract row 5 and column 1 of the second matrix\nrow5 = y[4, :]\ncol1 = y[:, 0]\nprint(row5)\nprint(col1)\n\n\n#### STATISTICS WITH MATRICES ####\n\n# 1. Means and sums of rows (axis=1) and columns (axis=0)\nprint(x.mean(axis=1))\nprint(x.sum(axis=1))\nprint(x.mean(axis=0))\nprint(x.sum(axis=0))\n\n# 2. Bonus: sum of squared deviations from the mean, per column\nssd_col = ((x - x.mean(axis=0)) ** 2).sum(axis=0)\nprint(ssd_col)\n\n# 3. Insert 4 missing values in random cells, then count them\ncells = np.random.choice(x.size, 4, replace=False)\nx.flat[cells] = np.nan\nprint(x)\nprint(np.isnan(x).sum())\n\n\n#### CONVERT TO DATA FRAME ####\n\ndf = pd.DataFrame(x, columns=[\"x1\", \"x2\"])\nprint(df)\n"
+   }
+  ]
+ }
+}

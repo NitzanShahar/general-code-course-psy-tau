@@ -1,0 +1,253 @@
+---
+title: "מסד נתונים ג: אינדקסים, סינון וקטגוריות"
+course-week: "שבוע 4"
+---
+
+## אינדקסים, סינון וקטגוריות
+
+::: {.nbox}
+<p class="nh">שבוע 4 · חומר הלימוד</p>
+
+השבוע נעמיק בעבודה עם טבלאות נתונים. נלמד לשלוף משתנה בודד או תצפית בודדת, למחוק עמודות ושורות, לשנות תא בודד, ולסנן את הטבלה לפי תנאים — למשל רק נבדקות עם IQ גבוה.
+
+נכיר שני סוגי אובייקטים חדשים: משתנה קטגוריאלי (factor / category) ומשתנה לוגי (אמת/שקר), ונפיק סטטיסטיקה תיאורית לפי קבוצות. ב-R נכיר את חבילת dplyr, ובפייתון את הסינון (masking) של pandas. נסיים בתרשים boxplot.
+
+בחוט של סביבת העבודה נבין לעומק מהן חבילות: מה ההבדל בין התקנה לטעינה, ואיך מתקינים חבילה ב-R ובפייתון.
+:::
+
+## חבילות: התקנה מול טעינה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">סביבת עבודה ג</p>
+<p>חבילות: התקנה מול טעינה</p>
+<p>מהן חבילות (פייתון)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### PACKAGES ####
+
+# 1. Install: once per computer
+install.packages('dplyr')
+
+# 2. Load: every time, at the top
+library(dplyr)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```bash
+# 1. Install: once, in the terminal
+pip install pandas
+```
+
+```python
+# 2. Load: every time, at the top
+import pandas as pd
+```
+:::
+:::
+
+<p class="bnote">התקנה = להוריד ספר לספרייה בבית · טעינה = להוציא אותו מהמדף ולפתוח על השולחן</p>
+:::
+:::
+
+## משתנה לוגי ומשתנה קטגוריאלי
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">אובייקטים בסיסיים</p>
+<p>משתנה לוגי</p>
+<p>משתנה קטגוריאלי</p>
+<p>מימדים באובייקטים</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### LOGICAL & FACTOR ####
+
+# 1. Logical
+x = c(1:10)
+x > 5
+x[x > 5]
+
+# 2. Factor
+gender = c('female', 'male', 'female')
+gender = factor(gender)
+levels(gender)
+as.numeric(gender)
+```
+<p class="out">1 2 1</p>
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+import pandas as pd
+
+# 1. Logical
+x = np.arange(1, 11)
+x > 5
+x[x > 5]
+
+# 2. Category
+gender = pd.Series(['female', 'male', 'female'])
+gender = gender.astype('category')
+gender.cat.categories
+gender.cat.codes
+```
+<p class="out">0 1 0</p>
+:::
+:::
+:::
+:::
+
+## אינדקסים וסינון
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">מבנה נתונים</p>
+<p>שימוש באינדקס: שורה, עמודה ותא</p>
+<p>מחיקה של משתנה ושל שורות</p>
+<p>סינון עם פילטר לוגי</p>
+<p>dplyr: filter, select, arrange</p>
+<p>Filtering ו-Masking (pandas)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### INDEX & FILTER ####
+
+df = read.csv('data.csv')
+
+df[5, ]               # row 5
+df$depression = NULL  # drop a column
+df = df[-c(60, 72), ] # drop rows
+df[10, 'age'] = 30    # one cell
+dim(df)
+
+library(dplyr)
+girls = df |>
+  filter(gender == 'female', iq > 110)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+#### INDEX & FILTER ####
+
+df = pd.read_csv('data.csv')
+
+df.iloc[4]               # row 5
+df = df.drop(columns='depression')
+df = df.drop(index=[59, 71])
+df.loc[9, 'age'] = 30    # one cell
+df.shape
+
+girls = df[(df['gender'] == 'female') &
+           (df['iq'] > 110)]
+```
+:::
+:::
+
+<p class="bnote">פייתון סופר מ-0: השורה החמישית היא <span class="ltr">iloc[4]</span></p>
+:::
+:::
+
+## סטטיסטיקה לפי קבוצה וגרפיקה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">סטטיסטיקה תיאורית</p>
+<p>dplyr: mutate, summarise, group_by</p>
+<p>תיאור משתנה קטגוריאלי</p>
+<p class="th" style="margin-top:.5em">גרפיקה</p>
+<p>אבני הבניין של ggplot</p>
+<p>boxplot לפי קבוצה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### BY GROUP ####
+
+df |>
+  group_by(gender) |>
+  summarise(mean_iq = mean(iq),
+            n = n())
+
+library(ggplot2)
+ggplot(df, aes(x = gender,
+               y = anxiety)) +
+  geom_boxplot()
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import matplotlib.pyplot as plt
+
+#### BY GROUP ####
+
+df.groupby('gender')['iq'].agg(
+    ['mean', 'count'])
+
+df['gender'].value_counts()
+
+df.boxplot(column='anxiety',
+           by='gender')
+plt.show()
+```
+:::
+:::
+
+<svg width="300" height="150" viewBox="0 0 300 150" aria-label="boxplot">
+<line x1="90" y1="15" x2="90" y2="130" stroke="#2b6597" stroke-width="1.5"/><rect x="65" y="45" width="50" height="55" fill="#d6e4f1" stroke="#2b6597" stroke-width="1.5"/><line x1="65" y1="70" x2="115" y2="70" stroke="#2b6597" stroke-width="3"/>
+<line x1="210" y1="25" x2="210" y2="135" stroke="#536373" stroke-width="1.5"/><rect x="185" y="55" width="50" height="50" fill="#fff4c2" stroke="#9a6a00" stroke-width="1.5"/><line x1="185" y1="82" x2="235" y2="82" stroke="#9a6a00" stroke-width="3"/>
+<text x="90" y="148" text-anchor="middle" font-size="13" fill="#536373" font-family="JetBrains Mono">female</text>
+<text x="210" y="148" text-anchor="middle" font-size="13" fill="#536373" font-family="JetBrains Mono">male</text>
+</svg>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 4)** — טוענים את קובץ ה-csv מהשבוע הקודם.
+
+**חלק א – עריכת הנתונים:** הדפסת משתנה הגיל והשורה החמישית; מחיקת משתנה הדיכאון והשורות 60 ו-72; הדפסה ושינוי של התא בשורה 10 בעמודת הגיל; מימדי הטבלה; משתנה לוגי IQ_group (מעל / מתחת לחציון); מגדר כמשתנה קטגוריאלי ובדיקת רמותיו; מסד נתונים שני של בנות עם IQ גבוה.
+
+**חלק ב – הצגת הנתונים:** סטטיסטיקה תיאורית לגיל עבור IQ גבוה, ובנפרד לכל רמת מגדר (בפקודה אחת); טבלה מסכמת למסד של הבנות; boxplot של החרדה לפי מגדר; שמירה כ-csv.
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 15.11.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

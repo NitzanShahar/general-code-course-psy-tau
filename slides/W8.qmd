@@ -1,0 +1,206 @@
+---
+title: "הצגה גרפית מתקדמת"
+course-week: "שבוע 8"
+---
+
+## הצגה גרפית
+
+::: {.nbox}
+<p class="nh">שבוע 8 · חומר הלימוד</p>
+
+השבוע נתמקד בהצגה גרפית מתקדמת: גרף טוב הוא לפעמים התוצאה החשובה ביותר במאמר.
+
+ניצור גרפים מסכמים עם טעויות תקן, נציג התפלגויות לפי קבוצות (box plot, violin plot ו-raincloud), נוסיף הערות וחיצים שמדגישים את המסר, נשלב כמה תרשימים בפאנל אחד, ונשמור את התוצאה כקובץ PNG ו-PDF באיכות גבוהה. ב-R נעבוד עם ggplot2 ו-ggdist, ובפייתון עם matplotlib ו-seaborn.
+
+השבוע חל בחנוכה — מפגש הזום של יום ראשון יתקיים כרגיל, אלא אם תימסר הודעה אחרת.
+:::
+
+## התפלגויות וצבע
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">גרפיקה</p>
+<p>צבע וניראות כללית</p>
+<p>ggdist ו-stat_ (R)</p>
+<p>הוספת משתנה קבוצה</p>
+<p>המערך הפקטוריאלי</p>
+<p>גרפים עם seaborn (פייתון)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R · ggplot2 + ggdist</p>
+
+```r
+#### DISTRIBUTIONS ####
+
+library(ggplot2)
+library(ggdist)
+
+df = read.csv('titanic.csv')
+df$Pclass = factor(df$Pclass)
+
+ggplot(df, aes(x = Pclass, y = Age,
+               fill = Sex)) +
+  stat_halfeye(alpha = 0.6,
+    position = position_dodge(0.8)) +
+  scale_fill_manual(
+    values = c('#9a6a00', '#2b6597')) +
+  theme_minimal()
+```
+:::
+
+::: {.py}
+<p class="lang">Python · seaborn</p>
+
+```python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+#### DISTRIBUTIONS ####
+
+df = pd.read_csv('titanic.csv')
+
+sns.violinplot(data=df, x='Pclass',
+               y='Age', hue='Sex',
+               split=True,
+               palette=['#2b6597', '#9a6a00'])
+plt.show()
+```
+:::
+:::
+:::
+:::
+
+## גרף מסכם והערות
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">גרפיקה</p>
+<p>ממוצעים עם טעויות תקן</p>
+<p>חבילת ggpubr (R)</p>
+<p>הוספת Annotations לגרף</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R · ggpubr</p>
+
+```r
+#### SUMMARY PLOT ####
+
+library(ggpubr)
+
+# 1. Means and standard errors
+p1 = ggbarplot(df, x = 'Pclass',
+               y = 'Survived',
+               fill = 'Sex',
+               add = 'mean_se',
+               position = position_dodge(0.8))
+
+# 2. An annotation
+p1 = p1 + annotate('text', x = 1,
+                   y = 1.05,
+                   label = 'first class')
+```
+:::
+
+::: {.py}
+<p class="lang">Python · seaborn</p>
+
+```python
+#### SUMMARY PLOT ####
+
+# 1. Means and standard errors
+ax = sns.barplot(data=df, x='Pclass',
+                 y='Survived', hue='Sex',
+                 errorbar='se')
+
+# 2. An annotation with an arrow
+ax.annotate('first class',
+            xy=(0, 0.97),
+            xytext=(0.6, 1.05),
+            arrowprops={'arrowstyle': '->'})
+plt.show()
+```
+:::
+:::
+:::
+:::
+
+## פאנלים ושמירה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">גרפיקה</p>
+<p>שילוב כמה פאנלים בתרשים אחד (Faceting / Subplots)</p>
+<p>כותרת ראשית</p>
+<p>שמירת הגרפים: PNG ו-PDF</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### PANELS & SAVE ####
+
+p2 = ggboxplot(df, x = 'Pclass',
+               y = 'Age', fill = 'Sex')
+
+figure = ggarrange(p1, p2, ncol = 2,
+                   labels = c('A', 'B'))
+figure = annotate_figure(figure,
+                         top = 'Titanic')
+
+ggsave('titanic.png', figure,
+       width = 10, height = 5)
+ggsave('titanic.pdf', figure,
+       width = 10, height = 5)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+#### PANELS & SAVE ####
+
+fig, axes = plt.subplots(1, 2,
+                         figsize=(10, 5))
+sns.barplot(data=df, x='Pclass',
+            y='Survived', hue='Sex',
+            errorbar='se', ax=axes[0])
+sns.boxplot(data=df, x='Pclass',
+            y='Age', hue='Sex', ax=axes[1])
+fig.suptitle('Titanic')
+
+fig.savefig('titanic.png', dpi=300)
+fig.savefig('titanic.pdf')
+```
+:::
+:::
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 8)** — קובץ הנתונים: titanic.csv (באתר הקורס).
+
+**חלק א:** גרף ממוצעים לסיכויי ההישרדות לפי מחלקה ומגדר, עם טעויות תקן; הגיל לפי מחלקה ומגדר (box plot / violin plot); שרטוט נוסף לבחירתכם; Annotations (חיצים, טקסט) באחד הגרפים לפחות.
+
+**חלק ב:** כל הגרפים בתרשים אחד עם כמה פאנלים, פריסה ופרופורציות מתאימות וכותרת ראשית. **חלק ג:** שמירה כ-PNG וכ-PDF באיכות גבוהה, עם שמות ברורים לקבצים ותיעוד בקוד.
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 13.12.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

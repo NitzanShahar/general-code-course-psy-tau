@@ -1,0 +1,260 @@
+---
+title: "מסד נתונים ב: דגימה וסטטיסטיקה תיאורית"
+course-week: "שבוע 3"
+---
+
+## דגימה וסטטיסטיקה תיאורית
+
+::: {.nbox}
+<p class="nh">שבוע 3 · חומר הלימוד</p>
+
+השבוע נלמד ליצור נתונים מדומים בצורה מבוקרת — כלי חשוב מאוד כשעובדים עם נתונים. אם בשבוע שעבר הקלדנו את הנתונים בעצמנו, השבוע נייצר אותם בקוד: סדרות של מספרים, דגימה מהתפלגות נורמלית, אחידה וברנולי, ודגימה אקראית מתוך קבוצת ערכים.
+
+אחר כך נתאר את הנתונים: ממוצע, סטיית תקן, חציון, וטבלת סיכום — ונצייר היסטוגרמה ראשונה.
+
+בחוט של סביבת העבודה נכיר את תיקיית העבודה: איפה הקוד שלנו „נמצא״, איך קוראים ושומרים קבצים בנתיב יחסי, ולמה כדאי לעבוד בתיקייה (או פרויקט) אחת לכל עבודה.
+:::
+
+## תיקיית העבודה ונתיבים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">סביבת עבודה ב</p>
+<p>תיקיית העבודה ונתיבים בקוד</p>
+<p>פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### WORKING DIRECTORY ####
+
+# 1. Where am I?
+getwd()
+
+# 2. Relative paths
+df = read.csv('data.csv')
+df = read.csv('data/data.csv')
+
+# 3. Saved next to the script
+write.csv(df, 'data_copy.csv')
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import os
+import pandas as pd
+
+#### WORKING DIRECTORY ####
+
+# 1. Where am I?
+os.getcwd()
+
+# 2. Relative paths
+df = pd.read_csv('data.csv')
+df = pd.read_csv('data/data.csv')
+
+# 3. Saved next to the script
+df.to_csv('data_copy.csv')
+```
+:::
+:::
+
+<p class="bnote">תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder</p>
+:::
+:::
+
+## דגימה מהתפלגויות
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">דגימה מהתפלגויות</p>
+<p>וקטור מספרי סדרתי (seq)</p>
+<p>דגימה מהתפלגות נורמלית</p>
+<p>דגימה אקראית מוקטור מחרוזת</p>
+<p>דגימה מהתפלגות ברנולי</p>
+<p>חבילת numpy ו-numpy array</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### CREATE DATA ####
+
+# 1. Sequence
+subject = seq(1, 10, by = 1)
+
+# 2. Normal distribution
+iq = rnorm(10, mean = 100, sd = 15)
+
+# 3. Strings at random
+gender = sample(c('female', 'male'),
+                10, replace = TRUE)
+
+# 4. Bernoulli
+depression = rbinom(10, size = 1,
+                    prob = 0.15)
+
+df = data.frame(subject, gender,
+                iq, depression)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+import pandas as pd
+
+#### CREATE DATA ####
+
+# 1. Sequence
+subject = np.arange(1, 11)
+
+# 2. Normal distribution
+iq = np.random.normal(100, 15, 10)
+
+# 3. Strings at random
+gender = np.random.choice(['female', 'male'], 10)
+
+# 4. Bernoulli
+depression = np.random.binomial(1, 0.15, 10)
+
+df = pd.DataFrame({'subject': subject,
+                   'gender': gender, 'iq': iq,
+                   'depression': depression})
+```
+:::
+:::
+:::
+:::
+
+## סטטיסטיקה תיאורית
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">מבנה נתונים וסטטיסטיקה תיאורית</p>
+<p>גישה למשתנה בודד במבנה נתונים</p>
+<p>ממוצע, ס״ת, חציון וטווח למשתנה רציף</p>
+<p>סטטיסטיקה תיאורית לכל הטבלה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### DESCRIBE ####
+
+# 1. One variable
+names(df)
+df$iq
+
+# 2. One continuous variable
+mean(df$iq)
+sd(df$iq)
+median(df$iq)
+range(df$iq)
+
+# 3. The whole table
+summary(df)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+#### DESCRIBE ####
+
+# 1. One variable
+df.columns
+df['iq']
+
+# 2. One continuous variable
+df['iq'].mean()
+df['iq'].std()
+df['iq'].median()
+df['iq'].min(), df['iq'].max()
+
+# 3. The whole table
+df.describe()
+```
+:::
+:::
+
+<p class="bnote">ב-R <span class="ltr">df$iq</span>, ובפייתון <span class="ltr">df['iq']</span> — שתי דרכים לומר „העמודה iq בטבלה df״</p>
+:::
+:::
+
+## גרפיקה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">גרפיקה</p>
+<p>היסטוגרמה של משתנה בודד</p>
+<p>ייצוג גרפי פשוט עם pandas</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+hist(df$iq, xlab = 'iq', main = 'IQ')
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import matplotlib.pyplot as plt
+
+df['iq'].hist()
+plt.xlabel('iq')
+plt.title('IQ')
+plt.show()
+```
+:::
+:::
+
+<svg width="420" height="230" viewBox="0 0 420 230" aria-label="היסטוגרמה">
+<g fill="#d6e4f1" stroke="#2b6597" stroke-width="1.5">
+<rect x="40" y="170" width="45" height="30"/><rect x="85" y="130" width="45" height="70"/><rect x="130" y="70" width="45" height="130"/><rect x="175" y="30" width="45" height="170"/><rect x="220" y="60" width="45" height="140"/><rect x="265" y="120" width="45" height="80"/><rect x="310" y="165" width="45" height="35"/>
+</g>
+<line x1="35" y1="200" x2="365" y2="200" stroke="#536373"/>
+<text x="200" y="222" text-anchor="middle" font-size="14" fill="#536373" font-family="JetBrains Mono">iq</text>
+</svg>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 3)** — סקריפט שמרחיב את מבנה הנתונים משבוע שעבר ומפיק סטטיסטיקה תיאורית.
+
+**חלק א – יצירת הנתונים:** מספר נבדק 1–100; גיל מהתפלגות אחידה בדידה (15–40); מגדר אקראי; IQ נורמלי (100, 15); דיכאון ברנולי (15%); חרדה אחידה (0–100). מאגדים למבנה נתונים ושומרים כ-csv.
+
+**חלק ב – הצגת הנתונים:** ממוצע, ס״ת, חציון, מינימום ומקסימום לגיל; טבלת סטטיסטיקה תיאורית לכל מבנה הנתונים; היסטוגרמה של הגיל עם הכותרת age בציר ה-X.
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 8.11.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

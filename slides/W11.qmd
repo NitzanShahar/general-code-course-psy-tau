@@ -1,0 +1,310 @@
+---
+title: "בעיות קלסיפיקציה ב: השוואת מסווגים"
+course-week: "שבוע 11"
+---
+
+## השוואת מסווגים
+
+::: {.nbox}
+<p class="nh">שבוע 11 · חומר הלימוד</p>
+
+השבוע נשאל את השאלה שכל חוקר שואל בסוף: איזה מודל הכי טוב? נחזור לנתוני מחלת הלב משבוע 9, ונשווה שלושה מסווגים: רגרסיה לוגיסטית, KNN, ו-Random Forest — מודל שמבוסס על „חוכמת ההמונים״ של הרבה עצי החלטה.
+
+נלמד להשוות בצורה הוגנת: אותו סט אימון, אותו סט בדיקה, ואותם מדדים — דיוק, רגישות, סגוליות ו-AUC. ונשאל גם שאלה שאינה סטטיסטית: מה יקר יותר, לפספס חולה או להתריע לשווא?
+
+זה השבוע שבו כל מה שלמדנו מתחבר: טבלאות, לולאות, פונקציות, גרפים ומודלים.
+:::
+
+## נבדקים כפולים ודליפת מידע
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">לפני כל מודל: להכיר את הנתונים</p>
+<p>בקובץ 1025 שורות — אבל רק 302 נבדקים: השאר הם כפילויות (זהות בכל העמודות מלבד bs)</p>
+<p>אם אותו נבדק נמצא גם באימון וגם בבדיקה, המודל „זוכר״ אותו והדיוק מנופח: דליפת מידע (<span class="ltr">data leakage</span>)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### DUPLICATE PATIENTS ####
+
+df = read.csv('heart.csv')
+nrow(df)
+table(df$target)
+
+# identical on all columns except bs
+cols = c('age', 'sex', 'restbps',
+         'chol', 'maxhr', 'target')
+sum(duplicated(df[, cols]))
+df = df[!duplicated(df[, cols]), ]
+nrow(df)
+```
+<p class="out">1025 · 723 · 302</p>
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import pandas as pd
+
+#### DUPLICATE PATIENTS ####
+
+df = pd.read_csv('heart.csv')
+len(df)
+df['target'].value_counts()
+
+# identical on all columns except bs
+cols = ['age', 'sex', 'restbps',
+        'chol', 'maxhr', 'target']
+df.duplicated(subset=cols).sum()
+df = df.drop_duplicates(subset=cols)
+len(df)
+```
+<p class="out">1025 · 723 · 302</p>
+:::
+:::
+:::
+:::
+
+## השוואה הוגנת: אותה חלוקה לכולם
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">הכנת הנתונים</p>
+<p>seed — כדי שהתוצאות יהיו שחזוריות</p>
+<p>סט אימון (70%) וסט בדיקה (30%) — אחד, לכל המודלים</p>
+<p>תקנון לפי סט האימון בלבד: סט הבדיקה מדמה נבדקים שעוד לא ראינו</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### SAME SPLIT FOR ALL ####
+
+x_cols = c('age', 'sex', 'restbps',
+           'chol', 'bs', 'maxhr')
+
+set.seed(1)
+rows = sample(1:nrow(df),
+              round(0.7 * nrow(df)))
+train = df[rows, ]
+test = df[-rows, ]
+
+# standardize by the training set only
+m = colMeans(train[, x_cols])
+s = apply(train[, x_cols], 2, sd)
+train[, x_cols] = scale(train[, x_cols], m, s)
+test[, x_cols] = scale(test[, x_cols], m, s)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+#### SAME SPLIT FOR ALL ####
+
+x_cols = ['age', 'sex', 'restbps',
+          'chol', 'bs', 'maxhr']
+
+train, test = train_test_split(
+    df, test_size=0.3, random_state=1)
+
+# standardize by the training set only
+scaler = StandardScaler()
+scaler.fit(train[x_cols])
+x_train = scaler.transform(train[x_cols])
+x_test = scaler.transform(test[x_cols])
+y_train = train['target']
+y_test = test['target']
+```
+:::
+:::
+:::
+:::
+
+## שלושה מודלים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">שלושה מסווגים</p>
+<p>רגרסיה לוגיסטית — משוואה</p>
+<p><span class="ltr">KNN (K=15)</span> — השכנים הקרובים</p>
+<p><span class="ltr">Random Forest</span> (500 עצים) — הצבעה של הרבה עצי החלטה</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+library(class)
+library(randomForest)
+
+#### THREE MODELS ####
+
+# 1. Logistic regression
+m_log = glm(target ~ ., data = train,
+            family = binomial)
+p_log = predict(m_log, test,
+                type = 'response')
+pred_log = ifelse(p_log > 0.5, 1, 0)
+
+# 2. KNN
+pred_knn = knn(train[, x_cols],
+               test[, x_cols],
+               cl = train$target, k = 15)
+
+# 3. Random Forest
+m_rf = randomForest(factor(target) ~ .,
+                    data = train, ntree = 500)
+pred_rf = predict(m_rf, test)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+
+#### THREE MODELS ####
+
+models = {
+    'logistic': LogisticRegression(),
+    'knn': KNeighborsClassifier(n_neighbors=15),
+    'forest': RandomForestClassifier(
+        n_estimators=500, random_state=1)
+}
+
+pred = {}
+for name in models:
+    models[name].fit(x_train, y_train)
+    pred[name] = models[name].predict(x_test)
+```
+:::
+:::
+:::
+:::
+
+## מדדי ביצועים
+
+::: {.cards}
+::: {.card .py}
+<h3>Confusion matrix</h3>
+
+<table class="df" style="font-size:.85em;margin:.4em auto">
+<tr><th></th><th>observed = 1</th><th>observed = 0</th></tr>
+<tr><td><b>predicted = 1</b></td><td style="color:#1f7a52">TP</td><td style="color:#b3541e">FP · התרעת שווא</td></tr>
+<tr><td><b>predicted = 0</b></td><td style="color:#b3541e">FN · חולה שפוספס</td><td style="color:#1f7a52">TN</td></tr>
+</table>
+:::
+
+::: {.card}
+<h3>ארבעה מדדים</h3>
+
+- **דיוק (accuracy)** — כמה מכל הסיווגים נכונים
+- **רגישות (sensitivity)** — <span class="ltr">TP / (TP + FN)</span>: כמה מהחולים זיהינו
+- **סגוליות (specificity)** — <span class="ltr">TN / (TN + FP)</span>: כמה מהבריאים זיהינו
+- **AUC** — השטח מתחת לעקומת ה-ROC, לכל הספים יחד
+:::
+:::
+
+<p class="take">דיוק גבוה לא מספיק: אם רק 10% חולים, מודל שאומר תמיד „בריא״ צודק ב-90% — ולא מזהה אף חולה. מה יקר יותר אצלכם: FN או FP?</p>
+
+## פונקציה אחת לכל המודלים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">הערכת ביצועים והשוואת מודלים</p>
+<p>פונקציה שמחזירה דיוק, רגישות וסגוליות</p>
+<p>טבלה אחת: שורה לכל מודל, עמודה לכל מדד</p>
+<p>גרף עמודות של הדיוק</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### COMPARE ####
+
+metrics = function(observed, predicted) {
+  tp = sum(predicted == 1 & observed == 1)
+  tn = sum(predicted == 0 & observed == 0)
+  c(accuracy = mean(predicted == observed),
+    sensitivity = tp / sum(observed == 1),
+    specificity = tn / sum(observed == 0))
+}
+
+results = rbind(
+  logistic = metrics(test$target, pred_log),
+  knn = metrics(test$target, pred_knn),
+  forest = metrics(test$target, pred_rf))
+results
+
+barplot(results[, 'accuracy'])
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+#### COMPARE ####
+
+def metrics(observed, predicted):
+    tp = sum((predicted == 1) & (observed == 1))
+    tn = sum((predicted == 0) & (observed == 0))
+    return {
+        'accuracy': (predicted == observed).mean(),
+        'sensitivity': tp / sum(observed == 1),
+        'specificity': tn / sum(observed == 0)}
+
+rows = []
+for name in pred:
+    rows.append(metrics(y_test, pred[name]))
+results = pd.DataFrame(rows, index=list(pred))
+print(results)
+
+results['accuracy'].plot(kind='bar')
+```
+:::
+:::
+
+<p class="bnote">אחרי הסרת הכפילויות שלושת המודלים קרובים (כ-70% דיוק), והדירוג משתנה בין זרעים — מה שחשוב הוא השוואה הוגנת, לא „מי ניצח״</p>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 11)** — חוזרים לקובץ heart.csv משבוע 9. המטרה: להשוות שלושה מודלים שמסווגים מי עבר אירוע לבבי.
+
+**חלק א:** מימדים ומספר הנבדקים בכל ערך של target; הסרת נבדקים כפולים (זהים בכל העמודות מלבד bs) והדפסת מספר הנבדקים שנשארו, ובהערה: מה זו דליפת מידע (<span class="ltr">data leakage</span>)?; seed וחלוקה ל-70% אימון ו-30% בדיקה; תקנון לפי סט האימון בלבד (ובהערה: למה?).
+
+**חלק ב:** רגרסיה לוגיסטית (הסתברויות חזויות), KNN עם K=15, ו-Random Forest עם 500 עצים — כולם על אותה חלוקה. **חלק ג:** confusion matrix, דיוק, רגישות וסגוליות לכל מודל (סף 0.5) בעזרת פונקציה שכתבתם; טבלה אחת של כל המדדים; גרף עמודות של הדיוק; ובהערה — איזה מודל עדיף, ומה עוד צריך לדעת. **בונוס:** AUC ושתי עקומות ROC; חזרה עם 5 זרעים בלולאה.
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 3.1.2027, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

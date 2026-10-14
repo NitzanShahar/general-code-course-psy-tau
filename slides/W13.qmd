@@ -1,0 +1,220 @@
+---
+title: "סיכום, vibe coding והכנה לבחינה"
+course-week: "שבוע 13"
+---
+
+## מבט קדימה, מבט אחורה
+
+::: {.nbox}
+<p class="nh">שבוע 13 · חומר הלימוד</p>
+
+השבוע האחרון של הקורס מוקדש לשני דברים: מבט קדימה, ומבט אחורה.
+
+מבט קדימה — vibe coding. בעבודה האמיתית שלכם במחקר תשתמשו בכלי בינה מלאכותית שכותבים קוד. עכשיו, כשאתם יודעים לקרוא ולכתוב קוד בעצמכם, אפשר ללמוד לעבוד איתם נכון: לנסח הנחיה טובה, לבדוק את הקוד שהמודל כתב, לעבוד עם Git כרשת ביטחון, ולשמור על פרטיות הנבדקים. מי שרוצה להעמיק יכול גם ללמוד איך פונים למודל שפה מתוך קוד (API).
+
+מבט אחורה — חזרה לבחינה. הבחינה סגורה, בלי מחשב ובלי AI: היא בודקת „קרוא וכתוב״ של קוד בסיסי. בפגישה האחרונה נעבור על שאלות לדוגמה, ומומלץ לתרגל קריאה וכתיבה של קוד על דף.
+:::
+
+## הנחיה טובה = מפרט (spec)
+
+::: {.vs}
+::: {.bad}
+<p class="lbl">הנחיה עמומה</p>
+
+```text
+Clean my data and make a plot.
+```
+:::
+
+::: {.good}
+<p class="lbl">הנחיה טובה</p>
+
+```text
+I work in R with dplyr and ggplot2.
+File: stroop.csv, columns subject, condition
+(congruent / incongruent), rt (ms), accuracy (0/1).
+1. Remove trials with rt < 200 or rt > 2000.
+2. Keep correct trials only.
+3. Mean rt per subject and condition.
+4. Plot condition (x) by mean rt (y), one line
+   per subject.
+Use = for assignment and #### TITLE #### headers.
+Do not change the raw file. Explain each step.
+```
+:::
+:::
+
+<p class="take">מה כותבים בהנחיה: השפה והחבילות · מבנה הקובץ (שמות עמודות, לא הנתונים עצמם) · מה בדיוק לעשות, בצעדים · איך נראית תוצאה נכונה · סגנון הקוד</p>
+
+## לבדוק קוד שכתב מודל
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">לבדוק לפני שסומכים</p>
+<p>להריץ, ולקרוא כל שורה: האם אני מבין מה היא עושה?</p>
+<p>לבדוק על דוגמה קטנה שאני יודע את התשובה שלה</p>
+<p>לבדוק מספר שורות לפני ואחרי כל סינון</p>
+<p>„רץ בלי שגיאות״ ≠ „נכון״</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### CHECK THE AI'S CODE ####
+
+# 1. A tiny example I can solve
+rt = c(400, 600, NA)
+mean(rt)
+mean(rt, na.rm = TRUE)
+
+# 2. Did the filter do what I asked?
+nrow(df)
+nrow(df_clean)
+table(df_clean$condition)
+```
+<p class="out">NA · 500</p>
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+import pandas as pd
+
+#### CHECK THE AI'S CODE ####
+
+# 1. A tiny example I can solve
+rt = pd.Series([400, 600, np.nan])
+rt.mean()
+np.mean(rt.to_numpy())
+
+# 2. Did the filter do what I asked?
+len(df)
+len(df_clean)
+df_clean['condition'].value_counts()
+```
+<p class="out">500.0 · nan</p>
+:::
+:::
+
+<p class="bnote">אותה שאלה, תשובות שונות: מודל שמתרגם קוד בין השפות עלול „להעלים״ ערכים חסרים בשקט</p>
+:::
+:::
+
+## סוכני קוד, ו-Git כרשת ביטחון
+
+::: {.tb}
+::: {.tbox}
+<p class="th">סוכני קוד</p>
+<p>סוכן קורא קבצים, כותב קוד ומריץ אותו בעצמו</p>
+<p>לפני שנותנים לו לעבוד — commit</p>
+<p>אחרי — לראות בדיוק מה השתנה, ולהחליט</p>
+<p>אפשר תמיד לחזור לגרסה שעבדה</p>
+:::
+
+::: {.board}
+<p class="lang">bash</p>
+
+```bash
+#### BEFORE THE AGENT STARTS ####
+git status
+git add analysis.R
+git commit -m "Working version before AI changes"
+
+#### AFTER: WHAT CHANGED? ####
+git diff                     # line by line
+git restore analysis.R       # undo, back to the commit
+git log --oneline            # the history
+```
+:::
+:::
+
+## פרטיות, אתיקה ושקיפות
+
+::: {.cards}
+::: {.card .warn}
+<h3>לא מדביקים</h3>
+
+- נתונים מזהים של נבדקים (שמות, ת״ז, תאריכי לידה, הקלטות)
+- נתונים שהתחייבתם בוועדת האתיקה לשמור אצלכם
+- סיסמאות ומפתחות (API keys)
+:::
+
+::: {.card .ok}
+<h3>כן עושים</h3>
+
+- מתארים את מבנה הקובץ, או משתמשים בנתונים מדומים
+- בודקים את מדיניות המוסד לגבי כלי AI
+- מצהירים על שימוש ב-AI (למשל בפרק השיטות)
+- זוכרים: האחריות על הקוד והתוצאות — שלכם
+:::
+:::
+
+## שאלה לדוגמה: מה יודפס?
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">הבחינה</p>
+<p>סגורה: בלי מחשב ובלי AI</p>
+<p>קריאה של קוד: מה יודפס? איפה הטעות?</p>
+<p>כתיבה של קוד קצר על דף</p>
+<p>בשתי השפות: בוחרים R או פייתון</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+x = c(3, 8, 1, 6)
+y = x[x > 2]
+
+length(y)
+sum(y) / length(y)
+y[2]
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+
+x = np.array([3, 8, 1, 6])
+y = x[x > 2]
+
+print(len(y))
+print(y.sum() / len(y))
+print(y[1])
+```
+:::
+:::
+
+<p class="bnote">נסו לענות על דף לפני שמריצים · רמז: מה ההבדל בין <span class="ltr">y[2]</span> ב-R ל-<span class="ltr">y[1]</span> בפייתון?</p>
+:::
+:::
+
+## תרגיל רשות והכנה לבחינה
+
+::: {.hwbox}
+**השבוע אין מטלה להגשה.**
+
+**תרגיל רשות (מומלץ מאוד):** בחרו את אחת המטלות שכבר הגשתם, ובקשו מכלי AI לכתוב אותה מחדש לפי הנחיה שאתם מנסחים (היעזרו ביחידות של הפרק „עבודה עם בינה מלאכותית״). בדקו את הקוד שלו כמו מתרגלים: האם הוא נכון? האם הוא עושה בדיוק מה שביקשתם? מה הייתם משנים? השוו לקוד שלכם, ורשמו שלוש תובנות.
+
+**הכנה לבחינה:**
+
+- חזרו על המטלות ועל הפתרונות — כל שורה: מה היא עושה, ולמה?
+- תרגלו על דף: לקרוא קטע קוד ולכתוב מה יודפס, ולכתוב קוד קצר בלי מחשב.
+- שימו לב להבדלים בין השפות: ספירה מ-1 / מ-0, ערכים חסרים, סוגריים מול הזחה.
+- בפגישה האחרונה נעבור יחד על שאלות לדוגמה.
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

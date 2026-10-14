@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>שבוע 12 · יסודות התכנות במדע אמפירי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/tau-logo.png">
+</head>
+<body>
+<div class="wrap">
+<header class="hdr">
+<img class="logo" src="../assets/tau-logo.png" alt="אוניברסיטת תל אביב">
+<span class="sep"></span>
+<a class="home" href="index.html"><span class="t1">יסודות התכנות במדע אמפירי</span><span class="t2">R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span></a>
+<span class="staffbadge">גרסת מתרגלים</span><nav class="gen"><a href="index.html" class="on">השבועות</a><a href="book.html" class="">ספר היחידות</a><a href="syllabus.pdf" class="">סילבוס</a></nav>
+</header><details class="mweeks card"><summary><span class="c" style="background:var(--ink);color:#fff;border-color:var(--ink)">12</span><span><b>שבוע 12</b> · ניתוח נתונים פיזיולוגיים</span><span class="more">כל השבועות ▾</span></summary><div class="list"><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk sel"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></div></details><div class="layout"><aside class="rail card"><h3>שבועות הקורס</h3><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk sel"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></aside><main class="card">
+<section class="hero"><p class="eyebrow">שבוע 12 · יום ראשון 3.1.2027</p><h1>ניתוח נתונים פיזיולוגיים</h1><p class="intro">השבוע נעבוד עם סוג נתונים חדש: אות פיזיולוגי שנמדד לאורך זמן — כמו EEG, דופק או מוליכות עור. נתונים כאלה נראים אחרת מטבלת שאלונים: מאות דגימות בשנייה, הרבה ניסיונות, ורעש.</p><p class="intro">נעבוד עם נתוני EEG (מדומים) מניסוי oddball קלאסי, שבו נבדק שומע צלילים רגילים ומדי פעם צליל חריג. נלמד לצייר את האות, לתקן קו בסיס, לזהות ולהוציא ניסיונות רועשים, ולמצע על פני ניסיונות כדי לחשוף את התגובה של המוח — ה-ERP. בסוף נשווה את התגובה לצליל החריג ולצליל הרגיל, ונגלה את גל ה-P300.</p><p class="intro">שימו לב כמה כלים מהסמסטר נפגשים כאן: מטריצות (ניסיונות × זמן), לולאות ותנאים, סיכום לפי קבוצות, וגרפים.</p></section>
+<section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media"><a href="../decks/W12.html" class="deck"><small>מצגת</small><b>מצגת שבוע 12</b><small>7 שקפים · נפתחת בדפדפן</small><code>## WEEK 12 · R + Python</code></a></div></section>
+<section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div><div class="langs" role="group" aria-label="איזו שפה להציג"><span>להציג:</span><button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button><button type="button" data-lang="py">Python</button></div><div class="wbook b-r" data-book="r"><p class="wbh"><span class="btag">R</span>ספר R</p><div class="wch"><span class="num">12</span><b>נתונים פיזיולוגיים</b><a class="tobook" href="book.html?w=12#r12">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r12-1"><summary><span class="un">R 12.1</span>אות לאורך זמן: קצב דגימה, ציר זמן ופורמט ארוך</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה להבין איך נראה אות שנמדד לאורך זמן, כמו EEG, ואיך שומרים אותו בטבלה.</div><div>הנתונים: הורדתי מאתר הקורס את eeg_oddball.csv לתיקיית העבודה שלי. זה EEG מדומה של נבדק אחד מאלקטרודה Pz במשימת oddball: 100 ניסיונות, 80 צלילים רגילים (standard) ו-20 נדירים (oddball) בסדר אקראי. קצב הדגימה 250 הרץ, וכל ניסיון נחתך מ-200 מילישניות לפני הצליל (זמן 0) ועד 796 אחריו. פורמט ארוך, שורה לכל דגימה (25000 שורות), עם העמודות trial, condition, time_ms ו-voltage (מיקרו-וולט). התאם את הדוגמאות שלך למבנה הזה.</div><div>1. הסבר במילים פשוטות, בלי קוד: מה זה אות שנשמר במחשב כדגימות לאורך זמן, מה זה קצב דגימה (250 הרץ = 250 דגימות בשנייה), ומה זה ניסיון (epoch) שנחתך סביב הופעת הגירוי. הסבר למה יש זמנים שליליים. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר מה עושה כל שורה:</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">head(df)</div><div class="cl">nrow(df)</div><div class="cl">range(df$time_ms)</div><div class="cl">length(unique(df$time_ms))</div><div>שאל אותי: כמה זמן עובר בין שתי דגימות, ואיך מחשבים מזה את קצב הדגימה? בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הסבר מה זה פורמט ארוך: כל ניסיון תופס 250 שורות, ומספר הניסיון חוזר בכל אחת מהן. הראה איך סופרים ניסיונות בכל תנאי:</div><div class="cl">table(df$condition) / 250</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לכתוב קוד שבודק כמה ניסיונות יש בקובץ, וכמה דגימות בניסיון 1 נמדדו לפני הצליל. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה להבין איך נראה אות שנמדד לאורך זמן, כמו EEG, ואיך שומרים אותו בטבלה.
+הנתונים: הורדתי מאתר הקורס את eeg_oddball.csv לתיקיית העבודה שלי. זה EEG מדומה של נבדק אחד מאלקטרודה Pz במשימת oddball: 100 ניסיונות, 80 צלילים רגילים (standard) ו-20 נדירים (oddball) בסדר אקראי. קצב הדגימה 250 הרץ, וכל ניסיון נחתך מ-200 מילישניות לפני הצליל (זמן 0) ועד 796 אחריו. פורמט ארוך, שורה לכל דגימה (25000 שורות), עם העמודות trial, condition, time_ms ו-voltage (מיקרו-וולט). התאם את הדוגמאות שלך למבנה הזה.
+1. הסבר במילים פשוטות, בלי קוד: מה זה אות שנשמר במחשב כדגימות לאורך זמן, מה זה קצב דגימה (250 הרץ = 250 דגימות בשנייה), ומה זה ניסיון (epoch) שנחתך סביב הופעת הגירוי. הסבר למה יש זמנים שליליים. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר מה עושה כל שורה:
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+head(df)
+nrow(df)
+range(df$time_ms)
+length(unique(df$time_ms))
+שאל אותי: כמה זמן עובר בין שתי דגימות, ואיך מחשבים מזה את קצב הדגימה? בדוק שעניתי נכונה ורק אז המשך.
+1. הסבר מה זה פורמט ארוך: כל ניסיון תופס 250 שורות, ומספר הניסיון חוזר בכל אחת מהן. הראה איך סופרים ניסיונות בכל תנאי:
+table(df$condition) / 250
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לכתוב קוד שבודק כמה ניסיונות יש בקובץ, וכמה דגימות בניסיון 1 נמדדו לפני הצליל. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%95%D7%90%D7%A0%D7%A6%D7%A4%D7%9C%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%94" target="_blank" rel="noopener">אלקטרואנצפלוגרפיה (EEG) בוויקיפדיה</a></li><li><a href="https://r4ds.hadley.nz/data-tidy.html" target="_blank" rel="noopener" class="ltr">https://r4ds.hadley.nz/data-tidy.html</a></li></ul><p class="bsfoot">יחידה 12.1 בספר R · <a href="book.html#r12-1">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r12-2"><summary><span class="un">R 12.2</span>ציור אות של ניסיון בודד ושל כמה ניסיונות</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה לצייר עם ggplot את האות של ניסיון בודד ושל כמה ניסיונות יחד.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).</div><div>1. הדפס את הקוד הבא, שמצייר את ניסיון 1, והסבר כל שורה. הסבר למה מסמנים קו מקווקו בזמן 0:</div><div class="cl">library(dplyr)</div><div class="cl">library(ggplot2)</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">trial_1 = df %&gt;% filter(trial == 1)</div><div class="cl">ggplot(trial_1, aes(x = time_ms, y = voltage)) + geom_line() + geom_vline(xintercept = 0, linetype = &quot;dashed&quot;)</div><div>עצור וחכה לתשובה שלי.</div><div>1. הדפס קוד שמצייר את עשרת הניסיונות הראשונים יחד, והסבר למה צריך את group = trial:</div><div class="cl">first_trials = df %&gt;% filter(trial &lt;= 10)</div><div class="cl">ggplot(first_trials, aes(x = time_ms, y = voltage, group = trial, color = condition)) + geom_line(alpha = 0.7)</div><div>1. שאל אותי מה אני רואה: האם כל הניסיונות באותו גובה? האם יש ניסיון חריג? אל תסביר עדיין איך מתקנים, רק ציין שנלמד על תיקון קו בסיס ודחיית ניסיונות ביחידות הבאות.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר רק את ניסיונות ה-oddball, כל ניסיון בפאנל נפרד בעזרת facet_wrap(~ trial). עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה לצייר עם ggplot את האות של ניסיון בודד ושל כמה ניסיונות יחד.
+הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).
+1. הדפס את הקוד הבא, שמצייר את ניסיון 1, והסבר כל שורה. הסבר למה מסמנים קו מקווקו בזמן 0:
+library(dplyr)
+library(ggplot2)
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+trial_1 = df %&gt;% filter(trial == 1)
+ggplot(trial_1, aes(x = time_ms, y = voltage)) + geom_line() + geom_vline(xintercept = 0, linetype = &quot;dashed&quot;)
+עצור וחכה לתשובה שלי.
+1. הדפס קוד שמצייר את עשרת הניסיונות הראשונים יחד, והסבר למה צריך את group = trial:
+first_trials = df %&gt;% filter(trial &lt;= 10)
+ggplot(first_trials, aes(x = time_ms, y = voltage, group = trial, color = condition)) + geom_line(alpha = 0.7)
+1. שאל אותי מה אני רואה: האם כל הניסיונות באותו גובה? האם יש ניסיון חריג? אל תסביר עדיין איך מתקנים, רק ציין שנלמד על תיקון קו בסיס ודחיית ניסיונות ביחידות הבאות.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר רק את ניסיונות ה-oddball, כל ניסיון בפאנל נפרד בעזרת facet_wrap(~ trial). עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" target="_blank" rel="noopener" class="ltr">https://ggplot2.tidyverse.org/reference/geom_path.html</a></li></ul><p class="bsfoot">יחידה 12.2 בספר R · <a href="book.html#r12-2">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r12-3"><summary><span class="un">R 12.3</span>תיקון קו בסיס (baseline)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד מה זה תיקון קו בסיס (baseline correction) ואיך עושים אותו לכל ניסיון.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).</div><div>1. הסבר במילים, בלי קוד: למה כל ניסיון &quot;מתחיל בגובה אחר&quot; (סחיפה איטית של המתח), ולמה מחסירים מכל ניסיון את הממוצע שלו לפני הצליל (מ-200 מילישניות לפני ועד 0). שאל אותי למה משתמשים דווקא בזמן שלפני הצליל. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הדפס את הקוד הבא והסבר אותו שורה אחר שורה, בדגש על group_by(trial) ועל voltage[time_ms &lt; 0]:</div><div class="cl">library(dplyr)</div><div class="cl">library(ggplot2)</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">df = df %&gt;% group_by(trial) %&gt;% mutate(baseline = mean(voltage[time_ms &lt; 0]), voltage_bc = voltage - baseline) %&gt;% ungroup()</div><div>1. הראה איך בודקים שהתיקון עבד: הממוצע של voltage_bc לפני הצליל צריך להיות 0 בכל ניסיון.</div><div class="cl">df %&gt;% filter(time_ms &lt; 0) %&gt;% group_by(trial) %&gt;% summarise(mean_before = round(mean(voltage_bc), 2))</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את עשרת הניסיונות הראשונים פעם עם voltage ופעם עם voltage_bc, ולתאר במילים מה השתנה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד מה זה תיקון קו בסיס (baseline correction) ואיך עושים אותו לכל ניסיון.
+הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).
+1. הסבר במילים, בלי קוד: למה כל ניסיון &quot;מתחיל בגובה אחר&quot; (סחיפה איטית של המתח), ולמה מחסירים מכל ניסיון את הממוצע שלו לפני הצליל (מ-200 מילישניות לפני ועד 0). שאל אותי למה משתמשים דווקא בזמן שלפני הצליל. בדוק שעניתי נכונה ורק אז המשך.
+1. הדפס את הקוד הבא והסבר אותו שורה אחר שורה, בדגש על group_by(trial) ועל voltage[time_ms &lt; 0]:
+library(dplyr)
+library(ggplot2)
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+df = df %&gt;% group_by(trial) %&gt;% mutate(baseline = mean(voltage[time_ms &lt; 0]), voltage_bc = voltage - baseline) %&gt;% ungroup()
+1. הראה איך בודקים שהתיקון עבד: הממוצע של voltage_bc לפני הצליל צריך להיות 0 בכל ניסיון.
+df %&gt;% filter(time_ms &lt; 0) %&gt;% group_by(trial) %&gt;% summarise(mean_before = round(mean(voltage_bc), 2))
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את עשרת הניסיונות הראשונים פעם עם voltage ופעם עם voltage_bc, ולתאר במילים מה השתנה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://dplyr.tidyverse.org/reference/group_by.html" target="_blank" rel="noopener" class="ltr">https://dplyr.tidyverse.org/reference/group_by.html</a></li></ul><p class="bsfoot">יחידה 12.3 בספר R · <a href="book.html#r12-3">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r12-4"><summary><span class="un">R 12.4</span>דחיית ניסיונות עם רעש (artifact rejection)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד לזהות ולהוציא ניסיונות רועשים (artifact rejection) לפי סף.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).</div><div>ביחידה הקודמת עשיתי תיקון קו בסיס עם הקוד הבא:</div><div class="cl">library(dplyr)</div><div class="cl">library(ggplot2)</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()</div><div>1. הסבר במילים, בלי קוד, מה זה ארטיפקט (למשל מצמוץ), למה הוא גדול בהרבה מהאות של המוח (מאות מיקרו-וולט לעומת עשרות), ולמה מקובל להוציא ניסיון שבו המתח עובר בערך מוחלט סף כמו 100 מיקרו-וולט. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר כל שורה:</div><div class="cl">trial_max = df %&gt;% group_by(trial, condition) %&gt;% summarise(max_abs = max(abs(voltage_bc)), .groups = &quot;drop&quot;)</div><div class="cl">trial_max %&gt;% arrange(desc(max_abs)) %&gt;% head(10)</div><div class="cl">bad_trials = trial_max$trial[trial_max$max_abs &gt; 100]</div><div class="cl">df_clean = df %&gt;% filter(!trial %in% bad_trials)</div><div class="cl">df_clean %&gt;% distinct(trial, condition) %&gt;% count(condition)</div><div>1. שאל אותי: למה מוציאים את כל הניסיון ולא רק את הדגימות הרועשות? ולמה מדווחים כמה ניסיונות נשארו בכל תנאי? בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את הניסיונות שנדחו (bad_trials), ולבדוק כמה ניסיונות היו נדחים עם סף של 50 ועם סף של 200. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד לזהות ולהוציא ניסיונות רועשים (artifact rejection) לפי סף.
+הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).
+ביחידה הקודמת עשיתי תיקון קו בסיס עם הקוד הבא:
+library(dplyr)
+library(ggplot2)
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()
+1. הסבר במילים, בלי קוד, מה זה ארטיפקט (למשל מצמוץ), למה הוא גדול בהרבה מהאות של המוח (מאות מיקרו-וולט לעומת עשרות), ולמה מקובל להוציא ניסיון שבו המתח עובר בערך מוחלט סף כמו 100 מיקרו-וולט. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר כל שורה:
+trial_max = df %&gt;% group_by(trial, condition) %&gt;% summarise(max_abs = max(abs(voltage_bc)), .groups = &quot;drop&quot;)
+trial_max %&gt;% arrange(desc(max_abs)) %&gt;% head(10)
+bad_trials = trial_max$trial[trial_max$max_abs &gt; 100]
+df_clean = df %&gt;% filter(!trial %in% bad_trials)
+df_clean %&gt;% distinct(trial, condition) %&gt;% count(condition)
+1. שאל אותי: למה מוציאים את כל הניסיון ולא רק את הדגימות הרועשות? ולמה מדווחים כמה ניסיונות נשארו בכל תנאי? בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את הניסיונות שנדחו (bad_trials), ולבדוק כמה ניסיונות היו נדחים עם סף של 50 ועם סף של 200. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html" target="_blank" rel="noopener" class="ltr">https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html</a></li></ul><p class="bsfoot">יחידה 12.4 בספר R · <a href="book.html#r12-4">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r12-5"><summary><span class="un">R 12.5</span>ממוצע על פני ניסיונות (ERP) והשוואת תנאים</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד לחשב ממוצע על פני ניסיונות (ERP) ולהשוות בין תנאים בגרף.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.</div><div>קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:</div><div class="cl">library(dplyr)</div><div class="cl">library(ggplot2)</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()</div><div class="cl">df_clean = df %&gt;% group_by(trial) %&gt;% filter(max(abs(voltage_bc)) &lt;= 100) %&gt;% ungroup()</div><div>1. הסבר במילים, בלי קוד, למה ניסיון בודד נראה רועש, ולמה ממוצע על פני ניסיונות (ERP, event-related potential) חושף את התגובה שנעולה לזמן הגירוי: הרעש האקראי מתבטל והתגובה הקבועה נשארת. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר כל שורה, בדגש על group_by(condition, time_ms):</div><div class="cl">erp = df_clean %&gt;% group_by(condition, time_ms) %&gt;% summarise(voltage = mean(voltage_bc), .groups = &quot;drop&quot;)</div><div class="cl">ggplot(erp, aes(x = time_ms, y = voltage, color = condition)) + geom_line() + geom_vline(xintercept = 0, linetype = &quot;dashed&quot;)</div><div>1. ספר לי בקצרה מה זה רכיב P300 ושאל אותי באיזה תנאי ובאיזה טווח זמנים אני רואה אותו בגרף. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחשב גל הפרש (oddball פחות standard בכל נקודת זמן) בעזרת pivot_wider מחבילת tidyr, ולצייר אותו. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד לחשב ממוצע על פני ניסיונות (ERP) ולהשוות בין תנאים בגרף.
+הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.
+קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:
+library(dplyr)
+library(ggplot2)
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()
+df_clean = df %&gt;% group_by(trial) %&gt;% filter(max(abs(voltage_bc)) &lt;= 100) %&gt;% ungroup()
+1. הסבר במילים, בלי קוד, למה ניסיון בודד נראה רועש, ולמה ממוצע על פני ניסיונות (ERP, event-related potential) חושף את התגובה שנעולה לזמן הגירוי: הרעש האקראי מתבטל והתגובה הקבועה נשארת. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר כל שורה, בדגש על group_by(condition, time_ms):
+erp = df_clean %&gt;% group_by(condition, time_ms) %&gt;% summarise(voltage = mean(voltage_bc), .groups = &quot;drop&quot;)
+ggplot(erp, aes(x = time_ms, y = voltage, color = condition)) + geom_line() + geom_vline(xintercept = 0, linetype = &quot;dashed&quot;)
+1. ספר לי בקצרה מה זה רכיב P300 ושאל אותי באיזה תנאי ובאיזה טווח זמנים אני רואה אותו בגרף. בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחשב גל הפרש (oddball פחות standard בכל נקודת זמן) בעזרת pivot_wider מחבילת tidyr, ולצייר אותו. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://he.wikipedia.org/wiki/P300" target="_blank" rel="noopener">P300 בוויקיפדיה</a></li></ul><p class="bsfoot">יחידה 12.5 בספר R · <a href="book.html#r12-5">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r12-6"><summary><span class="un">R 12.6</span>מדידת אמפליטודה בחלון זמן והשוואה סטטיסטית</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד למדוד אמפליטודה ממוצעת בחלון זמן ולהשוות סטטיסטית בין תנאים.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.</div><div>קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:</div><div class="cl">library(dplyr)</div><div class="cl">library(ggplot2)</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()</div><div class="cl">df_clean = df %&gt;% group_by(trial) %&gt;% filter(max(abs(voltage_bc)) &lt;= 100) %&gt;% ungroup()</div><div>1. הסבר במילים, בלי קוד, מה זו אמפליטודה ממוצעת בחלון זמן (כאן 250 עד 500 מילישניות, החלון של P300), ולמה בוחרים את החלון מראש ולא לפי הגרף. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר כל שורה:</div><div class="cl">amp = df_clean %&gt;% filter(time_ms &gt;= 250, time_ms &lt;= 500) %&gt;% group_by(trial, condition) %&gt;% summarise(amplitude = mean(voltage_bc), .groups = &quot;drop&quot;)</div><div class="cl">amp %&gt;% group_by(condition) %&gt;% summarise(mean = mean(amplitude), sd = sd(amplitude), n = n())</div><div class="cl">ggplot(amp, aes(x = condition, y = amplitude)) + geom_boxplot()</div><div class="cl">t.test(amplitude ~ condition, data = amp)</div><div>1. הסבר שכאן יש נבדק אחד ולכן כל ניסיון הוא תצפית (מבחן t לבלתי תלויים), ושבמחקר עם הרבה נבדקים מחשבים אמפליטודה לכל נבדק בכל תנאי ומשווים במבחן t למדגמים תלויים. שאל אותי שאלת הבנה על זה.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחזור על הניתוח עם voltage (בלי תיקון קו בסיס) ולהסביר מה קרה לתוצאה ולמה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד למדוד אמפליטודה ממוצעת בחלון זמן ולהשוות סטטיסטית בין תנאים.
+הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.
+קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:
+library(dplyr)
+library(ggplot2)
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()
+df_clean = df %&gt;% group_by(trial) %&gt;% filter(max(abs(voltage_bc)) &lt;= 100) %&gt;% ungroup()
+1. הסבר במילים, בלי קוד, מה זו אמפליטודה ממוצעת בחלון זמן (כאן 250 עד 500 מילישניות, החלון של P300), ולמה בוחרים את החלון מראש ולא לפי הגרף. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר כל שורה:
+amp = df_clean %&gt;% filter(time_ms &gt;= 250, time_ms &lt;= 500) %&gt;% group_by(trial, condition) %&gt;% summarise(amplitude = mean(voltage_bc), .groups = &quot;drop&quot;)
+amp %&gt;% group_by(condition) %&gt;% summarise(mean = mean(amplitude), sd = sd(amplitude), n = n())
+ggplot(amp, aes(x = condition, y = amplitude)) + geom_boxplot()
+t.test(amplitude ~ condition, data = amp)
+1. הסבר שכאן יש נבדק אחד ולכן כל ניסיון הוא תצפית (מבחן t לבלתי תלויים), ושבמחקר עם הרבה נבדקים מחשבים אמפליטודה לכל נבדק בכל תנאי ומשווים במבחן t למדגמים תלויים. שאל אותי שאלת הבנה על זה.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחזור על הניתוח עם voltage (בלי תיקון קו בסיס) ולהסביר מה קרה לתוצאה ולמה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://he.wikipedia.org/wiki/P300" target="_blank" rel="noopener">P300 בוויקיפדיה</a></li></ul><p class="bsfoot">יחידה 12.6 בספר R · <a href="book.html#r12-6">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r12-7"><summary><span class="un">R 12.7</span>בונוס: החלקת אות בממוצע נע</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור בונוס זה ארצה ללמוד להחליק אות בעזרת ממוצע נע (moving average).</div><div>הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.</div><div>קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:</div><div class="cl">library(dplyr)</div><div class="cl">library(ggplot2)</div><div class="cl">df = read.csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()</div><div class="cl">df_clean = df %&gt;% group_by(trial) %&gt;% filter(max(abs(voltage_bc)) &lt;= 100) %&gt;% ungroup()</div><div>1. הסבר במילים, בלי קוד, מה זה ממוצע נע: כל נקודה מוחלפת בממוצע שלה ושל השכנות שלה. שאל אותי כמה מילישניות מכסה חלון של 5 דגימות ב-250 הרץ. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הדפס את הקוד הבא והסבר כל שורה. הסבר למה כותבים stats::filter (גם ל-dplyr יש filter) ולמה יש NA בקצוות:</div><div class="cl">trial_1 = df_clean %&gt;% filter(trial == 1)</div><div class="cl">trial_1$smooth = as.numeric(stats::filter(trial_1$voltage_bc, rep(1 / 5, 5), sides = 2))</div><div class="cl">ggplot(trial_1, aes(x = time_ms)) + geom_line(aes(y = voltage_bc), color = &quot;grey&quot;) + geom_line(aes(y = smooth), color = &quot;blue&quot;)</div><div>1. שאל אותי מה יקרה לשיא של ה-P300 אם נחליק עם חלון של 51 דגימות. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני להחליק את כל הניסיונות בעזרת group_by(trial) ו-mutate, ואז לצייר ERP לכל תנאי מהאות המוחלק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור בונוס זה ארצה ללמוד להחליק אות בעזרת ממוצע נע (moving average).
+הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.
+קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:
+library(dplyr)
+library(ggplot2)
+df = read.csv(&quot;eeg_oddball.csv&quot;)
+df = df %&gt;% group_by(trial) %&gt;% mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;% ungroup()
+df_clean = df %&gt;% group_by(trial) %&gt;% filter(max(abs(voltage_bc)) &lt;= 100) %&gt;% ungroup()
+1. הסבר במילים, בלי קוד, מה זה ממוצע נע: כל נקודה מוחלפת בממוצע שלה ושל השכנות שלה. שאל אותי כמה מילישניות מכסה חלון של 5 דגימות ב-250 הרץ. בדוק שעניתי נכונה ורק אז המשך.
+1. הדפס את הקוד הבא והסבר כל שורה. הסבר למה כותבים stats::filter (גם ל-dplyr יש filter) ולמה יש NA בקצוות:
+trial_1 = df_clean %&gt;% filter(trial == 1)
+trial_1$smooth = as.numeric(stats::filter(trial_1$voltage_bc, rep(1 / 5, 5), sides = 2))
+ggplot(trial_1, aes(x = time_ms)) + geom_line(aes(y = voltage_bc), color = &quot;grey&quot;) + geom_line(aes(y = smooth), color = &quot;blue&quot;)
+1. שאל אותי מה יקרה לשיא של ה-P300 אם נחליק עם חלון של 51 דגימות. בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני להחליק את כל הניסיונות בעזרת group_by(trial) ו-mutate, ואז לצייר ERP לכל תנאי מהאות המוחלק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://en.wikipedia.org/wiki/Moving_average" target="_blank" rel="noopener" class="ltr">https://en.wikipedia.org/wiki/Moving_average</a></li></ul><p class="bsfoot">יחידה 12.7 בספר R · <a href="book.html#r12-7">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div><div class="wbook b-py" data-book="py"><p class="wbh"><span class="btag">Python</span>ספר פייתון</p><div class="wch"><span class="num">9</span><b>נתונים פיזיולוגיים</b><a class="tobook" href="book.html?w=12#py9">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py9-1"><summary><span class="un">Python 9.1</span>אות לאורך זמן: קצב דגימה, ציר זמן ופורמט ארוך</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה להבין איך נראה אות שנמדד לאורך זמן, כמו EEG, ואיך שומרים אותו בטבלה ובמטריצה.</div><div>הנתונים: הורדתי מאתר הקורס את eeg_oddball.csv לתיקיית העבודה שלי. זה EEG מדומה של נבדק אחד מאלקטרודה Pz במשימת oddball: 100 ניסיונות, 80 צלילים רגילים (standard) ו-20 נדירים (oddball) בסדר אקראי. קצב הדגימה 250 הרץ, וכל ניסיון נחתך מ-200 מילישניות לפני הצליל (זמן 0) ועד 796 אחריו. פורמט ארוך, שורה לכל דגימה (25000 שורות), עם העמודות trial, condition, time_ms ו-voltage (מיקרו-וולט). התאם את הדוגמאות שלך למבנה הזה.</div><div>1. הסבר במילים פשוטות, בלי קוד: מה זה אות שנשמר במחשב כדגימות לאורך זמן, מה זה קצב דגימה (250 הרץ = 250 דגימות בשנייה), ומה זה ניסיון (epoch) שנחתך סביב הופעת הגירוי. הסבר למה יש זמנים שליליים. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר מה עושה כל שורה:</div><div>import pandas as pd</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">print(df.head())</div><div class="cl">print(df.shape)</div><div class="cl">times = df[&quot;time_ms&quot;].unique()</div><div class="cl">print(times[:5])</div><div>שאל אותי: כמה זמן עובר בין שתי דגימות, ואיך מחשבים מזה את קצב הדגימה? בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הסבר מה זה פורמט ארוך, והראה איך סופרים ניסיונות בכל תנאי ואיך הופכים את הטבלה למטריצה של ניסיונות (שורות) על נקודות זמן (עמודות):</div><div class="cl">print(df.groupby(&quot;condition&quot;)[&quot;trial&quot;].nunique())</div><div class="cl">data = df.pivot(index=&quot;trial&quot;, columns=&quot;time_ms&quot;, values=&quot;voltage&quot;).to_numpy()</div><div class="cl">print(data.shape)</div><div>שאל אותי מה מכיל data[0, :] ומה מכיל data[:, 50]. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לכתוב קוד שבודק כמה ניסיונות יש בקובץ, וכמה דגימות בכל ניסיון נמדדו לפני הצליל. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה להבין איך נראה אות שנמדד לאורך זמן, כמו EEG, ואיך שומרים אותו בטבלה ובמטריצה.
+הנתונים: הורדתי מאתר הקורס את eeg_oddball.csv לתיקיית העבודה שלי. זה EEG מדומה של נבדק אחד מאלקטרודה Pz במשימת oddball: 100 ניסיונות, 80 צלילים רגילים (standard) ו-20 נדירים (oddball) בסדר אקראי. קצב הדגימה 250 הרץ, וכל ניסיון נחתך מ-200 מילישניות לפני הצליל (זמן 0) ועד 796 אחריו. פורמט ארוך, שורה לכל דגימה (25000 שורות), עם העמודות trial, condition, time_ms ו-voltage (מיקרו-וולט). התאם את הדוגמאות שלך למבנה הזה.
+1. הסבר במילים פשוטות, בלי קוד: מה זה אות שנשמר במחשב כדגימות לאורך זמן, מה זה קצב דגימה (250 הרץ = 250 דגימות בשנייה), ומה זה ניסיון (epoch) שנחתך סביב הופעת הגירוי. הסבר למה יש זמנים שליליים. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר מה עושה כל שורה:
+import pandas as pd
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+print(df.head())
+print(df.shape)
+times = df[&quot;time_ms&quot;].unique()
+print(times[:5])
+שאל אותי: כמה זמן עובר בין שתי דגימות, ואיך מחשבים מזה את קצב הדגימה? בדוק שעניתי נכונה ורק אז המשך.
+1. הסבר מה זה פורמט ארוך, והראה איך סופרים ניסיונות בכל תנאי ואיך הופכים את הטבלה למטריצה של ניסיונות (שורות) על נקודות זמן (עמודות):
+print(df.groupby(&quot;condition&quot;)[&quot;trial&quot;].nunique())
+data = df.pivot(index=&quot;trial&quot;, columns=&quot;time_ms&quot;, values=&quot;voltage&quot;).to_numpy()
+print(data.shape)
+שאל אותי מה מכיל data[0, :] ומה מכיל data[:, 50]. בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לכתוב קוד שבודק כמה ניסיונות יש בקובץ, וכמה דגימות בכל ניסיון נמדדו לפני הצליל. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%95%D7%90%D7%A0%D7%A6%D7%A4%D7%9C%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%94" target="_blank" rel="noopener">אלקטרואנצפלוגרפיה (EEG) בוויקיפדיה</a></li><li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html" target="_blank" rel="noopener" class="ltr">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html</a></li></ul><p class="bsfoot">יחידה 9.1 בספר פייתון · <a href="book.html#py9-1">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py9-2"><summary><span class="un">Python 9.2</span>ציור אות של ניסיון בודד ושל כמה ניסיונות</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה לצייר עם matplotlib ו-seaborn את האות של ניסיון בודד ושל כמה ניסיונות יחד.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).</div><div>1. הדפס את הקוד הבא, שמצייר את ניסיון 1, והסבר כל שורה. הסבר למה מסמנים קו מקווקו בזמן 0:</div><div>import pandas as pd</div><div class="cl">import matplotlib.pyplot as plt</div><div>import seaborn as sns</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">trial_1 = df[df[&quot;trial&quot;] == 1]</div><div class="cl">plt.plot(trial_1[&quot;time_ms&quot;], trial_1[&quot;voltage&quot;])</div><div class="cl">plt.axvline(0, color=&quot;black&quot;, linestyle=&quot;--&quot;)</div><div class="cl">plt.xlabel(&quot;time (ms)&quot;)</div><div class="cl">plt.show()</div><div>עצור וחכה לתשובה שלי.</div><div>1. הדפס קוד שמצייר את עשרת הניסיונות הראשונים, והסבר את units=&quot;trial&quot; ואת estimator=None (בלעדיהם seaborn מצייר ממוצע):</div><div class="cl">first_trials = df[df[&quot;trial&quot;] &lt;= 10]</div><div class="cl">sns.lineplot(data=first_trials, x=&quot;time_ms&quot;, y=&quot;voltage&quot;, hue=&quot;condition&quot;, units=&quot;trial&quot;, estimator=None)</div><div class="cl">plt.show()</div><div>1. שאל אותי מה אני רואה: האם כל הניסיונות באותו גובה? האם יש ניסיון חריג? אל תסביר עדיין איך מתקנים, רק ציין שנלמד על תיקון קו בסיס ודחיית ניסיונות ביחידות הבאות.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר רק את ניסיונות ה-oddball, כל ניסיון בפאנל נפרד, עם sns.relplot ו-kind=&quot;line&quot;, col=&quot;trial&quot;, col_wrap=5. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה לצייר עם matplotlib ו-seaborn את האות של ניסיון בודד ושל כמה ניסיונות יחד.
+הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).
+1. הדפס את הקוד הבא, שמצייר את ניסיון 1, והסבר כל שורה. הסבר למה מסמנים קו מקווקו בזמן 0:
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+trial_1 = df[df[&quot;trial&quot;] == 1]
+plt.plot(trial_1[&quot;time_ms&quot;], trial_1[&quot;voltage&quot;])
+plt.axvline(0, color=&quot;black&quot;, linestyle=&quot;--&quot;)
+plt.xlabel(&quot;time (ms)&quot;)
+plt.show()
+עצור וחכה לתשובה שלי.
+1. הדפס קוד שמצייר את עשרת הניסיונות הראשונים, והסבר את units=&quot;trial&quot; ואת estimator=None (בלעדיהם seaborn מצייר ממוצע):
+first_trials = df[df[&quot;trial&quot;] &lt;= 10]
+sns.lineplot(data=first_trials, x=&quot;time_ms&quot;, y=&quot;voltage&quot;, hue=&quot;condition&quot;, units=&quot;trial&quot;, estimator=None)
+plt.show()
+1. שאל אותי מה אני רואה: האם כל הניסיונות באותו גובה? האם יש ניסיון חריג? אל תסביר עדיין איך מתקנים, רק ציין שנלמד על תיקון קו בסיס ודחיית ניסיונות ביחידות הבאות.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר רק את ניסיונות ה-oddball, כל ניסיון בפאנל נפרד, עם sns.relplot ו-kind=&quot;line&quot;, col=&quot;trial&quot;, col_wrap=5. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://seaborn.pydata.org/generated/seaborn.lineplot.html" target="_blank" rel="noopener" class="ltr">https://seaborn.pydata.org/generated/seaborn.lineplot.html</a></li></ul><p class="bsfoot">יחידה 9.2 בספר פייתון · <a href="book.html#py9-2">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py9-3"><summary><span class="un">Python 9.3</span>תיקון קו בסיס (baseline)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד מה זה תיקון קו בסיס (baseline correction) ואיך עושים אותו לכל ניסיון.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).</div><div>1. הסבר במילים, בלי קוד: למה כל ניסיון &quot;מתחיל בגובה אחר&quot; (סחיפה איטית של המתח), ולמה מחסירים מכל ניסיון את הממוצע שלו לפני הצליל (מ-200 מילישניות לפני ועד 0). שאל אותי למה משתמשים דווקא בזמן שלפני הצליל. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הדפס את הקוד הבא והסבר אותו שורה אחר שורה, בדגש על groupby(&quot;trial&quot;) ועל map:</div><div>import pandas as pd</div><div class="cl">import matplotlib.pyplot as plt</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()</div><div class="cl">df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)</div><div class="cl">print(df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage_bc&quot;].mean().round(2).head())</div><div>הסבר שהשורה האחרונה בודקת שהממוצע לפני הצליל הוא עכשיו 0 בכל ניסיון.</div><div>1. הראה את אותו תיקון על מטריצה של ניסיונות על זמן, והסבר את axis=1 ואת keepdims=True:</div><div class="cl">wide = df.pivot(index=&quot;trial&quot;, columns=&quot;time_ms&quot;, values=&quot;voltage&quot;)</div><div class="cl">data = wide.to_numpy()</div><div class="cl">times = wide.columns.to_numpy()</div><div class="cl">data_bc = data - data[:, times &lt; 0].mean(axis=1, keepdims=True)</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את עשרת הניסיונות הראשונים לפני התיקון ואחריו, ולתאר במילים מה השתנה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד מה זה תיקון קו בסיס (baseline correction) ואיך עושים אותו לכל ניסיון.
+הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).
+1. הסבר במילים, בלי קוד: למה כל ניסיון &quot;מתחיל בגובה אחר&quot; (סחיפה איטית של המתח), ולמה מחסירים מכל ניסיון את הממוצע שלו לפני הצליל (מ-200 מילישניות לפני ועד 0). שאל אותי למה משתמשים דווקא בזמן שלפני הצליל. בדוק שעניתי נכונה ורק אז המשך.
+1. הדפס את הקוד הבא והסבר אותו שורה אחר שורה, בדגש על groupby(&quot;trial&quot;) ועל map:
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()
+df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)
+print(df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage_bc&quot;].mean().round(2).head())
+הסבר שהשורה האחרונה בודקת שהממוצע לפני הצליל הוא עכשיו 0 בכל ניסיון.
+1. הראה את אותו תיקון על מטריצה של ניסיונות על זמן, והסבר את axis=1 ואת keepdims=True:
+wide = df.pivot(index=&quot;trial&quot;, columns=&quot;time_ms&quot;, values=&quot;voltage&quot;)
+data = wide.to_numpy()
+times = wide.columns.to_numpy()
+data_bc = data - data[:, times &lt; 0].mean(axis=1, keepdims=True)
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את עשרת הניסיונות הראשונים לפני התיקון ואחריו, ולתאר במילים מה השתנה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://pandas.pydata.org/docs/user_guide/groupby.html" target="_blank" rel="noopener" class="ltr">https://pandas.pydata.org/docs/user_guide/groupby.html</a></li></ul><p class="bsfoot">יחידה 9.3 בספר פייתון · <a href="book.html#py9-3">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py9-4"><summary><span class="un">Python 9.4</span>דחיית ניסיונות עם רעש (artifact rejection)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד לזהות ולהוציא ניסיונות רועשים (artifact rejection) לפי סף.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).</div><div>ביחידה הקודמת עשיתי תיקון קו בסיס עם הקוד הבא:</div><div>import pandas as pd</div><div class="cl">import matplotlib.pyplot as plt</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()</div><div class="cl">df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)</div><div>1. הסבר במילים, בלי קוד, מה זה ארטיפקט (למשל מצמוץ), למה הוא גדול בהרבה מהאות של המוח (מאות מיקרו-וולט לעומת עשרות), ולמה מקובל להוציא ניסיון שבו המתח עובר בערך מוחלט סף כמו 100 מיקרו-וולט. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר כל שורה:</div><div class="cl">df[&quot;abs_voltage&quot;] = df[&quot;voltage_bc&quot;].abs()</div><div class="cl">max_abs = df.groupby(&quot;trial&quot;)[&quot;abs_voltage&quot;].max()</div><div class="cl">print(max_abs.sort_values(ascending=False).head(10))</div><div class="cl">bad_trials = max_abs[max_abs &gt; 100].index</div><div class="cl">df_clean = df[~df[&quot;trial&quot;].isin(bad_trials)].copy()</div><div class="cl">print(df_clean.groupby(&quot;condition&quot;)[&quot;trial&quot;].nunique())</div><div>1. שאל אותי: למה מוציאים את כל הניסיון ולא רק את הדגימות הרועשות? ולמה מדווחים כמה ניסיונות נשארו בכל תנאי? בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את הניסיונות שנדחו (bad_trials), ולבדוק כמה ניסיונות היו נדחים עם סף של 50 ועם סף של 200. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד לזהות ולהוציא ניסיונות רועשים (artifact rejection) לפי סף.
+הנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).
+ביחידה הקודמת עשיתי תיקון קו בסיס עם הקוד הבא:
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()
+df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)
+1. הסבר במילים, בלי קוד, מה זה ארטיפקט (למשל מצמוץ), למה הוא גדול בהרבה מהאות של המוח (מאות מיקרו-וולט לעומת עשרות), ולמה מקובל להוציא ניסיון שבו המתח עובר בערך מוחלט סף כמו 100 מיקרו-וולט. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר כל שורה:
+df[&quot;abs_voltage&quot;] = df[&quot;voltage_bc&quot;].abs()
+max_abs = df.groupby(&quot;trial&quot;)[&quot;abs_voltage&quot;].max()
+print(max_abs.sort_values(ascending=False).head(10))
+bad_trials = max_abs[max_abs &gt; 100].index
+df_clean = df[~df[&quot;trial&quot;].isin(bad_trials)].copy()
+print(df_clean.groupby(&quot;condition&quot;)[&quot;trial&quot;].nunique())
+1. שאל אותי: למה מוציאים את כל הניסיון ולא רק את הדגימות הרועשות? ולמה מדווחים כמה ניסיונות נשארו בכל תנאי? בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לצייר את הניסיונות שנדחו (bad_trials), ולבדוק כמה ניסיונות היו נדחים עם סף של 50 ועם סף של 200. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html" target="_blank" rel="noopener" class="ltr">https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html</a></li></ul><p class="bsfoot">יחידה 9.4 בספר פייתון · <a href="book.html#py9-4">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py9-5"><summary><span class="un">Python 9.5</span>ממוצע על פני ניסיונות (ERP) והשוואת תנאים</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד לחשב ממוצע על פני ניסיונות (ERP) ולהשוות בין תנאים בגרף.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.</div><div>קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:</div><div>import pandas as pd</div><div class="cl">import matplotlib.pyplot as plt</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()</div><div class="cl">df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)</div><div class="cl">df_clean = df.groupby(&quot;trial&quot;).filter(lambda t: t[&quot;voltage_bc&quot;].abs().max() &lt;= 100)</div><div>1. הסבר במילים, בלי קוד, למה ניסיון בודד נראה רועש, ולמה ממוצע על פני ניסיונות (ERP, event-related potential) חושף את התגובה שנעולה לזמן הגירוי: הרעש האקראי מתבטל והתגובה הקבועה נשארת. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר כל שורה, בדגש על groupby לפי condition ו-time_ms:</div><div>import seaborn as sns</div><div class="cl">erp = df_clean.groupby([&quot;condition&quot;, &quot;time_ms&quot;])[&quot;voltage_bc&quot;].mean().reset_index()</div><div class="cl">sns.lineplot(data=erp, x=&quot;time_ms&quot;, y=&quot;voltage_bc&quot;, hue=&quot;condition&quot;)</div><div class="cl">plt.axvline(0, color=&quot;black&quot;, linestyle=&quot;--&quot;)</div><div class="cl">plt.show()</div><div>1. ספר לי בקצרה מה זה רכיב P300 ושאל אותי באיזה תנאי ובאיזה טווח זמנים אני רואה אותו בגרף. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחשב את אותו ERP בדרך שנייה: pivot למטריצת numpy של ניסיונות על זמן, ממוצע עם mean(axis=0) לכל תנאי, ואז לצייר גל הפרש (oddball פחות standard). עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד לחשב ממוצע על פני ניסיונות (ERP) ולהשוות בין תנאים בגרף.
+הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.
+קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()
+df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)
+df_clean = df.groupby(&quot;trial&quot;).filter(lambda t: t[&quot;voltage_bc&quot;].abs().max() &lt;= 100)
+1. הסבר במילים, בלי קוד, למה ניסיון בודד נראה רועש, ולמה ממוצע על פני ניסיונות (ERP, event-related potential) חושף את התגובה שנעולה לזמן הגירוי: הרעש האקראי מתבטל והתגובה הקבועה נשארת. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר כל שורה, בדגש על groupby לפי condition ו-time_ms:
+import seaborn as sns
+erp = df_clean.groupby([&quot;condition&quot;, &quot;time_ms&quot;])[&quot;voltage_bc&quot;].mean().reset_index()
+sns.lineplot(data=erp, x=&quot;time_ms&quot;, y=&quot;voltage_bc&quot;, hue=&quot;condition&quot;)
+plt.axvline(0, color=&quot;black&quot;, linestyle=&quot;--&quot;)
+plt.show()
+1. ספר לי בקצרה מה זה רכיב P300 ושאל אותי באיזה תנאי ובאיזה טווח זמנים אני רואה אותו בגרף. בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחשב את אותו ERP בדרך שנייה: pivot למטריצת numpy של ניסיונות על זמן, ממוצע עם mean(axis=0) לכל תנאי, ואז לצייר גל הפרש (oddball פחות standard). עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://he.wikipedia.org/wiki/P300" target="_blank" rel="noopener">P300 בוויקיפדיה</a></li></ul><p class="bsfoot">יחידה 9.5 בספר פייתון · <a href="book.html#py9-5">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py9-6"><summary><span class="un">Python 9.6</span>מדידת אמפליטודה בחלון זמן והשוואה סטטיסטית</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד למדוד אמפליטודה ממוצעת בחלון זמן ולהשוות סטטיסטית בין תנאים.</div><div>הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.</div><div>קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:</div><div>import pandas as pd</div><div class="cl">import matplotlib.pyplot as plt</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()</div><div class="cl">df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)</div><div class="cl">df_clean = df.groupby(&quot;trial&quot;).filter(lambda t: t[&quot;voltage_bc&quot;].abs().max() &lt;= 100)</div><div>1. הסבר במילים, בלי קוד, מה זו אמפליטודה ממוצעת בחלון זמן (כאן 250 עד 500 מילישניות, החלון של P300), ולמה בוחרים את החלון מראש ולא לפי הגרף. עצור וחכה לתשובה שלי.</div><div>1. הדפס את הקוד הבא והסבר כל שורה:</div><div>from scipy import stats</div><div class="cl">window = df_clean[(df_clean[&quot;time_ms&quot;] &gt;= 250) &amp; (df_clean[&quot;time_ms&quot;] &lt;= 500)]</div><div class="cl">amp = window.groupby([&quot;trial&quot;, &quot;condition&quot;])[&quot;voltage_bc&quot;].mean().reset_index(name=&quot;amplitude&quot;)</div><div class="cl">print(amp.groupby(&quot;condition&quot;)[&quot;amplitude&quot;].agg([&quot;mean&quot;, &quot;std&quot;, &quot;count&quot;]))</div><div class="cl">print(stats.ttest_ind(amp[amp[&quot;condition&quot;] == &quot;oddball&quot;][&quot;amplitude&quot;], amp[amp[&quot;condition&quot;] == &quot;standard&quot;][&quot;amplitude&quot;]))</div><div>1. הסבר שכאן יש נבדק אחד ולכן כל ניסיון הוא תצפית (מבחן t לבלתי תלויים), ושבמחקר עם הרבה נבדקים מחשבים אמפליטודה לכל נבדק בכל תנאי ומשווים במבחן t למדגמים תלויים. שאל אותי שאלת הבנה על זה.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחזור על הניתוח עם voltage (בלי תיקון קו בסיס) ולהסביר מה קרה לתוצאה ולמה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד למדוד אמפליטודה ממוצעת בחלון זמן ולהשוות סטטיסטית בין תנאים.
+הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.
+קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()
+df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)
+df_clean = df.groupby(&quot;trial&quot;).filter(lambda t: t[&quot;voltage_bc&quot;].abs().max() &lt;= 100)
+1. הסבר במילים, בלי קוד, מה זו אמפליטודה ממוצעת בחלון זמן (כאן 250 עד 500 מילישניות, החלון של P300), ולמה בוחרים את החלון מראש ולא לפי הגרף. עצור וחכה לתשובה שלי.
+1. הדפס את הקוד הבא והסבר כל שורה:
+from scipy import stats
+window = df_clean[(df_clean[&quot;time_ms&quot;] &gt;= 250) &amp; (df_clean[&quot;time_ms&quot;] &lt;= 500)]
+amp = window.groupby([&quot;trial&quot;, &quot;condition&quot;])[&quot;voltage_bc&quot;].mean().reset_index(name=&quot;amplitude&quot;)
+print(amp.groupby(&quot;condition&quot;)[&quot;amplitude&quot;].agg([&quot;mean&quot;, &quot;std&quot;, &quot;count&quot;]))
+print(stats.ttest_ind(amp[amp[&quot;condition&quot;] == &quot;oddball&quot;][&quot;amplitude&quot;], amp[amp[&quot;condition&quot;] == &quot;standard&quot;][&quot;amplitude&quot;]))
+1. הסבר שכאן יש נבדק אחד ולכן כל ניסיון הוא תצפית (מבחן t לבלתי תלויים), ושבמחקר עם הרבה נבדקים מחשבים אמפליטודה לכל נבדק בכל תנאי ומשווים במבחן t למדגמים תלויים. שאל אותי שאלת הבנה על זה.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לחזור על הניתוח עם voltage (בלי תיקון קו בסיס) ולהסביר מה קרה לתוצאה ולמה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html" target="_blank" rel="noopener" class="ltr">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html</a></li></ul><p class="bsfoot">יחידה 9.6 בספר פייתון · <a href="book.html#py9-6">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py9-7"><summary><span class="un">Python 9.7</span>בונוס: החלקת אות בממוצע נע</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור בונוס זה ארצה ללמוד להחליק אות בעזרת ממוצע נע (moving average).</div><div>הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.</div><div>קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:</div><div>import pandas as pd</div><div class="cl">import matplotlib.pyplot as plt</div><div class="cl">df = pd.read_csv(&quot;eeg_oddball.csv&quot;)</div><div class="cl">baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()</div><div class="cl">df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)</div><div class="cl">df_clean = df.groupby(&quot;trial&quot;).filter(lambda t: t[&quot;voltage_bc&quot;].abs().max() &lt;= 100)</div><div>1. הסבר במילים, בלי קוד, מה זה ממוצע נע: כל נקודה מוחלפת בממוצע שלה ושל השכנות שלה. שאל אותי כמה מילישניות מכסה חלון של 5 דגימות ב-250 הרץ. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. הדפס את הקוד הבא והסבר כל שורה, בדגש על rolling, center=True וה-NaN בקצוות:</div><div class="cl">trial_1 = df_clean[df_clean[&quot;trial&quot;] == 1].copy()</div><div class="cl">trial_1[&quot;smooth&quot;] = trial_1[&quot;voltage_bc&quot;].rolling(window=5, center=True).mean()</div><div class="cl">plt.plot(trial_1[&quot;time_ms&quot;], trial_1[&quot;voltage_bc&quot;], color=&quot;grey&quot;)</div><div class="cl">plt.plot(trial_1[&quot;time_ms&quot;], trial_1[&quot;smooth&quot;], color=&quot;blue&quot;)</div><div class="cl">plt.show()</div><div>1. שאל אותי מה יקרה לשיא של ה-P300 אם נחליק עם חלון של 51 דגימות. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני להחליק את כל הניסיונות בעזרת groupby(&quot;trial&quot;) ו-transform, ואז לצייר ERP לכל תנאי מהאות המוחלק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור בונוס זה ארצה ללמוד להחליק אות בעזרת ממוצע נע (moving average).
+הנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.
+קוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+baseline = df[df[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()
+df[&quot;voltage_bc&quot;] = df[&quot;voltage&quot;] - df[&quot;trial&quot;].map(baseline)
+df_clean = df.groupby(&quot;trial&quot;).filter(lambda t: t[&quot;voltage_bc&quot;].abs().max() &lt;= 100)
+1. הסבר במילים, בלי קוד, מה זה ממוצע נע: כל נקודה מוחלפת בממוצע שלה ושל השכנות שלה. שאל אותי כמה מילישניות מכסה חלון של 5 דגימות ב-250 הרץ. בדוק שעניתי נכונה ורק אז המשך.
+1. הדפס את הקוד הבא והסבר כל שורה, בדגש על rolling, center=True וה-NaN בקצוות:
+trial_1 = df_clean[df_clean[&quot;trial&quot;] == 1].copy()
+trial_1[&quot;smooth&quot;] = trial_1[&quot;voltage_bc&quot;].rolling(window=5, center=True).mean()
+plt.plot(trial_1[&quot;time_ms&quot;], trial_1[&quot;voltage_bc&quot;], color=&quot;grey&quot;)
+plt.plot(trial_1[&quot;time_ms&quot;], trial_1[&quot;smooth&quot;], color=&quot;blue&quot;)
+plt.show()
+1. שאל אותי מה יקרה לשיא של ה-P300 אם נחליק עם חלון של 51 דגימות. בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני להחליק את כל הניסיונות בעזרת groupby(&quot;trial&quot;) ו-transform, ואז לצייר ERP לכל תנאי מהאות המוחלק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.rolling.html" target="_blank" rel="noopener" class="ltr">https://pandas.pydata.org/docs/reference/api/pandas.Series.rolling.html</a></li></ul><p class="bsfoot">יחידה 9.7 בספר פייתון · <a href="book.html#py9-7">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div>
+</section>
+
+<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div><div class="hw"><b class="ht">המטלה השבועית (שבוע 12)</b><div class="ctx"><p>קובץ הנתונים eeg_oddball.csv מכיל נתוני EEG מדומים של נבדק אחד מאלקטרודה Pz, בניסוי oddball: הנבדק שמע 100 צלילים — 80 צלילים רגילים (standard) ו-20 צלילים חריגים (oddball), בסדר אקראי.</p><p>האות נדגם ב-250 הרץ (דגימה כל 4 מילישניות), ולכל צליל נשמר מקטע (epoch) מ-200 מילישניות לפני הצליל ועד כ-800 מילישניות אחריו. הקובץ בפורמט ארוך, עם העמודות:</p><ol><li>trial — מספר הניסיון (1 עד 100)</li><li>condition — סוג הצליל (standard / oddball)</li><li>time_ms — הזמן ביחס להופעת הצליל, במילישניות (0 = הצליל)</li><li>voltage — המתח החשמלי במיקרו-וולט (µV)</li></ol></div><p class="dfiles">קובצי נתונים: <a class="dfile" href="../files/data/eeg_oddball.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>eeg_oddball.csv</a></p><div class="hwb"><p class="hp">חלק א - היכרות עם הנתונים</p><ol><li>טענו את הקובץ והציגו את מימדיו. כמה ניסיונות יש מכל תנאי? (שימו לב: כל ניסיון מופיע בהרבה שורות.)</li><li>חשבו מהנתונים את קצב הדגימה: מה הפרש הזמן בין שתי דגימות עוקבות, וכמה דגימות יש בשנייה?</li><li>ציירו את האות של ניסיון אחד (ציר X: זמן, ציר Y: מתח), עם קו אנכי בזמן 0.</li></ol><p class="hp">חלק ב - ניקוי הנתונים</p><ol><li>תיקון קו בסיס: לכל ניסיון, חשבו את הממוצע של המתח בתקופה שלפני הצליל (מ-200- עד 0 מילישניות), והפחיתו אותו מכל הדגימות של אותו ניסיון. שמרו את התוצאה בעמודה חדשה.</li><li>דחיית ניסיונות רועשים: כתבו פונקציה שמקבלת וקטור של מתחים של ניסיון אחד ומחזירה TRUE אם הערך המוחלט המרבי שלו גדול מ-100 מיקרו-וולט.</li><li>הפעילו את הפונקציה על כל ניסיון (בלולאה, או בפעולה לפי קבוצות), והוציאו מהנתונים את הניסיונות הרועשים. הדפיסו כמה ניסיונות נדחו בכל תנאי.</li></ol><p class="hp">חלק ג - ה-ERP</p><ol><li>חשבו לכל תנאי ולכל נקודת זמן את הממוצע על פני הניסיונות שנשארו (זה ה-ERP).</li><li>ציירו את שני ה-ERP באותו גרף, בצבעים שונים, עם קו אנכי בזמן 0, כותרת, תוויות צירים ומקרא.</li><li>בעזרת הגרף, באיזה טווח זמן ההבדל בין התנאים הכי גדול? כתבו את התשובה בהערה בקוד.</li></ol><p class="hp">חלק ד - מדידה והשוואה</p><ol><li>לכל ניסיון, חשבו את המתח הממוצע בחלון הזמן 250–500 מילישניות (אחרי תיקון קו הבסיס).</li><li>השוו בין התנאים: הדפיסו ממוצע וסטיית תקן לכל תנאי, ובצעו מבחן t (או רגרסיה) להשוואה ביניהם. דווחו בהערה על התוצאה.</li></ol><p class="hp">בונוס (רשות):</p><ol><li>מצאו לכל תנאי את הזמן שבו ה-ERP מגיע לשיא בחלון 250–500 מילישניות (latency).</li><li>החליקו את האות של ניסיון אחד בממוצע נע של 5 דגימות, וציירו אותו לצד האות המקורי.</li></ol></div><p class="sm">שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.</p><p class="sm">כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.</p><p class="sm">פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה.</p><p class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>להגשה עד יום ראשון, 10.1.2027, בשעה 12:00</p></div><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון ב-R <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 12
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+library(dplyr)
+library(ggplot2)
+
+
+#### LOAD DATA ####
+
+# 1. Dimensions and trials per condition
+eeg = read.csv(&quot;eeg_oddball.csv&quot;)
+print(dim(eeg))
+trials = eeg %&gt;% distinct(trial, condition)
+print(table(trials$condition))
+
+# 2. Sampling rate
+step  = diff(sort(unique(eeg$time_ms)))[1]
+srate = 1000 / step
+cat(&quot;sample every&quot;, step, &quot;ms =&quot;, srate, &quot;samples per second\n&quot;)
+
+# 3. One trial
+ggplot(filter(eeg, trial == 1), aes(x = time_ms, y = voltage)) +
+  geom_line() +
+  geom_vline(xintercept = 0, linetype = &quot;dashed&quot;) +
+  labs(title = &quot;Trial 1&quot;, x = &quot;Time (ms)&quot;, y = &quot;Voltage (µV)&quot;)
+
+
+#### CLEAN DATA ####
+
+# 1. Baseline correction (-200 to 0 ms)
+eeg = eeg %&gt;%
+  group_by(trial) %&gt;%
+  mutate(voltage_bc = voltage - mean(voltage[time_ms &lt; 0])) %&gt;%
+  ungroup()
+
+# 2. Function: is a trial noisy?
+is_noisy = function(v, threshold = 100) {
+  max(abs(v)) &gt; threshold
+}
+
+# 3. Reject noisy trials
+noisy = eeg %&gt;%
+  group_by(trial, condition) %&gt;%
+  summarise(noisy = is_noisy(voltage_bc), .groups = &quot;drop&quot;)
+print(table(noisy$condition, noisy$noisy))
+
+clean = eeg %&gt;% filter(trial %in% noisy$trial[!noisy$noisy])
+
+
+#### ERP ####
+
+# 1. Mean over trials, per condition and time point
+erp = clean %&gt;%
+  group_by(condition, time_ms) %&gt;%
+  summarise(voltage = mean(voltage_bc), .groups = &quot;drop&quot;)
+
+# 2. Plot both ERPs
+ggplot(erp, aes(x = time_ms, y = voltage, color = condition)) +
+  geom_line(linewidth = 1) +
+  geom_vline(xintercept = 0, linetype = &quot;dashed&quot;) +
+  labs(title = &quot;ERP at Pz&quot;, x = &quot;Time (ms)&quot;, y = &quot;Voltage (µV)&quot;, color = &quot;Condition&quot;)
+
+# 3. The largest difference is around 300-450 ms (the P300)
+
+
+#### AMPLITUDE ####
+
+# 1. Mean voltage in 250-500 ms, per trial
+amp = clean %&gt;%
+  filter(time_ms &gt;= 250, time_ms &lt;= 500) %&gt;%
+  group_by(trial, condition) %&gt;%
+  summarise(amplitude = mean(voltage_bc), .groups = &quot;drop&quot;)
+
+# 2. Compare conditions
+print(amp %&gt;% group_by(condition) %&gt;% summarise(mean = mean(amplitude), sd = sd(amplitude)))
+print(t.test(amplitude ~ condition, data = amp))
+# oddball trials are much more positive in 250-500 ms: a P300 effect
+
+
+#### BONUS ####
+
+# 1. Peak latency in 250-500 ms
+print(erp %&gt;%
+  filter(time_ms &gt;= 250, time_ms &lt;= 500) %&gt;%
+  group_by(condition) %&gt;%
+  summarise(peak_ms = time_ms[which.max(voltage)], peak_uv = max(voltage)))
+
+# 2. Moving average of 5 samples, one trial
+one = filter(clean, trial == 1)
+one$smooth = stats::filter(one$voltage_bc, rep(1 / 5, 5), sides = 2)
+ggplot(one, aes(x = time_ms)) +
+  geom_line(aes(y = voltage_bc), color = &quot;grey60&quot;) +
+  geom_line(aes(y = smooth), color = &quot;black&quot;) +
+  labs(title = &quot;Trial 1: raw (grey) and smoothed (black)&quot;, x = &quot;Time (ms)&quot;, y = &quot;Voltage (µV)&quot;)
+</code></pre><p>מספרים לבדיקה: נדחים 6 ניסיונות (4 רגילים, 2 חריגים), ונשארים 76 רגילים ו-18 חריגים. ממוצע 250–500 מ״ש: חריג 6.00 µV (ס״ת 2.42), רגיל 0.52 µV (ס״ת 3.08); Welch t(31.4) = 8.17, p &lt; .001. שיא ה-ERP לצליל החריג: 9.31 µV ב-384 מ״ש.</p></div></details><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון בפייתון <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 12
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+
+
+#### LOAD DATA ####
+
+# 1. Dimensions and trials per condition
+eeg = pd.read_csv(&quot;eeg_oddball.csv&quot;)
+print(eeg.shape)
+trials = eeg[[&quot;trial&quot;, &quot;condition&quot;]].drop_duplicates()
+print(trials[&quot;condition&quot;].value_counts())
+
+# 2. Sampling rate
+step = np.diff(np.sort(eeg[&quot;time_ms&quot;].unique()))[0]
+srate = 1000 / step
+print(&quot;sample every&quot;, step, &quot;ms =&quot;, srate, &quot;samples per second&quot;)
+
+# 3. One trial
+one = eeg[eeg[&quot;trial&quot;] == 1]
+plt.figure()
+plt.plot(one[&quot;time_ms&quot;], one[&quot;voltage&quot;])
+plt.axvline(0, linestyle=&quot;--&quot;, color=&quot;grey&quot;)
+plt.title(&quot;Trial 1&quot;)
+plt.xlabel(&quot;Time (ms)&quot;)
+plt.ylabel(&quot;Voltage (µV)&quot;)
+
+
+#### CLEAN DATA ####
+
+# 1. Baseline correction (-200 to 0 ms)
+baseline = eeg[eeg[&quot;time_ms&quot;] &lt; 0].groupby(&quot;trial&quot;)[&quot;voltage&quot;].mean()
+eeg[&quot;voltage_bc&quot;] = eeg[&quot;voltage&quot;] - eeg[&quot;trial&quot;].map(baseline)
+
+# 2. Function: is a trial noisy?
+def is_noisy(v, threshold=100):
+    return np.max(np.abs(v)) &gt; threshold
+
+# 3. Reject noisy trials
+noisy = eeg.groupby([&quot;trial&quot;, &quot;condition&quot;])[&quot;voltage_bc&quot;].apply(is_noisy).reset_index(name=&quot;noisy&quot;)
+print(pd.crosstab(noisy[&quot;condition&quot;], noisy[&quot;noisy&quot;]))
+
+good = noisy.loc[~noisy[&quot;noisy&quot;], &quot;trial&quot;]
+clean = eeg[eeg[&quot;trial&quot;].isin(good)]
+
+
+#### ERP ####
+
+# 1. Mean over trials, per condition and time point
+erp = clean.groupby([&quot;condition&quot;, &quot;time_ms&quot;])[&quot;voltage_bc&quot;].mean().reset_index()
+
+# 2. Plot both ERPs
+plt.figure()
+for cond, d in erp.groupby(&quot;condition&quot;):
+    plt.plot(d[&quot;time_ms&quot;], d[&quot;voltage_bc&quot;], label=cond)
+plt.axvline(0, linestyle=&quot;--&quot;, color=&quot;grey&quot;)
+plt.title(&quot;ERP at Pz&quot;)
+plt.xlabel(&quot;Time (ms)&quot;)
+plt.ylabel(&quot;Voltage (µV)&quot;)
+plt.legend(title=&quot;Condition&quot;)
+
+# 3. The largest difference is around 300-450 ms (the P300)
+
+
+#### AMPLITUDE ####
+
+# 1. Mean voltage in 250-500 ms, per trial
+window = clean[(clean[&quot;time_ms&quot;] &gt;= 250) &amp; (clean[&quot;time_ms&quot;] &lt;= 500)]
+amp = window.groupby([&quot;trial&quot;, &quot;condition&quot;])[&quot;voltage_bc&quot;].mean().reset_index(name=&quot;amplitude&quot;)
+
+# 2. Compare conditions
+print(amp.groupby(&quot;condition&quot;)[&quot;amplitude&quot;].agg([&quot;mean&quot;, &quot;std&quot;]))
+odd = amp.loc[amp[&quot;condition&quot;] == &quot;oddball&quot;, &quot;amplitude&quot;]
+std = amp.loc[amp[&quot;condition&quot;] == &quot;standard&quot;, &quot;amplitude&quot;]
+print(stats.ttest_ind(odd, std, equal_var=False))
+# oddball trials are much more positive in 250-500 ms: a P300 effect
+
+
+#### BONUS ####
+
+# 1. Peak latency in 250-500 ms
+win = erp[(erp[&quot;time_ms&quot;] &gt;= 250) &amp; (erp[&quot;time_ms&quot;] &lt;= 500)]
+peaks = win.loc[win.groupby(&quot;condition&quot;)[&quot;voltage_bc&quot;].idxmax()]
+print(peaks)
+
+# 2. Moving average of 5 samples, one trial
+one = clean[clean[&quot;trial&quot;] == 1].copy()
+one[&quot;smooth&quot;] = one[&quot;voltage_bc&quot;].rolling(5, center=True).mean()
+plt.figure()
+plt.plot(one[&quot;time_ms&quot;], one[&quot;voltage_bc&quot;], color=&quot;grey&quot;, label=&quot;raw&quot;)
+plt.plot(one[&quot;time_ms&quot;], one[&quot;smooth&quot;], color=&quot;black&quot;, label=&quot;smoothed&quot;)
+plt.title(&quot;Trial 1: raw and smoothed&quot;)
+plt.xlabel(&quot;Time (ms)&quot;)
+plt.ylabel(&quot;Voltage (µV)&quot;)
+plt.legend()
+plt.show()
+</code></pre></div></details></section>
+<nav class="nav"><a href="week-11.html">→ שבוע 11: בעיות קלסיפיקציה ב: השוואת מסווגים</a><a href="week-13.html">שבוע 13: סיכום, vibe coding והכנה לבחינה ←</a></nav>
+</main></div><footer class="foot"><img class="flogo" src="../assets/tau-logo.png" alt=""><b>יסודות התכנות במדע אמפירי</b><span>R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span><a class="ln" href="../index.html">לאתר הסטודנטים</a></footer>
+</div>
+<script>
+// copy an AI-tutor prompt
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('textarea').value, s=b.querySelector('span');
+    function ok(){ b.classList.add('ok'); s.textContent='הועתק'; setTimeout(function(){b.classList.remove('ok'); s.textContent='העתקה';},1600); }
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok,function(){});
+    else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy'); ok();}catch(e){} a.remove(); }
+  });
+});
+// week page: show both languages, or only R / only Python (remembered in this browser)
+(function(){
+  var box=document.querySelector('.langs'); if(!box) return;
+  function set(l){
+    box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+    document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
+    try{ localStorage.setItem('yesodot-lang', l); }catch(e){}
+  }
+  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
+  var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
+  if(saved==='r'||saved==='py') set(saved);
+})();
+// TA sign-in: the password is the name of the staff site's folder.
+document.querySelectorAll('.tlogf').forEach(function(f){
+  f.addEventListener('submit',function(e){ e.preventDefault();
+    var v=f.querySelector('input').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,''), er=f.querySelector('.terr');
+    if(!v) return;
+    if(location.protocol==='file:'){ location.href=v+'/index.html'; return; }
+    fetch(v+'/index.html',{method:'HEAD',cache:'no-store'}).then(function(r){ if(r.ok) location.href=v+'/'; else er.hidden=false; }).catch(function(){er.hidden=false});
+  });
+});
+</script>
+</body>
+</html>

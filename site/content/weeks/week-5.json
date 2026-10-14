@@ -1,0 +1,129 @@
+{
+ "_הסבר": "תוכן שבוע 5. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נעסוק באחד האתגרים הנפוצים ביותר בנתונים אמיתיים: ערכים חסרים. נלמד להכניס ערכים חסרים, לספור אותם, ולחשב סטטיסטיקה תיאורית למרות שהם שם.\n\nלאחר מכן נעשה היכרות ראשונה עם קשר בין שני משתנים רציפים: מתאם, מקדם רגרסיה, ותרשים פיזור עם קו רגרסיה.\n\nזה השבוע האחרון בחוט של סביבת העבודה: נעבור לעבוד בפייתון על המחשב שלנו ב-VS Code (ולא רק ב-Colab), ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.",
+ "deck": {
+  "title": "מצגת שבוע 5",
+  "note": "8 שקפים · נפתחת בדפדפן",
+  "url": "decks/W5.html"
+ },
+ "videos": [
+  {
+   "title": "תיאור משתנים בטבלת נתונים",
+   "note": "סרטון הסבר",
+   "url": "files/notion/26fdccfe-תיאור-משתנים-בטבלת-נתונים.mp4",
+   "book": "r"
+  }
+ ],
+ "units": [
+  {
+   "book": "code",
+   "ch": 4,
+   "secs": [
+    "פייתון ב-VS Code",
+    "מהקוד ל-PDF להגשה"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 3,
+   "secs": [
+    "ערכים חסרים"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 4,
+   "secs": [
+    "סטטיסטיקה תיאורית עם חבילת base (ערכים חסרים)",
+    "חבילת dplyr ד (!is.na)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 8,
+   "secs": [
+    "קשר בין שני רציפים"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 6,
+   "secs": [
+    "תאור קשר בין שני רציפים"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 3,
+   "secs": [
+    "ערכים חסרים"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "אינטראקציה עם נתונים חסרים בDataFrame",
+    "סטטיסטיקה תיאורית ב־Pandas ב’"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 6,
+   "secs": [
+    "היכרות בסיסית עם חבילת sklearn",
+    "רגרסיה ליניארית עם sklearn"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 5,
+   "secs": [
+    "היכרות בסיסית עם חבילת matplotlib",
+    "גרפים עם matplotlib - א’",
+    "גרפים עם matplotlib - ב’",
+    "בונוס: גרף רגרסיה מהיר עם seaborn"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 5)",
+  "context": [],
+  "lines": [
+   "חלק א - עדכון מבנה הנתונים עם ערכים חסרים:",
+   "1. טענו את קובץ CSV שיצרתם בשבוע הקודם",
+   "1. הכניסו באופן אקראי חמישה ערכים חסרים בעמודת age ושני ערכים בעמודת iq.",
+   "1. הדפיסו את מספר הערכים החסרים בכל אחת משתי העמודות הללו.",
+   "חלק ב - סטטיסטיקה תיאורית",
+   "1. חשבו והציגו את הממוצע, סטיית התקן, החציון, המינימום והמקסימום של המשתנה age תוך התעלמות מנתונים חסרים.",
+   "חלק ג - רגרסיה לינארית",
+   "1. הוציאו את התצפיות שכוללות ערכים חסרים",
+   "1. חשבו את מקדם הרגרסיה הלא מתוקננת שבה גיל מנבא iq",
+   "1. חשבו את מתאם פירסון עבור אותם משתנים",
+   "חלק ד - הצגה גרפית",
+   "1. צרו תרשים פיזור (Scatter plot) בין age ל-iq.",
+   "  כתבו כותרות צירים, וכותרת לגרף.",
+   "  בחרו לכל ציר טווח שמשקף את טווח הערכים של המשתנה (מהמינימום ועד המקסימום)",
+   "1. הוסיפו את קו הרגרסיה (ללא טעות התקן) באופן ידני תוך שימוש בערכי הרגרסיה שחישבתם בסעיף קודם"
+  ],
+  "files": [],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 22.11.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 5\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\n\n#### MISSING VALUES ####\n\n# 1. Load the data from last week\ndf = read.csv(\"data_updated.csv\")\n\n# 2. Add missing values in random rows\ndf$age[sample(nrow(df), 5)] = NA\ndf$iq[sample(nrow(df), 2)]  = NA\n\n# 3. Count missing values\nsum(is.na(df$age))\nsum(is.na(df$iq))\n\n\n#### DESCRIPTIVE STATISTICS ####\n\n# 1. Age statistics, ignoring missing values\nmean(df$age, na.rm = TRUE)\nsd(df$age, na.rm = TRUE)\nmedian(df$age, na.rm = TRUE)\nmin(df$age, na.rm = TRUE)\nmax(df$age, na.rm = TRUE)\n\n\n#### LINEAR REGRESSION ####\n\n# 1. Remove rows with NA in age or iq\ndf_clean = df |>\n  filter(!is.na(age), !is.na(iq))\n\n# 2. Unstandardized regression: age predicts iq\nmodel = lm(iq ~ age, data = df_clean)\ncoef(model)\n\n# 3. Pearson correlation\ncor(df_clean$age, df_clean$iq)\n\n\n#### PLOT ####\n\n# 1. Scatter plot of age and iq, axes cover the full range of each variable\n# 2. Regression line added manually from the coefficients\nggplot(df_clean, aes(x = age, y = iq)) +\n  geom_point() +\n  geom_abline(intercept = coef(model)[1], slope = coef(model)[2], color = \"red\") +\n  xlim(range(df_clean$age)) +\n  ylim(range(df_clean$iq)) +\n  labs(title = \"IQ by age\", x = \"Age (years)\", y = \"IQ\")\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 5\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.linear_model import LinearRegression\n\n\n#### MISSING VALUES ####\n\n# 1. Load the data from last week\ndf = pd.read_csv(\"data_updated.csv\")\n\n# 2. Add missing values in random rows\ndf.loc[np.random.choice(df.index, 5, replace=False), \"age\"] = np.nan\ndf.loc[np.random.choice(df.index, 2, replace=False), \"iq\"] = np.nan\n\n# 3. Count missing values\nprint(df[[\"age\", \"iq\"]].isna().sum())\n\n\n#### DESCRIPTIVE STATISTICS ####\n\n# 1. Age statistics (pandas ignores missing values by default)\nprint(\"mean:\", df[\"age\"].mean())\nprint(\"sd:\", df[\"age\"].std())\nprint(\"median:\", df[\"age\"].median())\nprint(\"min:\", df[\"age\"].min())\nprint(\"max:\", df[\"age\"].max())\n\n\n#### LINEAR REGRESSION ####\n\n# 1. Remove rows with NA in age or iq\ndf_clean = df.dropna(subset=[\"age\", \"iq\"])\n\n# 2. Unstandardized regression: age predicts iq\nmodel = LinearRegression()\nmodel.fit(df_clean[[\"age\"]], df_clean[\"iq\"])\nintercept = model.intercept_\nslope = model.coef_[0]\nprint(\"intercept:\", intercept, \"slope:\", slope)\n\n# 3. Pearson correlation\nprint(\"Pearson r:\", df_clean[\"age\"].corr(df_clean[\"iq\"]))\n\n\n#### PLOT ####\n\n# 1. Scatter plot of age and iq, axes cover the full range of each variable\nplt.scatter(df_clean[\"age\"], df_clean[\"iq\"])\nplt.xlim(df_clean[\"age\"].min(), df_clean[\"age\"].max())\nplt.ylim(df_clean[\"iq\"].min(), df_clean[\"iq\"].max())\nplt.title(\"IQ by age\")\nplt.xlabel(\"Age (years)\")\nplt.ylabel(\"IQ\")\n\n# 2. Regression line added manually from the coefficients\nx_line = np.array([df_clean[\"age\"].min(), df_clean[\"age\"].max()])\nplt.plot(x_line, intercept + slope * x_line, color=\"red\")\nplt.show()\n"
+   }
+  ]
+ }
+}

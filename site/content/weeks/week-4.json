@@ -1,0 +1,122 @@
+{
+ "_הסבר": "תוכן שבוע 4. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נעמיק בעבודה עם טבלאות נתונים. נלמד לשלוף משתנה בודד או תצפית בודדת, למחוק עמודות ושורות, לשנות תא בודד, ולסנן את הטבלה לפי תנאים — למשל רק נבדקות עם IQ גבוה.\n\nנכיר שני סוגי אובייקטים חדשים: משתנה קטגוריאלי (factor / category) ומשתנה לוגי (אמת/שקר), ונפיק סטטיסטיקה תיאורית לפי קבוצות. ב-R נכיר את חבילת dplyr, ובפייתון את הסינון (masking) של pandas. נסיים בתרשים boxplot.\n\nבחוט של סביבת העבודה נבין לעומק מהן חבילות: מה ההבדל בין התקנה לטעינה, ואיך מתקינים חבילה ב-R ובפייתון.",
+ "deck": {
+  "title": "מצגת שבוע 4",
+  "note": "8 שקפים · נפתחת בדפדפן",
+  "url": "decks/W4.html"
+ },
+ "videos": [],
+ "units": [
+  {
+   "book": "code",
+   "ch": 4,
+   "secs": [
+    "חבילות: התקנה מול טעינה"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 2,
+   "secs": [
+    "משתנה קטגוריאלי א",
+    "מהו משתנה לוגי"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 4,
+   "secs": [
+    "שימוש באינדקס",
+    "חבילת dplyr א (arrange, filter, select)",
+    "חבילת dplyr ב (mutate, summarise)",
+    "חבילת dplyr ג (group_by)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 6,
+   "secs": [
+    "אבני הבניין של ggplot",
+    "תאור גרפי של משתנה רציף"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 1,
+   "secs": [
+    "מהן חבילות"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 2,
+   "secs": [
+    "אובייקט לוגי",
+    "משתנה קטגוריאלי - pandas"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "גישה לערכים מתוך DataFrame ב’",
+    "Filtering ו- Masking",
+    "תיאור משתנה קטגוריאלי"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 3,
+   "secs": [
+    "מימדים באובייקטים בפייתון"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 4)",
+  "context": [],
+  "lines": [
+   "טענו את קובץ CSV שיצרתם בשבוע הקודם",
+   "חלק א - עריכת הנתונים",
+   "1. הדפסה של חלקי מבנה הנתונים:",
+   "  הדפיסו את משתנה הגיל לקונסולה",
+   "  הדפיסו את התצפית (השורה) החמישית בטבלה.",
+   "1. עדכון של משתנים ותאים:",
+   "  מחקו את משתנה הדיכאון",
+   "  מחקו את השורות 60 ו-72",
+   "  הדפיסו את הערך בתא שבשורה 10, בעמודת age, ואז שנו אותו לערך אחר לפי בחירתכם והדפיסו שוב.",
+   "1. חלוקת מסד הנתונים:",
+   "  דווחו על מימדי מסד הנתונים",
+   "  צרו משתנה לוגי חדש בשם IQ_group שמתעד אם משתנה הIQ גדול או קטן מהחציון (median split)",
+   "  שנו את המשתנה המגדר לקטגוריאלי. וודאו את רמותיו.",
+   "  שמרו מסד נתונים שני שבו יהיו רק בנות עם IQ גבוה",
+   "חלק ב - הצגת הנתונים",
+   "1. סטטיסטיקה תיאורית:",
+   "  הפיקו טבלת סטטיסטיקה תיאורית מסכמת עבור המשתנה age, רק עבור נבדקים עם IQ גבוה, וטבלה מסכמת נוספת (בפקודה אחת) בנפרד לכל רמת מגדר.",
+   "  הפיקו טבלה סטטיסטית בפקודה אחת עבור מסד הנתונים המשני של בנות עם אינטליגנציה גבוהה.",
+   "1. הצגה גרפית",
+   "  1. צרו boxplot אשר מראה את תוצאות ההבדל במשתנה חרדה כפונקציה של מגדר. דאגו לכותרות מתאימות.",
+   "1. שמירה כCSV"
+  ],
+  "files": [],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 15.11.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 4\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\n\n#### EDIT DATA ####\n\n# 1. Load the data from last week and print parts of it\ndf = read.csv(\"data.csv\")\n\nprint(df$age)\nprint(df[5, ])\n\n# 2. Update variables and cells\ndf = df |>\n  select(-depression) |>\n  slice(-c(60, 72))\n\nprint(df$age[10])\ndf$age[10] = 20\nprint(df$age[10])\n\n# 3. Dimensions, median split and factors\nprint(dim(df))\n\ndf = df |>\n  mutate(IQ_group = iq > median(iq))     # TRUE = above the median\n\ndf$gender = as.factor(df$gender)\nprint(levels(df$gender))\n\ndf_girls_high_iq = df |>\n  filter(IQ_group == TRUE, gender == \"female\")\n\n\n#### PRESENT DATA ####\n\n# 1. Descriptive statistics\nsummary(df$age[df$IQ_group == TRUE])      # age, high IQ only\ntapply(df$age, df$gender, summary)        # age, separately for each gender\n\nsummary(df_girls_high_iq)                 # the second data frame\n\n# 2. Boxplot of anxiety by gender\nggplot(df, aes(x = gender, y = anxiety)) +\n  geom_boxplot() +\n  labs(title = \"Anxiety by gender\", x = \"Gender\", y = \"Anxiety\")\n\n# 3. Save as CSV\nwrite.csv(df, \"data_updated.csv\", row.names = FALSE)\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 4\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n\n#### EDIT DATA ####\n\n# 1. Load the data from last week and print parts of it\n#    (Python counts rows from 0, so row 5 is iloc[4])\ndf = pd.read_csv(\"data.csv\")\n\nprint(df[\"age\"])\nprint(df.iloc[4])\n\n# 2. Update variables and cells\ndf = df.drop(columns=[\"depression\"])\ndf = df.drop(index=[59, 71])              # rows 60 and 72\ndf = df.reset_index(drop=True)\n\nprint(df.loc[9, \"age\"])                   # row 10\ndf.loc[9, \"age\"] = 20\nprint(df.loc[9, \"age\"])\n\n# 3. Dimensions, median split and categories\nprint(df.shape)\n\ndf[\"IQ_group\"] = df[\"iq\"] > df[\"iq\"].median()     # True = above the median\n\ndf[\"gender\"] = df[\"gender\"].astype(\"category\")\nprint(df[\"gender\"].cat.categories)\n\ndf_girls_high_iq = df[(df[\"IQ_group\"] == True) & (df[\"gender\"] == \"female\")]\n\n\n#### PRESENT DATA ####\n\n# 1. Descriptive statistics\nprint(df[df[\"IQ_group\"] == True][\"age\"].describe())     # age, high IQ only\nprint(df.groupby(\"gender\", observed=True)[\"age\"].describe())   # age, separately for each gender\n\nprint(df_girls_high_iq.describe(include=\"all\"))         # the second data frame\n\n# 2. Boxplot of anxiety by gender\ndf.boxplot(column=\"anxiety\", by=\"gender\")\nplt.suptitle(\"\")\nplt.title(\"Anxiety by gender\")\nplt.xlabel(\"Gender\")\nplt.ylabel(\"Anxiety\")\nplt.show()\n\n# 3. Save as CSV\ndf.to_csv(\"data_updated.csv\", index=False)\n"
+   }
+  ]
+ }
+}

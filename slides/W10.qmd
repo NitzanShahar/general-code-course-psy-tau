@@ -1,0 +1,195 @@
+---
+title: "בעיות קלסיפיקציה א: KNN וכיוונון פרמטר"
+course-week: "שבוע 10"
+---
+
+## KNN וכיוונון פרמטר
+
+::: {.nbox}
+<p class="nh">שבוע 10 · חומר הלימוד</p>
+
+השבוע נכיר מודל סיווג חדש ואינטואיטיבי מאוד: KNN (K השכנים הקרובים). כדי לסווג נבדק חדש, המודל מסתכל על הנבדקים הדומים לו ביותר ושואל — לאיזו קבוצה רובם שייכים?
+
+למודל יש פרמטר אחד, K, שקובע בכמה שכנים להתחשב. נלמד לבחור אותו בצורה מושכלת: בלולאה שמאמנת את המודל עם כל ערך של K, בודקת את הדיוק על סט בדיקה, ומציגה את התוצאות בגרף. זה בדיוק התהליך שנקרא כיוונון היפר-פרמטרים.
+
+נעבוד עם נתונים על שלושה זנים של פינגווינים — ונראה כמה טוב אפשר לנחש זן לפי מידות המקור והכנף.
+:::
+
+## הרעיון: K השכנים הקרובים
+
+::: {.tb}
+::: {.tbox}
+<p class="th">מבוא למודל KNN</p>
+<p>כל פינגווין הוא נקודה במרחב המשתנים</p>
+<p>לפינגווין חדש מחפשים את K השכנים הקרובים</p>
+<p>הסיווג = הצבעת רוב בין השכנים</p>
+<p>K קטן — רגיש מאוד לרעש (overfit); K גדול — מטשטש את הגבולות</p>
+<p>המרחק תלוי בסקאלה: לכן מתקננים</p>
+:::
+
+::: {.board}
+<svg width="560" height="360" viewBox="0 0 560 360" aria-label="KNN">
+<line x1="50" y1="320" x2="530" y2="320" stroke="#536373"/><line x1="50" y1="20" x2="50" y2="320" stroke="#536373"/>
+<text x="290" y="348" text-anchor="middle" font-size="15" fill="#536373" font-family="JetBrains Mono">bill_depth_mm</text>
+<text x="22" y="170" text-anchor="middle" font-size="15" fill="#536373" font-family="JetBrains Mono" transform="rotate(-90 22 170)">flipper_length_mm</text>
+<g fill="#2b6597"><circle cx="110" cy="250" r="8"/><circle cx="140" cy="270" r="8"/><circle cx="160" cy="235" r="8"/><circle cx="125" cy="215" r="8"/><circle cx="185" cy="265" r="8"/><circle cx="215" cy="230" r="8"/></g>
+<g fill="#1d7468"><rect x="380" y="70" width="15" height="15"/><rect x="420" y="95" width="15" height="15"/><rect x="450" y="60" width="15" height="15"/><rect x="400" y="125" width="15" height="15"/><rect x="470" y="110" width="15" height="15"/><rect x="345" y="105" width="15" height="15"/></g>
+<g fill="#ffd43b" stroke="#9a6a00" stroke-width="1.5"><path d="M300 215 l9 16 h-18 z"/><path d="M335 245 l9 16 h-18 z"/><path d="M270 255 l9 16 h-18 z"/><path d="M330 300 l9 16 h-18 z"/><path d="M245 205 l9 16 h-18 z"/></g>
+<circle cx="275" cy="225" r="66" fill="none" stroke="#9a6a00" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="275" cy="225" r="9" fill="#fff" stroke="#0e2233" stroke-width="3"/>
+<text x="275" y="148" text-anchor="middle" font-size="16" fill="#0e2233" font-family="JetBrains Mono" font-weight="700">K = 5</text>
+<g font-size="14" font-family="JetBrains Mono" fill="#536373">
+<circle cx="80" cy="40" r="6" fill="#2b6597"/><text x="92" y="45">Adelie</text>
+<rect x="74" y="59" width="12" height="12" fill="#1d7468"/><text x="92" y="70">Gentoo</text>
+<path d="M80 84 l7 12 h-14 z" fill="#ffd43b" stroke="#9a6a00"/><text x="92" y="95">Chinstrap</text>
+</g>
+</svg>
+<p class="bnote">מבין 5 השכנים הקרובים: 4 Chinstrap ו-1 Adelie ← הפינגווין החדש מסווג כ-Chinstrap</p>
+:::
+:::
+
+## הכנת הנתונים: חלוקה ותקנון
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">הכנת הנתונים</p>
+<p>הסרת ערכים חסרים</p>
+<p>שני מנבאים: עומק המקור ואורך הכנף</p>
+<p>זרע אקראי (seed) וחלוקה ל-Train / Test</p>
+<p>תקנון לפי סט האימון בלבד</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### PREPARE ####
+
+df = na.omit(read.csv('penguins.csv'))
+x_cols = c('bill_depth_mm', 'flipper_length_mm')
+
+# 1. Train / test (80% / 20%)
+set.seed(1)
+rows = sample(1:nrow(df),
+              round(0.8 * nrow(df)))
+train = df[rows, ]
+test = df[-rows, ]
+
+# 2. Standardize by the training set
+m = colMeans(train[, x_cols])
+s = apply(train[, x_cols], 2, sd)
+x_train = scale(train[, x_cols], m, s)
+x_test = scale(test[, x_cols], m, s)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+#### PREPARE ####
+
+df = pd.read_csv('penguins.csv').dropna()
+x_cols = ['bill_depth_mm', 'flipper_length_mm']
+
+# 1. Train / test (80% / 20%)
+train, test = train_test_split(
+    df, test_size=0.2, random_state=1)
+
+# 2. Standardize by the training set
+scaler = StandardScaler()
+scaler.fit(train[x_cols])
+x_train = scaler.transform(train[x_cols])
+x_test = scaler.transform(test[x_cols])
+```
+:::
+:::
+:::
+:::
+
+## מודל KNN ובחירת K בלולאה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">מודל KNN</p>
+<p>KNN ב-R (חבילת class) ובפייתון (sklearn)</p>
+<p>דיוק על סט הבדיקה</p>
+<p>לולאה על ערכי K, ושמירת הדיוק</p>
+<p>K הטוב ביותר</p>
+:::
+
+::: {.board .tight}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+library(class)
+
+#### CHOOSE K ####
+
+accuracy = c()
+for (k in 1:20) {
+  pred = knn(x_train, x_test,
+             cl = train$species, k = k)
+  accuracy[k] = mean(pred == test$species)
+}
+
+plot(1:20, accuracy, type = 'b',
+     xlab = 'K', ylab = 'accuracy')
+which.max(accuracy)    # first = smallest K
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+
+#### CHOOSE K ####
+
+accuracy = []
+for k in range(1, 21):
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(x_train, train['species'])
+    acc = knn.score(x_test, test['species'])
+    accuracy.append(acc)
+
+plt.plot(range(1, 21), accuracy, marker='o')
+plt.xlabel('K')
+plt.show()
+np.argmax(accuracy) + 1    # first = smallest K
+```
+:::
+:::
+
+<p class="bnote">ב-R הדיוק של K נשמר במקום <span class="ltr">[k]</span> · בפייתון המקום 0 שייך ל-K=1, ולכן <span class="ltr">+ 1</span> · בתיקו בוחרים את ה-K הקטן</p>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 10)** — קובץ הנתונים: penguins.csv (343 פינגווינים, שלושה זנים).
+
+**חלק א:** טעינה והסרת ערכים חסרים; מימדים, סטטיסטיקה תיאורית ומספר הפינגווינים מכל זן; תרשים פיזור של שני משתנים רציפים, בצבע לפי זן.
+
+**חלק ב:** ניבוי הזן לפי שני מנבאים בלבד — עומק המקור ואורך הכנף. seed וחלוקה ל-80% אימון ו-20% בדיקה; תקנון לפי סט האימון (ובהערה: למה KNN רגיש לסקאלה?); לולאה על K מ-1 עד 20 — אימון, דיוק על סט הבדיקה ושמירה; גרף של הדיוק לפי K עם סימון ה-K הטוב ביותר; הדפסת ה-K הטוב ביותר ודיוקו (בתיקו — ה-K הקטן). **בונוס:** אותה לולאה בלי תקנון — מה קרה, ולמה?
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 27.12.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

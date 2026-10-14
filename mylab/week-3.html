@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>שבוע 3 · יסודות התכנות במדע אמפירי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/tau-logo.png">
+</head>
+<body>
+<div class="wrap">
+<header class="hdr">
+<img class="logo" src="../assets/tau-logo.png" alt="אוניברסיטת תל אביב">
+<span class="sep"></span>
+<a class="home" href="index.html"><span class="t1">יסודות התכנות במדע אמפירי</span><span class="t2">R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span></a>
+<span class="staffbadge">גרסת מתרגלים</span><nav class="gen"><a href="index.html" class="on">השבועות</a><a href="book.html" class="">ספר היחידות</a><a href="syllabus.pdf" class="">סילבוס</a></nav>
+</header><details class="mweeks card"><summary><span class="c" style="background:var(--ink);color:#fff;border-color:var(--ink)">3</span><span><b>שבוע 3</b> · מסד נתונים ב: דגימה וסטטיסטיקה תיאורית</span><span class="more">כל השבועות ▾</span></summary><div class="list"><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk sel"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></div></details><div class="layout"><aside class="rail card"><h3>שבועות הקורס</h3><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk sel"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></aside><main class="card">
+<section class="hero"><p class="eyebrow">שבוע 3 · יום ראשון 1.11.2026</p><h1>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית</h1><p class="intro">השבוע נלמד ליצור נתונים מדומים בצורה מבוקרת — כלי חשוב מאוד כשעובדים עם נתונים. אם בשבוע שעבר הקלדנו את הנתונים בעצמנו, השבוע נייצר אותם בקוד: סדרות של מספרים, דגימה מהתפלגות נורמלית, אחידה וברנולי, ודגימה אקראית מתוך קבוצת ערכים.</p><p class="intro">אחר כך נתאר את הנתונים: ממוצע, סטיית תקן, חציון, וטבלת סיכום — ונצייר היסטוגרמה ראשונה.</p><p class="intro">בחוט של סביבת העבודה נכיר את תיקיית העבודה: איפה הקוד שלנו „נמצא״, איך קוראים ושומרים קבצים בנתיב יחסי, ולמה כדאי לעבוד בתיקייה (או פרויקט) אחת לכל עבודה.</p></section>
+<section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media"><a href="../decks/W3.html" class="deck"><small>מצגת</small><b>מצגת שבוע 3</b><small>8 שקפים · נפתחת בדפדפן</small><code>## WEEK 3 · R + Python</code></a></div></section>
+<section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div><div class="langs" role="group" aria-label="איזו שפה להציג"><span>להציג:</span><button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button><button type="button" data-lang="py">Python</button></div><div class="wbook b-code" data-book="code"><p class="wbh"><span class="btag">ניהול קוד</span>ספר ניהול קוד</p><div class="wch"><span class="num">4</span><b>סביבות עבודה</b><a class="tobook" href="book.html?w=3#code4">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-code" id="code4-4"><summary><span class="un">קוד 4.4</span>תיקיית העבודה ונתיבים בקוד</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>בשיעור זה ארצה להבין מהי תיקיית העבודה ב-R ובפייתון, ולמה רוב השגיאות &quot;הקובץ לא נמצא&quot; קשורות אליה. הראה כל דוגמה גם ב-R וגם בפייתון.</div><div>1. הזכר לי בקצרה מהו נתיב מלא ומהו נתיב יחסי. הסבר שכשאני כותב/ת בקוד רק שם של קובץ, R או פייתון מחפשים אותו בתיקיית העבודה.</div><div>1. הדפס והסבר איך בודקים מהי תיקיית העבודה. ב-R:</div><div class="cl">getwd()</div><div>ובפייתון:</div><div>import os</div><div class="cl">os.getcwd()</div><div>בקש ממני להריץ באחת השפות ולהדביק את הפלט. עצור וחכה.</div><div>1. הדפס והסבר איך משנים אותה, ולמה זה פתרון שביר (הנתיב שלי לא קיים במחשב של אחרים). ב-R:</div><div class="cl">setwd(&quot;C:/Users/dana/course/week3&quot;)</div><div>ובפייתון:</div><div class="cl">os.chdir(&quot;C:/Users/dana/course/week3&quot;)</div><div>1. הסבר את הפתרון המומלץ: תיקייה אחת לכל עבודה, ובה הסקריפט ותת-תיקייה data. ב-RStudio פותחים פרויקט (File &gt; New Project) ותיקיית העבודה נקבעת לבד. ב-VS Code פותחים את התיקייה (File &gt; Open Folder). ואז קוראים בנתיב יחסי. ב-R:</div><div class="cl">df = read.csv(&quot;data/stroop.csv&quot;)</div><div>ובפייתון:</div><div>import pandas as pd</div><div class="cl">df = pd.read_csv(&quot;data/stroop.csv&quot;)</div><div>1. שאל אותי: קיבלתי שגיאה שהקובץ לא נמצא. אילו שני דברים אבדוק קודם? בדוק שעניתי נכונה.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני ליצור תיקייה week3 עם תת-תיקייה data, לשים בה את stroop.csv, לפתוח את week3 כפרויקט או כתיקייה, לקרוא את הקובץ בנתיב יחסי ולהדפיס את השורות הראשונות. עצור ובקש ממני להדביק את הקוד ואת הפלט.</div><div>אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.</div><div>אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>בשיעור זה ארצה להבין מהי תיקיית העבודה ב-R ובפייתון, ולמה רוב השגיאות &quot;הקובץ לא נמצא&quot; קשורות אליה. הראה כל דוגמה גם ב-R וגם בפייתון.
+1. הזכר לי בקצרה מהו נתיב מלא ומהו נתיב יחסי. הסבר שכשאני כותב/ת בקוד רק שם של קובץ, R או פייתון מחפשים אותו בתיקיית העבודה.
+1. הדפס והסבר איך בודקים מהי תיקיית העבודה. ב-R:
+getwd()
+ובפייתון:
+import os
+os.getcwd()
+בקש ממני להריץ באחת השפות ולהדביק את הפלט. עצור וחכה.
+1. הדפס והסבר איך משנים אותה, ולמה זה פתרון שביר (הנתיב שלי לא קיים במחשב של אחרים). ב-R:
+setwd(&quot;C:/Users/dana/course/week3&quot;)
+ובפייתון:
+os.chdir(&quot;C:/Users/dana/course/week3&quot;)
+1. הסבר את הפתרון המומלץ: תיקייה אחת לכל עבודה, ובה הסקריפט ותת-תיקייה data. ב-RStudio פותחים פרויקט (File &gt; New Project) ותיקיית העבודה נקבעת לבד. ב-VS Code פותחים את התיקייה (File &gt; Open Folder). ואז קוראים בנתיב יחסי. ב-R:
+df = read.csv(&quot;data/stroop.csv&quot;)
+ובפייתון:
+import pandas as pd
+df = pd.read_csv(&quot;data/stroop.csv&quot;)
+1. שאל אותי: קיבלתי שגיאה שהקובץ לא נמצא. אילו שני דברים אבדוק קודם? בדוק שעניתי נכונה.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני ליצור תיקייה week3 עם תת-תיקייה data, לשים בה את stroop.csv, לפתוח את week3 כפרויקט או כתיקייה, לקרוא את הקובץ בנתיב יחסי ולהדפיס את השורות הראשונות. עצור ובקש ממני להדביק את הקוד ואת הפלט.
+אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.
+אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://r4ds.hadley.nz/workflow-scripts.html" target="_blank" rel="noopener" class="ltr">https://r4ds.hadley.nz/workflow-scripts.html</a></li></ul><p class="bsfoot">יחידה 4.4 בספר ניהול קוד · <a href="book.html#code4-4">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div><div class="wbook b-r" data-book="r"><p class="wbh"><span class="btag">R</span>ספר R</p><div class="wch"><span class="num">1</span><b>עבודה בממשק R ו-RStudio</b><a class="tobook" href="book.html?w=3#r1">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r1-7"><summary><span class="un">R 1.7</span>פתיחת פרוייקט כאמצעי לשלוט על תיקיית העבודה</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1.</div><div>הסבר במילים בלי שימוש בקוד מהו פרוייקט בRstudio ומדוע הוא שימוש כדילשלוט על סביבת העבודה.</div><div>עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>2.</div><div>הדפס את הקוד הבא, קרא לו קוד לדוגמא, והסבר בקצרה במילים מה הוא עושה</div><div class="cl">dir()</div><div>עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>3.</div><div>הסבר שניתן לתת בקוד את הנתיב לתיקיית הפרוייקט באמצעות שימוש בנקודה. </div><div>תן את הקוד הזה לדוגמא</div><div class="cl">`dir(&#x27;.&#x27;)`</div><div>עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>4.</div><div>כתוב את הכותרת “התרגול שלך”</div><div>בקש ממני לפתוח פרוייקט חדש בתיקיית העבודה שלי ולבדוק אילו קבצים נמצאים שם באמצעות פקודת ה dir</div><div>עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>5.</div><div>כתוב לי שהתרגול הסתיים</div></div><textarea hidden>1.
+הסבר במילים בלי שימוש בקוד מהו פרוייקט בRstudio ומדוע הוא שימוש כדילשלוט על סביבת העבודה.
+עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.
+
+2.
+הדפס את הקוד הבא, קרא לו קוד לדוגמא, והסבר בקצרה במילים מה הוא עושה
+dir()
+עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.
+
+3.
+הסבר שניתן לתת בקוד את הנתיב לתיקיית הפרוייקט באמצעות שימוש בנקודה. 
+תן את הקוד הזה לדוגמא
+`dir(&#x27;.&#x27;)`
+עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.
+
+4.
+כתוב את הכותרת “התרגול שלך”
+בקש ממני לפתוח פרוייקט חדש בתיקיית העבודה שלי ולבדוק אילו קבצים נמצאים שם באמצעות פקודת ה dir
+עצור ואל תמשיך לכתוב. חכה לתשובה שלי, בדוק שהבנתי ורק כשארשה לך המשך.
+
+5.
+כתוב לי שהתרגול הסתיים</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="../files/notion/1d0dccfe-יצירת-פרוייקט.mp4" target="_blank" rel="noopener">יצירת פרוייקט</a></li></ul><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects" target="_blank" rel="noopener" class="ltr">https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects</a></li></ul><p class="bsfoot">יחידה 1.7 בספר R · <a href="book.html#r1-7">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">3</span><b>מטריצות ווקטורים</b><a class="tobook" href="book.html?w=3#r3">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r3-3"><summary><span class="un">R 3.3</span>יצירת וקטור מספרי סדרתי (seq)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1.</div><div>למד אותי כיצד להשתמש בפקודת seq כדי לייצר רצף של מספרים</div><div>הסבר מה הערכים שהפונקציה מקבלת</div><div>הדגם כיצד ניתן לייצר מספרים מ1 עד 10 בקפיצות של 1.</div><div>הדפס בטקסט את התוצאה שתתקבל</div><div>עצור, בדוק אם הבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>2.</div><div>הדגם כיצד ניתן לייצר וקטור מ1 עד 20 עם קפיצות של חמש.</div><div>הדפס בטקסט את התוצאה שתתקבל</div><div>עצור, בדוק אם הבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>3.</div><div>כתוב את הכותרת “התרגול שלך”</div><div>כעת בקש מימני באופן מילולי ובלי לספק קוד שאייצר קוד שבו יש משתנה x עם המספרים 1 עד 100 בקפיצות של 1 ואדפיס אותו לקונסולה.</div><div>עצור, בדוק אם הבנתי ורק כשארשה לך המשך. אם אני מבקש תן לי את הפתרון בקוד R</div><div>&nbsp;</div><div>4. </div><div>כתוב לי שהתרגול הסתיים</div></div><textarea hidden>1.
+למד אותי כיצד להשתמש בפקודת seq כדי לייצר רצף של מספרים
+הסבר מה הערכים שהפונקציה מקבלת
+הדגם כיצד ניתן לייצר מספרים מ1 עד 10 בקפיצות של 1.
+הדפס בטקסט את התוצאה שתתקבל
+עצור, בדוק אם הבנתי ורק כשארשה לך המשך.
+
+2.
+הדגם כיצד ניתן לייצר וקטור מ1 עד 20 עם קפיצות של חמש.
+הדפס בטקסט את התוצאה שתתקבל
+עצור, בדוק אם הבנתי ורק כשארשה לך המשך.
+
+3.
+כתוב את הכותרת “התרגול שלך”
+כעת בקש מימני באופן מילולי ובלי לספק קוד שאייצר קוד שבו יש משתנה x עם המספרים 1 עד 100 בקפיצות של 1 ואדפיס אותו לקונסולה.
+עצור, בדוק אם הבנתי ורק כשארשה לך המשך. אם אני מבקש תן לי את הפתרון בקוד R
+
+4. 
+כתוב לי שהתרגול הסתיים</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="../files/notion/1d0dccfe-שימוש-בפקודת-seq.mp4" target="_blank" rel="noopener">שימוש בפקודת seq</a></li></ul><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://www.r-tutor.com/r-introduction/vector/vector-arithmetics" target="_blank" rel="noopener" class="ltr">https://www.r-tutor.com/r-introduction/vector/vector-arithmetics</a></li></ul><p class="bsfoot">יחידה 3.3 בספר R · <a href="book.html#r3-3">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r3-5"><summary><span class="un">R 3.5</span>דגימה הסתברותית מוקטור מספרי (sample)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>הסבר במילים בלי שימוש בקוד שניתן להשתמש בפקודת sample כדי לדגום בצורה ראנדומלית מוקטור כלשהוא</div><div> עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>&nbsp;</div><div>הסבר במילים בלי שימוש בקוד את הערכים שהפונקציה sample מקבלת.</div><div> עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>&nbsp;</div><div>הדפס לי את הקוד הבא </div><div class="cl">x = c(10, 100)</div><div class="cl">y = sample(x, size = 10, replace = T , prob = c(0.2, 0.8))</div><div>כתוב בקצרה מה הוא עושה</div><div>עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>הדפס לי את הקוד הבא </div><div class="cl">x = c(10, 100)</div><div class="cl">y = sample(x, size = 10, replace = F , prob = c(0.2, 0.8))</div><div>כתוב בקצרה שהוא יתן שגיאה והסבר שזה קשור לעבודה שהדגימה היא ללא חזרה כאן</div><div>עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>&nbsp;</div><div>הדפס לי את הקוד הבא </div><div class="cl">x = c(10, 100)</div><div class="cl">y = sample(x, size = 10, replace = T)</div><div>הסבר בקצרה שאם אנחנו לא מגדירים הסתברויות הקוד אוטומטית ידגום עם הסתברות שווה לכל ערך. עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>כתוב את הכותרת “התרגול שלך”</div><div>בקש ממני לדגום מוקטור עם המספרים 1 עד 10 שני מספרים ללא החזרה</div><div>עצור, ובקש ממני להדביק לך את הקוד כדי לוודא שהוא נכון.  רק כשארשה לך המשך.</div><div>אם הדבקתי קוד שגוי העזר בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.</div><div>אם הדבקתי שוב קוד שגוי העזר שוב בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.</div><div>אם אבקש תן לי את הפתרון בקוד קצר.</div></div><textarea hidden>הסבר במילים בלי שימוש בקוד שניתן להשתמש בפקודת sample כדי לדגום בצורה ראנדומלית מוקטור כלשהוא
+ עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+
+הסבר במילים בלי שימוש בקוד את הערכים שהפונקציה sample מקבלת.
+ עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+
+הדפס לי את הקוד הבא 
+x = c(10, 100)
+y = sample(x, size = 10, replace = T , prob = c(0.2, 0.8))
+כתוב בקצרה מה הוא עושה
+עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+הדפס לי את הקוד הבא 
+x = c(10, 100)
+y = sample(x, size = 10, replace = F , prob = c(0.2, 0.8))
+כתוב בקצרה שהוא יתן שגיאה והסבר שזה קשור לעבודה שהדגימה היא ללא חזרה כאן
+עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+
+הדפס לי את הקוד הבא 
+x = c(10, 100)
+y = sample(x, size = 10, replace = T)
+הסבר בקצרה שאם אנחנו לא מגדירים הסתברויות הקוד אוטומטית ידגום עם הסתברות שווה לכל ערך. עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+כתוב את הכותרת “התרגול שלך”
+בקש ממני לדגום מוקטור עם המספרים 1 עד 10 שני מספרים ללא החזרה
+עצור, ובקש ממני להדביק לך את הקוד כדי לוודא שהוא נכון.  רק כשארשה לך המשך.
+אם הדבקתי קוד שגוי העזר בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.
+אם הדבקתי שוב קוד שגוי העזר שוב בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.
+אם אבקש תן לי את הפתרון בקוד קצר.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://www.spsanderson.com/steveondata/posts/2024-03-12/index.html#:~:text=Introduction,Carlo%20simulations%2C%20and%20randomized%20experiments" target="_blank" rel="noopener" class="ltr">https://www.spsanderson.com/steveondata/posts/2024-03-12/index.html#:~:text=Introduction,Carlo simulations%2C and randomized experiments</a>.</li></ul><p class="bsfoot">יחידה 3.5 בספר R · <a href="book.html#r3-5">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r3-6"><summary><span class="un">R 3.6</span>דגימה הסתברותית מוקטור מחרוזת (sample)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>הסבר במילים בלי שימוש בקוד שניתן להשתמש בפקודת sample כדי לדגום בצורה ראנדומלית מוקטור כלשהוא</div><div> עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>&nbsp;</div><div>הסבר במילים בלי שימוש בקוד את הערכים שהפונקציה sample מקבלת.</div><div> עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>&nbsp;</div><div>הדפס לי את הקוד הבא </div><div>x = c(’a’, ‘b’)</div><div class="cl">y = sample(x, size = 10, replace = T , prob = c(0.2, 0.8))</div><div>כתוב בקצרה מה הוא עושה</div><div>עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>הדפס לי את הקוד הבא </div><div>x = c(’a’, ‘b’)</div><div class="cl">y = sample(x, size = 10, replace = F , prob = c(0.2, 0.8))</div><div>כתוב בקצרה שהוא יתן שגיאה והסבר שזה קשור לעבודה שהדגימה היא ללא חזרה כאן</div><div>עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>&nbsp;</div><div>הדפס לי את הקוד הבא </div><div>x = c(’a’, ‘b’)</div><div class="cl">y = sample(x, size = 10, replace = T)</div><div>הסבר בקצרה שאם אנחנו לא מגדירים הסתברויות הקוד אוטומטית ידגום עם הסתברות שווה לכל ערך. עצור, בדוק שהבנתי ורק כשארשה לך המשך.</div><div>&nbsp;</div><div>כתוב את הכותרת “התרגול שלך”</div><div>בקש ממני לדגום מוקטור עם חמש מילים של שמות ללא החזרה</div><div>עצור, ובקש ממני להדביק לך את הקוד כדי לוודא שהוא נכון.  רק כשארשה לך המשך.</div><div>אם הדבקתי קוד שגוי העזר בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.</div><div>אם הדבקתי שוב קוד שגוי העזר שוב בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.</div><div>אם אבקש תן לי את הפתרון בקוד קצר.</div></div><textarea hidden>הסבר במילים בלי שימוש בקוד שניתן להשתמש בפקודת sample כדי לדגום בצורה ראנדומלית מוקטור כלשהוא
+ עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+
+הסבר במילים בלי שימוש בקוד את הערכים שהפונקציה sample מקבלת.
+ עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+
+הדפס לי את הקוד הבא 
+x = c(’a’, ‘b’)
+y = sample(x, size = 10, replace = T , prob = c(0.2, 0.8))
+כתוב בקצרה מה הוא עושה
+עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+הדפס לי את הקוד הבא 
+x = c(’a’, ‘b’)
+y = sample(x, size = 10, replace = F , prob = c(0.2, 0.8))
+כתוב בקצרה שהוא יתן שגיאה והסבר שזה קשור לעבודה שהדגימה היא ללא חזרה כאן
+עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+
+הדפס לי את הקוד הבא 
+x = c(’a’, ‘b’)
+y = sample(x, size = 10, replace = T)
+הסבר בקצרה שאם אנחנו לא מגדירים הסתברויות הקוד אוטומטית ידגום עם הסתברות שווה לכל ערך. עצור, בדוק שהבנתי ורק כשארשה לך המשך.
+
+כתוב את הכותרת “התרגול שלך”
+בקש ממני לדגום מוקטור עם חמש מילים של שמות ללא החזרה
+עצור, ובקש ממני להדביק לך את הקוד כדי לוודא שהוא נכון.  רק כשארשה לך המשך.
+אם הדבקתי קוד שגוי העזר בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.
+אם הדבקתי שוב קוד שגוי העזר שוב בגילוי מודרך עם טקסט ללא שימוש בקוד כדי לעזור לי להצליח. עצור וחכה שאנסה שוב.
+אם אבקש תן לי את הפתרון בקוד קצר.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://www.spsanderson.com/steveondata/posts/2024-03-12/index.html#:~:text=Introduction,Carlo%20simulations%2C%20and%20randomized%20experiments" target="_blank" rel="noopener" class="ltr">https://www.spsanderson.com/steveondata/posts/2024-03-12/index.html#:~:text=Introduction,Carlo simulations%2C and randomized experiments</a>.</li></ul><p class="bsfoot">יחידה 3.6 בספר R · <a href="book.html#r3-6">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">5</span><b>דגימה מהתפלגויות מתמטיות</b><a class="tobook" href="book.html?w=3#r5">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r5-3"><summary><span class="un">R 5.3</span>דגימה מהתפלגות נורמלית(normal)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. הסבר על פקודת rnorm() ועל הarguments שהיא מקבלת. אל תדפיס קוד, רק תסביר מילולית. עצור לראות שהבנתי.</div><div>1. הדפס &quot;התרגול שלך: לייצר 100 דגימות מהתפלגות נורמלית עם ממוצע 0 וס&quot;ת 1, ולהדפיס את הערכים לקונסולה.&quot; אל תדפיס קוד – בדוק שאני כתבתי קוד נכון.</div><div>1. כתוב שלב הלימוד הסתיים</div><div>עשה את הפעולות האלו אחת אחת לפי הסדר. עצור בסוף כל פעולה לראות שהבנתי והצלחתי.</div></div><textarea hidden>1. הסבר על פקודת rnorm() ועל הarguments שהיא מקבלת. אל תדפיס קוד, רק תסביר מילולית. עצור לראות שהבנתי.
+1. הדפס &quot;התרגול שלך: לייצר 100 דגימות מהתפלגות נורמלית עם ממוצע 0 וס&quot;ת 1, ולהדפיס את הערכים לקונסולה.&quot; אל תדפיס קוד – בדוק שאני כתבתי קוד נכון.
+1. כתוב שלב הלימוד הסתיים
+עשה את הפעולות האלו אחת אחת לפי הסדר. עצור בסוף כל פעולה לראות שהבנתי והצלחתי.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://www.scaler.com/topics/r-rnorm/" target="_blank" rel="noopener" class="ltr">https://www.scaler.com/topics/r-rnorm/</a></li></ul><p class="bsfoot">יחידה 5.3 בספר R · <a href="book.html#r5-3">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r5-1"><summary><span class="un">R 5.1</span>דגימה מהתפלגות ברנולי (rbinom)</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>הסבר לי במילים פשוטות ללא קוד, מהי התפלגות ברנולי</div><div> עצור, בדוק שהבנתי רק כשארשה לך המשך.</div><div>&nbsp;</div><div>הסבר לי במילים פשוטות ללא קוד מדוע ברנולי היא מקרה פרטי של התפלגות בינומית ומהי התפלגות בינומית</div><div> עצור, בדוק שהבנתי רק כשארשה לך המשך.</div><div>&nbsp;</div><div>עשה רשימה של הערכים שמקבלת פונקציית rbinom() והסבר לי אותם. עצור, בדוק שהבנתי רק כשארשה לך המשך.</div><div>&nbsp;</div><div>כתוב קוד R שבו y = rbinom(10, 1, 0.5)</div><div>תן לי בטקסט תוצאה אפשרית לערכים בy.</div><div> עצור, בדוק שהבנתי רק כשארשה לך המשך.</div><div>&nbsp;</div><div>כתוב את הכותרת “המטלה שלך”</div><div>בקש ממני לייצר משתנה שידגום ראנדומלית נקודות בכדור הארץ וירשום אפס אם מדובר ביבשה או אחד אם מדובר במים. הסבר לי שעלי להשתמש באחוז המים על כדור הארץ לשם כך ואמור לי לכתוב את זה בקוד ואז להדפיס לקונסולה.</div><div> עצור, בדוק שהצלחתי רק כשארשה לך המשך.</div><div>&nbsp;</div><div>בקש ממני להדביק לך את הקוד כדי לוודא שהוא נכון.</div><div> עצור, בדוק שהצלחתי רק כשארשה לך המשך.</div></div><textarea hidden>הסבר לי במילים פשוטות ללא קוד, מהי התפלגות ברנולי
+ עצור, בדוק שהבנתי רק כשארשה לך המשך.
+
+הסבר לי במילים פשוטות ללא קוד מדוע ברנולי היא מקרה פרטי של התפלגות בינומית ומהי התפלגות בינומית
+ עצור, בדוק שהבנתי רק כשארשה לך המשך.
+
+עשה רשימה של הערכים שמקבלת פונקציית rbinom() והסבר לי אותם. עצור, בדוק שהבנתי רק כשארשה לך המשך.
+
+כתוב קוד R שבו y = rbinom(10, 1, 0.5)
+תן לי בטקסט תוצאה אפשרית לערכים בy.
+ עצור, בדוק שהבנתי רק כשארשה לך המשך.
+
+כתוב את הכותרת “המטלה שלך”
+בקש ממני לייצר משתנה שידגום ראנדומלית נקודות בכדור הארץ וירשום אפס אם מדובר ביבשה או אחד אם מדובר במים. הסבר לי שעלי להשתמש באחוז המים על כדור הארץ לשם כך ואמור לי לכתוב את זה בקוד ואז להדפיס לקונסולה.
+ עצור, בדוק שהצלחתי רק כשארשה לך המשך.
+
+בקש ממני להדביק לך את הקוד כדי לוודא שהוא נכון.
+ עצור, בדוק שהצלחתי רק כשארשה לך המשך.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="../files/notion/1d0dccfe-דגימה-מהתפלגות-ברנולי.mp4" target="_blank" rel="noopener">דגימה מהתפלגות ברנולי</a></li></ul><p class="bsfoot">יחידה 5.1 בספר R · <a href="book.html#r5-1">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">4</span><b>מבנה נתונים וסטטיסטיקה תיאורית</b><a class="tobook" href="book.html?w=3#r4">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r4-3"><summary><span class="un">R 4.3</span>גישה למשתנה בודד במבנה נתונים</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. הסבר כיצד ניתן להגיע לשמות המשתנים במבנה נתונים באמצעות פקודת names. הדגם עם קוד קצר.</div><div>1. הסבר כיצד ניתן לגשת למשתנה יחיד בטבלת נתונים באמצעות $. תרגל אותי ושאל אותי אם יש לנו מבנה נתונים תחת השם df עם משתנה גיל, כיצד הייתי מדפיס את משתנה הגיל בלבד? אם אני טועה, עזור לי להגיע לתשובה df$age</div><div>1. הסבר שאחרי שכותבים בקונסולה בR את שם מבנה הנתונים עם $ Rstudio יודעת להציע לי את המשתנים האפשריים לבחירה כדי להקל על העבודה. בקש ממני לנסות ועזור לי אם אני לא מצליח. במידת הצורך הצעה לי ללחוץ על tab כשהסמן עומד מיד אחרי ה$ כדי לקבל את הרשימה של המשתנים</div><div>1.  כתוב שלב הלימוד הסתיים</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי ובקש ממני לנסות את הפקודות בעצמי עם טבלת הנתונים שלי.</div></div><textarea hidden>1. הסבר כיצד ניתן להגיע לשמות המשתנים במבנה נתונים באמצעות פקודת names. הדגם עם קוד קצר.
+1. הסבר כיצד ניתן לגשת למשתנה יחיד בטבלת נתונים באמצעות $. תרגל אותי ושאל אותי אם יש לנו מבנה נתונים תחת השם df עם משתנה גיל, כיצד הייתי מדפיס את משתנה הגיל בלבד? אם אני טועה, עזור לי להגיע לתשובה df$age
+1. הסבר שאחרי שכותבים בקונסולה בR את שם מבנה הנתונים עם $ Rstudio יודעת להציע לי את המשתנים האפשריים לבחירה כדי להקל על העבודה. בקש ממני לנסות ועזור לי אם אני לא מצליח. במידת הצורך הצעה לי ללחוץ על tab כשהסמן עומד מיד אחרי ה$ כדי לקבל את הרשימה של המשתנים
+1.  כתוב שלב הלימוד הסתיים
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי ובקש ממני לנסות את הפקודות בעצמי עם טבלת הנתונים שלי.</textarea></div><p class="bsfoot">יחידה 4.3 בספר R · <a href="book.html#r4-3">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r4-5"><summary><span class="un">R 4.5</span>סטטיסטיקה תאורית עם חבילת base</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1.      הסבר על פקודות head(df, 10) tail(df, 10) names(df) dim(df) nrow(df) ncol(df) summary(df) שמשמשות לתיאור טבלת נתונים (data.frame)</div><div>2.      הסבר כיצד ניתן לגשת למשתנה יחיד בטבלת נתונים באמצעות $, והסבר כיצד ניתן לקבל סטטיסטיקה תאורית עבור משתנה יחיד באמצעות פקודות print(df$subject) length(df$age) unique(df$subject) mean(df$age) median(df$age) sd(df$age) max(df$age) min(df$age) quantile(df$age, 0.75)</div><div>3.      הסבר כיצד ניתן לייצר סטטיסטיקה תאורית לשורות או עמודות בטבלת נתונים באמצעות rowSums(df) rowMeans(df) colSums(df) colMeans(df)</div><div>1. הסבר כיצד ניתן לקבל סטטיסטיקה תאורית עבור כל טבלת הנתונים באמצעות summary()</div><div>5.      כתוב שלב הלימוד הסתיים</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי ובקש ממני לנסות את הפקודות בעצמי עם טבלת הנתונים שלי.</div></div><textarea hidden>1.      הסבר על פקודות head(df, 10) tail(df, 10) names(df) dim(df) nrow(df) ncol(df) summary(df) שמשמשות לתיאור טבלת נתונים (data.frame)
+2.      הסבר כיצד ניתן לגשת למשתנה יחיד בטבלת נתונים באמצעות $, והסבר כיצד ניתן לקבל סטטיסטיקה תאורית עבור משתנה יחיד באמצעות פקודות print(df$subject) length(df$age) unique(df$subject) mean(df$age) median(df$age) sd(df$age) max(df$age) min(df$age) quantile(df$age, 0.75)
+3.      הסבר כיצד ניתן לייצר סטטיסטיקה תאורית לשורות או עמודות בטבלת נתונים באמצעות rowSums(df) rowMeans(df) colSums(df) colMeans(df)
+1. הסבר כיצד ניתן לקבל סטטיסטיקה תאורית עבור כל טבלת הנתונים באמצעות summary()
+5.      כתוב שלב הלימוד הסתיים
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי ובקש ממני לנסות את הפקודות בעצמי עם טבלת הנתונים שלי.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="../files/notion/1d0dccfe-תיאור-משתנים-בטבלת-נתונים.mp4" target="_blank" rel="noopener">תיאור משתנים בטבלת נתונים</a></li></ul><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://statsandr.com/blog/descriptive-statistics-in-r/" target="_blank" rel="noopener" class="ltr">https://statsandr.com/blog/descriptive-statistics-in-r/</a></li></ul><p class="bsfoot">יחידה 4.5 בספר R · <a href="book.html#r4-5">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">6</span><b>גרפיקה</b><a class="tobook" href="book.html?w=3#r6">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r6-1"><summary><span class="un">R 6.1</span>תאור משתנה בודד רציף עם חבילת הבסיס</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. הסבר במילים ללא שימוש בקוד, שבחבילת הבסיס בR מספר פקודות שמאפשרות להציג גרפיקה בצורה מהירה. הפקודות האלו משמשות את המתכנתים לשימוש “פנימי ויומיומי” שבו אין צורך בגרפיקה יצוגית, אלא ייצור מהיר של גרפיקה שמאפשרת את הבנת הנתונים. זאת בניגוד לחבילת ggplot שנלמד בהמשך ומאפשרת גרפיקה יצוגית.</div><div>2. כתוב קוד בR עם שתי שורות. בראשונה ייצר שני משתנה רציף אחד שנדגם מהתפלגות נורמלית. קרא לו x. בשניה עשה שימוש בhist() והסבר מה הפקודה הזו תעשה</div><div>3. הסבר לי כיצד אפשר לשלוט בטווח של ציר האיקס</div><div>4. בקש ממני לכתוב שורת קוד אשר תדפיס היסטוגרמה של משתנה גיל מתוך מסד נתונים df תוך שימוש ב$ ופקודת hist</div><div>5. כתוב ששלב הלימוד הסתיים</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי והצלחתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>1. הסבר במילים ללא שימוש בקוד, שבחבילת הבסיס בR מספר פקודות שמאפשרות להציג גרפיקה בצורה מהירה. הפקודות האלו משמשות את המתכנתים לשימוש “פנימי ויומיומי” שבו אין צורך בגרפיקה יצוגית, אלא ייצור מהיר של גרפיקה שמאפשרת את הבנת הנתונים. זאת בניגוד לחבילת ggplot שנלמד בהמשך ומאפשרת גרפיקה יצוגית.
+2. כתוב קוד בR עם שתי שורות. בראשונה ייצר שני משתנה רציף אחד שנדגם מהתפלגות נורמלית. קרא לו x. בשניה עשה שימוש בhist() והסבר מה הפקודה הזו תעשה
+3. הסבר לי כיצד אפשר לשלוט בטווח של ציר האיקס
+4. בקש ממני לכתוב שורת קוד אשר תדפיס היסטוגרמה של משתנה גיל מתוך מסד נתונים df תוך שימוש ב$ ופקודת hist
+5. כתוב ששלב הלימוד הסתיים
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי והצלחתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://www.datacamp.com/tutorial/make-histogram-basic-r" target="_blank" rel="noopener" class="ltr">https://www.datacamp.com/tutorial/make-histogram-basic-r</a></li></ul><p class="bsfoot">יחידה 6.1 בספר R · <a href="book.html#r6-1">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div><div class="wbook b-py" data-book="py"><p class="wbh"><span class="btag">Python</span>ספר פייתון</p><div class="wch"><span class="num">3</span><b>וקטורים ומטריצות</b><a class="tobook" href="book.html?w=3#py3">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py3-4"><summary><span class="un">Python 3.4</span>היכרות בסיסית עם חבילת Numpy</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני סטודנט חדש בPython, זו החבילה השנייה שאני לומד:</div><div>1. הסבר לי במילים פשוטות מה ההבדל בין Numpy ל-Pandas.</div><div>אחרי ההסבר, עצור וודא שהבנתי.</div><div>2. מתי עדיף לי להשתמש ב-Numpy במקום ב-Pandas?</div><div>הסבר לי למה זה כך, ותמקד בהיבטים של חישוב, ביצועים, ודיוק</div><div>לצורך הדגמא: תן לי קוד שמייצר וקטור של מיליון מספרים אקראיים גם בnumpy וגם בפנדס ומשווה זמן.</div><div>&nbsp;</div><div>1. למען התרגול: בחן אותי באמצעות שני מקרים, אחד בהם pandas הוא החבילה שמתאימה לשימוש (דאטאפריים קלאסי) ומקרה בהם numpy (רב מימדיות\חישוביות מורכבת EEG). שאל אותי איזה מקרה מתאים לאן ומדוע? וודא כי הבנתי</div><div>&nbsp;</div><div>1. סיים את התרגול</div></div><textarea hidden>אני סטודנט חדש בPython, זו החבילה השנייה שאני לומד:
+1. הסבר לי במילים פשוטות מה ההבדל בין Numpy ל-Pandas.
+אחרי ההסבר, עצור וודא שהבנתי.
+2. מתי עדיף לי להשתמש ב-Numpy במקום ב-Pandas?
+הסבר לי למה זה כך, ותמקד בהיבטים של חישוב, ביצועים, ודיוק
+לצורך הדגמא: תן לי קוד שמייצר וקטור של מיליון מספרים אקראיים גם בnumpy וגם בפנדס ומשווה זמן.
+
+1. למען התרגול: בחן אותי באמצעות שני מקרים, אחד בהם pandas הוא החבילה שמתאימה לשימוש (דאטאפריים קלאסי) ומקרה בהם numpy (רב מימדיות\חישוביות מורכבת EEG). שאל אותי איזה מקרה מתאים לאן ומדוע? וודא כי הבנתי
+
+1. סיים את התרגול</textarea></div><div class="prompt" style="padding:14px 16px"><div class="cl">image.png</div></div><div class="prompt" style="padding:14px 16px"><div>‣</div></div><p class="bsfoot">יחידה 3.4 בספר פייתון · <a href="book.html#py3-4">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py3-5"><summary><span class="un">Python 3.5</span>Numpy array</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני סטודנט שזהו השיעור הראשון שהוא עוסק בNumpy</div><div>1. הזכר לי שלפני שימוש בחבילה אני צריך לוודא שהיא מותקנת בסביבה שלי ולייבא אותה.</div><div>pip install numpy. import numpy as np</div><div>1.  הסבר לי מה זה np.array. כיצד הוא שונה מרשימה רגילה? תן לי דוגמא (התמקד במימדיות)</div><div>1. כתוב דוגמא לקוד שמייצר array חד מימדי פשוט עם 4 תאים. עצור בדוק שהבנתי</div><div>1. המשך, כתוב לי דוגמא לקוד שמייצר array עם שני מימדים ו4 תאים בכל מימד. עצור בדוק שהבנתי</div><div>1. חזור על כך בשלושה מימדים בגודל: 2 × 2 × 3 תכתוב אותו כך שיהיה קל לראות את המבנה — ואז תסביר איך להבין את שלושת המימדים.</div><div>1. הראה לי כיצד ניתן לבצע פעולה מתמטית על המערך. כתוב קוד שכופל מערך עם שלושה מימדים ב2. </div><div>1. תרגול1:  צור מערך עם איזה ערכים שתרצה, המערך צריך להיות מהצורה הבאה :(4,2,3)</div><div>1. תרגול2:  יש לכתוב מערך תלת מימדי מסויים. למד אותי כיצד להשתמש במתודה shape ובדוק האם הוא מוציא את הערך הנכון</div><div>1. תראה לי בדוגמא מדוע דאטא של EEG נהוג לייצג כNumpy וכיצד המימדים מתחלקים</div><div>1. עצור. וודא שהבנתי והמשך לסוף התרגול</div></div><textarea hidden>אני סטודנט שזהו השיעור הראשון שהוא עוסק בNumpy
+1. הזכר לי שלפני שימוש בחבילה אני צריך לוודא שהיא מותקנת בסביבה שלי ולייבא אותה.
+pip install numpy. import numpy as np
+1.  הסבר לי מה זה np.array. כיצד הוא שונה מרשימה רגילה? תן לי דוגמא (התמקד במימדיות)
+1. כתוב דוגמא לקוד שמייצר array חד מימדי פשוט עם 4 תאים. עצור בדוק שהבנתי
+1. המשך, כתוב לי דוגמא לקוד שמייצר array עם שני מימדים ו4 תאים בכל מימד. עצור בדוק שהבנתי
+1. חזור על כך בשלושה מימדים בגודל: 2 × 2 × 3 תכתוב אותו כך שיהיה קל לראות את המבנה — ואז תסביר איך להבין את שלושת המימדים.
+1. הראה לי כיצד ניתן לבצע פעולה מתמטית על המערך. כתוב קוד שכופל מערך עם שלושה מימדים ב2. 
+1. תרגול1:  צור מערך עם איזה ערכים שתרצה, המערך צריך להיות מהצורה הבאה :(4,2,3)
+1. תרגול2:  יש לכתוב מערך תלת מימדי מסויים. למד אותי כיצד להשתמש במתודה shape ובדוק האם הוא מוציא את הערך הנכון
+1. תראה לי בדוגמא מדוע דאטא של EEG נהוג לייצג כNumpy וכיצד המימדים מתחלקים
+1. עצור. וודא שהבנתי והמשך לסוף התרגול</textarea></div><p class="bsfoot">יחידה 3.5 בספר פייתון · <a href="book.html#py3-5">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py3-6"><summary><span class="un">Python 3.6</span>שיטות דגימות בNumpy</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. הסבר לי ללא קוד מדוע numpy היא חבילה יעילה עבור ייצור מבני נתונים ווקטורים בפשטות ומהירות</div><div>1. עתה נראה פקודות ספציפיות: עבור כל אחת מהפקודות הבאות, הצג לי אותה הסבר לי מהן הפרמטרים שהיא מקבלת. בחן אותי בכל אחת בייצור וקטור מסוים (שיהיה שונה עבור כל פקודה) לדוגמא (רצף עולה מ0 עד 49). לאחר כל פקודה עצור, וודא שהצלחתי ורק אז תמשיך</div><div>1. פקודות: np.arange, np.random.uniform, np.random.binomial, np.random.normal, np.choice</div><div>1. לאחר מעבר על כל הפקודות הסבר לי שקיימות דרכים נוספות לייצור וקטורים כמו np.linspace ,np.arange, np.zeros, np.ones</div><div>1. סיים את התרגול</div></div><textarea hidden>1. הסבר לי ללא קוד מדוע numpy היא חבילה יעילה עבור ייצור מבני נתונים ווקטורים בפשטות ומהירות
+1. עתה נראה פקודות ספציפיות: עבור כל אחת מהפקודות הבאות, הצג לי אותה הסבר לי מהן הפרמטרים שהיא מקבלת. בחן אותי בכל אחת בייצור וקטור מסוים (שיהיה שונה עבור כל פקודה) לדוגמא (רצף עולה מ0 עד 49). לאחר כל פקודה עצור, וודא שהצלחתי ורק אז תמשיך
+1. פקודות: np.arange, np.random.uniform, np.random.binomial, np.random.normal, np.choice
+1. לאחר מעבר על כל הפקודות הסבר לי שקיימות דרכים נוספות לייצור וקטורים כמו np.linspace ,np.arange, np.zeros, np.ones
+1. סיים את התרגול</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://youtube.com/shorts/kvS0o0iPcSs?si=abZgt2befX7Y4TmG" target="_blank" rel="noopener">Uniform Distribution , random number in numpy with python #short #python #education #numpy #array</a></li></ul><p class="bsfoot">יחידה 3.6 בספר פייתון · <a href="book.html#py3-6">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">2</span><b>אובייקטים בסיסיים</b><a class="tobook" href="book.html?w=3#py2">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py2-4"><summary><span class="un">Python 2.4</span>משתנה קטגוריאלי</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>בשיעור זה אני רוצה להבין מהו משתנה קטגוריאלי, איך מזהים אותו בנתונים, מה ההבדל בינו לבין משתנים מספריים, ולמה הוא כל כך שימושי בניתוח נתונים </div><div>בתור התחלה,  שאל אותי מה מתוך השאלות שאני עלול למלא בסקר: הגיל שלך, המגדר שלך, השכלה, עיר מגורים, ורמת שביעות רצון מהשירות. איזה מהנתונים האלה הם &quot;קטגוריות&quot; ואיזה הם &quot;מספרים אמיתיים&quot;</div><div>1. הסבר לי מהו משתנה קטגוריאלי בהקשר של נתונים. הסבר שמדובר במשתנה שמייצג קבוצות, תוויות או קטגוריות מוגדרות מראש (כמו צבע עיניים, מקצוע, דירוג שביעות רצון או זן של חיה). </div><div>1. מה ההבדל בין משתנה קטגוריאלי רגיל (nominal) למשתנה קטגוריאלי מסודר (ordinal)? תן דוגמאות לכל סוג למשל צבע שיער לעומת דירוג מ-1 עד 5 כוכבים.</div><div>עצור, בדוק שהבנתי ורק כשארשה לך סיים את התרגול</div></div><textarea hidden>בשיעור זה אני רוצה להבין מהו משתנה קטגוריאלי, איך מזהים אותו בנתונים, מה ההבדל בינו לבין משתנים מספריים, ולמה הוא כל כך שימושי בניתוח נתונים 
+בתור התחלה,  שאל אותי מה מתוך השאלות שאני עלול למלא בסקר: הגיל שלך, המגדר שלך, השכלה, עיר מגורים, ורמת שביעות רצון מהשירות. איזה מהנתונים האלה הם &quot;קטגוריות&quot; ואיזה הם &quot;מספרים אמיתיים&quot;
+1. הסבר לי מהו משתנה קטגוריאלי בהקשר של נתונים. הסבר שמדובר במשתנה שמייצג קבוצות, תוויות או קטגוריות מוגדרות מראש (כמו צבע עיניים, מקצוע, דירוג שביעות רצון או זן של חיה). 
+1. מה ההבדל בין משתנה קטגוריאלי רגיל (nominal) למשתנה קטגוריאלי מסודר (ordinal)? תן דוגמאות לכל סוג למשל צבע שיער לעומת דירוג מ-1 עד 5 כוכבים.
+עצור, בדוק שהבנתי ורק כשארשה לך סיים את התרגול</textarea></div><p class="bsfoot">יחידה 2.4 בספר פייתון · <a href="book.html#py2-4">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">4</span><b>מבנה נתונים (Pandas) וסטטיסטיקה תיאורית</b><a class="tobook" href="book.html?w=3#py4">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py4-4"><summary><span class="un">Python 4.4</span>גישה לערכים מתוך DataFrame א’</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. הסבר בקצרה מדוע זה חשוב ולאו דווקא מאוד פשוט לדעת לגשת לכל הערכים בDataFrame שלנו, איך הבנה של האובייקט יכולה לייצר אצלנו גמישות לעבודה ומניפולציה של נתונים.</div><div>1. הסבר לי כיצד לאחר יצירת אובייקט DataFrame ניתן לגשת לעמודות ספציפיות.</div><div>הראה לי איך אפשר לעשות זאת בשתי שיטות. בחן אותי: מהו הערך שמתקבל מגישה לעמודה. המשך רק אם עניתי נכונה</div><div>1. הסבר לי בצורה פשוטה יותר כיצד אני יכול לגשת לשורות ספציפיות בDataFrame שלי.</div><div>הסבר לי מהם loc וiloc, כיצד ניתן להשתמש בעם עם ערך אחד ושניים. הסבר לי את ההבדל ביניהם. שאל אותי לבסוף שאלת הבנה. המשך רק אם עניתי נכונה, ציין כי ניתן לתת שמות גם לשורות</div><div>1. הראה לי ביחד כיצד אני יכול לגשת לערך בשורה מסויימת עבור עמודה מסויימת. לדוגמא העמודה “iq” בשורה ה5. </div><div>תרגול1: תן לי DataFrame מסויים ובקש ממני לשלוף עמודה שלמה, שורה שלמה וערך ספציפי בעמודה.</div><div>1. לפני סוף התרגול, הסבר לי כיצד ניתן לעשות subsample של DataFrame או Series</div><div>באמצעות בחירה מותנית.</div><div>1. סיים את התרגול</div></div><textarea hidden>1. הסבר בקצרה מדוע זה חשוב ולאו דווקא מאוד פשוט לדעת לגשת לכל הערכים בDataFrame שלנו, איך הבנה של האובייקט יכולה לייצר אצלנו גמישות לעבודה ומניפולציה של נתונים.
+1. הסבר לי כיצד לאחר יצירת אובייקט DataFrame ניתן לגשת לעמודות ספציפיות.
+הראה לי איך אפשר לעשות זאת בשתי שיטות. בחן אותי: מהו הערך שמתקבל מגישה לעמודה. המשך רק אם עניתי נכונה
+1. הסבר לי בצורה פשוטה יותר כיצד אני יכול לגשת לשורות ספציפיות בDataFrame שלי.
+הסבר לי מהם loc וiloc, כיצד ניתן להשתמש בעם עם ערך אחד ושניים. הסבר לי את ההבדל ביניהם. שאל אותי לבסוף שאלת הבנה. המשך רק אם עניתי נכונה, ציין כי ניתן לתת שמות גם לשורות
+1. הראה לי ביחד כיצד אני יכול לגשת לערך בשורה מסויימת עבור עמודה מסויימת. לדוגמא העמודה “iq” בשורה ה5. 
+תרגול1: תן לי DataFrame מסויים ובקש ממני לשלוף עמודה שלמה, שורה שלמה וערך ספציפי בעמודה.
+1. לפני סוף התרגול, הסבר לי כיצד ניתן לעשות subsample של DataFrame או Series
+באמצעות בחירה מותנית.
+1. סיים את התרגול</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://youtube.com/shorts/A8oxHXDZDNY?si=9wP44oDvwOl197vZ" target="_blank" rel="noopener">Pandas loc &amp; iloc #shorts</a></li></ul><p class="bsfoot">יחידה 4.4 בספר פייתון · <a href="book.html#py4-4">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py4-11"><summary><span class="un">Python 4.11</span>סטטיסטיקה תיאורית ב־Pandas א’</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>1. הסבר לי מה הכוונה ב&quot;סטטיסטיקה תיאורית&quot; על טבלת נתונים. תן לי דוגמה – למשל טבלה עם ציונים של סטודנטים – ותסביר מה הייתי רוצה לדעת עליה (כמו ממוצע, חציון, מינימום וכו&#x27;). עצור ובדוק שהבנתי.</div><div>1. יש לי טבלת נתונים מסויימת. איך אני יכול לקבל סיכום סטטיסטי אוטומטי של כל העמודו הנומריות</div><div>1. הסבר לי בקצרה על המתודה .describe() הראה לי כי אני יכול להשתמש בה על כל אובייקט נומרי של pandas</div><div>1. הראה לי כיצד אני יכול לחשב ממוצע, חציון, ס”ת ועוד נתונים תיאוריים עבור עמודות נומריות : בקש ממני לכתוב קוד אשר מחשב ממוצע לעמודה מסויימת בDF. ספק לי את כל הDF. עצור. שאל אותי שאלה נוספת, מהו הטיפוס של הערך שמתודות האלה מוציאות. וודא שהבנתי, אם עניתי נכונה המשך בתרגול.</div><div>ייצוג גרפי פשוט: </div><div>1. הראה לי כיצד אני יכול להשתמש בפונקציות בילט - אין של פנדס על מנת לייצר גרפים תיאוריים פשוטים לאובייקטים של פנדס. הדגם לי שימוש ב.hist(), scatter(), .plot() boxplot(). </div><div>בבקשה תמנע משימוש בmatplotlib! השתמש רק בפנדס בדוגמאות.</div><div>1. סיים את התרגול</div></div><textarea hidden>1. הסבר לי מה הכוונה ב&quot;סטטיסטיקה תיאורית&quot; על טבלת נתונים. תן לי דוגמה – למשל טבלה עם ציונים של סטודנטים – ותסביר מה הייתי רוצה לדעת עליה (כמו ממוצע, חציון, מינימום וכו&#x27;). עצור ובדוק שהבנתי.
+1. יש לי טבלת נתונים מסויימת. איך אני יכול לקבל סיכום סטטיסטי אוטומטי של כל העמודו הנומריות
+1. הסבר לי בקצרה על המתודה .describe() הראה לי כי אני יכול להשתמש בה על כל אובייקט נומרי של pandas
+1. הראה לי כיצד אני יכול לחשב ממוצע, חציון, ס”ת ועוד נתונים תיאוריים עבור עמודות נומריות : בקש ממני לכתוב קוד אשר מחשב ממוצע לעמודה מסויימת בDF. ספק לי את כל הDF. עצור. שאל אותי שאלה נוספת, מהו הטיפוס של הערך שמתודות האלה מוציאות. וודא שהבנתי, אם עניתי נכונה המשך בתרגול.
+ייצוג גרפי פשוט: 
+1. הראה לי כיצד אני יכול להשתמש בפונקציות בילט - אין של פנדס על מנת לייצר גרפים תיאוריים פשוטים לאובייקטים של פנדס. הדגם לי שימוש ב.hist(), scatter(), .plot() boxplot(). 
+בבקשה תמנע משימוש בmatplotlib! השתמש רק בפנדס בדוגמאות.
+1. סיים את התרגול</textarea></div><p class="bsfoot">יחידה 4.11 בספר פייתון · <a href="book.html#py4-11">לראות אותה בתוך הפרק ↗</a></p></div></details></div><div class="wch"><span class="num">5</span><b>שליטה גרפית</b><a class="tobook" href="book.html?w=3#py5">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py5-1"><summary><span class="un">Python 5.1</span>ייצוג גרפי פשוט עם Pandas</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>זוהי הפעם הראשונה בה אני מייצר גרפים בפייתון. בבקשה תן לי הסבר היסטורי קצר על השימושיות של גרפים בעיבוד ובייצוג מידע. הסבר לי מדוע השימוש בפייתון לייצור גרפים מאוד שכיח ויחסית קל. בשלב זה, על מנת לא להתבלבל ארצה לקבל דוגמאות ליצרית גרפים עם Pandas בלבד</div><div>1. הראה לי כיצד אני יכול להשתמש בפונקציות בילט - אין של פנדס על מנת לייצר גרפים תיאוריים פשוטים לאובייקטים של פנדס. הדגם לי שימוש ב.hist(), scatter(), .plot() boxplot(). </div><div>בבקשה תמנע משימוש בmatplotlib! השתמש רק בפנדס בדוגמאות.</div><div>1. סיים את התרגול</div></div><textarea hidden>זוהי הפעם הראשונה בה אני מייצר גרפים בפייתון. בבקשה תן לי הסבר היסטורי קצר על השימושיות של גרפים בעיבוד ובייצוג מידע. הסבר לי מדוע השימוש בפייתון לייצור גרפים מאוד שכיח ויחסית קל. בשלב זה, על מנת לא להתבלבל ארצה לקבל דוגמאות ליצרית גרפים עם Pandas בלבד
+1. הראה לי כיצד אני יכול להשתמש בפונקציות בילט - אין של פנדס על מנת לייצר גרפים תיאוריים פשוטים לאובייקטים של פנדס. הדגם לי שימוש ב.hist(), scatter(), .plot() boxplot(). 
+בבקשה תמנע משימוש בmatplotlib! השתמש רק בפנדס בדוגמאות.
+1. סיים את התרגול</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://youtube.com/shorts/VfxnhIH-8wE?si=iXRph7IiSvQChVvf" target="_blank" rel="noopener">Creating A Histogram In Python | Python Tutorial</a></li></ul><p class="bsfoot">יחידה 5.1 בספר פייתון · <a href="book.html#py5-1">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div>
+</section>
+<section class="sec"><div class="ch"><h2>סרטוני עזר</h2></div><div class="media"><a href="../files/notion/1d0dccfe-שימוש-בפקודת-seq.mp4" class="vid"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></span><span class="vt">שימוש בפקודת seq<span class="vtag b-r">R</span><span class="vs">סרטון הסבר</span></span></a><a href="../files/notion/1d0dccfe-דגימה-מהתפלגות-ברנולי.mp4" class="vid"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></span><span class="vt">דגימה מהתפלגות ברנולי<span class="vtag b-r">R</span><span class="vs">סרטון הסבר</span></span></a><a href="../files/notion/1d0dccfe-תיאור-משתנים-בטבלת-נתונים.mp4" class="vid"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></span><span class="vt">תיאור משתנים בטבלת נתונים<span class="vtag b-r">R</span><span class="vs">סרטון הסבר</span></span></a></div></section>
+<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div><div class="hw"><b class="ht">המטלה השבועית (שבוע 3)</b><div class="hwb"><p>עליכם השבוע ליצור סקריפט אשר מרחיב את יצירת מבנה הנתונים משיעור שעבר, ומאפשר יצירת סטטיסטיקה תיאורית בסיסית.</p><p class="hp">חלק א - יצירת הנתונים</p><ol><li>יצרו את המשתנים הבאים :<ul><li>משתנה נומרי עם מספר נבדק 1 עד 100 (סדר עולה).</li><li>את המשתנה גיל דיגמו מהתפלגות אחידה (uniform) בדידה, בין הערכים 15 ל 40.</li><li>את משתנה המגדר צרו בצורה ראנדומלית (סיכוי שווה).</li><li>משתנה IQ באמצעות דגימה נורמלית עם ממוצע 100 וס&quot;ת של 15</li><li>משתנה דיכאון (1 / 0) מהתפלגות ברנולי עם סיכוי של 15% לדיכאון.</li><li>משתנה חרדה מהתפלגות אחידה (uniform) בין הערכים 0 ל 100.</li></ul></li><li>יצירת מבנה נתונים (זהה לשבוע שעבר):<ul><li>הפיכת המשתנים האלו לאובייקט מבנה נתונים</li><li>שמירת מבנה הנתונים כקובץ csv</li></ul></li></ol><p class="hp">חלק ב - הצגת הנתונים</p><ol><li>יצירת סטטיסטיקה תיאורית:<ul><li>הדפיסו את הממוצע, ס&quot;ת, חציון, מינימום ומקסימום למשתנה הגיל בלבד</li><li>הדפיסו טבלת סטטיסטיקה תיאורית מסכמת עבור כל מבנה הנתונים</li></ul></li><li>הצגה גרפית:<ul><li>צרו תרשים היסטוגרמה לגיל</li><li>כתבו כותרת age בציר האיקס</li></ul></li></ol></div><p class="sm">שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.</p><p class="sm">כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.</p><p class="sm">פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה.</p><p class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>להגשה עד יום ראשון, 8.11.2026, בשעה 12:00</p></div><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון ב-R <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 3
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+
+#### CREATE DATA FRAME ####
+
+# 1. Generate vectors
+n_subjects = 100
+subject    = 1:n_subjects
+age        = sample(15:40, n_subjects, replace = TRUE)        # discrete uniform
+gender     = sample(c(&quot;male&quot;, &quot;female&quot;), n_subjects, replace = TRUE)
+iq         = rnorm(n_subjects, mean = 100, sd = 15)
+depression = rbinom(n_subjects, size = 1, prob = 0.15)         # Bernoulli
+anxiety    = runif(n_subjects, min = 0, max = 100)
+
+# 2. Combine vectors into a data frame and save it
+df = data.frame(
+  subject    = subject,
+  age        = age,
+  gender     = gender,
+  iq         = iq,
+  depression = depression,
+  anxiety    = anxiety
+)
+
+write.csv(df, &quot;data.csv&quot;, row.names = FALSE)
+
+
+#### DATA SUMMARY ####
+
+# 1. Descriptive statistics for age
+mean(df$age)
+sd(df$age)
+median(df$age)
+min(df$age)
+max(df$age)
+
+# 2. Summary table for the whole data frame
+summary(df)
+
+# 3. Histogram of age
+hist(df$age, main = &quot;Histogram of age&quot;, xlab = &quot;age&quot;)
+</code></pre></div></details><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון בפייתון <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 3
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+#### CREATE DATA FRAME ####
+
+# 1. Generate vectors
+n_subjects = 100
+subject    = np.arange(1, n_subjects + 1)
+age        = np.random.randint(15, 41, n_subjects)              # discrete uniform, 15 to 40
+gender     = np.random.choice([&quot;male&quot;, &quot;female&quot;], n_subjects)
+iq         = np.random.normal(100, 15, n_subjects)
+depression = np.random.binomial(1, 0.15, n_subjects)            # Bernoulli
+anxiety    = np.random.uniform(0, 100, n_subjects)
+
+# 2. Combine vectors into a data frame and save it
+df = pd.DataFrame({
+    &quot;subject&quot;: subject,
+    &quot;age&quot;: age,
+    &quot;gender&quot;: gender,
+    &quot;iq&quot;: iq,
+    &quot;depression&quot;: depression,
+    &quot;anxiety&quot;: anxiety
+})
+
+df.to_csv(&quot;data.csv&quot;, index=False)
+
+
+#### DATA SUMMARY ####
+
+# 1. Descriptive statistics for age
+print(&quot;mean:&quot;, df[&quot;age&quot;].mean())
+print(&quot;sd:&quot;, df[&quot;age&quot;].std())
+print(&quot;median:&quot;, df[&quot;age&quot;].median())
+print(&quot;min:&quot;, df[&quot;age&quot;].min())
+print(&quot;max:&quot;, df[&quot;age&quot;].max())
+
+# 2. Summary table for the whole data frame
+print(df.describe(include=&quot;all&quot;))
+
+# 3. Histogram of age
+plt.hist(df[&quot;age&quot;])
+plt.title(&quot;Histogram of age&quot;)
+plt.xlabel(&quot;age&quot;)
+plt.show()
+</code></pre></div></details></section>
+<nav class="nav"><a href="week-2.html">→ שבוע 2: מסד נתונים א: קובץ נתונים ראשון</a><a href="week-4.html">שבוע 4: מסד נתונים ג: אינדקסים, סינון וקטגוריות ←</a></nav>
+</main></div><footer class="foot"><img class="flogo" src="../assets/tau-logo.png" alt=""><b>יסודות התכנות במדע אמפירי</b><span>R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span><a class="ln" href="../index.html">לאתר הסטודנטים</a></footer>
+</div>
+<script>
+// copy an AI-tutor prompt
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('textarea').value, s=b.querySelector('span');
+    function ok(){ b.classList.add('ok'); s.textContent='הועתק'; setTimeout(function(){b.classList.remove('ok'); s.textContent='העתקה';},1600); }
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok,function(){});
+    else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy'); ok();}catch(e){} a.remove(); }
+  });
+});
+// week page: show both languages, or only R / only Python (remembered in this browser)
+(function(){
+  var box=document.querySelector('.langs'); if(!box) return;
+  function set(l){
+    box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+    document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
+    try{ localStorage.setItem('yesodot-lang', l); }catch(e){}
+  }
+  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
+  var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
+  if(saved==='r'||saved==='py') set(saved);
+})();
+// TA sign-in: the password is the name of the staff site's folder.
+document.querySelectorAll('.tlogf').forEach(function(f){
+  f.addEventListener('submit',function(e){ e.preventDefault();
+    var v=f.querySelector('input').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,''), er=f.querySelector('.terr');
+    if(!v) return;
+    if(location.protocol==='file:'){ location.href=v+'/index.html'; return; }
+    fetch(v+'/index.html',{method:'HEAD',cache:'no-store'}).then(function(r){ if(r.ok) location.href=v+'/'; else er.hidden=false; }).catch(function(){er.hidden=false});
+  });
+});
+</script>
+</body>
+</html>

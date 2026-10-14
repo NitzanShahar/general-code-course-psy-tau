@@ -1,0 +1,92 @@
+{
+ "_הסבר": "תוכן שבוע 10. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
+ "intro": "השבוע נכיר מודל סיווג חדש ואינטואיטיבי מאוד: KNN (K השכנים הקרובים). כדי לסווג נבדק חדש, המודל מסתכל על הנבדקים הדומים לו ביותר ושואל — לאיזו קבוצה רובם שייכים?\n\nלמודל יש פרמטר אחד, K, שקובע בכמה שכנים להתחשב. נלמד לבחור אותו בצורה מושכלת: בלולאה שמאמנת את המודל עם כל ערך של K, בודקת את הדיוק על סט בדיקה, ומציגה את התוצאות בגרף. זה בדיוק התהליך שנקרא כיוונון היפר-פרמטרים.\n\nנעבוד עם נתונים על שלושה זנים של פינגווינים — ונראה כמה טוב אפשר לנחש זן לפי מידות המקור והכנף.",
+ "deck": {
+  "title": "מצגת שבוע 10",
+  "note": "7 שקפים · נפתחת בדפדפן",
+  "url": "decks/W10.html"
+ },
+ "videos": [],
+ "units": [
+  {
+   "book": "r",
+   "ch": 8,
+   "secs": [
+    "חלוקה ל־Train / Test והערכת ניבוי (Out-of-sample)"
+   ]
+  },
+  {
+   "book": "r",
+   "ch": 11,
+   "secs": [
+    "מבוא למודל KNN",
+    "מודל KNN ב-R",
+    "בחירת K בלולאה"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 6,
+   "secs": [
+    "מבוא למודל KNN",
+    "מודל KNN ב - sklearn"
+   ]
+  },
+  {
+   "book": "py",
+   "ch": 4,
+   "secs": [
+    "מיון נתונים"
+   ]
+  }
+ ],
+ "hw": {
+  "title": "המטלה השבועית (שבוע 10)",
+  "context": [
+   "קובץ הנתונים מכיל מדידות של 343 פינגווינים משלושה זנים. המשתנים:",
+   "1. species — זן הפינגווין (משתנה המטרה)",
+   "1. bill_length_mm — אורך המקור",
+   "1. bill_depth_mm — עומק המקור",
+   "1. flipper_length_mm — אורך הכנף",
+   "1. body_mass_g — משקל הגוף"
+  ],
+  "lines": [
+   "חלק א - היכרות עם הנתונים",
+   "1. טענו את הקובץ penguins.csv, הסירו שורות עם ערכים חסרים, והציגו את מימדי הנתונים, סטטיסטיקה תיאורית כללית, ואת מספר הפינגווינים מכל זן.",
+   "1. צרו תרשים פיזור של שני משתנים רציפים, כשהצבע מסמן את הזן.",
+   "חלק ב - אימון מודל KNN",
+   "בחלק זה המטרה היא לנבא את זן הפינגווין לפי שני משתנים בלבד: עומק המקור (bill_depth_mm) ואורך הכנף (flipper_length_mm). (עם כל ארבעת המשתנים המודל מגיע כמעט ל-100% דיוק בכל K, וקשה לראות את ההשפעה של K.) למודל יש פרמטר K, שקובע בכמה שכנים להתחשב: K קטן מאוד רגיש מאוד לנתונים (ונוטה ל-overfit).",
+   "1. קבעו זרע אקראי (seed), וחלקו את הנתונים לסט אימון (80%) וסט בדיקה (20%). הפרידו את משתנה המטרה משני המנבאים.",
+   "1. תקננו את המנבאים (ממוצע 0 וסטיית תקן 1) לפי סט האימון. כתבו בהערה: למה KNN רגיש לסקאלה של המשתנים?",
+   "1. צרו לולאה שעוברת על ערכי K מ-1 עד 20. בכל סבב של הלולאה:",
+   "  - אמנו מודל KNN על סט האימון עם ה-K הנוכחי",
+   "  - חשבו את הדיוק (accuracy) על סט הבדיקה",
+   "  - שמרו את הדיוק בווקטור (או רשימה), במקום שמתאים ל-K הזה",
+   "1. הציגו בגרף את התוצאות: בציר X ערך K, ובציר Y הדיוק. הוסיפו כותרת ותוויות צירים, וסמנו בגרף את ה-K הטוב ביותר.",
+   "1. הדפיסו את ה-K הטוב ביותר ואת הדיוק שלו. אם כמה ערכי K מגיעים לאותו דיוק, בחרו את הקטן מביניהם.",
+   "בונוס (רשות):",
+   "1. חזרו על הלולאה בלי לתקנן את המשתנים. מה קרה לדיוק, ולמה?"
+  ],
+  "files": [
+   "258dccfe-d059-8031-9d87-fc5151bfbebd"
+  ],
+  "submit": [
+   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
+   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
+   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+  ],
+  "due": "יום ראשון, 27.12.2026, בשעה 12:00"
+ },
+ "solution": {
+  "r": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 10\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nlibrary(ggplot2)\nlibrary(class)\n\n\n#### EXPLORE DATA ####\n\n# 1. Load the data, remove missing values, describe\ndf = read.csv(\"penguins.csv\")\ndf = na.omit(df)\n\ndim(df)\nsummary(df)\ntable(df$species)\n\n# 2. Scatter plot of two continuous variables, colored by species\nggplot(df, aes(x = bill_depth_mm, y = flipper_length_mm, color = species)) +\n  geom_point() +\n  labs(title = \"Bill depth and flipper length by species\",\n       x = \"Bill depth (mm)\", y = \"Flipper length (mm)\")\n\n\n#### KNN MODEL ####\n\n# 1. Seed, 80/20 split, the two predictors apart from the target\nset.seed(42)\nn           = nrow(df)\ntrain_index = sample(1:n, size = round(0.8 * n))\n\npredictors = c(\"bill_depth_mm\", \"flipper_length_mm\")\nx_train = df[train_index, predictors]\nx_test  = df[-train_index, predictors]\ny_train = df$species[train_index]\ny_test  = df$species[-train_index]\n\n# 2. Standardize by the mean and sd of the training set\n# Why: KNN classifies by the distance between penguins. Without standardization,\n# the variable with the larger spread dominates the distance: flipper length\n# varies by tens of mm, bill depth only by a few mm, so bill depth hardly counts.\ntrain_mean = colMeans(x_train)\ntrain_sd   = apply(x_train, 2, sd)\n\nx_train_s = scale(x_train, center = train_mean, scale = train_sd)\nx_test_s  = scale(x_test,  center = train_mean, scale = train_sd)\n\n# 3. Loop over K = 1..20: train, predict the test set, save the accuracy\nk_values = 1:20\naccuracy = rep(NA, length(k_values))\n\nfor (k in k_values) {\n  pred        = knn(train = x_train_s, test = x_test_s, cl = y_train, k = k)\n  accuracy[k] = mean(pred == y_test)\n}\n\n# 4. Plot accuracy by K, with the best K marked in red\nbest_k  = which.max(accuracy)          # if several K tie, which.max takes the smallest\nresults = data.frame(k = k_values, accuracy = accuracy)\n\nggplot(results, aes(x = k, y = accuracy)) +\n  geom_line() +\n  geom_point() +\n  geom_point(data = results[best_k, ], color = \"red\", size = 4) +\n  labs(title = \"KNN test accuracy by K\",\n       x = \"K (number of neighbors)\", y = \"Accuracy\")\n\n# 5. Print the best K and its accuracy\ncat(\"Best K:\", best_k, \"accuracy:\", accuracy[best_k], \"\\n\")\n\n\n#### BONUS ####\n\n# 1. The same loop without standardization\naccuracy_raw = rep(NA, length(k_values))\n\nfor (k in k_values) {\n  pred            = knn(train = x_train, test = x_test, cl = y_train, k = k)\n  accuracy_raw[k] = mean(pred == y_test)\n}\n\nprint(round(accuracy_raw, 3))\n# The best accuracy is lower: without standardization the distance is almost only\n# flipper length, so the model nearly ignores bill depth, which helps to separate\n# the species.\n"
+   }
+  ],
+  "py": [
+   {
+    "code": "# Foundations of programming for empirical science\n# Week 10\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\n\n\n#### EXPLORE DATA ####\n\n# 1. Load the data, remove missing values, describe\ndf = pd.read_csv(\"penguins.csv\")\ndf = df.dropna()\n\nprint(df.shape)\nprint(df.describe())\nprint(df[\"species\"].value_counts())\n\n# 2. Scatter plot of two continuous variables, colored by species\nsns.scatterplot(data=df, x=\"bill_depth_mm\", y=\"flipper_length_mm\", hue=\"species\")\nplt.title(\"Bill depth and flipper length by species\")\nplt.xlabel(\"Bill depth (mm)\")\nplt.ylabel(\"Flipper length (mm)\")\nplt.show()\n\n\n#### KNN MODEL ####\n\n# 1. Seed (random_state), 80/20 split, the two predictors apart from the target\ndf_train, df_test = train_test_split(df, test_size=0.2, random_state=42)\n\npredictors = [\"bill_depth_mm\", \"flipper_length_mm\"]\nx_train = df_train[predictors]\nx_test  = df_test[predictors]\ny_train = df_train[\"species\"]\ny_test  = df_test[\"species\"]\n\n# 2. Standardize by the mean and sd of the training set\n# Why: KNN classifies by the distance between penguins. Without standardization,\n# the variable with the larger spread dominates the distance: flipper length\n# varies by tens of mm, bill depth only by a few mm, so bill depth hardly counts.\ntrain_mean = x_train.mean()\ntrain_sd   = x_train.std()\n\nx_train_s = (x_train - train_mean) / train_sd\nx_test_s  = (x_test - train_mean) / train_sd\n\n# 3. Loop over K = 1..20: train, predict the test set, save the accuracy\nk_values = list(range(1, 21))\naccuracy = []\n\nfor k in k_values:\n    model = KNeighborsClassifier(n_neighbors=k)\n    model.fit(x_train_s, y_train)\n    accuracy.append(model.score(x_test_s, y_test))\n\n# 4. Plot accuracy by K, with the best K marked in red\nbest_index = np.argmax(accuracy)        # if several K tie, argmax takes the smallest\nbest_k = k_values[best_index]\n\nplt.plot(k_values, accuracy, marker=\"o\")\nplt.scatter(best_k, accuracy[best_index], color=\"red\", s=120, zorder=3)\nplt.title(\"KNN test accuracy by K\")\nplt.xlabel(\"K (number of neighbors)\")\nplt.ylabel(\"Accuracy\")\nplt.xticks(k_values)\nplt.show()\n\n# 5. Print the best K and its accuracy\nprint(\"Best K:\", best_k, \"accuracy:\", accuracy[best_index])\n\n\n#### BONUS ####\n\n# 1. The same loop without standardization\naccuracy_raw = []\n\nfor k in k_values:\n    model = KNeighborsClassifier(n_neighbors=k)\n    model.fit(x_train, y_train)\n    accuracy_raw.append(model.score(x_test, y_test))\n\nprint(np.round(accuracy_raw, 3))\n# The best accuracy is lower: without standardization the distance is almost only\n# flipper length, so the model nearly ignores bill depth, which helps to separate\n# the species.\n"
+   }
+  ]
+ }
+}

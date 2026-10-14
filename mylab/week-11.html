@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>שבוע 11 · יסודות התכנות במדע אמפירי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../assets/tau-logo.png">
+</head>
+<body>
+<div class="wrap">
+<header class="hdr">
+<img class="logo" src="../assets/tau-logo.png" alt="אוניברסיטת תל אביב">
+<span class="sep"></span>
+<a class="home" href="index.html"><span class="t1">יסודות התכנות במדע אמפירי</span><span class="t2">R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span></a>
+<span class="staffbadge">גרסת מתרגלים</span><nav class="gen"><a href="index.html" class="on">השבועות</a><a href="book.html" class="">ספר היחידות</a><a href="syllabus.pdf" class="">סילבוס</a></nav>
+</header><details class="mweeks card"><summary><span class="c" style="background:var(--ink);color:#fff;border-color:var(--ink)">11</span><span><b>שבוע 11</b> · בעיות קלסיפיקציה ב: השוואת מסווגים</span><span class="more">כל השבועות ▾</span></summary><div class="list"><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk sel"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></div></details><div class="layout"><aside class="rail card"><h3>שבועות הקורס</h3><a href="week-1.html" class="wk"><span class="c">1</span><span>המחשב, הטרמינל ולוגיקת תכנות<small class="wd">18.10</small></span></a><a href="week-2.html" class="wk"><span class="c">2</span><span>מסד נתונים א: קובץ נתונים ראשון<small class="wd">25.10</small></span></a><a href="week-3.html" class="wk"><span class="c">3</span><span>מסד נתונים ב: דגימה וסטטיסטיקה תיאורית<small class="wd">1.11</small></span></a><a href="week-4.html" class="wk"><span class="c">4</span><span>מסד נתונים ג: אינדקסים, סינון וקטגוריות<small class="wd">8.11</small></span></a><a href="week-5.html" class="wk"><span class="c">5</span><span>מסד נתונים ד: ערכים חסרים וקשר בין משתנים<small class="wd">15.11</small></span></a><a href="week-6.html" class="wk"><span class="c">6</span><span>מטריצות, וקטורים ומבנים כלליים<small class="wd">22.11</small></span></a><a href="week-7.html" class="wk"><span class="c">7</span><span>בקרת זרימה ופונקציות<small class="wd">29.11</small></span></a><a href="week-8.html" class="wk"><span class="c">8</span><span>הצגה גרפית מתקדמת<small class="wd">6.12</small></span></a><a href="week-9.html" class="wk"><span class="c">9</span><span>רגרסיה לוגיסטית ועקומת ROC<small class="wd">13.12</small></span></a><a href="week-10.html" class="wk"><span class="c">10</span><span>בעיות קלסיפיקציה א: KNN וכיוונון המודל<small class="wd">20.12</small></span></a><a href="week-11.html" class="wk sel"><span class="c">11</span><span>בעיות קלסיפיקציה ב: השוואת מסווגים<small class="wd">27.12</small></span></a><a href="week-12.html" class="wk"><span class="c">12</span><span>ניתוח נתונים פיזיולוגיים<small class="wd">3.1</small></span></a><a href="week-13.html" class="wk"><span class="c">13</span><span>סיכום, vibe coding והכנה לבחינה<small class="wd">10.1</small></span></a><div class="wk fut exam"><span class="c">✱</span><span>בחינה מסכמת</span></div></aside><main class="card">
+<section class="hero"><p class="eyebrow">שבוע 11 · יום ראשון 27.12.2026</p><h1>בעיות קלסיפיקציה ב: השוואת מסווגים</h1><p class="intro">השבוע נשאל את השאלה שכל חוקר שואל בסוף: איזה מודל הכי טוב? נחזור לנתוני מחלת הלב משבוע 9, ונשווה שלושה מסווגים: רגרסיה לוגיסטית, KNN, ו-Random Forest — מודל שמבוסס על „חוכמת ההמונים״ של הרבה עצי החלטה.</p><p class="intro">נלמד להשוות בצורה הוגנת: אותו סט אימון, אותו סט בדיקה, ואותם מדדים — דיוק, רגישות, סגוליות ו-AUC. ונשאל גם שאלה שאינה סטטיסטית: מה יקר יותר, לפספס חולה או להתריע לשווא?</p><p class="intro">זה השבוע שבו כל מה שלמדנו מתחבר: טבלאות, לולאות, פונקציות, גרפים ומודלים.</p></section>
+<section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media"><a href="../decks/W11.html" class="deck"><small>מצגת</small><b>מצגת שבוע 11</b><small>9 שקפים · נפתחת בדפדפן</small><code>## WEEK 11 · R + Python</code></a></div></section>
+<section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div><div class="langs" role="group" aria-label="איזו שפה להציג"><span>להציג:</span><button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button><button type="button" data-lang="py">Python</button></div><div class="wbook b-r" data-book="r"><p class="wbh"><span class="btag">R</span>ספר R</p><div class="wch"><span class="num">11</span><b>מודלים לסיווג (קלסיפיקציה)</b><a class="tobook" href="book.html?w=11#r11">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-r" id="r11-4"><summary><span class="un">R 11.4</span>מבוא למודל Random Forest</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה להבין את הרעיון של מודל Random Forest, בלי לכתוב קוד.</div><div>1. בתור התחלה, שאל אותי איך אני מקבל/ת החלטה חשובה (למשל בחירת עבודה), ואילו שאלות של כן/לא אני שואל/ת את עצמי בדרך. עצור וחכה לתשובה שלי.</div><div>1. הסבר מה זה עץ החלטה (Decision Tree), בדוגמה מפסיכולוגיה: האם נבדק מדוכא לפי שאלות כמו &quot;האם הוא ישן פחות מ-6 שעות?&quot; ו&quot;האם זמן התגובה שלו איטי?&quot;. הסבר מה זה פיצול ומה זה עלה.</div><div>1. שאל אותי מה יכולה להיות הבעיה בעץ החלטה יחיד שגדל עד הסוף. אחרי שאענה, הסבר את המושג התאמת יתר (overfitting): העץ &quot;משנן&quot; מקרים פרטיים מנתוני האימון.</div><div>1. הסבר איך Random Forest מתמודד עם זה: הרבה עצים, כל עץ מאומן על דגימה אקראית של הנבדקים (bootstrap) ובכל פיצול רואה רק חלק אקראי מהמשתנים, וההחלטה הסופית היא הצבעת רוב של העצים (&quot;חוכמת ההמונים&quot;).</div><div>1. הסבר בקצרה שני דברים ש-Random Forest נותן כמעט בחינם: הערכת שגיאה על הנבדקים שלא נכנסו לכל עץ (OOB), ומדד חשיבות לכל משתנה (importance). שאל אותי שאלת הבנה על אחד מהם ובדוק שעניתי נכונה.</div><div>1. הסבר ש-Random Forest עובד גם לסיווג וגם לניבוי ערך רציף, ובמה הוא שונה מ-KNN. אחר כך כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה להבין את הרעיון של מודל Random Forest, בלי לכתוב קוד.
+1. בתור התחלה, שאל אותי איך אני מקבל/ת החלטה חשובה (למשל בחירת עבודה), ואילו שאלות של כן/לא אני שואל/ת את עצמי בדרך. עצור וחכה לתשובה שלי.
+1. הסבר מה זה עץ החלטה (Decision Tree), בדוגמה מפסיכולוגיה: האם נבדק מדוכא לפי שאלות כמו &quot;האם הוא ישן פחות מ-6 שעות?&quot; ו&quot;האם זמן התגובה שלו איטי?&quot;. הסבר מה זה פיצול ומה זה עלה.
+1. שאל אותי מה יכולה להיות הבעיה בעץ החלטה יחיד שגדל עד הסוף. אחרי שאענה, הסבר את המושג התאמת יתר (overfitting): העץ &quot;משנן&quot; מקרים פרטיים מנתוני האימון.
+1. הסבר איך Random Forest מתמודד עם זה: הרבה עצים, כל עץ מאומן על דגימה אקראית של הנבדקים (bootstrap) ובכל פיצול רואה רק חלק אקראי מהמשתנים, וההחלטה הסופית היא הצבעת רוב של העצים (&quot;חוכמת ההמונים&quot;).
+1. הסבר בקצרה שני דברים ש-Random Forest נותן כמעט בחינם: הערכת שגיאה על הנבדקים שלא נכנסו לכל עץ (OOB), ומדד חשיבות לכל משתנה (importance). שאל אותי שאלת הבנה על אחד מהם ובדוק שעניתי נכונה.
+1. הסבר ש-Random Forest עובד גם לסיווג וגם לניבוי ערך רציף, ובמה הוא שונה מ-KNN. אחר כך כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://www.youtube.com/watch?v=7VeUPuFGJHk" target="_blank" rel="noopener">StatQuest: Decision Trees</a></li><li><a href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ" target="_blank" rel="noopener">StatQuest: Random Forests Part 1 - Building, Using and Evaluating</a></li></ul><p class="bsfoot">יחידה 11.4 בספר R · <a href="book.html#r11-4">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r11-5"><summary><span class="un">R 11.5</span>Random Forest ב-R</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד להריץ מודל Random Forest עם חבילת randomForest.</div><div>1. הדפס את הקוד הבא (נתונים מדומים וחלוקה לאימון ומבחן) ובקש ממני להריץ אותו. ציין שכאן הגיל (age) לא קשור לדיכאון:</div><div class="cl">set.seed(7)</div><div class="cl">n = 300</div><div class="cl">sleep_hours = rnorm(n, mean = 7, sd = 1)</div><div class="cl">rt_ms = rnorm(n, mean = 600, sd = 100)</div><div class="cl">age = runif(n, 20, 40)</div><div class="cl">depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)</div><div class="cl">df = data.frame(sleep_hours, rt_ms, age, depressed)</div><div class="cl">train_rows = sample(1:n, 200)</div><div class="cl">train = df[train_rows, ]</div><div class="cl">test = df[-train_rows, ]</div><div>1. הסבר למה הופכים את משתנה המטרה ל-factor: בלי זה randomForest חושב שזו רגרסיה (ניבוי ערך רציף) ונכשל. הדפס:</div><div class="cl">library(randomForest)</div><div class="cl">train$depressed = as.factor(train$depressed)</div><div class="cl">test$depressed = as.factor(test$depressed)</div><div>1. הדפס את הקוד הבא והסבר את הנוסחה, את ntree, ואת ה-OOB error וה-confusion matrix בפלט:</div><div class="cl">rf = randomForest(depressed ~ sleep_hours + rt_ms + age, data = train, ntree = 500, importance = TRUE)</div><div class="cl">print(rf)</div><div class="cl">pred_rf = predict(rf, newdata = test)</div><div class="cl">mean(pred_rf == test$depressed)</div><div>1. הראה את חשיבות המשתנים והסבר מה זה MeanDecreaseAccuracy:</div><div class="cl">importance(rf)</div><div class="cl">varImpPlot(rf)</div><div>שאל אותי איזה משתנה הכי חשוב ואיזה כמעט לא חשוב, ולמה זה הגיוני. בדוק שעניתי נכונה ורק אז המשך.</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לאמן מודל עם ntree = 10 ולהשוות את הדיוק שלו בסט המבחן למודל עם 500 עצים. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד להריץ מודל Random Forest עם חבילת randomForest.
+1. הדפס את הקוד הבא (נתונים מדומים וחלוקה לאימון ומבחן) ובקש ממני להריץ אותו. ציין שכאן הגיל (age) לא קשור לדיכאון:
+set.seed(7)
+n = 300
+sleep_hours = rnorm(n, mean = 7, sd = 1)
+rt_ms = rnorm(n, mean = 600, sd = 100)
+age = runif(n, 20, 40)
+depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)
+df = data.frame(sleep_hours, rt_ms, age, depressed)
+train_rows = sample(1:n, 200)
+train = df[train_rows, ]
+test = df[-train_rows, ]
+1. הסבר למה הופכים את משתנה המטרה ל-factor: בלי זה randomForest חושב שזו רגרסיה (ניבוי ערך רציף) ונכשל. הדפס:
+library(randomForest)
+train$depressed = as.factor(train$depressed)
+test$depressed = as.factor(test$depressed)
+1. הדפס את הקוד הבא והסבר את הנוסחה, את ntree, ואת ה-OOB error וה-confusion matrix בפלט:
+rf = randomForest(depressed ~ sleep_hours + rt_ms + age, data = train, ntree = 500, importance = TRUE)
+print(rf)
+pred_rf = predict(rf, newdata = test)
+mean(pred_rf == test$depressed)
+1. הראה את חשיבות המשתנים והסבר מה זה MeanDecreaseAccuracy:
+importance(rf)
+varImpPlot(rf)
+שאל אותי איזה משתנה הכי חשוב ואיזה כמעט לא חשוב, ולמה זה הגיוני. בדוק שעניתי נכונה ורק אז המשך.
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לאמן מודל עם ntree = 10 ולהשוות את הדיוק שלו בסט המבחן למודל עם 500 עצים. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://cran.r-project.org/web/packages/randomForest/index.html" target="_blank" rel="noopener" class="ltr">https://cran.r-project.org/web/packages/randomForest/index.html</a></li></ul><p class="bsfoot">יחידה 11.5 בספר R · <a href="book.html#r11-5">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-r" id="r11-6"><summary><span class="un">R 11.6</span>מדדי ביצועים לסיווג</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד מדדי ביצועים לסיווג: confusion matrix, דיוק, רגישות, סגוליות ו-AUC.</div><div>1. הדפס את הקוד הבא (נתונים מדומים ומודל Random Forest) ובקש ממני להריץ אותו:</div><div class="cl">set.seed(7)</div><div class="cl">n = 300</div><div class="cl">sleep_hours = rnorm(n, mean = 7, sd = 1)</div><div class="cl">rt_ms = rnorm(n, mean = 600, sd = 100)</div><div class="cl">age = runif(n, 20, 40)</div><div class="cl">depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)</div><div class="cl">df = data.frame(sleep_hours, rt_ms, age, depressed)</div><div class="cl">train_rows = sample(1:n, 200)</div><div class="cl">train = df[train_rows, ]</div><div class="cl">test = df[-train_rows, ]</div><div class="cl">library(randomForest)</div><div class="cl">library(pROC)</div><div class="cl">train$depressed = as.factor(train$depressed)</div><div class="cl">test$depressed = as.factor(test$depressed)</div><div class="cl">rf = randomForest(depressed ~ ., data = train)</div><div>1. הסבר מה זו confusion matrix ומה זה TP, TN, FP, FN כשהקבוצה ה&quot;חיובית&quot; היא yes (מדוכא). הדפס:</div><div class="cl">cm = table(predicted = predict(rf, newdata = test), actual = test$depressed)</div><div class="cl">cm</div><div>1. הראה איך מחשבים דיוק, רגישות וסגוליות, והסבר מה כל מדד אומר על אבחון דיכאון:</div><div class="cl">accuracy = sum(diag(cm)) / sum(cm)</div><div class="cl">sensitivity = cm[&quot;yes&quot;, &quot;yes&quot;] / sum(cm[, &quot;yes&quot;])</div><div class="cl">specificity = cm[&quot;no&quot;, &quot;no&quot;] / sum(cm[, &quot;no&quot;])</div><div>שאל אותי: אם 70% מהנבדקים לא מדוכאים, מה הדיוק והרגישות של מודל שתמיד עונה no? בדוק שעניתי נכונה.</div><div>1. הסבר שעקומת ROC בודקת את כל הספים על ההסתברות שהמודל נותן. הדפס:</div><div class="cl">prob_rf = predict(rf, newdata = test, type = &quot;prob&quot;)[, &quot;yes&quot;]</div><div class="cl">roc_rf = roc(test$depressed, prob_rf)</div><div class="cl">auc(roc_rf)</div><div class="cl">plot(roc_rf)</div><div>1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לאמן רגרסיה לוגיסטית עם glm על סט האימון, לחשב את ה-AUC שלה בסט המבחן ולהשוות ל-Random Forest. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.</div><div>1. כתוב ששלב הלימוד הסתיים.</div><div>עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</div></div><textarea hidden>אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד מדדי ביצועים לסיווג: confusion matrix, דיוק, רגישות, סגוליות ו-AUC.
+1. הדפס את הקוד הבא (נתונים מדומים ומודל Random Forest) ובקש ממני להריץ אותו:
+set.seed(7)
+n = 300
+sleep_hours = rnorm(n, mean = 7, sd = 1)
+rt_ms = rnorm(n, mean = 600, sd = 100)
+age = runif(n, 20, 40)
+depressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) &gt; 1.5, &quot;yes&quot;, &quot;no&quot;)
+df = data.frame(sleep_hours, rt_ms, age, depressed)
+train_rows = sample(1:n, 200)
+train = df[train_rows, ]
+test = df[-train_rows, ]
+library(randomForest)
+library(pROC)
+train$depressed = as.factor(train$depressed)
+test$depressed = as.factor(test$depressed)
+rf = randomForest(depressed ~ ., data = train)
+1. הסבר מה זו confusion matrix ומה זה TP, TN, FP, FN כשהקבוצה ה&quot;חיובית&quot; היא yes (מדוכא). הדפס:
+cm = table(predicted = predict(rf, newdata = test), actual = test$depressed)
+cm
+1. הראה איך מחשבים דיוק, רגישות וסגוליות, והסבר מה כל מדד אומר על אבחון דיכאון:
+accuracy = sum(diag(cm)) / sum(cm)
+sensitivity = cm[&quot;yes&quot;, &quot;yes&quot;] / sum(cm[, &quot;yes&quot;])
+specificity = cm[&quot;no&quot;, &quot;no&quot;] / sum(cm[, &quot;no&quot;])
+שאל אותי: אם 70% מהנבדקים לא מדוכאים, מה הדיוק והרגישות של מודל שתמיד עונה no? בדוק שעניתי נכונה.
+1. הסבר שעקומת ROC בודקת את כל הספים על ההסתברות שהמודל נותן. הדפס:
+prob_rf = predict(rf, newdata = test, type = &quot;prob&quot;)[, &quot;yes&quot;]
+roc_rf = roc(test$depressed, prob_rf)
+auc(roc_rf)
+plot(roc_rf)
+1. כתוב את הכותרת &quot;התרגול שלך&quot;. בקש ממני לאמן רגרסיה לוגיסטית עם glm על סט האימון, לחשב את ה-AUC שלה בסט המבחן ולהשוות ל-Random Forest. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.
+1. כתוב ששלב הלימוד הסתיים.
+עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://www.youtube.com/watch?v=vP06aMoz4v8" target="_blank" rel="noopener">Machine Learning Fundamentals: Sensitivity and Specificity</a></li><li><a href="https://www.youtube.com/watch?v=4jRBRDbJemM" target="_blank" rel="noopener">ROC and AUC, Clearly Explained!</a></li></ul><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>להעמקה</p><ul class="links"><li><a href="https://xrobin.github.io/pROC/" target="_blank" rel="noopener" class="ltr">https://xrobin.github.io/pROC/</a></li></ul><p class="bsfoot">יחידה 11.6 בספר R · <a href="book.html#r11-6">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div><div class="wbook b-py" data-book="py"><p class="wbh"><span class="btag">Python</span>ספר פייתון</p><div class="wch"><span class="num">6</span><b>מודלים וניתוחים סטטיסטיים</b><a class="tobook" href="book.html?w=11#py6">הפרק המלא בספר ↗</a></div><div class="wunits"><details class="bs b-py" id="py6-8"><summary><span class="un">Python 6.8</span>מבוא למודל RandomForest</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>Random Forest הוא אחד מהמודלים הפופולאריים והיעילים ביותר ב-Machine Learning, והוא מבוסס על עיקרון חוכמת ההמונים</div><div>בשיעור זה נבין את הרעיון הבסיסי מאחורי Random Forest בלי להיכנס לפרטים טכניים </div><div>בתור התחלה, תאר לי במילים שלך איך אתה מקבל החלטות חשובות בחיים (למשל, איך לבחור עבודה חדשה)? </div><div>1. מה זה &quot;עץ החלטה&quot; (Decision Tree)? תאר לי בדוגמה פשוטה איך עץ החלטה יכול לעזור להחליט אם לצאת החוצה או להישאר בבית.</div><div>1. לאחר מכן, בקש מהסטודנט לצפות בסרטון הקצרה שמצורף (סה”כ 60 שניות)</div></div><textarea hidden>Random Forest הוא אחד מהמודלים הפופולאריים והיעילים ביותר ב-Machine Learning, והוא מבוסס על עיקרון חוכמת ההמונים
+בשיעור זה נבין את הרעיון הבסיסי מאחורי Random Forest בלי להיכנס לפרטים טכניים 
+בתור התחלה, תאר לי במילים שלך איך אתה מקבל החלטות חשובות בחיים (למשל, איך לבחור עבודה חדשה)? 
+1. מה זה &quot;עץ החלטה&quot; (Decision Tree)? תאר לי בדוגמה פשוטה איך עץ החלטה יכול לעזור להחליט אם לצאת החוצה או להישאר בבית.
+1. לאחר מכן, בקש מהסטודנט לצפות בסרטון הקצרה שמצורף (סה”כ 60 שניות)</textarea></div><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>סרטונים</p><ul class="links"><li><a href="https://youtube.com/shorts/wA3YlG2I5WM?si=v3neLzIKPyLQpBFN" target="_blank" rel="noopener">Decision Tree in 60 seconds</a></li></ul><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>לאחר שצפיתי בסרטון, שאל אותי מה לדעתי יכולה להיות הבעיה בעץ החלטה יחיד? לאחר המענה שלי, עזור לי והסבר לי כי העץ יכול להתייחס למקרה פרטי</div><div>1. הסבר לי כי Random Forest מתמודד עם בעיה זו, הסבר את הרעיון של &quot;יער של עצים&quot; שמצביעים יחד על ההחלטה הסופית.</div><div>עתה עצור, תתן לי דוגמה מעשית של בעיה שבה Random Forest יכול לעזור (הסבר לי כי זה המודל עובד עבור סיווג או עבור חיזוי רציף). </div><div>1. מה היתרונות של Random Forest? למה הוא נחשב &quot;קל לשימוש&quot; למתחילים.</div><div>הסבר לי שהוא יכול להתמודד עם הרבה סוגי בעיות ויחסית פשוט למימוש</div></div><textarea hidden>לאחר שצפיתי בסרטון, שאל אותי מה לדעתי יכולה להיות הבעיה בעץ החלטה יחיד? לאחר המענה שלי, עזור לי והסבר לי כי העץ יכול להתייחס למקרה פרטי
+1. הסבר לי כי Random Forest מתמודד עם בעיה זו, הסבר את הרעיון של &quot;יער של עצים&quot; שמצביעים יחד על ההחלטה הסופית.
+עתה עצור, תתן לי דוגמה מעשית של בעיה שבה Random Forest יכול לעזור (הסבר לי כי זה המודל עובד עבור סיווג או עבור חיזוי רציף). 
+1. מה היתרונות של Random Forest? למה הוא נחשב &quot;קל לשימוש&quot; למתחילים.
+הסבר לי שהוא יכול להתמודד עם הרבה סוגי בעיות ויחסית פשוט למימוש</textarea></div><p class="bsfoot">יחידה 6.8 בספר פייתון · <a href="book.html#py6-8">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py6-9"><summary><span class="un">Python 6.9</span>מודל RandomForest ב - sklearn</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>לאחר שהבנו את העקרונות של Random Forest, כעת נלמד כיצד להשתמש במודל זה עם sklearn על מנת לפתור בעיית רגרסיה</div><div>בשיעור זה נתמקד בבניית המודל, אימון, חיזוי והבנת הפרמטרים החשובים.</div><div>בתור התחלה, הזכר לי בקצרה מה זה Random Forest ולמה הוא יעיל?</div><div>1. איך מייבאים את RandomForestRegressor מ-sklearn? תן לי את הקוד המדויק </div><div>1. איך יוצרים מודל Random Forest לרגרסיה? הסבר לי על המשמעות של הפרמטר random_state ולמה חשוב להגדיר אותו?</div><div>1. הדגם לי את התהליך המלא: יצירת המודל, אימון עם fit() על data_train ו-y_train, וחיזוי עם predict() על data_test.</div><div>עתה עצור, תתן לי שאלה על ההבדל בין RandomForestRegressor ל-RandomForestClassifier. אם עניתי נכונה סיים את התרגול</div></div><textarea hidden>לאחר שהבנו את העקרונות של Random Forest, כעת נלמד כיצד להשתמש במודל זה עם sklearn על מנת לפתור בעיית רגרסיה
+בשיעור זה נתמקד בבניית המודל, אימון, חיזוי והבנת הפרמטרים החשובים.
+בתור התחלה, הזכר לי בקצרה מה זה Random Forest ולמה הוא יעיל?
+1. איך מייבאים את RandomForestRegressor מ-sklearn? תן לי את הקוד המדויק 
+1. איך יוצרים מודל Random Forest לרגרסיה? הסבר לי על המשמעות של הפרמטר random_state ולמה חשוב להגדיר אותו?
+1. הדגם לי את התהליך המלא: יצירת המודל, אימון עם fit() על data_train ו-y_train, וחיזוי עם predict() על data_test.
+עתה עצור, תתן לי שאלה על ההבדל בין RandomForestRegressor ל-RandomForestClassifier. אם עניתי נכונה סיים את התרגול</textarea></div><p class="bsfoot">יחידה 6.9 בספר פייתון · <a href="book.html#py6-9">לראות אותה בתוך הפרק ↗</a></p></div></details><details class="bs b-py" id="py6-10"><summary><span class="un">Python 6.10</span>הערכת ביצועים והשוואת מודלים</summary><div class="bsb"><p class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>הנחיה למתרגל AI</p><div class="prompt"><button class="copy" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>העתקה</span></button><div class="pt"><div>לאחר שבנינו ואימנו מודל, הצעד הקריטי הבא הוא להעריך כמה טוב המודל שלנו עובד על נתונים שהוא לא ראה קודם.</div><div>בשיעור זה נלמד כיצד להשתמש במטריקות הערכה מ-sklearn כדי למדוד ביצועים </div><div>בתור התחלה, הסבר לי מדוע חשוב להעריך את ביצועי המודל על נתונים שלא השתתפו באימון?</div><div>1. הצג לי את סוגי המטריקות הערכה קיימות ב-sklearn? הסבר בקצרה את ההבדל בין מטריקות לרגרסיה (כמו R², MSE) למטריקות לסיווג (כמו accuracy, precision).</div><div>1. פרט לי את כל מטריקות הערכה מכל סוג ותן הסבר קצר על כח אחת</div><div>1. איך מייבאים מטריקות הערכה מ-sklearn.metrics? תן לי דוגמאות לייבוא של מספר מטריקות שונות.</div><div>שאלה - מה הצעד החובה שצריך לבצע עם המודל המאומן לפני שנוכל להעריך אותו? </div><div>עתה עצור, תתן לי שאלה על הסדר הנכון של הפעולות: אימון → חיזוי → הערכה. אם עניתי נכונה המשך.</div><div>עתה נדון בהערכה מעשית והשוואת מודלים:</div><div>1. הדגם לי את התהליך המלא: יצירת חיזוי עם predict(), שימוש במטריקת הערכה (למשל r2_score), והדפסת התוצאה.</div><div>1. איך משווים בין שני מודלים או יותר? הדגם לי השוואה בין מודלים שונים עם אותה מטריקה והצגת התוצאות בצורה ברורה.</div></div><textarea hidden>לאחר שבנינו ואימנו מודל, הצעד הקריטי הבא הוא להעריך כמה טוב המודל שלנו עובד על נתונים שהוא לא ראה קודם.
+בשיעור זה נלמד כיצד להשתמש במטריקות הערכה מ-sklearn כדי למדוד ביצועים 
+בתור התחלה, הסבר לי מדוע חשוב להעריך את ביצועי המודל על נתונים שלא השתתפו באימון?
+1. הצג לי את סוגי המטריקות הערכה קיימות ב-sklearn? הסבר בקצרה את ההבדל בין מטריקות לרגרסיה (כמו R², MSE) למטריקות לסיווג (כמו accuracy, precision).
+1. פרט לי את כל מטריקות הערכה מכל סוג ותן הסבר קצר על כח אחת
+1. איך מייבאים מטריקות הערכה מ-sklearn.metrics? תן לי דוגמאות לייבוא של מספר מטריקות שונות.
+שאלה - מה הצעד החובה שצריך לבצע עם המודל המאומן לפני שנוכל להעריך אותו? 
+עתה עצור, תתן לי שאלה על הסדר הנכון של הפעולות: אימון → חיזוי → הערכה. אם עניתי נכונה המשך.
+עתה נדון בהערכה מעשית והשוואת מודלים:
+1. הדגם לי את התהליך המלא: יצירת חיזוי עם predict(), שימוש במטריקת הערכה (למשל r2_score), והדפסת התוצאה.
+1. איך משווים בין שני מודלים או יותר? הדגם לי השוואה בין מודלים שונים עם אותה מטריקה והצגת התוצאות בצורה ברורה.</textarea></div><p class="bsfoot">יחידה 6.10 בספר פייתון · <a href="book.html#py6-10">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div>
+</section>
+
+<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div><div class="hw"><b class="ht">המטלה השבועית (שבוע 11)</b><div class="ctx"><p>נחזור לקובץ מחלת הלב משבוע 9 (heart.csv): age (גיל), sex (מין), restbps (לחץ דם במנוחה), chol (כולסטרול), bs (רמת סוכר בדם), maxhr (דופק מרבי), ו-target (האם אירע לנבדק אירוע לבבי, 0/1). המטרה: להשוות שלושה מודלים שמסווגים מי עבר אירוע לבבי.</p></div><p class="dfiles">קובצי נתונים: <a class="dfile" href="../files/notion/255dccfe-heart.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>heart.csv</a></p><div class="hwb"><p class="hp">חלק א - הכנת הנתונים</p><ol><li>טענו את הקובץ, הציגו את מימדיו ואת מספר הנבדקים בכל ערך של target.</li><li>בדקו כמה מהשורות בקובץ הן כפילויות של נבדק אחר (שורות זהות בכל העמודות מלבד bs). הסירו את הכפילויות (השאירו מכל נבדק שורה אחת) והדפיסו כמה נבדקים נשארו.</li><li>כתבו בהערה בקוד: מה היה קורה להערכת המודלים אם אותו נבדק היה מופיע גם בסט האימון וגם בסט הבדיקה? (המושג: דליפת מידע, data leakage)</li><li>קבעו זרע אקראי (seed) כדי שהתוצאות יהיו שחזוריות, וחלקו את הנתונים לסט אימון (70%) וסט בדיקה (30%).</li><li>תקננו את המשתנים המנבאים לפי הממוצע וסטיית התקן של סט האימון בלבד. כתבו בהערה בקוד: למה לא משתמשים בסט הבדיקה לתקנון?</li></ol><p class="hp">חלק ב - שלושה מודלים</p><ol><li>התאימו רגרסיה לוגיסטית על סט האימון, וחשבו את ההסתברויות החזויות לסט הבדיקה.</li><li>התאימו מודל KNN עם K=15, וחשבו את הסיווג החזוי לסט הבדיקה.</li><li>התאימו מודל Random Forest עם 500 עצים, וחשבו את הסיווג החזוי ואת ההסתברויות החזויות לסט הבדיקה.</li></ol><p class="hp">חלק ג - השוואת ביצועים</p><ol><li>לכל מודל הדפיסו confusion matrix, וחשבו דיוק (accuracy), רגישות (sensitivity) וסגוליות (specificity), לפי סף של 0.5.</li><li>כתבו פונקציה שמקבלת את הערכים האמיתיים ואת הסיווג החזוי ומחזירה את שלושת המדדים — והשתמשו בה לכל שלושת המודלים.</li><li>ארגנו את המדדים בטבלה אחת (data frame) שבה כל שורה היא מודל וכל עמודה היא מדד, והדפיסו אותה.</li><li>צרו גרף עמודות שמשווה את הדיוק של שלושת המודלים.</li><li>כתבו בהערה בקוד: איזה מודל עדיף לדעתכם, ומה עוד הייתם רוצים לדעת לפני שמחליטים (רמז: מה יקר יותר — לפספס חולה, או להתריע לשווא?)</li></ol><p class="hp">בונוס (רשות):</p><ol><li>חשבו AUC לרגרסיה הלוגיסטית ול-Random Forest, וציירו את שתי עקומות ה-ROC על אותו גרף.</li><li>חזרו על כל התהליך עם 5 זרעים אקראיים שונים (בלולאה), והציגו את הדיוק הממוצע של כל מודל. מה זה מלמד על היציבות של ההשוואה?</li></ol></div><p class="sm">שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.</p><p class="sm">כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.</p><p class="sm">פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה.</p><p class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>להגשה עד יום ראשון, 3.1.2027, בשעה 12:00</p></div><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון ב-R <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 11
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+library(ggplot2)
+library(class)
+library(randomForest)
+
+
+#### DATA PREPARATION ####
+
+# 1. Load the data, dimensions, subjects per target value
+df = read.csv(&quot;heart.csv&quot;)
+dim(df)
+table(df$target)
+
+# 2. Remove duplicated patients: rows identical on all columns except bs
+same_patient = duplicated(df[, c(&quot;age&quot;, &quot;sex&quot;, &quot;restbps&quot;, &quot;chol&quot;, &quot;maxhr&quot;, &quot;target&quot;)])
+sum(same_patient)
+df = df[!same_patient, ]
+nrow(df)
+
+# 3. Data leakage: if the same patient is in both the training and the test set,
+# the model is tested on subjects it has already seen (and can memorize). The
+# test accuracy is then too optimistic and does not reflect new patients.
+
+# 4. Seed and 70/30 split
+set.seed(42)
+n           = nrow(df)
+train_index = sample(1:n, size = round(0.7 * n))
+
+df_train = df[train_index, ]
+df_test  = df[-train_index, ]
+
+# 5. Standardize the predictors by the mean and sd of the training set only
+# Why not the test set: the test set stands for new subjects the model has never
+# seen. Using its mean and sd leaks information from the test set into the model,
+# and makes the evaluation too optimistic.
+predictors = c(&quot;age&quot;, &quot;sex&quot;, &quot;restbps&quot;, &quot;chol&quot;, &quot;bs&quot;, &quot;maxhr&quot;)
+train_mean = colMeans(df_train[, predictors])
+train_sd   = apply(df_train[, predictors], 2, sd)
+
+x_train = scale(df_train[, predictors], center = train_mean, scale = train_sd)
+x_test  = scale(df_test[, predictors],  center = train_mean, scale = train_sd)
+y_train = df_train$target
+y_test  = df_test$target
+
+
+#### THREE MODELS ####
+
+# 1. Logistic regression: predicted probabilities for the test set
+train_s     = data.frame(x_train, target = y_train)
+logit_model = glm(target ~ ., data = train_s, family = binomial)
+logit_prob  = predict(logit_model, newdata = data.frame(x_test), type = &quot;response&quot;)
+logit_class = ifelse(logit_prob &gt;= 0.5, 1, 0)
+
+# 2. KNN with K = 15: predicted class for the test set
+knn_class = knn(train = x_train, test = x_test, cl = y_train, k = 15)
+knn_class = as.numeric(as.character(knn_class))
+
+# 3. Random forest with 500 trees: predicted probabilities and class
+rf_model = randomForest(x = x_train, y = as.factor(y_train), ntree = 500)
+rf_prob  = predict(rf_model, x_test, type = &quot;prob&quot;)[, &quot;1&quot;]
+rf_class = ifelse(rf_prob &gt;= 0.5, 1, 0)
+
+
+#### COMPARE PERFORMANCE ####
+
+# 1. Confusion matrix for each model
+table(Actual = y_test, Predicted = logit_class)
+table(Actual = y_test, Predicted = knn_class)
+table(Actual = y_test, Predicted = rf_class)
+
+# 2. A function that returns accuracy, sensitivity and specificity
+get_metrics = function(actual, predicted) {
+  accuracy    = mean(predicted == actual)
+  sensitivity = sum(predicted == 1 &amp; actual == 1) / sum(actual == 1)
+  specificity = sum(predicted == 0 &amp; actual == 0) / sum(actual == 0)
+  return(c(accuracy = accuracy, sensitivity = sensitivity, specificity = specificity))
+}
+
+# 3. One table: a row per model, a column per metric
+results = data.frame(
+  model = c(&quot;Logistic regression&quot;, &quot;KNN (K = 15)&quot;, &quot;Random forest&quot;),
+  rbind(get_metrics(y_test, logit_class),
+        get_metrics(y_test, knn_class),
+        get_metrics(y_test, rf_class))
+)
+print(results)
+
+# 4. Bar plot of the accuracy of the three models
+ggplot(results, aes(x = model, y = accuracy)) +
+  geom_col() +
+  labs(title = &quot;Test accuracy by model&quot;, x = &quot;Model&quot;, y = &quot;Accuracy&quot;)
+
+# 5. Which model is better?
+# After removing the duplicated patients the three models are close (about 0.7
+# accuracy), and with only ~90 test patients the differences are small. Logistic
+# regression is the simplest and about as good as the others, so I would prefer it.
+# Before deciding we would want to know the cost of each error: missing a sick
+# patient (low sensitivity) is usually worse than a false alarm, so we may prefer
+# the model with the best sensitivity, or lower the 0.5 threshold. We would also
+# check that the differences are stable across other splits of the data (see bonus).
+
+
+#### BONUS ####
+
+library(pROC)
+
+# 1. AUC and ROC curves for logistic regression and random forest
+roc_logit = roc(y_test, logit_prob)
+roc_rf    = roc(y_test, rf_prob)
+auc(roc_logit)
+auc(roc_rf)
+
+plot(roc_logit, col = &quot;blue&quot;, legacy.axes = TRUE, main = &quot;ROC curves - test set&quot;,
+     xlab = &quot;False Positive Rate&quot;, ylab = &quot;True Positive Rate&quot;)
+plot(roc_rf, col = &quot;red&quot;, add = TRUE)
+legend(&quot;bottomright&quot;, legend = c(&quot;Logistic regression&quot;, &quot;Random forest&quot;),
+       col = c(&quot;blue&quot;, &quot;red&quot;), lwd = 2)
+
+# 2. Repeat the whole process with 5 seeds and average the accuracy
+seeds    = 1:5
+accuracy = data.frame()
+
+for (s in seeds) {
+  set.seed(s)
+  train_index = sample(1:n, size = round(0.7 * n))
+  df_train    = df[train_index, ]
+  df_test     = df[-train_index, ]
+
+  train_mean = colMeans(df_train[, predictors])
+  train_sd   = apply(df_train[, predictors], 2, sd)
+  x_train    = scale(df_train[, predictors], center = train_mean, scale = train_sd)
+  x_test     = scale(df_test[, predictors],  center = train_mean, scale = train_sd)
+  y_train    = df_train$target
+  y_test     = df_test$target
+
+  logit_model = glm(target ~ ., data = data.frame(x_train, target = y_train), family = binomial)
+  logit_class = ifelse(predict(logit_model, data.frame(x_test), type = &quot;response&quot;) &gt;= 0.5, 1, 0)
+  knn_class   = as.numeric(as.character(knn(x_train, x_test, cl = y_train, k = 15)))
+  rf_model    = randomForest(x = x_train, y = as.factor(y_train), ntree = 500)
+  rf_class    = ifelse(predict(rf_model, x_test, type = &quot;prob&quot;)[, &quot;1&quot;] &gt;= 0.5, 1, 0)
+
+  accuracy = rbind(accuracy, data.frame(
+    seed     = s,
+    logistic = mean(logit_class == y_test),
+    knn      = mean(knn_class == y_test),
+    rf       = mean(rf_class == y_test)
+  ))
+}
+
+print(accuracy)
+colMeans(accuracy[, c(&quot;logistic&quot;, &quot;knn&quot;, &quot;rf&quot;)])
+# The accuracy of each model changes by several points from seed to seed, and so
+# does the ranking of the models. One split of ~300 patients is not enough to pick
+# a winner; the average over seeds is more trustworthy (logistic regression is
+# slightly ahead), but the models are close.
+</code></pre></div></details><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון בפייתון <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+# Week 11
+# assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix, roc_curve, roc_auc_score
+
+
+#### DATA PREPARATION ####
+
+# 1. Load the data, dimensions, subjects per target value
+df = pd.read_csv(&quot;heart.csv&quot;)
+print(df.shape)
+print(df[&quot;target&quot;].value_counts())
+
+# 2. Remove duplicated patients: rows identical on all columns except bs
+same_patient = df.duplicated(subset=[&quot;age&quot;, &quot;sex&quot;, &quot;restbps&quot;, &quot;chol&quot;, &quot;maxhr&quot;, &quot;target&quot;])
+print(same_patient.sum())
+df = df[same_patient == False]
+print(len(df))
+
+# 3. Data leakage: if the same patient is in both the training and the test set,
+# the model is tested on subjects it has already seen (and can memorize). The
+# test accuracy is then too optimistic and does not reflect new patients.
+
+# 4. Seed (random_state) and 70/30 split
+df_train, df_test = train_test_split(df, test_size=0.3, random_state=42)
+
+# 5. Standardize the predictors by the mean and sd of the training set only
+# Why not the test set: the test set stands for new subjects the model has never
+# seen. Using its mean and sd leaks information from the test set into the model,
+# and makes the evaluation too optimistic.
+predictors = [&quot;age&quot;, &quot;sex&quot;, &quot;restbps&quot;, &quot;chol&quot;, &quot;bs&quot;, &quot;maxhr&quot;]
+train_mean = df_train[predictors].mean()
+train_sd   = df_train[predictors].std()
+
+x_train = (df_train[predictors] - train_mean) / train_sd
+x_test  = (df_test[predictors] - train_mean) / train_sd
+y_train = df_train[&quot;target&quot;]
+y_test  = df_test[&quot;target&quot;]
+
+
+#### THREE MODELS ####
+
+# 1. Logistic regression: predicted probabilities for the test set
+logit_model = LogisticRegression()
+logit_model.fit(x_train, y_train)
+logit_prob  = logit_model.predict_proba(x_test)[:, 1]
+logit_class = np.where(logit_prob &gt;= 0.5, 1, 0)
+
+# 2. KNN with K = 15: predicted class for the test set
+knn_model = KNeighborsClassifier(n_neighbors=15)
+knn_model.fit(x_train, y_train)
+knn_class = knn_model.predict(x_test)
+
+# 3. Random forest with 500 trees: predicted probabilities and class
+rf_model = RandomForestClassifier(n_estimators=500, random_state=42)
+rf_model.fit(x_train, y_train)
+rf_prob  = rf_model.predict_proba(x_test)[:, 1]
+rf_class = np.where(rf_prob &gt;= 0.5, 1, 0)
+
+
+#### COMPARE PERFORMANCE ####
+
+# 1. Confusion matrix for each model (rows = actual 0/1, columns = predicted 0/1)
+print(confusion_matrix(y_test, logit_class))
+print(confusion_matrix(y_test, knn_class))
+print(confusion_matrix(y_test, rf_class))
+
+# 2. A function that returns accuracy, sensitivity and specificity
+def get_metrics(actual, predicted):
+    actual = np.array(actual)
+    predicted = np.array(predicted)
+    accuracy    = np.mean(predicted == actual)
+    sensitivity = np.sum((predicted == 1) &amp; (actual == 1)) / np.sum(actual == 1)
+    specificity = np.sum((predicted == 0) &amp; (actual == 0)) / np.sum(actual == 0)
+    return {&quot;accuracy&quot;: accuracy, &quot;sensitivity&quot;: sensitivity, &quot;specificity&quot;: specificity}
+
+# 3. One table: a row per model, a column per metric
+results = pd.DataFrame(
+    [get_metrics(y_test, logit_class),
+     get_metrics(y_test, knn_class),
+     get_metrics(y_test, rf_class)],
+    index=[&quot;Logistic regression&quot;, &quot;KNN (K = 15)&quot;, &quot;Random forest&quot;]
+)
+print(results)
+
+# 4. Bar plot of the accuracy of the three models
+plt.bar(results.index, results[&quot;accuracy&quot;])
+plt.title(&quot;Test accuracy by model&quot;)
+plt.xlabel(&quot;Model&quot;)
+plt.ylabel(&quot;Accuracy&quot;)
+plt.show()
+
+# 5. Which model is better?
+# After removing the duplicated patients the three models are close (about 0.7
+# accuracy), and with only ~90 test patients the differences are small. Logistic
+# regression is the simplest and about as good as the others, so I would prefer it.
+# Before deciding we would want to know the cost of each error: missing a sick
+# patient (low sensitivity) is usually worse than a false alarm, so we may prefer
+# the model with the best sensitivity, or lower the 0.5 threshold. We would also
+# check that the differences are stable across other splits of the data (see bonus).
+
+
+#### BONUS ####
+
+# 1. AUC and ROC curves for logistic regression and random forest
+print(&quot;AUC logistic:&quot;, roc_auc_score(y_test, logit_prob))
+print(&quot;AUC random forest:&quot;, roc_auc_score(y_test, rf_prob))
+
+fpr_logit, tpr_logit, _ = roc_curve(y_test, logit_prob)
+fpr_rf, tpr_rf, _ = roc_curve(y_test, rf_prob)
+plt.plot(fpr_logit, tpr_logit, label=&quot;Logistic regression&quot;)
+plt.plot(fpr_rf, tpr_rf, label=&quot;Random forest&quot;)
+plt.plot([0, 1], [0, 1], linestyle=&quot;--&quot;, color=&quot;gray&quot;)
+plt.title(&quot;ROC curves - test set&quot;)
+plt.xlabel(&quot;False Positive Rate&quot;)
+plt.ylabel(&quot;True Positive Rate&quot;)
+plt.legend()
+plt.show()
+
+# 2. Repeat the whole process with 5 seeds and average the accuracy
+rows = []
+for seed in [1, 2, 3, 4, 5]:
+    df_train, df_test = train_test_split(df, test_size=0.3, random_state=seed)
+    train_mean = df_train[predictors].mean()
+    train_sd   = df_train[predictors].std()
+    x_train = (df_train[predictors] - train_mean) / train_sd
+    x_test  = (df_test[predictors] - train_mean) / train_sd
+    y_train = df_train[&quot;target&quot;]
+    y_test  = df_test[&quot;target&quot;]
+
+    logit_model = LogisticRegression().fit(x_train, y_train)
+    knn_model   = KNeighborsClassifier(n_neighbors=15).fit(x_train, y_train)
+    rf_model    = RandomForestClassifier(n_estimators=500, random_state=seed).fit(x_train, y_train)
+
+    rows.append({
+        &quot;seed&quot;: seed,
+        &quot;logistic&quot;: logit_model.score(x_test, y_test),
+        &quot;knn&quot;: knn_model.score(x_test, y_test),
+        &quot;rf&quot;: rf_model.score(x_test, y_test)
+    })
+
+accuracy = pd.DataFrame(rows)
+print(accuracy)
+print(accuracy[[&quot;logistic&quot;, &quot;knn&quot;, &quot;rf&quot;]].mean())
+# The accuracy of each model changes by several points from seed to seed, and so
+# does the ranking of the models. One split of ~300 patients is not enough to pick
+# a winner; the average over seeds is more trustworthy (logistic regression is
+# slightly ahead), but the models are close.
+</code></pre></div></details></section>
+<nav class="nav"><a href="week-10.html">→ שבוע 10: בעיות קלסיפיקציה א: KNN וכיוונון המודל</a><a href="week-12.html">שבוע 12: ניתוח נתונים פיזיולוגיים ←</a></nav>
+</main></div><footer class="foot"><img class="flogo" src="../assets/tau-logo.png" alt=""><b>יסודות התכנות במדע אמפירי</b><span>R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז</span><a class="ln" href="../index.html">לאתר הסטודנטים</a></footer>
+</div>
+<script>
+// copy an AI-tutor prompt
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('textarea').value, s=b.querySelector('span');
+    function ok(){ b.classList.add('ok'); s.textContent='הועתק'; setTimeout(function(){b.classList.remove('ok'); s.textContent='העתקה';},1600); }
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(ok,function(){});
+    else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy'); ok();}catch(e){} a.remove(); }
+  });
+});
+// week page: show both languages, or only R / only Python (remembered in this browser)
+(function(){
+  var box=document.querySelector('.langs'); if(!box) return;
+  function set(l){
+    box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+    document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
+    try{ localStorage.setItem('yesodot-lang', l); }catch(e){}
+  }
+  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
+  var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
+  if(saved==='r'||saved==='py') set(saved);
+})();
+// TA sign-in: the password is the name of the staff site's folder.
+document.querySelectorAll('.tlogf').forEach(function(f){
+  f.addEventListener('submit',function(e){ e.preventDefault();
+    var v=f.querySelector('input').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g,''), er=f.querySelector('.terr');
+    if(!v) return;
+    if(location.protocol==='file:'){ location.href=v+'/index.html'; return; }
+    fetch(v+'/index.html',{method:'HEAD',cache:'no-store'}).then(function(r){ if(r.ok) location.href=v+'/'; else er.hidden=false; }).catch(function(){er.hidden=false});
+  });
+});
+</script>
+</body>
+</html>

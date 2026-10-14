@@ -1,0 +1,287 @@
+[
+ {
+  "key": "r_class",
+  "book": "r",
+  "title": "מודלים לסיווג (קלסיפיקציה)",
+  "secs": [
+   {
+    "h": "מבוא למודל KNN",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה להבין את הרעיון של מודל KNN (K-Nearest Neighbors), בלי לכתוב קוד.\n1. הסבר לי מה זו בעיית סיווג, בדוגמה מפסיכולוגיה: לנבא אם נבדק מדוכא או לא לפי שעות השינה וזמן התגובה שלו. הסבר את ההבדל בין סיווג (קטגוריה) לבין ניבוי של ערך רציף. עצור וחכה לתשובה שלי.\n1. מה זה \"שכנים קרובים\"? תאר לי מישור דו-ממדי שבו ציר אחד הוא שעות שינה והציר השני הוא זמן תגובה, וכל נבדק הוא נקודה. הסבר במילים מה זה מרחק בין שתי נקודות.\n1. איך KNN מחליט איך לסווג נבדק חדש? הסבר את הרעיון של הצבעת רוב בין K השכנים הקרובים ביותר.\n1. מה המשמעות של K? מה קורה עם K=1 לעומת K=15? שאל אותי מה החיסרון של K קטן מדי ושל K גדול מדי. בדוק שעניתי נכונה ורק אז המשך.\n1. הסבר ש-KNN לא לומד משוואה כמו רגרסיה לוגיסטית, אלא שומר את נתוני האימון ומשווה אליהם כל נבדק חדש. הסבר גם, בלי קוד, למה חשוב שכל המשתנים יהיו באותו סדר גודל (שעות שינה לעומת מילישניות). נלמד לתקן זאת ביחידה הבאה.\n1. עצור ותן לי דוגמה לבעיה אחרת במחקר בפסיכולוגיה שבה KNN יכול לעזור, ושאל אותי מה יהיו המשתנים בה. אם עניתי נכונה, כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "video",
+      "text": "[StatQuest: K-nearest neighbors, Clearly Explained](https://www.youtube.com/watch?v=HVXime0nQeI)\n[Simple Explanation of the K-Nearest Neighbors (KNN) Algorithm](https://www.youtube.com/watch?v=zeFt_JCA3b4)"
+     }
+    ]
+   },
+   {
+    "h": "מודל KNN ב-R",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד להריץ מודל KNN עם הפונקציה knn מחבילת class, ולהבין למה צריך לתקנן משתנים עם scale.\n1. הדפס את הקוד הבא, שיוצר נתונים מדומים של 300 נבדקים ומחלק אותם לסט אימון (200) וסט מבחן (100), והסבר אותו בקצרה:\nset.seed(7)\nn = 300\nsleep_hours = rnorm(n, mean = 7, sd = 1)\nrt_ms = rnorm(n, mean = 600, sd = 100)\nage = runif(n, 20, 40)\ndepressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) > 1.5, \"yes\", \"no\")\ndf = data.frame(sleep_hours, rt_ms, age, depressed)\ntrain_rows = sample(1:n, 200)\ntrain = df[train_rows, ]\ntest = df[-train_rows, ]\n1. הדפס את הקוד הבא והסבר את train, test, cl ו-k. הסבר ש-knn מחזירה ישר ניבויים לסט המבחן, בלי שלב אימון נפרד:\nlibrary(class)\npredictors = c(\"sleep_hours\", \"rt_ms\")\npred = knn(train = train[, predictors], test = test[, predictors], cl = train$depressed, k = 5)\nmean(pred == test$depressed)\n1. שאל אותי: שעות שינה משתנות בכמה שעות וזמן תגובה במאות מילישניות. איזה משתנה ישלוט במרחק? בדוק שעניתי נכונה ורק אז המשך.\n1. הסבר מה עושה scale (ממוצע 0 וסטיית תקן 1), הדפס את הקוד הבא והסבר למה הדיוק השתנה:\nx = scale(df[, predictors])\npred_z = knn(train = x[train_rows, ], test = x[-train_rows, ], cl = train$depressed, k = 5)\nmean(pred_z == test$depressed)\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני להריץ את המודל המתוקנן עם k = 1 ועם k = 25 ולהשוות את הדיוק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html"
+     }
+    ]
+   },
+   {
+    "h": "בחירת K בלולאה",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד לבחור את K של מודל KNN בעזרת לולאה (כיוונון היפר-פרמטר).\n1. הסבר במילים מה ההבדל בין פרמטר שהמודל לומד (כמו מקדם ברגרסיה) להיפר-פרמטר שאנחנו בוחרים (כמו K). עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא (נתונים מדומים, חלוקה לאימון ומבחן ותקנון) ובקש ממני להריץ אותו:\nset.seed(7)\nn = 300\nsleep_hours = rnorm(n, mean = 7, sd = 1)\nrt_ms = rnorm(n, mean = 600, sd = 100)\nage = runif(n, 20, 40)\ndepressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) > 1.5, \"yes\", \"no\")\ndf = data.frame(sleep_hours, rt_ms, age, depressed)\ntrain_rows = sample(1:n, 200)\ntrain = df[train_rows, ]\ntest = df[-train_rows, ]\nlibrary(class)\nlibrary(ggplot2)\nx = scale(df[, c(\"sleep_hours\", \"rt_ms\")])\n1. הדפס את הלולאה הבאה והסבר כל שורה, בדגש על שמירת הדיוק של כל K בוקטור accuracy:\nk_values = 1:30\naccuracy = c()\nfor (k in k_values) {\n  pred = knn(train = x[train_rows, ], test = x[-train_rows, ], cl = train$depressed, k = k)\n  accuracy[k] = mean(pred == test$depressed)\n}\nresults = data.frame(k = k_values, accuracy = accuracy)\nggplot(results, aes(x = k, y = accuracy)) + geom_line() + geom_point()\nk_values[which.max(accuracy)]\nשאל אותי מה אני רואה בגרף ב-K קטן מאוד וב-K גדול מאוד. בדוק שעניתי נכונה ורק אז המשך.\n1. הסבר שבחירת K לפי סט המבחן נותנת דיוק אופטימי מדי, ושעדיף cross-validation על סט האימון, למשל עם knn.cv(train, cl, k).\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לשנות את הלולאה כך שתשתמש ב-knn.cv על סט האימון, לבחור K, ורק אז לבדוק אותו פעם אחת על סט המבחן. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html"
+     }
+    ]
+   },
+   {
+    "h": "מבוא למודל Random Forest",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה להבין את הרעיון של מודל Random Forest, בלי לכתוב קוד.\n1. בתור התחלה, שאל אותי איך אני מקבל/ת החלטה חשובה (למשל בחירת עבודה), ואילו שאלות של כן/לא אני שואל/ת את עצמי בדרך. עצור וחכה לתשובה שלי.\n1. הסבר מה זה עץ החלטה (Decision Tree), בדוגמה מפסיכולוגיה: האם נבדק מדוכא לפי שאלות כמו \"האם הוא ישן פחות מ-6 שעות?\" ו\"האם זמן התגובה שלו איטי?\". הסבר מה זה פיצול ומה זה עלה.\n1. שאל אותי מה יכולה להיות הבעיה בעץ החלטה יחיד שגדל עד הסוף. אחרי שאענה, הסבר את המושג התאמת יתר (overfitting): העץ \"משנן\" מקרים פרטיים מנתוני האימון.\n1. הסבר איך Random Forest מתמודד עם זה: הרבה עצים, כל עץ מאומן על דגימה אקראית של הנבדקים (bootstrap) ובכל פיצול רואה רק חלק אקראי מהמשתנים, וההחלטה הסופית היא הצבעת רוב של העצים (\"חוכמת ההמונים\").\n1. הסבר בקצרה שני דברים ש-Random Forest נותן כמעט בחינם: הערכת שגיאה על הנבדקים שלא נכנסו לכל עץ (OOB), ומדד חשיבות לכל משתנה (importance). שאל אותי שאלת הבנה על אחד מהם ובדוק שעניתי נכונה.\n1. הסבר ש-Random Forest עובד גם לסיווג וגם לניבוי ערך רציף, ובמה הוא שונה מ-KNN. אחר כך כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "video",
+      "text": "[StatQuest: Decision Trees](https://www.youtube.com/watch?v=7VeUPuFGJHk)\n[StatQuest: Random Forests Part 1 - Building, Using and Evaluating](https://www.youtube.com/watch?v=J4Wdy0Wc_xQ)"
+     }
+    ]
+   },
+   {
+    "h": "Random Forest ב-R",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד להריץ מודל Random Forest עם חבילת randomForest.\n1. הדפס את הקוד הבא (נתונים מדומים וחלוקה לאימון ומבחן) ובקש ממני להריץ אותו. ציין שכאן הגיל (age) לא קשור לדיכאון:\nset.seed(7)\nn = 300\nsleep_hours = rnorm(n, mean = 7, sd = 1)\nrt_ms = rnorm(n, mean = 600, sd = 100)\nage = runif(n, 20, 40)\ndepressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) > 1.5, \"yes\", \"no\")\ndf = data.frame(sleep_hours, rt_ms, age, depressed)\ntrain_rows = sample(1:n, 200)\ntrain = df[train_rows, ]\ntest = df[-train_rows, ]\n1. הסבר למה הופכים את משתנה המטרה ל-factor: בלי זה randomForest חושב שזו רגרסיה (ניבוי ערך רציף) ונכשל. הדפס:\nlibrary(randomForest)\ntrain$depressed = as.factor(train$depressed)\ntest$depressed = as.factor(test$depressed)\n1. הדפס את הקוד הבא והסבר את הנוסחה, את ntree, ואת ה-OOB error וה-confusion matrix בפלט:\nrf = randomForest(depressed ~ sleep_hours + rt_ms + age, data = train, ntree = 500, importance = TRUE)\nprint(rf)\npred_rf = predict(rf, newdata = test)\nmean(pred_rf == test$depressed)\n1. הראה את חשיבות המשתנים והסבר מה זה MeanDecreaseAccuracy:\nimportance(rf)\nvarImpPlot(rf)\nשאל אותי איזה משתנה הכי חשוב ואיזה כמעט לא חשוב, ולמה זה הגיוני. בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לאמן מודל עם ntree = 10 ולהשוות את הדיוק שלו בסט המבחן למודל עם 500 עצים. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://cran.r-project.org/web/packages/randomForest/index.html"
+     }
+    ]
+   },
+   {
+    "h": "מדדי ביצועים לסיווג",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת מודלים לסיווג (קלסיפיקציה) בשפת R. בשיעור זה ארצה ללמוד מדדי ביצועים לסיווג: confusion matrix, דיוק, רגישות, סגוליות ו-AUC.\n1. הדפס את הקוד הבא (נתונים מדומים ומודל Random Forest) ובקש ממני להריץ אותו:\nset.seed(7)\nn = 300\nsleep_hours = rnorm(n, mean = 7, sd = 1)\nrt_ms = rnorm(n, mean = 600, sd = 100)\nage = runif(n, 20, 40)\ndepressed = ifelse(2 * (7 - sleep_hours) + (rt_ms - 600) / 100 + rnorm(n) > 1.5, \"yes\", \"no\")\ndf = data.frame(sleep_hours, rt_ms, age, depressed)\ntrain_rows = sample(1:n, 200)\ntrain = df[train_rows, ]\ntest = df[-train_rows, ]\nlibrary(randomForest)\nlibrary(pROC)\ntrain$depressed = as.factor(train$depressed)\ntest$depressed = as.factor(test$depressed)\nrf = randomForest(depressed ~ ., data = train)\n1. הסבר מה זו confusion matrix ומה זה TP, TN, FP, FN כשהקבוצה ה\"חיובית\" היא yes (מדוכא). הדפס:\ncm = table(predicted = predict(rf, newdata = test), actual = test$depressed)\ncm\n1. הראה איך מחשבים דיוק, רגישות וסגוליות, והסבר מה כל מדד אומר על אבחון דיכאון:\naccuracy = sum(diag(cm)) / sum(cm)\nsensitivity = cm[\"yes\", \"yes\"] / sum(cm[, \"yes\"])\nspecificity = cm[\"no\", \"no\"] / sum(cm[, \"no\"])\nשאל אותי: אם 70% מהנבדקים לא מדוכאים, מה הדיוק והרגישות של מודל שתמיד עונה no? בדוק שעניתי נכונה.\n1. הסבר שעקומת ROC בודקת את כל הספים על ההסתברות שהמודל נותן. הדפס:\nprob_rf = predict(rf, newdata = test, type = \"prob\")[, \"yes\"]\nroc_rf = roc(test$depressed, prob_rf)\nauc(roc_rf)\nplot(roc_rf)\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לאמן רגרסיה לוגיסטית עם glm על סט האימון, לחשב את ה-AUC שלה בסט המבחן ולהשוות ל-Random Forest. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "video",
+      "text": "[Machine Learning Fundamentals: Sensitivity and Specificity](https://www.youtube.com/watch?v=vP06aMoz4v8)\n[ROC and AUC, Clearly Explained!](https://www.youtube.com/watch?v=4jRBRDbJemM)"
+     },
+     {
+      "kind": "ref",
+      "text": "https://xrobin.github.io/pROC/"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "r_physio",
+  "book": "r",
+  "title": "נתונים פיזיולוגיים",
+  "secs": [
+   {
+    "h": "אות לאורך זמן: קצב דגימה, ציר זמן ופורמט ארוך",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה להבין איך נראה אות שנמדד לאורך זמן, כמו EEG, ואיך שומרים אותו בטבלה.\nהנתונים: הורדתי מאתר הקורס את eeg_oddball.csv לתיקיית העבודה שלי. זה EEG מדומה של נבדק אחד מאלקטרודה Pz במשימת oddball: 100 ניסיונות, 80 צלילים רגילים (standard) ו-20 נדירים (oddball) בסדר אקראי. קצב הדגימה 250 הרץ, וכל ניסיון נחתך מ-200 מילישניות לפני הצליל (זמן 0) ועד 796 אחריו. פורמט ארוך, שורה לכל דגימה (25000 שורות), עם העמודות trial, condition, time_ms ו-voltage (מיקרו-וולט). התאם את הדוגמאות שלך למבנה הזה.\n1. הסבר במילים פשוטות, בלי קוד: מה זה אות שנשמר במחשב כדגימות לאורך זמן, מה זה קצב דגימה (250 הרץ = 250 דגימות בשנייה), ומה זה ניסיון (epoch) שנחתך סביב הופעת הגירוי. הסבר למה יש זמנים שליליים. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר מה עושה כל שורה:\ndf = read.csv(\"eeg_oddball.csv\")\nhead(df)\nnrow(df)\nrange(df$time_ms)\nlength(unique(df$time_ms))\nשאל אותי: כמה זמן עובר בין שתי דגימות, ואיך מחשבים מזה את קצב הדגימה? בדוק שעניתי נכונה ורק אז המשך.\n1. הסבר מה זה פורמט ארוך: כל ניסיון תופס 250 שורות, ומספר הניסיון חוזר בכל אחת מהן. הראה איך סופרים ניסיונות בכל תנאי:\ntable(df$condition) / 250\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לכתוב קוד שבודק כמה ניסיונות יש בקובץ, וכמה דגימות בניסיון 1 נמדדו לפני הצליל. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "[אלקטרואנצפלוגרפיה (EEG) בוויקיפדיה](https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%95%D7%90%D7%A0%D7%A6%D7%A4%D7%9C%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%94)\nhttps://r4ds.hadley.nz/data-tidy.html"
+     }
+    ]
+   },
+   {
+    "h": "ציור אות של ניסיון בודד ושל כמה ניסיונות",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה לצייר עם ggplot את האות של ניסיון בודד ושל כמה ניסיונות יחד.\nהנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).\n1. הדפס את הקוד הבא, שמצייר את ניסיון 1, והסבר כל שורה. הסבר למה מסמנים קו מקווקו בזמן 0:\nlibrary(dplyr)\nlibrary(ggplot2)\ndf = read.csv(\"eeg_oddball.csv\")\ntrial_1 = df %>% filter(trial == 1)\nggplot(trial_1, aes(x = time_ms, y = voltage)) + geom_line() + geom_vline(xintercept = 0, linetype = \"dashed\")\nעצור וחכה לתשובה שלי.\n1. הדפס קוד שמצייר את עשרת הניסיונות הראשונים יחד, והסבר למה צריך את group = trial:\nfirst_trials = df %>% filter(trial <= 10)\nggplot(first_trials, aes(x = time_ms, y = voltage, group = trial, color = condition)) + geom_line(alpha = 0.7)\n1. שאל אותי מה אני רואה: האם כל הניסיונות באותו גובה? האם יש ניסיון חריג? אל תסביר עדיין איך מתקנים, רק ציין שנלמד על תיקון קו בסיס ודחיית ניסיונות ביחידות הבאות.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לצייר רק את ניסיונות ה-oddball, כל ניסיון בפאנל נפרד בעזרת facet_wrap(~ trial). עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://ggplot2.tidyverse.org/reference/geom_path.html"
+     }
+    ]
+   },
+   {
+    "h": "תיקון קו בסיס (baseline)",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד מה זה תיקון קו בסיס (baseline correction) ואיך עושים אותו לכל ניסיון.\nהנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).\n1. הסבר במילים, בלי קוד: למה כל ניסיון \"מתחיל בגובה אחר\" (סחיפה איטית של המתח), ולמה מחסירים מכל ניסיון את הממוצע שלו לפני הצליל (מ-200 מילישניות לפני ועד 0). שאל אותי למה משתמשים דווקא בזמן שלפני הצליל. בדוק שעניתי נכונה ורק אז המשך.\n1. הדפס את הקוד הבא והסבר אותו שורה אחר שורה, בדגש על group_by(trial) ועל voltage[time_ms < 0]:\nlibrary(dplyr)\nlibrary(ggplot2)\ndf = read.csv(\"eeg_oddball.csv\")\ndf = df %>% group_by(trial) %>% mutate(baseline = mean(voltage[time_ms < 0]), voltage_bc = voltage - baseline) %>% ungroup()\n1. הראה איך בודקים שהתיקון עבד: הממוצע של voltage_bc לפני הצליל צריך להיות 0 בכל ניסיון.\ndf %>% filter(time_ms < 0) %>% group_by(trial) %>% summarise(mean_before = round(mean(voltage_bc), 2))\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לצייר את עשרת הניסיונות הראשונים פעם עם voltage ופעם עם voltage_bc, ולתאר במילים מה השתנה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://dplyr.tidyverse.org/reference/group_by.html"
+     }
+    ]
+   },
+   {
+    "h": "דחיית ניסיונות עם רעש (artifact rejection)",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד לזהות ולהוציא ניסיונות רועשים (artifact rejection) לפי סף.\nהנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).\nביחידה הקודמת עשיתי תיקון קו בסיס עם הקוד הבא:\nlibrary(dplyr)\nlibrary(ggplot2)\ndf = read.csv(\"eeg_oddball.csv\")\ndf = df %>% group_by(trial) %>% mutate(voltage_bc = voltage - mean(voltage[time_ms < 0])) %>% ungroup()\n1. הסבר במילים, בלי קוד, מה זה ארטיפקט (למשל מצמוץ), למה הוא גדול בהרבה מהאות של המוח (מאות מיקרו-וולט לעומת עשרות), ולמה מקובל להוציא ניסיון שבו המתח עובר בערך מוחלט סף כמו 100 מיקרו-וולט. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר כל שורה:\ntrial_max = df %>% group_by(trial, condition) %>% summarise(max_abs = max(abs(voltage_bc)), .groups = \"drop\")\ntrial_max %>% arrange(desc(max_abs)) %>% head(10)\nbad_trials = trial_max$trial[trial_max$max_abs > 100]\ndf_clean = df %>% filter(!trial %in% bad_trials)\ndf_clean %>% distinct(trial, condition) %>% count(condition)\n1. שאל אותי: למה מוציאים את כל הניסיון ולא רק את הדגימות הרועשות? ולמה מדווחים כמה ניסיונות נשארו בכל תנאי? בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לצייר את הניסיונות שנדחו (bad_trials), ולבדוק כמה ניסיונות היו נדחים עם סף של 50 ועם סף של 200. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html"
+     }
+    ]
+   },
+   {
+    "h": "ממוצע על פני ניסיונות (ERP) והשוואת תנאים",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד לחשב ממוצע על פני ניסיונות (ERP) ולהשוות בין תנאים בגרף.\nהנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.\nקוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:\nlibrary(dplyr)\nlibrary(ggplot2)\ndf = read.csv(\"eeg_oddball.csv\")\ndf = df %>% group_by(trial) %>% mutate(voltage_bc = voltage - mean(voltage[time_ms < 0])) %>% ungroup()\ndf_clean = df %>% group_by(trial) %>% filter(max(abs(voltage_bc)) <= 100) %>% ungroup()\n1. הסבר במילים, בלי קוד, למה ניסיון בודד נראה רועש, ולמה ממוצע על פני ניסיונות (ERP, event-related potential) חושף את התגובה שנעולה לזמן הגירוי: הרעש האקראי מתבטל והתגובה הקבועה נשארת. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר כל שורה, בדגש על group_by(condition, time_ms):\nerp = df_clean %>% group_by(condition, time_ms) %>% summarise(voltage = mean(voltage_bc), .groups = \"drop\")\nggplot(erp, aes(x = time_ms, y = voltage, color = condition)) + geom_line() + geom_vline(xintercept = 0, linetype = \"dashed\")\n1. ספר לי בקצרה מה זה רכיב P300 ושאל אותי באיזה תנאי ובאיזה טווח זמנים אני רואה אותו בגרף. בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לחשב גל הפרש (oddball פחות standard בכל נקודת זמן) בעזרת pivot_wider מחבילת tidyr, ולצייר אותו. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "[P300 בוויקיפדיה](https://he.wikipedia.org/wiki/P300)"
+     }
+    ]
+   },
+   {
+    "h": "מדידת אמפליטודה בחלון זמן והשוואה סטטיסטית",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור זה ארצה ללמוד למדוד אמפליטודה ממוצעת בחלון זמן ולהשוות סטטיסטית בין תנאים.\nהנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.\nקוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:\nlibrary(dplyr)\nlibrary(ggplot2)\ndf = read.csv(\"eeg_oddball.csv\")\ndf = df %>% group_by(trial) %>% mutate(voltage_bc = voltage - mean(voltage[time_ms < 0])) %>% ungroup()\ndf_clean = df %>% group_by(trial) %>% filter(max(abs(voltage_bc)) <= 100) %>% ungroup()\n1. הסבר במילים, בלי קוד, מה זו אמפליטודה ממוצעת בחלון זמן (כאן 250 עד 500 מילישניות, החלון של P300), ולמה בוחרים את החלון מראש ולא לפי הגרף. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר כל שורה:\namp = df_clean %>% filter(time_ms >= 250, time_ms <= 500) %>% group_by(trial, condition) %>% summarise(amplitude = mean(voltage_bc), .groups = \"drop\")\namp %>% group_by(condition) %>% summarise(mean = mean(amplitude), sd = sd(amplitude), n = n())\nggplot(amp, aes(x = condition, y = amplitude)) + geom_boxplot()\nt.test(amplitude ~ condition, data = amp)\n1. הסבר שכאן יש נבדק אחד ולכן כל ניסיון הוא תצפית (מבחן t לבלתי תלויים), ושבמחקר עם הרבה נבדקים מחשבים אמפליטודה לכל נבדק בכל תנאי ומשווים במבחן t למדגמים תלויים. שאל אותי שאלת הבנה על זה.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לחזור על הניתוח עם voltage (בלי תיקון קו בסיס) ולהסביר מה קרה לתוצאה ולמה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "[P300 בוויקיפדיה](https://he.wikipedia.org/wiki/P300)"
+     }
+    ]
+   },
+   {
+    "h": "בונוס: החלקת אות בממוצע נע",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בשפת R. בשיעור בונוס זה ארצה ללמוד להחליק אות בעזרת ממוצע נע (moving average).\nהנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.\nקוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:\nlibrary(dplyr)\nlibrary(ggplot2)\ndf = read.csv(\"eeg_oddball.csv\")\ndf = df %>% group_by(trial) %>% mutate(voltage_bc = voltage - mean(voltage[time_ms < 0])) %>% ungroup()\ndf_clean = df %>% group_by(trial) %>% filter(max(abs(voltage_bc)) <= 100) %>% ungroup()\n1. הסבר במילים, בלי קוד, מה זה ממוצע נע: כל נקודה מוחלפת בממוצע שלה ושל השכנות שלה. שאל אותי כמה מילישניות מכסה חלון של 5 דגימות ב-250 הרץ. בדוק שעניתי נכונה ורק אז המשך.\n1. הדפס את הקוד הבא והסבר כל שורה. הסבר למה כותבים stats::filter (גם ל-dplyr יש filter) ולמה יש NA בקצוות:\ntrial_1 = df_clean %>% filter(trial == 1)\ntrial_1$smooth = as.numeric(stats::filter(trial_1$voltage_bc, rep(1 / 5, 5), sides = 2))\nggplot(trial_1, aes(x = time_ms)) + geom_line(aes(y = voltage_bc), color = \"grey\") + geom_line(aes(y = smooth), color = \"blue\")\n1. שאל אותי מה יקרה לשיא של ה-P300 אם נחליק עם חלון של 51 דגימות. בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני להחליק את כל הניסיונות בעזרת group_by(trial) ו-mutate, ואז לצייר ERP לכל תנאי מהאות המוחלק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://en.wikipedia.org/wiki/Moving_average"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "py_physio",
+  "book": "py",
+  "title": "נתונים פיזיולוגיים",
+  "secs": [
+   {
+    "h": "אות לאורך זמן: קצב דגימה, ציר זמן ופורמט ארוך",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה להבין איך נראה אות שנמדד לאורך זמן, כמו EEG, ואיך שומרים אותו בטבלה ובמטריצה.\nהנתונים: הורדתי מאתר הקורס את eeg_oddball.csv לתיקיית העבודה שלי. זה EEG מדומה של נבדק אחד מאלקטרודה Pz במשימת oddball: 100 ניסיונות, 80 צלילים רגילים (standard) ו-20 נדירים (oddball) בסדר אקראי. קצב הדגימה 250 הרץ, וכל ניסיון נחתך מ-200 מילישניות לפני הצליל (זמן 0) ועד 796 אחריו. פורמט ארוך, שורה לכל דגימה (25000 שורות), עם העמודות trial, condition, time_ms ו-voltage (מיקרו-וולט). התאם את הדוגמאות שלך למבנה הזה.\n1. הסבר במילים פשוטות, בלי קוד: מה זה אות שנשמר במחשב כדגימות לאורך זמן, מה זה קצב דגימה (250 הרץ = 250 דגימות בשנייה), ומה זה ניסיון (epoch) שנחתך סביב הופעת הגירוי. הסבר למה יש זמנים שליליים. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר מה עושה כל שורה:\nimport pandas as pd\ndf = pd.read_csv(\"eeg_oddball.csv\")\nprint(df.head())\nprint(df.shape)\ntimes = df[\"time_ms\"].unique()\nprint(times[:5])\nשאל אותי: כמה זמן עובר בין שתי דגימות, ואיך מחשבים מזה את קצב הדגימה? בדוק שעניתי נכונה ורק אז המשך.\n1. הסבר מה זה פורמט ארוך, והראה איך סופרים ניסיונות בכל תנאי ואיך הופכים את הטבלה למטריצה של ניסיונות (שורות) על נקודות זמן (עמודות):\nprint(df.groupby(\"condition\")[\"trial\"].nunique())\ndata = df.pivot(index=\"trial\", columns=\"time_ms\", values=\"voltage\").to_numpy()\nprint(data.shape)\nשאל אותי מה מכיל data[0, :] ומה מכיל data[:, 50]. בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לכתוב קוד שבודק כמה ניסיונות יש בקובץ, וכמה דגימות בכל ניסיון נמדדו לפני הצליל. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "[אלקטרואנצפלוגרפיה (EEG) בוויקיפדיה](https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%95%D7%90%D7%A0%D7%A6%D7%A4%D7%9C%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%94)\nhttps://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html"
+     }
+    ]
+   },
+   {
+    "h": "ציור אות של ניסיון בודד ושל כמה ניסיונות",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה לצייר עם matplotlib ו-seaborn את האות של ניסיון בודד ושל כמה ניסיונות יחד.\nהנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).\n1. הדפס את הקוד הבא, שמצייר את ניסיון 1, והסבר כל שורה. הסבר למה מסמנים קו מקווקו בזמן 0:\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\ndf = pd.read_csv(\"eeg_oddball.csv\")\ntrial_1 = df[df[\"trial\"] == 1]\nplt.plot(trial_1[\"time_ms\"], trial_1[\"voltage\"])\nplt.axvline(0, color=\"black\", linestyle=\"--\")\nplt.xlabel(\"time (ms)\")\nplt.show()\nעצור וחכה לתשובה שלי.\n1. הדפס קוד שמצייר את עשרת הניסיונות הראשונים, והסבר את units=\"trial\" ואת estimator=None (בלעדיהם seaborn מצייר ממוצע):\nfirst_trials = df[df[\"trial\"] <= 10]\nsns.lineplot(data=first_trials, x=\"time_ms\", y=\"voltage\", hue=\"condition\", units=\"trial\", estimator=None)\nplt.show()\n1. שאל אותי מה אני רואה: האם כל הניסיונות באותו גובה? האם יש ניסיון חריג? אל תסביר עדיין איך מתקנים, רק ציין שנלמד על תיקון קו בסיס ודחיית ניסיונות ביחידות הבאות.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לצייר רק את ניסיונות ה-oddball, כל ניסיון בפאנל נפרד, עם sns.relplot ו-kind=\"line\", col=\"trial\", col_wrap=5. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://seaborn.pydata.org/generated/seaborn.lineplot.html"
+     }
+    ]
+   },
+   {
+    "h": "תיקון קו בסיס (baseline)",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד מה זה תיקון קו בסיס (baseline correction) ואיך עושים אותו לכל ניסיון.\nהנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).\n1. הסבר במילים, בלי קוד: למה כל ניסיון \"מתחיל בגובה אחר\" (סחיפה איטית של המתח), ולמה מחסירים מכל ניסיון את הממוצע שלו לפני הצליל (מ-200 מילישניות לפני ועד 0). שאל אותי למה משתמשים דווקא בזמן שלפני הצליל. בדוק שעניתי נכונה ורק אז המשך.\n1. הדפס את הקוד הבא והסבר אותו שורה אחר שורה, בדגש על groupby(\"trial\") ועל map:\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"eeg_oddball.csv\")\nbaseline = df[df[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage\"].mean()\ndf[\"voltage_bc\"] = df[\"voltage\"] - df[\"trial\"].map(baseline)\nprint(df[df[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage_bc\"].mean().round(2).head())\nהסבר שהשורה האחרונה בודקת שהממוצע לפני הצליל הוא עכשיו 0 בכל ניסיון.\n1. הראה את אותו תיקון על מטריצה של ניסיונות על זמן, והסבר את axis=1 ואת keepdims=True:\nwide = df.pivot(index=\"trial\", columns=\"time_ms\", values=\"voltage\")\ndata = wide.to_numpy()\ntimes = wide.columns.to_numpy()\ndata_bc = data - data[:, times < 0].mean(axis=1, keepdims=True)\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לצייר את עשרת הניסיונות הראשונים לפני התיקון ואחריו, ולתאר במילים מה השתנה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://pandas.pydata.org/docs/user_guide/groupby.html"
+     }
+    ]
+   },
+   {
+    "h": "דחיית ניסיונות עם רעש (artifact rejection)",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד לזהות ולהוציא ניסיונות רועשים (artifact rejection) לפי סף.\nהנתונים: eeg_oddball.csv מאתר הקורס (בתיקיית העבודה שלי). EEG מדומה של נבדק אחד, 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו. פורמט ארוך עם העמודות trial, condition, time_ms, voltage (מיקרו-וולט).\nביחידה הקודמת עשיתי תיקון קו בסיס עם הקוד הבא:\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"eeg_oddball.csv\")\nbaseline = df[df[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage\"].mean()\ndf[\"voltage_bc\"] = df[\"voltage\"] - df[\"trial\"].map(baseline)\n1. הסבר במילים, בלי קוד, מה זה ארטיפקט (למשל מצמוץ), למה הוא גדול בהרבה מהאות של המוח (מאות מיקרו-וולט לעומת עשרות), ולמה מקובל להוציא ניסיון שבו המתח עובר בערך מוחלט סף כמו 100 מיקרו-וולט. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר כל שורה:\ndf[\"abs_voltage\"] = df[\"voltage_bc\"].abs()\nmax_abs = df.groupby(\"trial\")[\"abs_voltage\"].max()\nprint(max_abs.sort_values(ascending=False).head(10))\nbad_trials = max_abs[max_abs > 100].index\ndf_clean = df[~df[\"trial\"].isin(bad_trials)].copy()\nprint(df_clean.groupby(\"condition\")[\"trial\"].nunique())\n1. שאל אותי: למה מוציאים את כל הניסיון ולא רק את הדגימות הרועשות? ולמה מדווחים כמה ניסיונות נשארו בכל תנאי? בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לצייר את הניסיונות שנדחו (bad_trials), ולבדוק כמה ניסיונות היו נדחים עם סף של 50 ועם סף של 200. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html"
+     }
+    ]
+   },
+   {
+    "h": "ממוצע על פני ניסיונות (ERP) והשוואת תנאים",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד לחשב ממוצע על פני ניסיונות (ERP) ולהשוות בין תנאים בגרף.\nהנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.\nקוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"eeg_oddball.csv\")\nbaseline = df[df[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage\"].mean()\ndf[\"voltage_bc\"] = df[\"voltage\"] - df[\"trial\"].map(baseline)\ndf_clean = df.groupby(\"trial\").filter(lambda t: t[\"voltage_bc\"].abs().max() <= 100)\n1. הסבר במילים, בלי קוד, למה ניסיון בודד נראה רועש, ולמה ממוצע על פני ניסיונות (ERP, event-related potential) חושף את התגובה שנעולה לזמן הגירוי: הרעש האקראי מתבטל והתגובה הקבועה נשארת. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר כל שורה, בדגש על groupby לפי condition ו-time_ms:\nimport seaborn as sns\nerp = df_clean.groupby([\"condition\", \"time_ms\"])[\"voltage_bc\"].mean().reset_index()\nsns.lineplot(data=erp, x=\"time_ms\", y=\"voltage_bc\", hue=\"condition\")\nplt.axvline(0, color=\"black\", linestyle=\"--\")\nplt.show()\n1. ספר לי בקצרה מה זה רכיב P300 ושאל אותי באיזה תנאי ובאיזה טווח זמנים אני רואה אותו בגרף. בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לחשב את אותו ERP בדרך שנייה: pivot למטריצת numpy של ניסיונות על זמן, ממוצע עם mean(axis=0) לכל תנאי, ואז לצייר גל הפרש (oddball פחות standard). עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "[P300 בוויקיפדיה](https://he.wikipedia.org/wiki/P300)"
+     }
+    ]
+   },
+   {
+    "h": "מדידת אמפליטודה בחלון זמן והשוואה סטטיסטית",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור זה ארצה ללמוד למדוד אמפליטודה ממוצעת בחלון זמן ולהשוות סטטיסטית בין תנאים.\nהנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.\nקוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"eeg_oddball.csv\")\nbaseline = df[df[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage\"].mean()\ndf[\"voltage_bc\"] = df[\"voltage\"] - df[\"trial\"].map(baseline)\ndf_clean = df.groupby(\"trial\").filter(lambda t: t[\"voltage_bc\"].abs().max() <= 100)\n1. הסבר במילים, בלי קוד, מה זו אמפליטודה ממוצעת בחלון זמן (כאן 250 עד 500 מילישניות, החלון של P300), ולמה בוחרים את החלון מראש ולא לפי הגרף. עצור וחכה לתשובה שלי.\n1. הדפס את הקוד הבא והסבר כל שורה:\nfrom scipy import stats\nwindow = df_clean[(df_clean[\"time_ms\"] >= 250) & (df_clean[\"time_ms\"] <= 500)]\namp = window.groupby([\"trial\", \"condition\"])[\"voltage_bc\"].mean().reset_index(name=\"amplitude\")\nprint(amp.groupby(\"condition\")[\"amplitude\"].agg([\"mean\", \"std\", \"count\"]))\nprint(stats.ttest_ind(amp[amp[\"condition\"] == \"oddball\"][\"amplitude\"], amp[amp[\"condition\"] == \"standard\"][\"amplitude\"]))\n1. הסבר שכאן יש נבדק אחד ולכן כל ניסיון הוא תצפית (מבחן t לבלתי תלויים), ושבמחקר עם הרבה נבדקים מחשבים אמפליטודה לכל נבדק בכל תנאי ומשווים במבחן t למדגמים תלויים. שאל אותי שאלת הבנה על זה.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני לחזור על הניתוח עם voltage (בלי תיקון קו בסיס) ולהסביר מה קרה לתוצאה ולמה. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html"
+     }
+    ]
+   },
+   {
+    "h": "בונוס: החלקת אות בממוצע נע",
+    "items": [
+     {
+      "kind": "prompt",
+      "text": "אני לומד/ת לנתח נתונים פיזיולוגיים בפייתון. בשיעור בונוס זה ארצה ללמוד להחליק אות בעזרת ממוצע נע (moving average).\nהנתונים: eeg_oddball.csv מאתר הקורס, EEG מדומה של נבדק אחד: 100 ניסיונות (80 standard ו-20 oddball), 250 הרץ, מ-200 מילישניות לפני הצליל ועד 796 אחריו.\nקוד ההכנה מהיחידות הקודמות (תיקון קו בסיס ודחיית ניסיונות מעל 100 מיקרו-וולט). הדפס אותו ובקש ממני להריץ אותו:\nimport pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"eeg_oddball.csv\")\nbaseline = df[df[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage\"].mean()\ndf[\"voltage_bc\"] = df[\"voltage\"] - df[\"trial\"].map(baseline)\ndf_clean = df.groupby(\"trial\").filter(lambda t: t[\"voltage_bc\"].abs().max() <= 100)\n1. הסבר במילים, בלי קוד, מה זה ממוצע נע: כל נקודה מוחלפת בממוצע שלה ושל השכנות שלה. שאל אותי כמה מילישניות מכסה חלון של 5 דגימות ב-250 הרץ. בדוק שעניתי נכונה ורק אז המשך.\n1. הדפס את הקוד הבא והסבר כל שורה, בדגש על rolling, center=True וה-NaN בקצוות:\ntrial_1 = df_clean[df_clean[\"trial\"] == 1].copy()\ntrial_1[\"smooth\"] = trial_1[\"voltage_bc\"].rolling(window=5, center=True).mean()\nplt.plot(trial_1[\"time_ms\"], trial_1[\"voltage_bc\"], color=\"grey\")\nplt.plot(trial_1[\"time_ms\"], trial_1[\"smooth\"], color=\"blue\")\nplt.show()\n1. שאל אותי מה יקרה לשיא של ה-P300 אם נחליק עם חלון של 51 דגימות. בדוק שעניתי נכונה ורק אז המשך.\n1. כתוב את הכותרת \"התרגול שלך\". בקש ממני להחליק את כל הניסיונות בעזרת groupby(\"trial\") ו-transform, ואז לצייר ERP לכל תנאי מהאות המוחלק. עצור ובקש ממני להדביק לך את הקוד. אם טעיתי, העזר בגילוי מודרך עם טקסט ללא קוד. אם אבקש, תן לי את הפתרון.\n1. כתוב ששלב הלימוד הסתיים.\nעשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא."
+     },
+     {
+      "kind": "ref",
+      "text": "https://pandas.pydata.org/docs/reference/api/pandas.Series.rolling.html"
+     }
+    ]
+   }
+  ]
+ }
+]

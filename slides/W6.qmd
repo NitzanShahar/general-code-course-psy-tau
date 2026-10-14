@@ -1,0 +1,223 @@
+---
+title: "מטריצות, וקטורים ומבנים כלליים"
+course-week: "שבוע 6"
+---
+
+## מטריצות ווקטורים
+
+::: {.nbox}
+<p class="nh">שבוע 6 · חומר הלימוד</p>
+
+השבוע נתמקד בווקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.
+
+במקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub — כלים שמאפשרים לשמור את ההיסטוריה של הקוד, לחזור לגרסה קודמת כשמשהו נשבר, ולשתף קוד עם אחרים. בשבוע הבא נשתמש בהם במטלה.
+:::
+
+## פעולות וגישה לערכים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">וקטורים ומטריצות</p>
+<p>חיבור ואיחוד וקטורים למטריצה</p>
+<p>כפל של וקטור ומטריצה בסקלר</p>
+<p>פעולות בין מטריצות</p>
+<p>גישה ושינוי ערכים לפי שורה ועמודה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R · matrix</p>
+
+```r
+#### VECTORS & MATRICES ####
+
+# 1. Vectors and a scalar
+x = rnorm(15, mean = 10, sd = 2)
+y = rnorm(15, mean = 20, sd = 5)
+x * 2
+
+# 2. Combine into a matrix
+m1 = cbind(x, y)
+m2 = matrix(rnorm(30), nrow = 15)
+m1 + m2
+m1 %*% t(m2)
+
+# 3. Row and column
+m1[4, 2] = 100
+m2[5, ]
+m2[, 1]
+```
+:::
+
+::: {.py}
+<p class="lang">Python · numpy</p>
+
+```python
+import numpy as np
+
+#### VECTORS & MATRICES ####
+
+# 1. Vectors and a scalar
+x = np.random.normal(10, 2, 15)
+y = np.random.normal(20, 5, 15)
+x * 2
+
+# 2. Combine into a matrix
+m1 = np.column_stack([x, y])
+m2 = np.random.normal(size=(15, 2))
+m1 + m2
+m1 @ m2.T
+
+# 3. Row and column (from 0!)
+m1[3, 1] = 100
+m2[4, :]
+m2[:, 0]
+```
+:::
+:::
+:::
+:::
+
+## סטטיסטיקה במטריצה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">ניתוח סטטיסטי עם מטריצות</p>
+<p>ממוצעים, סכומים וס״ת של שורות ועמודות</p>
+<p>זיהוי וספירה של ערכים חסרים</p>
+<p class="th" style="margin-top:.5em">המרה בין מבני נתונים</p>
+<p>ממטריצה לטבלת נתונים</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### DESCRIBE A MATRIX ####
+
+# 1. Rows and columns
+rowMeans(m1)
+colSums(m1)
+apply(m1, 2, sd)
+
+# 2. Missing values
+m1[c(2, 7), 1] = NA
+sum(is.na(m1))
+
+# 3. Matrix to data frame
+df = as.data.frame(m1)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import pandas as pd
+
+#### DESCRIBE A MATRIX ####
+
+# 1. Rows (axis=1), columns (axis=0)
+m1.mean(axis=1)
+m1.sum(axis=0)
+m1.std(axis=0, ddof=1)
+
+# 2. Missing values
+m1[[1, 6], 0] = np.nan
+np.isnan(m1).sum()
+
+# 3. Matrix to data frame
+df = pd.DataFrame(m1, columns=['x', 'y'])
+```
+:::
+:::
+:::
+:::
+
+## ניהול קוד: למה Git?
+
+::: {.cards}
+::: {.card .code}
+<h3>האתגרים</h3>
+
+- <span class="ltr">analysis_final_v2_REALLY_final.R</span>
+- לחזור לגרסה שעבדה לפני שבוע
+- לדעת מי שינה מה, ולמה
+- לעבוד כמה אנשים על אותו קוד
+:::
+
+::: {.card .py}
+<h3>הפתרון: ניהול גרסאות</h3>
+
+- **Git** — תוכנה ששומרת את ההיסטוריה של התיקייה
+- **GitHub** — אתר שמחזיק עותק של ההיסטוריה בענן
+- כל שמירה (commit) היא „נקודת שמירה״ עם הסבר קצר
+:::
+:::
+
+::: {.cards style="margin-top:.9em"}
+::: {.card}
+<h3>מושגים בסיסיים</h3>
+
+<span class="ltr">repository · commit · push / pull</span><br><span class="ltr">README · .gitignore</span>
+:::
+
+::: {.card}
+<h3>מושגים מתקדמים</h3>
+
+<span class="ltr">branch · merge · pull request</span> — כשעובדים כמה אנשים על אותו פרויקט
+:::
+:::
+
+## מאגר ב-GitHub
+
+::: {.tb}
+::: {.tbox}
+<p class="th">ניהול קוד א: Git ו-GitHub</p>
+<p>רקע כללי</p>
+<p>פקודות בסיסיות ב-GitHub</p>
+<p>קובץ README</p>
+<p>GitHub Desktop (מומלץ להתחלה)</p>
+:::
+
+::: {.board}
+<p class="lang">README.md</p>
+
+```markdown
+# yesodot-hw
+Assignments for the course
+"Foundations of programming in empirical science".
+```
+
+<p class="lang">git log --oneline · ההיסטוריה של המאגר</p>
+
+```text
+a3f9c21  Add matrix statistics
+7be0d14  Fix column names
+1c42e88  First version of week 6
+```
+
+<p class="bnote">עורכים ← commit (שמירה מקומית עם הודעה) ← push (שליחה ל-GitHub)</p>
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 6)** — סקריפט שמדגים שימוש בווקטורים ובמטריצות.
+
+**חלק א:** שני וקטורים (לפחות 15 ערכים, מדגימה) ומטריצה שבה כל וקטור הוא עמודה. **חלק ב:** חיבור, חיסור, כפל וחילוק בסקלר על וקטור; מטריצה שנייה באותו גודל — חיבור, חיסור וכפל בין המטריצות.
+
+**חלק ג:** הדפסה ושינוי של הערך בשורה 4 ועמודה 2; חילוץ השורה החמישית והעמודה הראשונה של המטריצה השנייה. **חלק ד:** ממוצעים וסכומים של שורות ועמודות; עד 4 ערכים חסרים — ספירה (בונוס: סכום הסטיות בריבוע לכל עמודה). **חלק ה:** המרת המטריצה למבנה נתונים.
+
+**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+
+<p class="due">להגשה עד יום ראשון, 29.11.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>

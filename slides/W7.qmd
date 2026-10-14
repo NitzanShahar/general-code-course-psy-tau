@@ -1,0 +1,250 @@
+---
+title: "בקרת זרימה ופונקציות"
+course-week: "שבוע 7"
+---
+
+## בקרת זרימה ופונקציות
+
+::: {.nbox}
+<p class="nh">שבוע 7 · חומר הלימוד</p>
+
+השבוע נלמד לגרום לקוד לעבוד בשבילנו: בקרת זרימה ופונקציות.
+
+נכתוב תנאים (if / else) כדי שהקוד יפעל אחרת במצבים שונים, ולולאות (for) כדי לחזור על פעולה על הרבה קבצים או נבדקים. אחר כך נכתוב פונקציות משלנו — עם שם, קלט ופלט — ונלמד לאתר שגיאות (debugging).
+
+בחוט של ניהול הקוד נעבוד עם Git מתוך הטרמינל ומתוך RStudio, ובמטלה הזו נעלה את הקוד לראשונה למאגר ב-GitHub.
+:::
+
+## תנאים ולולאות
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">בקרת זרימה</p>
+<p>החלטות וחזרות במילים</p>
+<p>תנאי if, else (ו-elif בפייתון)</p>
+<p>לולאת for ומעקב אחר אינדקס</p>
+<p>ifelse על וקטור שלם</p>
+<p>לולאת while (פייתון)</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### FLOW CONTROL ####
+
+# 1. if-else
+rt = 1200
+if (rt > 1000) {
+  print('slow')
+} else {
+  print('ok')
+}
+
+# 2. for loop
+rts = c(450, 1200, 800)
+for (i in 1:3) {
+  print(rts[i])
+}
+
+# 3. A whole vector at once
+ifelse(rts > 1000, 'slow', 'ok')
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+
+#### FLOW CONTROL ####
+
+# 1. if-else
+rt = 1200
+if rt > 1000:
+    print('slow')
+else:
+    print('ok')
+
+# 2. for loop
+rts = [450, 1200, 800]
+for i in range(3):
+    print(rts[i])
+
+# 3. A whole vector at once
+np.where(np.array(rts) > 1000, 'slow', 'ok')
+```
+:::
+:::
+
+<p class="bnote">R תוחם בלוק בסוגריים מסולסלים <span class="ltr">{ }</span> · פייתון — בנקודתיים ובהזחה</p>
+:::
+:::
+
+## לולאה על קבצים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">עבודה עם קבצים</p>
+<p>ניהול שמות קבצים בתיקיית עבודה</p>
+<p>grepl: חיפוש מחרוזת בשם</p>
+<p>מבנה נתונים מתיקייה עם קובצי csv</p>
+<p>זיהוי ערכים ייחודיים בעמודה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### LOAD ALL SUBJECTS ####
+
+files = list.files('stroop_data',
+                   pattern = '.csv')
+
+df = data.frame()
+for (file in files) {
+  path = file.path('stroop_data', file)
+  df_subject = read.csv(path)
+  df = rbind(df, df_subject)
+}
+
+length(unique(df$subject))
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import glob
+import pandas as pd
+
+#### LOAD ALL SUBJECTS ####
+
+files = glob.glob('stroop_data/*.csv')
+
+df_list = []
+for file in files:
+    df_subject = pd.read_csv(file)
+    df_list.append(df_subject)
+df = pd.concat(df_list)
+
+df['subject'].nunique()
+```
+:::
+:::
+:::
+:::
+
+## פונקציות ואיתור שגיאות
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">פונקציות</p>
+<p>הגדרת פונקציה: שם, קלט ופלט</p>
+<p>הפעלת פונקציה ושמירת התוצאה</p>
+<p class="th" style="margin-top:.5em">מציאת שגיאות</p>
+<p>לעצור בתוך הפונקציה ולבדוק ערכים</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### FUNCTIONS ####
+
+# 1. Define
+standardize = function(x) {
+  m = mean(x, na.rm = TRUE)
+  s = sd(x, na.rm = TRUE)
+  z = (x - m) / s
+  return(z)
+}
+
+# 2. Use and save the result
+df$rt_z = standardize(df$rt)
+
+# 3. Debug: stop inside
+# browser()
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+#### FUNCTIONS ####
+
+# 1. Define
+def standardize(x):
+    m = x.mean()    # NaN skipped
+    s = x.std()
+    z = (x - m) / s
+    return z
+
+# 2. Use and save the result
+df['rt_z'] = standardize(df['rt'])
+
+# 3. Debug: stop inside
+# breakpoint()
+```
+:::
+:::
+
+<p class="bnote">ב-RStudio וב-VS Code אפשר גם ללחוץ ליד מספר השורה כדי לעצור שם (breakpoint)</p>
+:::
+:::
+
+## ניהול קוד ב: Git בטרמינל
+
+::: {.tb}
+::: {.tbox}
+<p class="th">ניהול קוד ב</p>
+<p>GitHub דרך הטרמינל</p>
+<p>GitHub ב-RStudio (לשונית Git)</p>
+<p>הודעת commit שמתארת את השינוי</p>
+:::
+
+::: {.board}
+<p class="lang">bash</p>
+
+```bash
+#### FIRST TIME ####
+git clone https://github.com/<user>/yesodot-hw.git
+cd yesodot-hw
+
+#### EVERY CHANGE ####
+git status                        # what changed?
+git add stroop.R
+git commit -m "Add outlier function"
+git push                          # send to GitHub
+
+git log --oneline                 # the history
+```
+:::
+:::
+
+## מטלה שבועית
+
+::: {.hwbox}
+**המטלה השבועית (שבוע 7)** — קובץ הנתונים: stroop_data.zip (באתר הקורס).
+
+**חלק א:** לולאת for שטוענת ומאחדת את קבצי כל הנבדקים; מספר הנבדקים והתנאים; כמות ואחוז זמני התגובה החסרים; היסטוגרמות לתנאי תואם ולא תואם.
+
+**חלק ב:** פונקציה שמסמנת זמני תגובה חריגים (מעל ממוצע + 2 ס״ת), ולולאה שמפעילה אותה על כל נבדק בנפרד ומוסיפה עמודה למבנה הנתונים. **חלק ג:** ספירת החריגים לכל נבדק, והיסטוגרמות חוזרות אחרי הניקוי.
+
+**חלק ד – ניהול גרסאות:** מאגר ציבורי `yesodot-hw` עם README; הסקריפט ב-commit ראשון, ושיפור קטן ב-commit שני; ב-PDF: הקישור למאגר וצילום של `git log --oneline`.
+
+<p class="due">להגשה עד יום ראשון, 6.12.2026, בשעה 12:00</p>
+:::
+
+## בהצלחה! {.closing}
+
+<p class="closing-text">בהצלחה!</p>
