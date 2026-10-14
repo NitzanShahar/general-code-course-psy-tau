@@ -14,7 +14,7 @@ course-week: "שבוע 1"
 
 אחר כך ניכנס לטרמינל ונכיר את bash — התוכנה שמקשיבה למה שאנחנו מקלידים, ושהיא בעצמה שפה. נלמד מה זו בכלל „שפת תכנות״, ונראה איך מתוך אותו חלון מדברים עם שלוש שפות שונות: bash, פייתון ו-R. השאלה שתלווה אותנו כל השבוע: כשאני מקיש Enter — לאן הטקסט הולך, ומה הוא מפעיל?
 
-השבוע נתקין רק את מה שצריך: R, פייתון, וב-Windows גם Git Bash. סביבות העבודה הנוחות (RStudio ו-VS Code) יגיעו בשבוע הבא — ואז כבר תדעו מה הן עושות מאחורי הקלעים.
+השבוע נתקין רק את מה שצריך: R, פייתון ו-Git Bash. סביבות העבודה הנוחות (RStudio ו-VS Code) יגיעו בשבוע הבא — ואז כבר תדעו מה הן עושות מאחורי הקלעים.
 :::
 
 ## המחשב: חומרה, תוכנה ותהליך
@@ -41,7 +41,7 @@ course-week: "שבוע 1"
 :::
 :::
 
-<p class="take">מערכת ההפעלה (Windows, macOS, Linux) היא המנהלת: טוענת תוכנות לזיכרון, מחלקת את המעבד בין התהליכים, ושומרת על הקבצים בדיסק.</p>
+<p class="take">מערכת ההפעלה (אצלנו Windows) היא המנהלת: טוענת תוכנות לזיכרון, מחלקת את המעבד בין התהליכים, ושומרת על הקבצים בדיסק.</p>
 
 ## קבצים ונתיבים
 
@@ -184,12 +184,85 @@ $ x = 5
 :::
 :::
 
-<table class="df he" style="font-size:.52em;margin-top:1em">
-<tr><th>תחילת השורה (prompt)</th><th>מי מקשיב עכשיו</th><th>איך יוצאים</th></tr>
-<tr><td dir="ltr">$</td><td>bash</td><td>—</td></tr>
-<tr><td dir="ltr">&gt;&gt;&gt;</td><td>פייתון</td><td dir="ltr">exit()</td></tr>
-<tr><td dir="ltr">&gt;</td><td>R</td><td dir="ltr">q()</td></tr>
-</table>
+<p class="take">הסימן <span class="ltr">$</span> בתחילת השורה = bash מחכה לפקודה (את הסימן לא מקלידים). ב-Windows אין bash — מתקינים אותו עם Git Bash.</p>
+
+## עבודה ב-bash
+
+::: {.tb}
+::: {.tbox}
+<p class="th">עבודה ב-bash</p>
+<p>איפה אני? pwd, ls ו-cd</p>
+<p>יצירה, העתקה, העברה ומחיקה</p>
+<p>מה קורה כשמקישים Enter: PATH</p>
+<p>לאן הולך הפלט: <span class="ltr">&gt;</span> ו-<span class="ltr">&gt;&gt;</span></p>
+<p>סקריפט bash: nano, cat, bash</p>
+<p style="color:#b3541e">rm מוחק לתמיד — אין סל מחזור!</p>
+:::
+
+::: {.board .small}
+<p class="lang">bash</p>
+
+```bash
+pwd                       # where am I?
+ls                        # what is here?
+cd ~                      # go home
+mkdir yesodot             # new folder
+cd yesodot                # go in   (cd .. = one up)
+
+touch notes.txt           # new empty file
+cp notes.txt copy.txt     # copy
+mv copy.txt old.txt       # move / rename
+rm old.txt                # delete (forever!)
+
+echo 'first line' > notes.txt    # write (replace)
+echo 'second line' >> notes.txt  # add at the end
+cat notes.txt             # show a text file
+nano hello.sh             # edit (Ctrl+O save, Ctrl+X exit)
+bash hello.sh             # run a bash script
+which cat                 # where is this program?
+```
+:::
+:::
+
+## R ופייתון מתוך הטרמינל
+
+::: {.tb}
+::: {.tbox}
+<p class="th">קודם מתקינים</p>
+<p>R (מ-cran) ופייתון (מ-python.org)</p>
+<p>את R מוסיפים ל-PATH בקובץ <code dir="ltr">~/.bashrc</code></p>
+<p class="th" style="margin-top:.4em">מי מקשיב עכשיו?</p>
+<p><code dir="ltr">$</code> — bash</p>
+<p><code dir="ltr">&gt;&gt;&gt;</code> — פייתון (יציאה: <code dir="ltr">exit()</code>)</p>
+<p><code dir="ltr">&gt;</code> — R (יציאה: <code dir="ltr">q()</code>)</p>
+<p class="th" style="margin-top:.4em">שלוש דרכים לדבר איתם</p>
+<p>• להיכנס למתורגמן ולשוחח שורה-שורה</p>
+<p>• לתת לו שורה אחת מ-bash</p>
+<p>• להעביר לו טקסט בצינור (|)</p>
+<p>בשבוע הבא: ה-Console של RStudio הוא בדיוק ה-<code dir="ltr">&gt;</code> הזה</p>
+:::
+
+::: {.board}
+<p class="lang">bash</p>
+
+```bash
+#### 1. Interactive ####
+$ python               # Git Bash stuck? python -i
+>>> 2 + 2
+>>> exit()
+$ R
+> 2 + 2
+> q()
+
+#### 2. One line from bash ####
+$ python -c "print(2 + 2)"
+$ Rscript -e "2 + 2"
+
+#### 3. A pipe: bash writes, python reads ####
+$ echo 'print(2 + 2)' | python
+```
+:::
+:::
 
 ## המסע של פקודה: מה קורה כשמקישים Enter?
 
@@ -236,74 +309,6 @@ $ x = 5
 :::
 
 <p class="take">אם bash לא מוצא את התוכנה ב-PATH: <span class="ltr">command not found</span>. זו לא תקלה במחשב — bash פשוט לא יודע איפה התוכנה גרה (<span class="ltr">echo $PATH</span>).</p>
-
-## לדבר עם פייתון ו-R מתוך הטרמינל
-
-::: {.tb}
-::: {.tbox}
-<p class="th">שלוש דרכים</p>
-<p>• להיכנס למתורגמן ולשוחח איתו שורה-שורה</p>
-<p>• לתת לו שורה אחת מ-bash</p>
-<p>• להעביר לו טקסט בצינור (|)</p>
-<p>ובשבוע הבא: Console של RStudio הוא בדיוק ה-<span class="ltr">&gt;</span> הזה</p>
-:::
-
-::: {.board}
-<p class="lang">bash</p>
-
-```bash
-#### 1. Interactive ####
-$ python               # Git Bash stuck? python -i
->>> 2 + 2
->>> exit()
-$ R
-> 2 + 2
-> q()
-
-#### 2. One line from bash ####
-$ python -c "print(2 + 2)"
-$ Rscript -e "2 + 2"
-
-#### 3. A pipe: bash writes, python reads ####
-$ echo 'print(2 + 2)' | python
-```
-:::
-:::
-
-## ניווט וקבצים בטרמינל
-
-::: {.tb}
-::: {.tbox}
-<p class="th">הטרמינל</p>
-<p>איפה אני? pwd, ls ו-cd</p>
-<p>יצירה, העתקה, העברה ומחיקה</p>
-<p>לאן הולך הפלט: <span class="ltr">&gt;</span> ו-<span class="ltr">&gt;&gt;</span></p>
-<p>סקריפט הוא קובץ טקסט: nano ו-cat</p>
-<p style="color:#b3541e">rm מוחק לתמיד — אין סל מחזור!</p>
-:::
-
-::: {.board .small}
-<p class="lang">bash</p>
-
-```bash
-pwd                       # where am I?
-ls                        # what is here?
-cd ~                      # go home
-mkdir yesodot             # new folder
-cd yesodot                # go in   (cd .. = one up)
-
-touch notes.txt           # new empty file
-cp notes.txt copy.txt     # copy
-mv copy.txt old.txt       # move / rename
-rm old.txt                # delete (forever!)
-
-echo 'first line' > notes.txt    # write (replace)
-echo 'second line' >> notes.txt  # add at the end
-cat notes.txt             # show a text file
-nano hello.py             # edit (Ctrl+O save, Ctrl+X exit)
-```
-:::
-:::
 
 ## מטלה שבועית
 
