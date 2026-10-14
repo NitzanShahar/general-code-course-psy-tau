@@ -92,6 +92,74 @@ C:\Users\dana\yesodot\week1\hello.py
 :::
 :::
 
+## מה זו שפת תכנות?
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">שפת תכנות</p>
+<p>המעבד מבין רק הוראות מכונה פשוטות מאוד</p>
+<p>שפה = מילים ודקדוק, כתובים כטקסט</p>
+<p>מתורגמן (interpreter) = תוכנה רגילה שקוראת את הטקסט ופועלת לפיו</p>
+<p>לכל מתורגמן דקדוק משלו: אותה שורה — תוצאות שונות</p>
+:::
+
+::: {.board}
+::: {.duo .three}
+::: {.sh}
+<p class="lang">bash</p>
+
+```bash
+$ 2 + 2
+```
+<p class="out err">bash: 2: command not found</p>
+
+```bash
+$ x=5
+$ echo $x
+```
+<p class="out">5</p>
+
+```bash
+$ x = 5
+```
+<p class="out err">bash: x: command not found</p>
+:::
+
+::: {.r}
+<p class="lang">R</p>
+
+```r
+> 2 + 2
+```
+<p class="out">[1] 4</p>
+
+```r
+> x = 5
+> x
+```
+<p class="out">[1] 5</p>
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+>>> 2 + 2
+```
+<p class="out">4</p>
+
+```python
+>>> x = 5
+>>> x
+```
+<p class="out">5</p>
+:::
+:::
+
+<p class="bnote">ב-bash המילה הראשונה היא תמיד שם של פקודה — ולכן <span class="ltr">2</span> ו-<span class="ltr">x</span> „לא נמצאו״, ואסור רווחים סביב =</p>
+:::
+:::
+
 ## טרמינל, shell ו-bash
 
 ::: {.flow .f3}
@@ -168,74 +236,6 @@ C:\Users\dana\yesodot\week1\hello.py
 :::
 
 <p class="take">אם bash לא מוצא את התוכנה ב-PATH: <span class="ltr">command not found</span>. זו לא תקלה במחשב — bash פשוט לא יודע איפה התוכנה גרה (<span class="ltr">echo $PATH</span>).</p>
-
-## מה זו שפת תכנות?
-
-::: {.tb .duo-tb}
-::: {.tbox}
-<p class="th">שפת תכנות</p>
-<p>המעבד מבין רק הוראות מכונה פשוטות מאוד</p>
-<p>שפה = מילים ודקדוק, כתובים כטקסט</p>
-<p>מתורגמן (interpreter) = תוכנה רגילה שקוראת את הטקסט ופועלת לפיו</p>
-<p>לכל מתורגמן דקדוק משלו: אותה שורה — תוצאות שונות</p>
-:::
-
-::: {.board}
-::: {.duo .three}
-::: {.sh}
-<p class="lang">bash</p>
-
-```bash
-$ 2 + 2
-```
-<p class="out err">bash: 2: command not found</p>
-
-```bash
-$ x=5
-$ echo $x
-```
-<p class="out">5</p>
-
-```bash
-$ x = 5
-```
-<p class="out err">bash: x: command not found</p>
-:::
-
-::: {.r}
-<p class="lang">R</p>
-
-```r
-> 2 + 2
-```
-<p class="out">[1] 4</p>
-
-```r
-> x = 5
-> x
-```
-<p class="out">[1] 5</p>
-:::
-
-::: {.py}
-<p class="lang">Python</p>
-
-```python
->>> 2 + 2
-```
-<p class="out">4</p>
-
-```python
->>> x = 5
->>> x
-```
-<p class="out">5</p>
-:::
-:::
-
-<p class="bnote">ב-bash המילה הראשונה היא תמיד שם של פקודה — ולכן <span class="ltr">2</span> ו-<span class="ltr">x</span> „לא נמצאו״, ואסור רווחים סביב =</p>
-:::
-:::
 
 ## לדבר עם פייתון ו-R מתוך הטרמינל
 

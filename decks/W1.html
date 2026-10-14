@@ -507,6 +507,81 @@ Git Bash
 </div>
 </div>
 </section>
+<section id="מה-זו-שפת-תכנות" class="slide level2">
+<h2>מה זו שפת תכנות?</h2>
+<div class="tb duo-tb">
+<div class="tbox">
+<p class="th">
+שפת תכנות
+</p>
+<p>
+המעבד מבין רק הוראות מכונה פשוטות מאוד
+</p>
+<p>
+שפה = מילים ודקדוק, כתובים כטקסט
+</p>
+<p>
+מתורגמן (interpreter) = תוכנה רגילה שקוראת את הטקסט ופועלת לפיו
+</p>
+<p>
+לכל מתורגמן דקדוק משלו: אותה שורה — תוצאות שונות
+</p>
+</div>
+<div class="board">
+<div class="duo three">
+<div class="sh">
+<p class="lang">
+bash
+</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> 2 + 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out err">
+bash: 2: command not found
+</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> x=5</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">$x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+5
+</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> x = 5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out err">
+bash: x: command not found
+</p>
+</div>
+<div class="r">
+<p class="lang">
+R
+</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+[1] 4
+</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+[1] 5
+</p>
+</div>
+<div class="py">
+<p class="lang">
+Python
+</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+4
+</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+5
+</p>
+</div>
+</div>
+<p class="bnote">
+ב-bash המילה הראשונה היא תמיד שם של פקודה — ולכן <span class="ltr">2</span> ו-<span class="ltr">x</span> „לא נמצאו״, ואסור רווחים סביב =
+</p>
+</div>
+</div>
+</section>
 <section id="טרמינל-shell-ו-bash" class="slide level2">
 <h2>טרמינל, shell ו-bash</h2>
 <div class="flow f3">
@@ -648,81 +723,6 @@ bash מקשיב שוב ומחכה לשורה הבאה.
 <p class="take">
 אם bash לא מוצא את התוכנה ב-PATH: <span class="ltr">command not found</span>. זו לא תקלה במחשב — bash פשוט לא יודע איפה התוכנה גרה (<span class="ltr">echo $PATH</span>).
 </p>
-</section>
-<section id="מה-זו-שפת-תכנות" class="slide level2">
-<h2>מה זו שפת תכנות?</h2>
-<div class="tb duo-tb">
-<div class="tbox">
-<p class="th">
-שפת תכנות
-</p>
-<p>
-המעבד מבין רק הוראות מכונה פשוטות מאוד
-</p>
-<p>
-שפה = מילים ודקדוק, כתובים כטקסט
-</p>
-<p>
-מתורגמן (interpreter) = תוכנה רגילה שקוראת את הטקסט ופועלת לפיו
-</p>
-<p>
-לכל מתורגמן דקדוק משלו: אותה שורה — תוצאות שונות
-</p>
-</div>
-<div class="board">
-<div class="duo three">
-<div class="sh">
-<p class="lang">
-bash
-</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> 2 + 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out err">
-bash: 2: command not found
-</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> x=5</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">$x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-5
-</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> x = 5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out err">
-bash: x: command not found
-</p>
-</div>
-<div class="r">
-<p class="lang">
-R
-</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-[1] 4
-</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-[1] 5
-</p>
-</div>
-<div class="py">
-<p class="lang">
-Python
-</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-4
-</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-5
-</p>
-</div>
-</div>
-<p class="bnote">
-ב-bash המילה הראשונה היא תמיד שם של פקודה — ולכן <span class="ltr">2</span> ו-<span class="ltr">x</span> „לא נמצאו״, ואסור רווחים סביב =
-</p>
-</div>
-</div>
 </section>
 <section id="לדבר-עם-פייתון-ו-r-מתוך-הטרמינל" class="slide level2">
 <h2>לדבר עם פייתון ו-R מתוך הטרמינל</h2>
