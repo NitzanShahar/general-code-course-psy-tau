@@ -373,8 +373,12 @@ def week_page(w, c, avail, book, depth, staff):
         units.append("</div>")
     langs = {u["book"] for u in c.get("units", [])}
     chooser = ""
-    if {"r", "py"} <= langs:
-        chooser = ('<div class="langs" role="group" aria-label="איזו שפה להציג"><span>להציג:</span>'
+    if c.get("os_choice"):  # a week written per operating system (week 1); only Windows is ready for now
+        chooser = ('<div class="langs" role="group" aria-label="מערכת הפעלה"><span>מערכת הפעלה:</span>'
+                   '<button type="button" class="on" aria-pressed="true">Windows</button>'
+                   '<button type="button" disabled title="בקרוב">Mac</button></div>')
+    elif {"r", "py"} <= langs:
+        chooser = ('<div class="langs" data-kind="lang" role="group" aria-label="איזו שפה להציג"><span>להציג:</span>'
                    '<button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button>'
                    '<button type="button" data-lang="py">Python</button></div>')
     reading = "".join(f'<a href="{esc(r["url"])}" target="_blank" rel="noopener" class="row"><span class="ic">{ICON["book"]}</span>'
@@ -519,7 +523,7 @@ document.querySelectorAll('.copy').forEach(function(b){
 
 LANG_JS = """// week page: show both languages, or only R / only Python (remembered in this browser)
 (function(){
-  var box=document.querySelector('.langs'); if(!box) return;
+  var box=document.querySelector('.langs[data-kind=lang]'); if(!box) return;
   function set(l){
     box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
     document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });

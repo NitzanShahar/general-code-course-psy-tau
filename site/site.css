@@ -86,6 +86,8 @@ h1{margin:0;font-family:'Frank Ruhl Libre',serif;font-size:54px;font-weight:900;
 .langs button{font:inherit;font-size:14px;min-height:36px;padding:0 14px;border:1.5px solid #cdd6df;border-radius:999px;background:#fff;color:var(--ink);cursor:pointer}
 .langs button:hover{border-color:var(--ink)}
 .langs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.langs button:disabled{color:#a3afba;border-style:dashed;cursor:not-allowed;background:#f6f8fa}
+.langs button:disabled:hover{border-color:#cdd6df}
 .wbook{margin-top:18px;padding-top:4px}
 .wbook[hidden]{display:none}
 .wbh{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-size:15px;font-weight:700;color:var(--bc);padding-bottom:6px;border-bottom:1px dashed #d7dee5}

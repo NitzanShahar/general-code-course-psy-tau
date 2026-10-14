@@ -123,7 +123,7 @@ document.querySelectorAll('.copy').forEach(function(b){
 });
 // week page: show both languages, or only R / only Python (remembered in this browser)
 (function(){
-  var box=document.querySelector('.langs'); if(!box) return;
+  var box=document.querySelector('.langs[data-kind=lang]'); if(!box) return;
   function set(l){
     box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
     document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
