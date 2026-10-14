@@ -401,76 +401,376 @@
 שבוע 1 · חומר הלימוד
 </p>
 <p>ברוכים הבאים לקורס יסודות התכנות במדע אמפירי!</p>
-<p>לפני שכותבים קוד, צריך להבין עם מי מדברים. השבוע נכיר את המחשב מבפנים: מה קורה כשמפעילים תוכנה, איך מסודרים קבצים ותיקיות, ומה זה נתיב. נפתח לראשונה את הטרמינל — חלון שבו מדברים עם המחשב במילים במקום בעכבר — ונלמד בו כמה פקודות בסיסיות.</p>
-<p>נכיר גם את החשיבה שמאחורי כל תוכנית: הוראות מדויקות, לפי סדר, שמחשב יכול לבצע. נתקין את כלי העבודה של הקורס (R ו-RStudio, פייתון ו-VS Code, ו-Git), ונריץ סקריפט ראשון בשתי השפות.</p>
-<p>השבוע לא צריך לזכור הכול בעל פה. המטרה היא שתרגישו בבית מול המחשב — כל השאר נבנה על זה.</p>
+<p>השבוע לא נפתח אף תוכנה „נוחה״ — רק את הטרמינל: חלון שבו מדברים עם המחשב בטקסט. כדי להבין מה קורה שם, נתחיל מהמחשב עצמו: ממה הוא בנוי, מה זה בעצם „להריץ״ תוכנה, איך מסודרים קבצים ונתיבים, ולמה קובץ הוא בסך הכול רצף של בייטים.</p>
+<p>אחר כך ניכנס לטרמינל ונכיר את bash — התוכנה שמקשיבה למה שאנחנו מקלידים, ושהיא בעצמה שפה. נלמד מה זו בכלל „שפת תכנות״, ונראה איך מתוך אותו חלון מדברים עם שלוש שפות שונות: bash, פייתון ו-R. השאלה שתלווה אותנו כל השבוע: כשאני מקיש Enter — לאן הטקסט הולך, ומה הוא מפעיל?</p>
+<p>השבוע נתקין רק את מה שצריך: R, פייתון, וב-Windows גם Git Bash. סביבות העבודה הנוחות (RStudio ו-VS Code) יגיעו בשבוע הבא — ואז כבר תדעו מה הן עושות מאחורי הקלעים.</p>
 </div>
 </section>
-<section id="המחשב-ומערכת-ההפעלה" class="slide level2">
-<h2>המחשב ומערכת ההפעלה</h2>
+<section id="המחשב-חומרה-תוכנה-ותהליך" class="slide level2">
+<h2>המחשב: חומרה, תוכנה ותהליך</h2>
+<div class="flow f3">
+<div class="step os">
+<b>דיסק</b>
+<p class="big">
+שמירה
+</p>
+<p>
+כל הקבצים: מסמכים, נתונים — וגם התוכנות עצמן. תוכנה היא בסך הכול קובץ על הדיסק.
+</p>
+<p>
+נשמר גם כשהמחשב כבוי · איטי וגדול
+</p>
+</div>
+<div class="step">
+<b>זיכרון (RAM)</b>
+<p class="big">
+עבודה
+</p>
+<p>
+„להריץ״ תוכנה = מערכת ההפעלה מעתיקה אותה מהדיסק לזיכרון. עותק רץ כזה נקרא <b style="display:inline">תהליך</b> (process).
+</p>
+<p>
+נמחק כשמכבים · מהיר וקטן
+</p>
+</div>
+<div class="step res">
+<b>מעבד (CPU)</b>
+<p class="big">
+ביצוע
+</p>
+<p>
+מבצע את ההוראות של התהליך, אחת אחרי השנייה — מיליארדי הוראות פשוטות בשנייה (חיבור, השוואה, העתקה).
+</p>
+</div>
+</div>
+<p class="take">
+מערכת ההפעלה (Windows, macOS, Linux) היא המנהלת: טוענת תוכנות לזיכרון, מחלקת את המעבד בין התהליכים, ושומרת על הקבצים בדיסק.
+</p>
+</section>
+<section id="קבצים-ונתיבים" class="slide level2">
+<h2>קבצים ונתיבים</h2>
 <div class="tb duo-tb">
 <div class="tbox">
 <p class="th">
-המחשב ומערכת ההפעלה
+מערכת הקבצים
 </p>
 <p>
-מה קורה כשמפעילים תוכנה
+עץ של תיקיות וקבצים
 </p>
 <p>
-קבצים ותיקיות
+נתיב מלא — מהשורש
 </p>
 <p>
-נתיב: נתיב מלא ונתיב יחסי
+נתיב יחסי — מהמקום שבו אני נמצא
+</p>
+<p class="th" style="margin-top:.5em">
+קובץ = רצף של בייטים
 </p>
 <p>
-סוגי קבצים וסיומות
+קובץ טקסט (csv, R, py) — בייטים שמייצגים אותיות לפי קידוד (UTF-8)
 </p>
 <p>
-Windows, macOS ו-Linux
+קובץ בינארי (xlsx, docx, png) — צריך תוכנה מיוחדת כדי לקרוא
 </p>
 </div>
 <div class="board">
 <div class="duo">
 <div class="os">
 <p class="lang">
-Windows
+Windows (Explorer)
 </p>
-<pre class="text"><code>C:\Users\noa\
+<pre class="text"><code>C:\Users\dana\
 └── yesodot\
     └── week1\
         ├── hello.R
         └── hello.py
 
-C:\Users\noa\yesodot\week1\hello.R</code></pre>
+C:\Users\dana\yesodot\week1\hello.py</code></pre>
 </div>
-<div class="os">
+<div class="sh">
 <p class="lang">
-Mac
+Git Bash · Mac Terminal
 </p>
-<pre class="text"><code>/Users/noa/
+<pre class="text"><code>/c/Users/dana/        (Mac: /Users/dana/)
 └── yesodot/
     └── week1/
         ├── hello.R
         └── hello.py
 
-/Users/noa/yesodot/week1/hello.R</code></pre>
+/c/Users/dana/yesodot/week1/hello.py
+~/yesodot/week1/hello.py</code></pre>
 </div>
 </div>
 <p class="bnote">
-נתיב מלא = הכתובת המלאה של הקובץ · נתיב יחסי = מהתיקייה שבה אני נמצא: <span class="ltr">week1/hello.R</span>
+אותו קובץ, שני כתיבים · <span class="ltr">~</span> = תיקיית הבית · נתיב יחסי מתוך <span class="ltr">yesodot</span>: <span class="ltr">week1/hello.py</span>
 </p>
 </div>
 </div>
 </section>
-<section id="הטרמינל" class="slide level2">
-<h2>הטרמינל</h2>
+<section id="טרמינל-shell-ו-bash" class="slide level2">
+<h2>טרמינל, shell ו-bash</h2>
+<div class="flow f3">
+<div class="step os">
+<b>טרמינל</b>
+<p class="big">
+חלון
+</p>
+<p>
+מעביר טקסט: מה שאני מקליד — הלאה, ומה שחוזר — אל המסך. הוא עצמו לא מבין כלום.
+</p>
+<p>
+Windows: Git Bash — תוכנה שנותנת ל-Windows טרמינל bash (השם מגיע מ-git, שנפגוש בשבוע 6) · Mac: Terminal
+</p>
+</div>
+<div class="step sh">
+<b>shell = bash</b>
+<p class="big">
+מקשיב
+</p>
+<p>
+קורא את השורה כשאני מקיש Enter, מבין אותה, ופועל: מבצע בעצמו, או מפעיל תוכנה אחרת.
+</p>
+<p>
+bash היא בעצמה שפת תכנות
+</p>
+</div>
+<div class="step">
+<b>תוכנות</b>
+<p class="big">
+עושות
+</p>
+<p>
+<span class="ltr">ls</span>, <span class="ltr">cat</span>, <span class="ltr">python</span>, <span class="ltr">R</span>… כל אחת היא קובץ על הדיסק, ש-bash מפעיל כתהליך.
+</p>
+</div>
+</div>
+
+<table class="df he" style="font-size:.52em;margin-top:1em">
+<tbody><tr>
+<th>
+תחילת השורה (prompt)
+</th>
+<th>
+מי מקשיב עכשיו
+</th>
+<th>
+איך יוצאים
+</th>
+</tr>
+<tr>
+<td dir="ltr">
+$&nbsp;&nbsp;&nbsp;(Mac: %)
+</td>
+<td>
+bash
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td dir="ltr">
+&gt;&gt;&gt;
+</td>
+<td>
+פייתון
+</td>
+<td dir="ltr">
+exit()
+</td>
+</tr>
+<tr>
+<td dir="ltr">
+&gt;
+</td>
+<td>
+R
+</td>
+<td dir="ltr">
+q()
+</td>
+</tr>
+
+</tbody></table>
+</section>
+<section id="המסע-של-פקודה-מה-קורה-כשמקישים-enter" class="slide level2">
+<h2>המסע של פקודה: מה קורה כשמקישים Enter?</h2>
+<div class="flow">
+<div class="step os">
+<b><span class="num">1</span>טרמינל</b>
+<p>
+מקלידים <code>python hello.py</code> ו-Enter. החלון מעביר את הטקסט ל-bash.
+</p>
+</div>
+<div class="step sh">
+<b><span class="num">2</span>bash מפרק למילים</b>
+<p>
+המילה הראשונה היא הפקודה: <code>python</code>. השאר הם הקלט שלה: <code>hello.py</code>.
+</p>
+</div>
+<div class="step sh">
+<b><span class="num">3</span>bash מחפש ב-PATH</b>
+<p>
+עובר על רשימת התיקיות ב-<code>$PATH</code> עד שהוא מוצא קובץ בשם python. בודקים: <code>which python</code>
+</p>
+</div>
+<div class="step os">
+<b><span class="num">4</span>מערכת ההפעלה</b>
+<p>
+טוענת את python מהדיסק לזיכרון — נוצר תהליך חדש.
+</p>
+</div>
+<div class="step">
+<b><span class="num">5</span>המתורגמן קורא</b>
+<p>
+python (תוכנה רגילה!) פותח את <code>hello.py</code> — קובץ טקסט בלבד — ומבצע שורה אחר שורה.
+</p>
+</div>
+<div class="step res">
+<b><span class="num">6</span>הפלט</b>
+<p>
+מה ש-print כותב חוזר אל החלון — או אל קובץ: <code>python hello.py &gt; out.txt</code>
+</p>
+</div>
+<div class="step os">
+<b><span class="num">7</span>התהליך נגמר</b>
+<p>
+python מסיים, מערכת ההפעלה מפנה את הזיכרון.
+</p>
+</div>
+<div class="step sh">
+<b><span class="num">8</span><span class="ltr">$</span> חוזר</b>
+<p>
+bash מקשיב שוב ומחכה לשורה הבאה.
+</p>
+</div>
+</div>
+<p class="take">
+אם bash לא מוצא את התוכנה ב-PATH: <span class="ltr">command not found</span>. זו לא תקלה במחשב — bash פשוט לא יודע איפה התוכנה גרה (<span class="ltr">echo $PATH</span>).
+</p>
+</section>
+<section id="מה-זו-שפת-תכנות" class="slide level2">
+<h2>מה זו שפת תכנות?</h2>
+<div class="tb duo-tb">
+<div class="tbox">
+<p class="th">
+שפת תכנות
+</p>
+<p>
+המעבד מבין רק הוראות מכונה פשוטות מאוד
+</p>
+<p>
+שפה = מילים ודקדוק, כתובים כטקסט
+</p>
+<p>
+מתורגמן (interpreter) = תוכנה רגילה שקוראת את הטקסט ופועלת לפיו
+</p>
+<p>
+לכל מתורגמן דקדוק משלו: אותה שורה — תוצאות שונות
+</p>
+</div>
+<div class="board">
+<div class="duo three">
+<div class="sh">
+<p class="lang">
+bash
+</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> 2 + 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out err">
+bash: 2: command not found
+</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> x=5</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">$x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+5
+</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> x = 5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out err">
+bash: x: command not found
+</p>
+</div>
+<div class="r">
+<p class="lang">
+R
+</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+[1] 4
+</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+[1] 5
+</p>
+</div>
+<div class="py">
+<p class="lang">
+Python
+</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+4
+</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+5
+</p>
+</div>
+</div>
+<p class="bnote">
+ב-bash המילה הראשונה היא תמיד שם של פקודה — ולכן <span class="ltr">2</span> ו-<span class="ltr">x</span> „לא נמצאו״, ואסור רווחים סביב =
+</p>
+</div>
+</div>
+</section>
+<section id="לדבר-עם-פייתון-ו-r-מתוך-הטרמינל" class="slide level2">
+<h2>לדבר עם פייתון ו-R מתוך הטרמינל</h2>
+<div class="tb">
+<div class="tbox">
+<p class="th">
+שלוש דרכים
+</p>
+<p>
+• להיכנס למתורגמן ולשוחח איתו שורה-שורה
+</p>
+<p>
+• לתת לו שורה אחת מ-bash
+</p>
+<p>
+• להעביר לו טקסט בצינור (|)
+</p>
+<p>
+ובשבוע הבא: Console של RStudio הוא בדיוק ה-<span class="ltr">&gt;</span> הזה
+</p>
+</div>
+<div class="board">
+<p class="lang">
+bash · Mac: python3
+</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### 1. Interactive ####</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python               <span class="co"># Git Bash stuck? python -i</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> 2 <span class="ex">+</span> 2</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> R</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> 2 <span class="ex">+</span> 2</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> q<span class="kw">()</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#### 2. One line from bash ####</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-c</span> <span class="st">"print(2 + 2)"</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> Rscript <span class="at">-e</span> <span class="st">"2 + 2"</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#### 3. A pipe: bash writes, python reads ####</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">'print(2 + 2)'</span> <span class="kw">|</span> <span class="ex">python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="ניווט-וקבצים-בטרמינל" class="slide level2">
+<h2>ניווט וקבצים בטרמינל</h2>
 <div class="tb">
 <div class="tbox">
 <p class="th">
 הטרמינל
-</p>
-<p>
-מה זה טרמינל
 </p>
 <p>
 איפה אני? pwd, ls ו-cd
@@ -479,245 +779,45 @@ Mac
 יצירה, העתקה, העברה ומחיקה
 </p>
 <p>
-הצצה לקבצים: cat, head ו-wc
+לאן הולך הפלט: <span class="ltr">&gt;</span> ו-<span class="ltr">&gt;&gt;</span>
 </p>
 <p>
-הרצת סקריפט מהטרמינל
+סקריפט הוא קובץ טקסט: nano ו-cat
+</p>
+<p style="color:#b3541e">
+rm מוחק לתמיד — אין סל מחזור!
 </p>
 </div>
-<div class="board">
+<div class="board small">
 <p class="lang">
-bash · Git Bash / Terminal
+bash
 </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### FIRST TERMINAL SESSION ####</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>                    <span class="co"># where am I?</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>                     <span class="co"># what is in this folder?</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~                   <span class="co"># go to my home folder</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> yesodot          <span class="co"># a new folder</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> yesodot             <span class="co"># go into it</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> week1</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> week1</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> hello.R hello.py <span class="co"># two empty files</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..                  <span class="co"># one folder up</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="לוגיקת-תכנות" class="slide level2">
-<h2>לוגיקת תכנות</h2>
-<div class="tb">
-<div class="tbox">
-<p class="th">
-לוגיקת תכנות
-</p>
-<p>
-מהי תוכנית
-</p>
-<p>
-פירוק בעיה ופסאודו-קוד
-</p>
-<p>
-משתנים: שם, ערך וסוג
-</p>
-</div>
-<div class="board">
-<p class="lang">
-פסאודו-קוד
-</p>
-<div class="pseudo">
-<p>
-<b>המטרה:</b> כמה ניסיונות איטיים (מעל 1000 מילישניות) היו לנבדק?
-</p>
-<p>
-&nbsp;
-</p>
-<p>
-<span class="n">1.</span> קבע <b>מונה</b> = 0
-</p>
-<p>
-<span class="n">2.</span> לכל <b>זמן תגובה</b> ברשימה:
-</p>
-<p class="i1">
-<span class="n">3.</span> אם זמן התגובה גדול מ-1000:
-</p>
-<p class="i2">
-<span class="n">4.</span> הוסף 1 ל<b>מונה</b>
-</p>
-<p>
-<span class="n">5.</span> הדפס את <b>המונה</b>
-</p>
-</div>
-<p class="bnote">
-תוכנית = הוראות מדויקות, לפי סדר · משתנה = שם שמחזיק ערך · תנאי (אם) · חזרה (לכל)
-</p>
-</div>
-</div>
-</section>
-<section id="כלי-העבודה-של-הקורס" class="slide level2">
-<h2>כלי העבודה של הקורס</h2>
-<div class="tb">
-<div class="tbox">
-<p class="th">
-סביבות עבודה
-</p>
-<p>
-מה זה IDE
-</p>
-<p>
-התקנות: R, RStudio, פייתון, VS Code ו-Git
-</p>
-<p class="th" style="margin-top:.5em">
-R ופייתון
-</p>
-<p>
-היסטוריה בסיסית
-</p>
-<p>
-התקנה והיכרות עם הממשק
-</p>
-</div>
-<div class="board">
-<p class="lang">
-bash · בדיקה שההתקנות הצליחו
-</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### CHECK THE INSTALLATION ####</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">--version</span>     <span class="co"># R</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span>      <span class="co"># Python (Mac: python3)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span>         <span class="co"># Git</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<table class="df he" style="font-size:.55em;margin-top:.8em">
-<tbody><tr>
-<th>
-שפה
-</th>
-<th>
-תוכנה לכתיבה (IDE)
-</th>
-<th>
-סיומת
-</th>
-</tr>
-<tr>
-<td>
-R
-</td>
-<td>
-RStudio
-</td>
-<td dir="ltr">
-.R
-</td>
-</tr>
-<tr>
-<td>
-Python
-</td>
-<td>
-VS Code / Colab
-</td>
-<td dir="ltr">
-.py / .ipynb
-</td>
-</tr>
-<tr>
-<td>
-Git
-</td>
-<td>
-Git Bash (Windows)
-</td>
-<td>
-—
-</td>
-</tr>
-
-</tbody></table>
-</div>
-</div>
-</section>
-<section id="סקריפט-ראשון-בשתי-השפות" class="slide level2">
-<h2>סקריפט ראשון בשתי השפות</h2>
-<div class="tb duo-tb">
-<div class="tbox">
-<p class="th">
-סקריפט ראשון
-</p>
-<p>
-כותרת בפורמט הקורס
-</p>
-<p>
-משתנה מספרי ומשתנה מחרוזת
-</p>
-<p>
-הדפסה: cat ב-R, print בפייתון
-</p>
-<p>
-הרצה מהטרמינל: Rscript ו-python
-</p>
-</div>
-<div class="board">
-<div class="duo">
-<div class="r">
-<p class="lang">
-R · course.R
-</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FIRST SCRIPT ####</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Assign values</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>course <span class="ot">=</span> <span class="st">'Yesodot'</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>weeks  <span class="ot">=</span> <span class="dv">13</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Compute</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>hours <span class="ot">=</span> weeks <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Print</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'The course'</span>, course,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'has'</span>, hours, <span class="st">'hours</span><span class="sc">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> course.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-The course Yesodot has 39 hours
-</p>
-</div>
-<div class="py">
-<p class="lang">
-Python · course.py
-</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### FIRST SCRIPT ####</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Assign values</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>course <span class="op">=</span> <span class="st">'Yesodot'</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>weeks  <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Compute</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>hours <span class="op">=</span> weeks <span class="op">*</span> <span class="dv">3</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Print</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The course'</span>, course,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">'has'</span>, hours, <span class="st">'hours'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> course.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-The course Yesodot has 39 hours
-</p>
-</div>
-</div>
-<p class="bnote">
-אותו רעיון, תחביר קצת אחר
-</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>                       <span class="co"># where am I?</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>                        <span class="co"># what is here?</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~                      <span class="co"># go home</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> yesodot             <span class="co"># new folder</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> yesodot                <span class="co"># go in   (cd .. = one up)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> notes.txt           <span class="co"># new empty file</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> notes.txt copy.txt     <span class="co"># copy</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> copy.txt old.txt       <span class="co"># move / rename</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> old.txt                <span class="co"># delete (forever!)</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'first line'</span> <span class="op">&gt;</span> notes.txt    <span class="co"># write (replace)</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'second line'</span> <span class="op">&gt;&gt;</span> notes.txt  <span class="co"># add at the end</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> notes.txt             <span class="co"># show a text file</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> hello.py             <span class="co"># edit (Ctrl+O save, Ctrl+X exit)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="מטלה-שבועית" class="slide level2">
 <h2>מטלה שבועית</h2>
 <div class="hwbox">
-<p><strong>המטלה השבועית (שבוע 1)</strong> — המטלה היחידה שנעשית בשתי השפות.</p>
-<p><strong>חלק א – הטרמינל:</strong> הדפיסו את התיקייה הנוכחית; צרו <code>yesodot/week1</code> בתיקיית הבית והיכנסו אליה; צרו את <code>hello.R</code> ו-<code>hello.py</code> והציגו את רשימת הקבצים; צלמו מסך.</p>
-<p><strong>חלק ב – R:</strong> כותרת בפורמט הקורס; משתנים <code>name</code> ו-<code>age</code>; <code>days</code> = הגיל כפול 365; משפט אחד שמשלב את השם ומספר הימים; הרצה עם <code>Rscript hello.R</code>.</p>
-<p><strong>חלק ג – פייתון:</strong> אותו סקריפט ב-<code>hello.py</code> (ב-VS Code), והרצה עם <code>python hello.py</code>. <strong>חלק ד – לוגיקה:</strong> פסאודו-קוד לממוצע זמני תגובה (בלי פקודה מוכנה), ושתי שורות: מה דומה ומה שונה בין השפות.</p>
-<p><strong>הגשה:</strong> PDF אחד עם צילומי המסך, הקוד, הפסאודו-קוד וההשוואה · בלי עזרה של AI.</p>
+<p><strong>המטלה השבועית (שבוע 1)</strong> — רק בטרמינל (Git Bash ב-Windows, Terminal ב-Mac עם <code>python3</code>), קבצים כותבים עם <code>nano</code>, ובשתי השפות.</p>
+<p><strong>חלק א – תיקיות:</strong> <code>pwd</code>; יצירת <code>yesodot/week1</code> בתיקיית הבית ומעבר אליה. <strong>חלק ב – מי מקשיב לי?</strong> <code>type cd</code>, <code>type cat</code>, <code>which python</code> — משפט על כל אחד; <code>echo $PATH</code> במילים שלכם; <code>which Rscript</code> מוצא את R (ב-Windows כנראה צריך להוסיף ל-PATH — תעדו).</p>
+<p><strong>חלק ג – שלוש שפות, שורה אחת:</strong> <code>2 + 2</code> ב-bash — מה קרה ולמה?; <code>2 + 2</code> בפייתון וב-R מתוך הטרמינל, ויציאה — מה השתנה בתחילת השורה?; <code>echo 'print(2 + 2)' | python</code> — מי כתב, מי קרא, מי חישב.</p>
+<p><strong>חלק ד – סקריפטים:</strong> <code>hello.py</code> ו-<code>hello.R</code> עם <code>nano</code> (כותרת, שם וגיל, ימים = גיל × 365, משפט אחד); <code>cat</code> לשניהם; הרצה ושמירת שני הפלטים ב-<code>out.txt</code> (<code>&gt;</code> ו-<code>&gt;&gt;</code>). <strong>חלק ה:</strong> המסע של <code>python hello.py</code> ב-5–8 שלבים; פסאודו-קוד לממוצע זמני תגובה.</p>
+<p><strong>הגשה:</strong> PDF אחד עם צילומי מסך לכל חלק, הקוד והתשובות · בלי עזרה של AI.</p>
 <p class="due">
 להגשה עד יום ראשון, 25.10.2026, בשעה 12:00
 </p>

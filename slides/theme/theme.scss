@@ -204,3 +204,27 @@ $presentation-font-size-root: 34px;
 .vs pre:not(.sourceCode) code { font-size: .74em; line-height: 1.5; padding: .55em .9em; display: block; }
 .vs .bad pre:not(.sourceCode) { border-color: #efc9ad; background: #fffaf6; }
 .vs .good pre:not(.sourceCode) { border-color: #b6dcc8; background: #f8fdfa; }
+
+// ── week 1: flows drawn as boxes (right to left, like reading) ──
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: .9em .9em; direction: rtl; margin-top: .3em; }
+.flow.f3 { grid-template-columns: repeat(3, 1fr); gap: 1.6em; }
+.flow .step { position: relative; background: #fff; border: 1px solid var(--rule); border-top: 5px solid var(--unit); border-radius: 12px; padding: .35em .6em .45em; font-size: .5em; line-height: 1.4; }
+.flow .step.sh { border-top-color: var(--code); }
+.flow .step.os { border-top-color: var(--ink-soft); }
+.flow .step.res { border-top-color: var(--gold); }
+.flow .step b { display: block; font-size: 1.12em; color: var(--ink); margin-bottom: .15em; }
+.flow .step .num { display: inline-block; width: 1.6em; height: 1.6em; line-height: 1.6em; text-align: center; border-radius: 50%; background: var(--unit); color: #fff; font-weight: 700; font-size: .9em; margin-inline-end: .3em; }
+.flow .step.sh .num { background: var(--code); }
+.flow .step.os .num { background: var(--ink-soft); }
+.flow .step.res .num { background: var(--gold); }
+.flow .step code { font-size: .95em; background: var(--panel); border-radius: 5px; padding: 0 .25em; }
+.flow .step:not(:nth-child(4n))::after { content: "←"; position: absolute; left: -.95em; top: 40%; color: var(--ink-faint); font-size: 1.3em; }
+.flow.f3 .step { font-size: .56em; padding: .6em .8em; }
+.flow.f3 .step:not(:last-child)::after { content: "←"; left: -1.25em; font-size: 1.6em; }
+.flow.f3 .step:nth-child(4n)::after { content: none; }
+.flow .step .big { font-family: "Frank Ruhl Libre", serif; font-size: 1.5em; font-weight: 700; color: var(--unit); }
+// three languages side by side: bash, R, Python
+.duo.three { grid-template-columns: 1fr 1fr 1fr; }
+.duo.three > div + div { border-inline-end: 2px dashed var(--rule); padding-inline-end: .5em; }
+.flow.f3 .step:last-child::after { content: none; }
+.reveal code { unicode-bidi: isolate; }
