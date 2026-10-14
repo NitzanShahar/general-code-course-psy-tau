@@ -138,6 +138,18 @@ def lines_html(s):
     return "".join(out)
 
 
+def renumber(s):
+    """Notion writes every numbered step as "1." (and some prompts skip or repeat numbers); number a prompt's steps 1, 2, 3, …"""
+    out, k = [], 0
+    for line in s.split("\n"):
+        m = re.match(r"^(\d+)\.(\s|$)", line)
+        if m:
+            k += 1
+            line = f"{k}." + line[m.end(1) + 1:]
+        out.append(line)
+    return "\n".join(out)
+
+
 def plain(s):
     """Text for the clipboard: links as their label (and URL), no markdown marks."""
     s = re.sub(r"\[([^\]]*)\]\(([^)\s]+)\)", lambda m: m.group(1) if m.group(1).strip() in ("", m.group(2)) else f"{m.group(1)} ({m.group(2)})", s)
@@ -474,6 +486,7 @@ def book_section(ch, k, s, wks, in_week=False):
             first = lines[0].replace("**", "").strip()
             if first in (s["h"], ch["title"]) or (len(lines) > 1 and len(first) < 30 and not re.match(r"^\d", first)):
                 t = "\n".join(lines[1:]).strip()
+            t = renumber(t)
             blocks.append(f'<p class="lbl">{ICON["chat"]}הנחיה למתרגל AI</p><div class="prompt">'
                           f'<button class="copy" type="button">{ICON["copy"]}<span>העתקה</span></button>'
                           f'<div class="pt">{lines_html(t)}</div><textarea hidden>{esc(plain(t))}</textarea></div>')
