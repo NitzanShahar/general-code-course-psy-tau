@@ -11,6 +11,7 @@ Output (do not edit by hand):
 
 Usage: python site/build.py
 """
+import hashlib
 import html
 import json
 import re
@@ -291,7 +292,7 @@ def page(title, body, depth, staff, script=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel="stylesheet">
-<link rel="stylesheet" href="{up}assets/site.css">
+<link rel="stylesheet" href="{up}assets/site.css?v={CSS_VER}">
 <link rel="icon" href="{up}assets/tau-logo.png">
 </head>
 <body>
@@ -304,6 +305,10 @@ def page(title, body, depth, staff, script=""):
 </body>
 </html>
 """
+
+
+# a version stamp on the stylesheet link, so browsers load a changed site.css at once instead of a cached copy
+CSS_VER = hashlib.md5((SRC / "site.css").read_bytes()).hexdigest()[:8]
 
 
 def header(depth, staff, on):
