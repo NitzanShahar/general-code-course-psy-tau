@@ -311,7 +311,7 @@ def header(depth, staff, on):
     nav = ""
     if on is not None:
         # first = rightmost in RTL; the syllabus is in the admin page's "מסמכים" section
-        links = [("index.html", "השבועות", "weeks"), ("book.html", "ספר היחידות", "book"), ("admin.html", "מנהלות הקורס", "admin")]
+        links = [("index.html", "תוכן הקורס", "weeks"), ("book.html", "ספר היחידות", "book"), ("admin.html", "מנהלות הקורס", "admin")]
         nav = '<nav class="gen">' + "".join(
             f'<a href="{h}" class="{"on" if k == on else ""}">{t}</a>' for h, t, k in links) + "</nav>"
     badge = '<span class="staffbadge">גרסת מתרגלים</span>' if staff else ""
