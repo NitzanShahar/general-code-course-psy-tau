@@ -33,8 +33,9 @@ def main():
     for i, w in enumerate(weeks):
         nxt = weeks[i + 1]["date"] if i + 1 < len(weeks) else ""
         due = f'<span class="ltr">{".".join(nxt.split(".")[:2])} · 12:00</span>' if hw.get(w["n"]) and nxt else "—"
+        tp = f'<span class="tp">{html.escape(w["topics"])}</span>' if w.get("topics") else ""
         if w["title"]:
-            rows.append(f'<tr><td class="n">{w["n"]}</td><td class="d">{w["date"]}</td><td>{html.escape(w["title"])}</td><td class="hw">{due}</td></tr>')
+            rows.append(f'<tr><td class="n">{w["n"]}</td><td class="d">{w["date"]}</td><td>{html.escape(w["title"])}{tp}</td><td class="hw">{due}</td></tr>')
         else:
             rows.append(f'<tr class="empty"><td class="n">{w["n"]}</td><td class="d">{w["date"]}</td><td>—</td><td class="hw">—</td></tr>')
         for b in cfg.get("breaks", []):
