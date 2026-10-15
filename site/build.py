@@ -449,10 +449,8 @@ def week_page(w, c, avail, book, depth, staff):
         units.append("</div>")
     langs = {u["book"] for u in c.get("units", [])}
     chooser = ""
-    if c.get("os_choice"):  # a week written per operating system (week 1); only Windows is ready for now
-        chooser = ('<div class="langs" role="group" aria-label="מערכת הפעלה"><span>מערכת הפעלה:</span>'
-                   '<button type="button" class="on" aria-pressed="true">Windows</button>'
-                   '<button type="button" disabled title="בקרוב">Mac</button></div>')
+    if c.get("os_choice"):  # a week written per operating system (week 1): Windows or Mac
+        chooser = OS_CHOOSER
     elif {"r", "py"} <= langs:
         chooser = ('<div class="langs" data-kind="lang" role="group" aria-label="איזו שפה להציג"><span>להציג:</span>'
                    '<button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button>'
@@ -528,6 +526,8 @@ def book_page(book, weeks):
         chips.append(f'<a class="bchip b-{bk}" href="#book-{bk}"><span class="btag">{tag}</span><span>{name}<small>{len(chs)} פרקים</small></span></a>')
         nav.append(f'<h3 class="b-{bk}">{name}</h3>')
         body.append(f'<p class="grp b-{bk}" id="book-{bk}"><span class="btag">{tag}</span>{name}</p>')
+        if any(it.get("mac") is not None for ch in chs for x in ch["secs"] for it in x["items"]):
+            body.append(OS_CHOOSER)  # some units of this book are written per operating system
         for ch in chs:
             nav.append(f'<a href="#{bk}{ch["n"]}" class="b-{bk}"><span class="num">{ch["n"]}</span><span>{hx(ch["title"])}</span></a>')
             secs = [book_section(ch, k, s, used.get((bk, ch["idx"], s["h"]), [])) for k, s in enumerate(ch["secs"], 1)]
@@ -559,26 +559,34 @@ def books_html():
 def book_section(ch, k, s, wks, in_week=False):
     bk = ch["book"]
     blocks = []
-    for it in s["items"]:
-        t = fix(it["text"], bk)
-        if it["kind"] == "prompt":
+
+    def render(kind, t):
+        t = fix(t, bk)
+        if kind == "prompt":
             lines = t.split("\n")
             first = lines[0].replace("**", "").strip()
             if first in (s["h"], ch["title"]) or (len(lines) > 1 and len(first) < 30 and not re.match(r"^\d", first)):
                 t = "\n".join(lines[1:]).strip()
             t = renumber(t)
-            blocks.append(f'<p class="lbl">{ICON["chat"]}הנחיה למתרגל AI</p><div class="prompt">'
-                          f'<button class="copy" type="button">{ICON["copy"]}<span>העתקה</span></button>'
-                          f'<div class="pt">{lines_html(t, steps=True)}</div><textarea hidden>{esc(plain(t))}</textarea></div>')
-        elif it["kind"] in ("video", "ref"):
+            return (f'<p class="lbl">{ICON["chat"]}הנחיה למתרגל AI</p><div class="prompt">'
+                    f'<button class="copy" type="button">{ICON["copy"]}<span>העתקה</span></button>'
+                    f'<div class="pt">{lines_html(t, steps=True)}</div><textarea hidden>{esc(plain(t))}</textarea></div>')
+        if kind in ("video", "ref"):
             items = link_lines(t)
-            if items:
-                label = (ICON["play"] + "סרטונים") if it["kind"] == "video" else (ICON["link"] + "להעמקה")
-                blocks.append(f'<p class="lbl">{label}</p><ul class="links">{"".join(f"<li>{i}</li>" for i in items)}</ul>')
-        elif it["kind"] == "code":
-            blocks.append(f'<div class="prompt ltr" style="padding:14px 16px;font-family:JetBrains Mono,monospace;font-size:13.5px;text-align:left">{esc(t.strip("`").strip())}</div>')
+            if not items:
+                return ""
+            label = (ICON["play"] + "סרטונים") if kind == "video" else (ICON["link"] + "להעמקה")
+            return f'<p class="lbl">{label}</p><ul class="links">{"".join(f"<li>{i}</li>" for i in items)}</ul>'
+        if kind == "code":
+            return f'<div class="prompt ltr" style="padding:14px 16px;font-family:JetBrains Mono,monospace;font-size:13.5px;text-align:left">{esc(t.strip("`").strip())}</div>'
+        return f'<div class="prompt" style="padding:14px 16px">{lines_html(t)}</div>'
+
+    for it in s["items"]:
+        if it.get("mac") is not None:  # written per operating system: the chooser (OS_JS) shows one of the two
+            blocks.append(f'<div class="osv" data-os="win">{render(it["kind"], it["text"])}</div>'
+                          f'<div class="osv" data-os="mac">{render(it["kind"], it["mac"])}</div>')
         else:
-            blocks.append(f'<div class="prompt" style="padding:14px 16px">{lines_html(t)}</div>')
+            blocks.append(render(it["kind"], it["text"]))
     uid = f'{bk}{ch["n"]}-{k}'
     if in_week:
         blocks.append(f'<p class="bsfoot">יחידה {ch["n"]}.{k} ב{BOOK_NAME[bk]} · <a href="book.html#{uid}">לראות אותה בתוך הפרק ↗</a></p>')
@@ -608,6 +616,23 @@ LANG_JS = """// week page: show both languages, or only R / only Python (remembe
   box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
   var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
   if(saved==='r'||saved==='py') set(saved);
+})();"""
+
+OS_CHOOSER = ('<div class="oschoice" role="group" aria-label="מערכת הפעלה"><span>על איזה מחשב אתם עובדים?</span><div>'
+              '<button type="button" data-os="win" class="on" aria-pressed="true">Windows</button>'
+              '<button type="button" data-os="mac" aria-pressed="false">Mac</button></div></div>')
+
+OS_JS = """// units written per operating system: show the Windows or the Mac version (remembered in this browser)
+(function(){
+  if(!document.querySelector('.oschoice')) return;
+  function set(o){
+    document.documentElement.setAttribute('data-os', o);
+    document.querySelectorAll('.oschoice button').forEach(function(b){ var on=b.dataset.os===o; b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); });
+    try{ localStorage.setItem('yesodot-os', o); }catch(e){}
+  }
+  document.addEventListener('click',function(e){ var b=e.target.closest('.oschoice button'); if(b) set(b.dataset.os); });
+  var saved=null; try{ saved=localStorage.getItem('yesodot-os'); }catch(e){}
+  set(saved==='mac' ? 'mac' : 'win');
 })();"""
 
 BOOK_JS = COPY_JS + """
@@ -685,14 +710,14 @@ def build_site(prefix, staff, avail, weeks, book):
     title_of = {w["n"]: w for w in CFG["weeks"]}
     for n in avail:
         body = header(depth, staff, "weeks") + week_page(title_of[n], weeks[n], avail, book, depth, staff) + footer(depth, staff)
-        html_ = page(f"שבוע {n} · {CFG['title']}", body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + GATE_JS)
+        html_ = page(f"שבוע {n} · {CFG['title']}", body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + OS_JS + "\n" + GATE_JS)
         write(f"{prefix}week-{n}.html", html_)
     home = CFG.get("current") if CFG.get("current") in avail else min(avail)
     body = header(depth, staff, "weeks") + week_page(title_of[home], weeks[home], avail, book, depth, staff) + footer(depth, staff)
-    write(f"{prefix}index.html", page(CFG["title"], body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + GATE_JS))
+    write(f"{prefix}index.html", page(CFG["title"], body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + OS_JS + "\n" + GATE_JS))
     DEPTH[0] = depth
     body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}) + footer(depth, staff)
-    write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + GATE_JS))
+    write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + OS_JS + "\n" + GATE_JS))
     body = header(depth, staff, "admin") + admin_page(prefix, avail, depth) + footer(depth, staff)
     write(f"{prefix}admin.html", page(f"מנהלות הקורס · {CFG['title']}", body, depth, staff, GATE_JS))
     write(f"{prefix}play.html", player_page(depth, staff))

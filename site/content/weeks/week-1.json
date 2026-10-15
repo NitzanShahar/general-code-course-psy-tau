@@ -47,11 +47,11 @@
    "1. קובץ CSV שבו כתוב „שלום״ נפתח בתוכנה מסוימת כג'יבריש, ובתוכנה אחרת — כראוי. הסבירו בעזרת המושגים byte ו-encoding מה כנראה קרה.",
    "1. למה במחקר עדיף לשמור נתונים כ-plain text (למשל CSV) ולא כ-xlsx? תנו שתי סיבות.",
    "1. מה ההבדל בין terminal לבין bash? ומה ההבדל בין CLI לבין GUI — ולמה מדענים מעדיפים לעבוד ב-CLI?",
-   "1. מה זה PATH? הקלדתם ב-Git Bash את השם של תוכנה וקיבלתם command not found. תנו שלוש סיבות אפשריות, וכתבו איזו פקודה בודקת אם bash מוצא תוכנה.",
-   "1. מהי working directory? מה עושה כל אחת מהפקודות `pwd`, `mkdir data` ו-`cd data`? ומה תהיה ה-working directory אחרי שתסגרו ותפתחו מחדש את Git Bash?",
+   "1. מה זה PATH? הקלדתם בטרמינל את השם של תוכנה וקיבלתם command not found. תנו שלוש סיבות אפשריות, וכתבו איזו פקודה בודקת אם ה-shell מוצא תוכנה.",
+   "1. מהי working directory? מה עושה כל אחת מהפקודות `pwd`, `mkdir data` ו-`cd data`? ומה תהיה ה-working directory אחרי שתסגרו ותפתחו מחדש את הטרמינל?",
    "1. מה ההבדל בין interpreter לבין compiler? איזה מהם מאפשר עבודה interactive, ולמה? ובאיזה מהם משתמשות R ו-Python?",
-   "1. הקלדתם `python`, ובתחילת השורה הופיע `>>>`. מי מקשיב עכשיו? מה יקרה אם תקלידו שם `ls`, ולמה? ואיך חוזרים ל-bash?",
-   "1. תארו, ב-6 עד 8 שלבים, מה קורה מהרגע שהקשתם Enter על `Rscript analysis.R` ועד שהפלט הופיע על המסך. השתמשו במושגים: bash, PATH, OS, storage, RAM, process, interpreter, working directory, CPU."
+   "1. הקלדתם `python` (ב-Mac: `python3`), ובתחילת השורה הופיע `>>>`. מי מקשיב עכשיו? מה יקרה אם תקלידו שם `ls`, ולמה? ואיך חוזרים ל-shell?",
+   "1. תארו, ב-6 עד 8 שלבים, מה קורה מהרגע שהקשתם Enter על `Rscript analysis.R` ועד שהפלט הופיע על המסך. השתמשו במושגים: shell (bash או zsh), PATH, OS, storage, RAM, process, interpreter, working directory, CPU."
   ],
   "files": [],
   "due": "יום ראשון, 25.10.2026, בשעה 12:00"
@@ -75,19 +75,19 @@
     "text": "**5.** ה-terminal הוא רק חלון: מעביר את מה שמקלידים ומציג את מה שחוזר. bash הוא ה-shell — התוכנה שרצה בתוך החלון, קוראת כל שורה ומבצעת אותה. CLI (Command-Line Interface) הוא עבודה בשורות טקסט; GUI (Graphical User Interface) הוא עבודה עם חלונות, אייקונים ועכבר. מדענים מעדיפים CLI כי את הפקודות אפשר לשמור, לשתף ולהריץ שוב בדיוק — רפרודוקטיביות; רצף קליקים קשה לתעד ולשחזר."
    },
    {
-    "text": "**6.** PATH היא רשימת תיקיות ששמורה במחשב; כשמקלידים שם של תוכנה, bash מחפש קובץ בשם הזה בתיקיות האלו, לפי הסדר. command not found פירושו שלא נמצא: (1) שגיאת הקלדה; (2) התוכנה לא מותקנת; (3) התוכנה מותקנת, אבל התיקייה שלה לא ב-PATH (כמו R לפני שהוספנו אותו). `which` ושם התוכנה מראה איפה bash מוצא אותה (או שלא מצא). אפשר גם `echo $PATH` כדי לראות את הרשימה."
+    "text": "**6.** PATH היא רשימת תיקיות ששמורה במחשב; כשמקלידים שם של תוכנה, bash מחפש קובץ בשם הזה בתיקיות האלו, לפי הסדר. command not found פירושו שלא נמצא: (1) שגיאת הקלדה; (2) התוכנה לא מותקנת; (3) התוכנה מותקנת, אבל התיקייה שלה לא ב-PATH (כמו R ב-Windows, לפני שהוספנו אותו). `which` ושם התוכנה מראה איפה ה-shell מוצא אותה (או שלא מצא). אפשר גם `echo $PATH` כדי לראות את הרשימה."
    },
    {
-    "text": "**7.** working directory היא התיקייה ש-bash „עומד״ בה כרגע; כל שם של קובץ בלי נתיב מחפשים בה. `pwd` מדפיסה את ה-working directory; `mkdir data` יוצרת בתוכה תיקייה חדשה בשם data; `cd data` מעבירה את bash לתוך data, כך שהיא הופכת ל-working directory. אחרי פתיחה מחדש של Git Bash, ה-working directory היא שוב תיקיית הבית (~)."
+    "text": "**7.** working directory היא התיקייה ש-bash „עומד״ בה כרגע; כל שם של קובץ בלי נתיב מחפשים בה. `pwd` מדפיסה את ה-working directory; `mkdir data` יוצרת בתוכה תיקייה חדשה בשם data; `cd data` מעבירה את bash לתוך data, כך שהיא הופכת ל-working directory. אחרי פתיחה מחדש של הטרמינל (Git Bash ב-Windows, Terminal ב-Mac), ה-working directory היא שוב תיקיית הבית (~)."
    },
    {
     "text": "**8.** compiler מתרגם מראש את כל הקוד לקובץ תוכנה בשפת מכונה (למשל .exe), ורק אחר כך מריצים אותו; interpreter קורא את הקוד שורה אחרי שורה ומבצע כל שורה מיד. interpreter מאפשר עבודה interactive: כותבים שורה, רואים תוצאה ומחליטים על הבאה — בלי לתרגם הכול מחדש. R ו-Python עובדות עם interpreter (וגם bash)."
    },
    {
-    "text": "**9.** `>>>` אומר שה-interpreter של Python מקשיב עכשיו, לא bash. `ls` היא פקודה של bash, ו-Python לא מכיר אותה: נקבל שגיאה של Python (NameError: name 'ls' is not defined). כדי לחזור ל-bash מקלידים `exit()`, ואז חוזר הסימן `$`."
+    "text": "**9.** `>>>` אומר שה-interpreter של Python מקשיב עכשיו, לא bash. `ls` היא פקודה של ה-shell (bash, או zsh ב-Mac), ו-Python לא מכיר אותה: נקבל שגיאה של Python (NameError: name 'ls' is not defined). כדי לחזור ל-bash מקלידים `exit()`, ואז חוזר הסימן `$` (ב-Mac: `%`)."
    },
    {
-    "text": "**10.** (1) ה-terminal מעביר את השורה ל-bash. (2) bash מפרק אותה למילים, ומחפש תוכנה בשם Rscript בתיקיות של PATH. (3) כשמצא, הוא מבקש מה-OS להריץ אותה: ה-OS מעתיקה את ה-interpreter של R מה-storage ל-RAM, ונוצר process. (4) ה-interpreter מחפש את analysis.R ב-working directory (שם בלי נתיב) ופותח אותו — קובץ plain text. (5) הוא קורא את הקוד, בודק את ה-syntax ומבצע שורה אחרי שורה; החישובים עצמם מתבצעים ב-CPU. (6) הפלט עובר דרך ה-OS לחלון ה-terminal. (7) ה-process מסתיים, ה-RAM שלו משתחרר, ו-bash מציג שוב `$`."
+    "text": "**10.** (1) ה-terminal מעביר את השורה ל-shell (bash, או zsh ב-Mac). (2) ה-shell מפרק אותה למילים, ומחפש תוכנה בשם Rscript בתיקיות של PATH. (3) כשמצא, הוא מבקש מה-OS להריץ אותה: ה-OS מעתיקה את ה-interpreter של R מה-storage ל-RAM, ונוצר process. (4) ה-interpreter מחפש את analysis.R ב-working directory (שם בלי נתיב) ופותח אותו — קובץ plain text. (5) הוא קורא את הקוד, בודק את ה-syntax ומבצע שורה אחרי שורה; החישובים עצמם מתבצעים ב-CPU. (6) הפלט עובר דרך ה-OS לחלון ה-terminal. (7) ה-process מסתיים, ה-RAM שלו משתחרר, וה-shell מציג שוב את הסימן שלו (`$`, או `%` ב-Mac)."
    }
   ]
  }

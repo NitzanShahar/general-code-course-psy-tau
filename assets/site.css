@@ -273,3 +273,14 @@ a.row:hover .rt{color:var(--u)}
   .solo h1{font-size:38px}
   .ann{padding:18px 18px}
 }
+
+/* units written per operating system (week 1): a big chooser, and one version shown at a time */
+.osv[data-os=mac]{display:none}
+html[data-os=mac] .osv[data-os=mac]{display:block}
+html[data-os=mac] .osv[data-os=win]{display:none}
+.oschoice{display:flex;flex-direction:column;align-items:center;gap:12px;margin:8px 0 24px;padding:18px 16px;border:1.5px solid var(--line);border-radius:18px;background:var(--soft);text-align:center}
+.oschoice>span{font-size:17px;font-weight:700;color:var(--ink)}
+.oschoice>div{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.oschoice button{font:inherit;font-size:18px;font-weight:700;min-width:150px;min-height:54px;padding:0 28px;border:2px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer}
+.oschoice button:hover{box-shadow:0 0 0 3px var(--yel)}
+.oschoice button.on{background:var(--ink);color:#fff;box-shadow:0 0 0 3px var(--yel)}
