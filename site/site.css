@@ -231,7 +231,14 @@ a.row:hover .rt{color:var(--u)}
 .tlogf button{font:inherit;font-size:15px;height:44px;padding:0 18px;border:0;border-radius:10px;background:var(--ink);color:#fff;cursor:pointer}
 .terr{color:#b3261e;font-size:14px}
 
+/* the site's player (no download button) */
+.player{padding:22px 44px 34px;max-width:960px;margin:0 auto}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;margin-inline-start:-14px;border-radius:12px;font-size:15.5px}
+.back:hover{background:#eef1f1;color:var(--ink)}
+.ptitle{margin:6px 0 16px;font-size:28px}
+.player video{display:block;width:100%;max-height:60vh;border-radius:14px;background:#000}
 @media (max-width:820px){
+  .player{padding:14px 16px 22px}.ptitle{font-size:22px}
   .wrap{padding:0 12px}
   .hdr{gap:12px;padding:12px 4px;flex-wrap:wrap}
   .hdr .logo{height:34px}

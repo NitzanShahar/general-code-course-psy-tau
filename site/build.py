@@ -17,7 +17,7 @@ import json
 import re
 import shutil
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urlencode, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "site"
@@ -375,10 +375,17 @@ def rail_weeks(avail, sel):
     return "".join(items)
 
 
-def href(url, depth):
-    """External links open in a new tab; repo files (e.g. decks/W1.html) are relative to the repo root."""
+def player(url, title):
+    """Local videos open in the site's own player page (no download button), as on the R course site."""
+    return "play.html?" + urlencode({"v": url, "t": title})
+
+
+def href(url, depth, title=""):
+    """External links open in a new tab; local videos open in the player; other repo files (e.g. decks/W1.html) are relative to the repo root."""
     if re.match(r"https?://", url):
         return f'href="{esc(url)}" target="_blank" rel="noopener"'
+    if url.lower().endswith(".mp4"):
+        return f'href="{esc(player(url, title))}"'
     return f'href="{"../" * depth}{esc(url)}"'
 
 
@@ -411,9 +418,13 @@ def week_page(w, c, avail, book, depth, staff):
         d = c["deck"]
         deck.append(f'<a {href(d["url"], depth)} class="deck"><small>מצגת</small>'
                     f'<b>{esc(d["title"])}</b><small>{esc(d.get("note", ""))}</small><code>## WEEK {n} · R + Python</code></a>')
+        r = d.get("recording")  # a recorded walk-through of the deck, in the site's player
+        if r:
+            deck.append(f'<a {href(r["url"], depth, r["title"])} class="vid"><span class="ic">{ICON["play"]}</span>'
+                        f'<span class="vt">{esc(r["title"])}<span class="vs">{esc(r.get("note", ""))}</span></span></a>')
     for v in c.get("videos", []):
         tag = f'<span class="vtag b-{v["book"]}">{BOOK_TAG[v["book"]]}</span>' if v.get("book") else ""
-        videos.append(f'<a {href(v["url"], depth)} class="vid"><span class="ic">{ICON["play"]}</span>'
+        videos.append(f'<a {href(v["url"], depth, v["title"])} class="vid"><span class="ic">{ICON["play"]}</span>'
                       f'<span class="vt">{esc(v["title"])}{tag}<span class="vs">{esc(v.get("note", ""))}</span></span></a>')
 
     # the week's units, by inner book and chapter: the same unit component as the book, opening in place
@@ -614,9 +625,9 @@ BOOK_JS = COPY_JS + """
 def admin_page(prefix, avail, depth):
     """The admin page (content/admin.json): staff, meetings, submission, grading, documents — as on the R course site."""
     a = json.loads((SRC / "content" / "admin.json").read_text(encoding="utf-8"))
-    v = a.get("video")  # optional guide to the site (none yet; the R site opens local videos in its own player page)
+    v = a.get("video")  # optional guide to the site, in the site's player
     video = (f'<section class="sec"><div class="ch"><h2>איך עובדים עם האתר</h2></div><div class="media">'
-             f'<a {href(v["url"], depth)} class="vid guide"><span class="ic">{ICON["play"]}</span>'
+             f'<a {href(v["url"], depth, v["title"])} class="vid guide"><span class="ic">{ICON["play"]}</span>'
              f'<span class="vt">{esc(v["title"])}<span class="vs">{esc(v.get("note", ""))}</span></span></a></div></section>' if v else "")
     people = "".join(f'<div class="person"><b>{esc(p["role"])}</b><span>{esc(p["name"])}</span>'
                      + (f'<a class="ltr" href="mailto:{esc(p["email"])}">{esc(p["email"])}</a>' if p.get("email") else "")
@@ -637,6 +648,27 @@ def admin_page(prefix, avail, depth):
             f'<section class="sec"><div class="ch"><h2>צוות הקורס</h2></div><div class="people">{people}</div></section>'
             f'{secs}{docs}</main>')
     return f'{mob}<div class="layout">{rail}{main}</div>'
+
+
+PLAYER_JS = """// the site's player: a local video, no download button, no right-click menu (makes saving harder, not impossible)
+(function(){
+  var q=new URLSearchParams(location.search), v=q.get('v')||'', t=q.get('t')||'';
+  var vid=document.getElementById('vid');
+  if(/^files\\/[^?#]+\\.mp4$/i.test(v) && v.indexOf('..')<0){ vid.src='__UP__'+v; }
+  document.getElementById('ptitle').textContent=t;
+  if(t) document.title=t+' · '+document.title;
+  vid.addEventListener('contextmenu',function(e){e.preventDefault();});
+  var b=document.getElementById('back');
+  if(document.referrer && document.referrer.indexOf(location.host)>=0){ b.href=document.referrer; }
+})();"""
+
+
+def player_page(depth, staff):
+    body = (header(depth, staff, None) + '<main class="card player"><a class="back" href="index.html" id="back">→ חזרה</a>'
+            '<h1 class="ptitle" id="ptitle"></h1>'
+            '<video id="vid" controls controlsList="nodownload" disablePictureInPicture playsinline preload="metadata"></video>'
+            '</main>' + footer(depth, staff))
+    return page(CFG["title"], body, depth, staff, PLAYER_JS.replace("__UP__", "../" * depth) + "\n" + GATE_JS)
 
 
 # ---------- build ----------
@@ -663,6 +695,7 @@ def build_site(prefix, staff, avail, weeks, book):
     write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + GATE_JS))
     body = header(depth, staff, "admin") + admin_page(prefix, avail, depth) + footer(depth, staff)
     write(f"{prefix}admin.html", page(f"מנהלות הקורס · {CFG['title']}", body, depth, staff, GATE_JS))
+    write(f"{prefix}play.html", player_page(depth, staff))
 
 
 def build_solo():
@@ -686,7 +719,7 @@ def main():
 
     # clear generated pages from previous builds
     for d in (ROOT, ROOT / staff):
-        for f in list(d.glob("week-*.html")) + [d / "book.html", d / "admin.html"]:
+        for f in list(d.glob("week-*.html")) + [d / "book.html", d / "admin.html", d / "play.html"]:
             if f.exists():
                 f.unlink()
 
