@@ -1,92 +1,88 @@
 {
  "_הסבר": "תוכן שבוע 12. units: הספר הפנימי (r / py / code), מספר הפרק באותו ספר, והיחידות מתוכו (בשמן המדויק בספר). videos: סרטונים (book = הספר שאליו שייך הסרטון). hw.lines: שורות המטלה (\"1. \" ממוספר, \"- \" תבליט, שני רווחים לכל רמה). hw.files: קובצי נתונים (מזהי Notion, ראו files.json, או נתיב בריפו). solution: פתרון ב-sh (טרמינל), r ו-py — מוצג רק באתר המתרגלים.",
- "intro": "השבוע נעבוד עם סוג נתונים חדש: אות פיזיולוגי שנמדד לאורך זמן — כמו EEG, דופק או מוליכות עור. נתונים כאלה נראים אחרת מטבלת שאלונים: מאות דגימות בשנייה, הרבה ניסיונות, ורעש.\n\nנעבוד עם נתוני EEG (מדומים) מניסוי oddball קלאסי, שבו נבדק שומע צלילים רגילים ומדי פעם צליל חריג. נלמד לצייר את האות, לתקן קו בסיס, לזהות ולהוציא ניסיונות רועשים, ולמצע על פני ניסיונות כדי לחשוף את התגובה של המוח — ה-ERP. בסוף נשווה את התגובה לצליל החריג ולצליל הרגיל, ונגלה את גל ה-P300.\n\nשימו לב כמה כלים מהסמסטר נפגשים כאן: מטריצות (ניסיונות × זמן), לולאות ותנאים, סיכום לפי קבוצות, וגרפים.",
+ "intro": "השבוע נעבוד עם סוכן קוד כמו בפרויקט מחקר אמיתי — וזה גם השבוע שבו כל מה שלמדנו על Git מקבל משמעות חדשה.\n\nסוכן קורא ועורך את הקבצים שלנו בעצמו, ולכן Git הופך לרשת הביטחון: commit לפני כל צעד, git diff כדי לראות מה בדיוק השתנה, ו-git restore כדי לחזור לנקודה התקינה. נכיר את המושגים API ו-JSON, שדרכם הכלים האלה מדברים עם מודל השפה, ונלמד לשמור מפתחות וסודות מחוץ לקוד, במשתני סביבה ובקובץ .env. ולבסוף — פרטיות הנבדקים, כללי האתיקה ושקיפות בדיווח על שימוש ב-AI.\n\nהפרק נסגר בתרגול של המושגים ובהתנסות מודרכת בפרויקט קטן עם סוכן — כדאי לעשות אותה לפני המטלה. מי שרוצה להעמיק יכול ללמוד גם איך פונים למודל שפה מתוך קוד פייתון.",
  "deck": {
   "title": "מצגת שבוע 12",
-  "note": "7 שקפים · נפתחת בדפדפן",
+  "note": "9 שקפים · נפתחת בדפדפן",
   "url": "decks/W12.html"
  },
  "videos": [],
  "units": [
   {
-   "book": "r",
-   "ch": 12,
+   "book": "code",
+   "ch": 7,
    "secs": [
-    "אות לאורך זמן: קצב דגימה, ציר זמן ופורמט ארוך",
-    "ציור אות של ניסיון בודד ושל כמה ניסיונות",
-    "תיקון קו בסיס (baseline)",
-    "דחיית ניסיונות עם רעש (artifact rejection)",
-    "ממוצע על פני ניסיונות (ERP) והשוואת תנאים",
-    "מדידת אמפליטודה בחלון זמן והשוואה סטטיסטית",
-    "בונוס: החלקת אות בממוצע נע"
+    "Git כרשת ביטחון",
+    "API ו-JSON",
+    "סודות ומשתני סביבה",
+    "פרטיות, אתיקה ושקיפות",
+    "תרגול: מושגים",
+    "התנסות: פרויקט קטן עם סוכן"
    ]
   },
   {
    "book": "py",
-   "ch": 9,
+   "ch": 10,
    "secs": [
-    "אות לאורך זמן: קצב דגימה, ציר זמן ופורמט ארוך",
-    "ציור אות של ניסיון בודד ושל כמה ניסיונות",
-    "תיקון קו בסיס (baseline)",
-    "דחיית ניסיונות עם רעש (artifact rejection)",
-    "ממוצע על פני ניסיונות (ERP) והשוואת תנאים",
-    "מדידת אמפליטודה בחלון זמן והשוואה סטטיסטית",
-    "בונוס: החלקת אות בממוצע נע"
+    "מה זה api",
+    "שימוש בapi על מנת לתקשר עם LLM",
+    "בניית פונקציה פנייה לapi"
    ]
   }
  ],
  "hw": {
   "title": "המטלה השבועית (שבוע 12)",
   "context": [
-   "קובץ הנתונים eeg_oddball.csv מכיל נתוני EEG מדומים של נבדק אחד מאלקטרודה Pz, בניסוי oddball: הנבדק שמע 100 צלילים — 80 צלילים רגילים (standard) ו-20 צלילים חריגים (oddball), בסדר אקראי.",
-   "האות נדגם ב-250 הרץ (דגימה כל 4 מילישניות), ולכל צליל נשמר מקטע (epoch) מ-200 מילישניות לפני הצליל ועד כ-800 מילישניות אחריו. הקובץ בפורמט ארוך, עם העמודות:",
-   "1. trial — מספר הניסיון (1 עד 100)",
-   "1. condition — סוג הצליל (standard / oddball)",
-   "1. time_ms — הזמן ביחס להופעת הצליל, במילישניות (0 = הצליל)",
-   "1. voltage — המתח החשמלי במיקרו-וולט (µV)"
+   "השבוע עובדים עם סוכן קוד (Cursor, או Claude Code / GitHub Copilot) בתוך מאגר Git, על הניתוח של heart.csv משבוע 11. כדאי לעשות קודם את היחידה „התנסות: פרויקט קטן עם סוכן״."
   ],
   "lines": [
-   "חלק א - היכרות עם הנתונים",
-   "1. טענו את הקובץ והציגו את מימדיו. כמה ניסיונות יש מכל תנאי? (שימו לב: כל ניסיון מופיע בהרבה שורות.)",
-   "1. חשבו מהנתונים את קצב הדגימה: מה הפרש הזמן בין שתי דגימות עוקבות, וכמה דגימות יש בשנייה?",
-   "1. ציירו את האות של ניסיון אחד (ציר X: זמן, ציר Y: מתח), עם קו אנכי בזמן 0.",
-   "חלק ב - ניקוי הנתונים",
-   "1. תיקון קו בסיס: לכל ניסיון, חשבו את הממוצע של המתח בתקופה שלפני הצליל (מ-200- עד 0 מילישניות), והפחיתו אותו מכל הדגימות של אותו ניסיון. שמרו את התוצאה בעמודה חדשה.",
-   "1. דחיית ניסיונות רועשים: כתבו פונקציה שמקבלת וקטור של מתחים של ניסיון אחד ומחזירה TRUE אם הערך המוחלט המרבי שלו גדול מ-100 מיקרו-וולט.",
-   "1. הפעילו את הפונקציה על כל ניסיון (בלולאה, או בפעולה לפי קבוצות), והוציאו מהנתונים את הניסיונות הרועשים. הדפיסו כמה ניסיונות נדחו בכל תנאי.",
-   "חלק ג - ה-ERP",
-   "1. חשבו לכל תנאי ולכל נקודת זמן את הממוצע על פני הניסיונות שנשארו (זה ה-ERP).",
-   "1. ציירו את שני ה-ERP באותו גרף, בצבעים שונים, עם קו אנכי בזמן 0, כותרת, תוויות צירים ומקרא.",
-   "1. בעזרת הגרף, באיזה טווח זמן ההבדל בין התנאים הכי גדול? כתבו את התשובה בהערה בקוד.",
-   "חלק ד - מדידה והשוואה",
-   "1. לכל ניסיון, חשבו את המתח הממוצע בחלון הזמן 250–500 מילישניות (אחרי תיקון קו הבסיס).",
-   "1. השוו בין התנאים: הדפיסו ממוצע וסטיית תקן לכל תנאי, ובצעו מבחן t (או רגרסיה) להשוואה ביניהם. דווחו בהערה על התוצאה.",
+   "חלק א - הכנת הפרויקט",
+   "1. צרו תיקיית פרויקט חדשה ובתוכה תיקיית data, העתיקו אליה את heart.csv, והפכו את התיקייה למאגר Git (git init).",
+   "1. צרו קובץ .gitignore שמוציא מהמעקב את תיקיית data ואת הקובץ .env. כתבו בהערה: למה לא מעלים את הנתונים ואת הסודות ל-GitHub?",
+   "1. הוסיפו את המפרט משבוע 11 (spec.txt), וכתבו קובץ הנחיות לסוכן (AGENTS.md או Cursor Rules) עם לפחות ארבעה כללים, ובהם: לא לשנות קבצים בתיקיית data. עשו commit.",
+   "חלק ב - עבודה עם הסוכן",
+   "1. בקשו מהסוכן לכתוב את הניתוח לפי המפרט, צעד אחד בכל פעם: טעינה, הסרת כפילויות, טבלה מסכמת וגרף. לפני כל אישור קראו את ה-diff; אחרי כל צעד הריצו, בדקו, ועשו commit עם הודעה שמתארת את הצעד.",
+   "1. בקשו מהסוכן שינוי גדול ומיותר (למשל: „תכתוב מחדש את כל הסקריפט ותוסיף שלושה גרפים״). אחרי שסיים, הריצו git status ו-git diff, חזרו לנקודה התקינה האחרונה עם git restore, ומחקו קבצים חדשים שנוצרו. ודאו עם git status שהכול נקי.",
+   "1. העלו את המאגר ל-GitHub (כמו בשבוע 7), ובדקו באתר ש-data ו-.env לא שם.",
+   "חלק ג - סודות ופרטיות",
+   "1. צרו קובץ .env עם מפתח מדומה (MY_API_KEY=not-a-real-key). כתבו קוד שקורא אותו כמשתנה סביבה ומדפיס רק את מספר התווים שלו — לא את המפתח עצמו. ודאו עם git status ש-.env לא מופיע.",
+   "1. כתבו בהערה (3–5 משפטים): אילו נתונים מהמחקר שלכם (או ממחקר שאתם מכירים) אסור לתת לסוכן, ואיך הייתם עובדים איתו בכל זאת?",
    "בונוס (רשות):",
-   "1. מצאו לכל תנאי את הזמן שבו ה-ERP מגיע לשיא בחלון 250–500 מילישניות (latency).",
-   "1. החליקו את האות של ניסיון אחד בממוצע נע של 5 דגימות, וציירו אותו לצד האות המקורי."
+   "1. פנו למודל שפה מתוך סקריפט פייתון דרך API (ראו את הפרק על API בספר הפייתון), כשהמפתח שמור רק ב-.env."
   ],
   "files": [
-   "files/data/eeg_oddball.csv"
+   "255dccfe-d059-80a0-9fdc-cdb2f147b5d9"
   ],
   "submit": [
-   "שפה: אפשר להגיש ב-R או בפייתון, לבחירתכם. מומלץ לנסות את שתי השפות במהלך הסמסטר.",
-   "כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת הקובץ את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.",
-   "פורמט ההגשה: קובץ PDF עם הקוד שכתבתם (ראו את היחידה „מהקוד ל-PDF״ בספר ניהול הקוד). את המטלה כותבים בלי עזרה של AI — כהכנה לבחינה."
+   "שפה: אפשר לעבוד ב-R או בפייתון, לבחירתכם.",
+   "פורמט ההגשה: קובץ PDF עם הקישור למאגר ב-GitHub, הפלט של git log --oneline ושל git status בסוף חלק ב, קובץ ההנחיות לסוכן, הקוד הסופי, הקוד של חלק ג, והתשובות.",
+   "השבוע השימוש בסוכן הוא חלק מהמטלה; הבדיקה, ה-commits וההחלטות — שלכם."
   ],
   "due": "יום ראשון, 10.1.2027, בשעה 12:00"
  },
  "solution": {
-  "r": [
+  "sh": [
    {
-    "code": "# Foundations of programming for empirical science\n# Week 12\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\n\n#### LOAD DATA ####\n\n# 1. Dimensions and trials per condition\neeg = read.csv(\"eeg_oddball.csv\")\nprint(dim(eeg))\ntrials = eeg %>% distinct(trial, condition)\nprint(table(trials$condition))\n\n# 2. Sampling rate\nstep  = diff(sort(unique(eeg$time_ms)))[1]\nsrate = 1000 / step\ncat(\"sample every\", step, \"ms =\", srate, \"samples per second\\n\")\n\n# 3. One trial\nggplot(filter(eeg, trial == 1), aes(x = time_ms, y = voltage)) +\n  geom_line() +\n  geom_vline(xintercept = 0, linetype = \"dashed\") +\n  labs(title = \"Trial 1\", x = \"Time (ms)\", y = \"Voltage (µV)\")\n\n\n#### CLEAN DATA ####\n\n# 1. Baseline correction (-200 to 0 ms)\neeg = eeg %>%\n  group_by(trial) %>%\n  mutate(voltage_bc = voltage - mean(voltage[time_ms < 0])) %>%\n  ungroup()\n\n# 2. Function: is a trial noisy?\nis_noisy = function(v, threshold = 100) {\n  max(abs(v)) > threshold\n}\n\n# 3. Reject noisy trials\nnoisy = eeg %>%\n  group_by(trial, condition) %>%\n  summarise(noisy = is_noisy(voltage_bc), .groups = \"drop\")\nprint(table(noisy$condition, noisy$noisy))\n\nclean = eeg %>% filter(trial %in% noisy$trial[!noisy$noisy])\n\n\n#### ERP ####\n\n# 1. Mean over trials, per condition and time point\nerp = clean %>%\n  group_by(condition, time_ms) %>%\n  summarise(voltage = mean(voltage_bc), .groups = \"drop\")\n\n# 2. Plot both ERPs\nggplot(erp, aes(x = time_ms, y = voltage, color = condition)) +\n  geom_line(linewidth = 1) +\n  geom_vline(xintercept = 0, linetype = \"dashed\") +\n  labs(title = \"ERP at Pz\", x = \"Time (ms)\", y = \"Voltage (µV)\", color = \"Condition\")\n\n# 3. The largest difference is around 300-450 ms (the P300)\n\n\n#### AMPLITUDE ####\n\n# 1. Mean voltage in 250-500 ms, per trial\namp = clean %>%\n  filter(time_ms >= 250, time_ms <= 500) %>%\n  group_by(trial, condition) %>%\n  summarise(amplitude = mean(voltage_bc), .groups = \"drop\")\n\n# 2. Compare conditions\nprint(amp %>% group_by(condition) %>% summarise(mean = mean(amplitude), sd = sd(amplitude)))\nprint(t.test(amplitude ~ condition, data = amp))\n# oddball trials are much more positive in 250-500 ms: a P300 effect\n\n\n#### BONUS ####\n\n# 1. Peak latency in 250-500 ms\nprint(erp %>%\n  filter(time_ms >= 250, time_ms <= 500) %>%\n  group_by(condition) %>%\n  summarise(peak_ms = time_ms[which.max(voltage)], peak_uv = max(voltage)))\n\n# 2. Moving average of 5 samples, one trial\none = filter(clean, trial == 1)\none$smooth = stats::filter(one$voltage_bc, rep(1 / 5, 5), sides = 2)\nggplot(one, aes(x = time_ms)) +\n  geom_line(aes(y = voltage_bc), color = \"grey60\") +\n  geom_line(aes(y = smooth), color = \"black\") +\n  labs(title = \"Trial 1: raw (grey) and smoothed (black)\", x = \"Time (ms)\", y = \"Voltage (µV)\")\n"
+    "text": "פקודות הטרמינל לפי סדר המטלה. בבדיקה: ב-git log רואים commit לכל צעד עם הודעה ברורה; ב-GitHub אין את data ואת .env; ב-git status בסוף חלק ב מופיע „working tree clean״."
    },
    {
-    "text": "מספרים לבדיקה: נדחים 6 ניסיונות (4 רגילים, 2 חריגים), ונשארים 76 רגילים ו-18 חריגים. ממוצע 250–500 מ״ש: חריג 6.00 µV (ס״ת 2.42), רגיל 0.52 µV (ס״ת 3.08); Welch t(31.4) = 8.17, p < .001. שיא ה-ERP לצליל החריג: 9.31 µV ב-384 מ״ש."
+    "code": "#### PART A: SET UP THE PROJECT ####\n\nmkdir -p ~/heart_ai/data\ncd ~/heart_ai\ncp ~/Downloads/heart.csv data/      # the data stays local\ngit init\n\n# .gitignore: the data and the secrets are never tracked\nprintf 'data/\\n.env\\n' > .gitignore\ncat .gitignore\n\n# the spec from week 11, and the rules file for the agent\ncp ~/Downloads/spec.txt .\nnotepad AGENTS.md                   # at least four rules, e.g. \"Never modify files in data/\"\ngit add .gitignore spec.txt AGENTS.md\ngit commit -m \"Spec, agent rules and gitignore\"\n\n\n#### PART B: AFTER EACH STEP OF THE AGENT ####\n\ngit status                          # which files changed\ngit diff                            # which lines changed (q to quit)\ngit add analysis.py\ngit commit -m \"Load the data and print its shape\"\n\n\n#### PART B: UNDO THE BIG UNNEEDED CHANGE ####\n\ngit status                          # analysis.py modified, plot_all.py untracked\ngit diff analysis.py\ngit restore analysis.py             # back to the last commit\nrm plot_all.py                      # a new file the agent created\ngit status                          # \"nothing to commit, working tree clean\"\ngit log --oneline\n\n\n#### PART B: UPLOAD TO GITHUB (as in week 7) ####\n\ngit remote add origin https://github.com/<user>/heart_ai.git\ngit branch -M main\ngit push -u origin main\n\n\n#### PART C: THE SECRET STAYS LOCAL ####\n\necho 'MY_API_KEY=not-a-real-key' > .env\ngit status                          # .env is not listed: .gitignore works\n"
+   }
+  ],
+  "r": [
+   {
+    "text": "חלק ג: קריאת הסוד מ-.env (נבדק עם מפתח מדומה; מדפיס 14)."
+   },
+   {
+    "code": "#### READ A SECRET FROM .env ####\n\nreadRenviron('.env')            # loads the lines of .env as environment variables\nkey = Sys.getenv('MY_API_KEY')  # the key never appears in the script\nnchar(key)                      # print only its length, never the key itself\n"
    }
   ],
   "py": [
    {
-    "code": "# Foundations of programming for empirical science\n# Week 12\n# assignment by < First Name > < Last Name >, id < 123456789 >\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy import stats\n\n\n#### LOAD DATA ####\n\n# 1. Dimensions and trials per condition\neeg = pd.read_csv(\"eeg_oddball.csv\")\nprint(eeg.shape)\ntrials = eeg[[\"trial\", \"condition\"]].drop_duplicates()\nprint(trials[\"condition\"].value_counts())\n\n# 2. Sampling rate\nstep = np.diff(np.sort(eeg[\"time_ms\"].unique()))[0]\nsrate = 1000 / step\nprint(\"sample every\", step, \"ms =\", srate, \"samples per second\")\n\n# 3. One trial\none = eeg[eeg[\"trial\"] == 1]\nplt.figure()\nplt.plot(one[\"time_ms\"], one[\"voltage\"])\nplt.axvline(0, linestyle=\"--\", color=\"grey\")\nplt.title(\"Trial 1\")\nplt.xlabel(\"Time (ms)\")\nplt.ylabel(\"Voltage (µV)\")\n\n\n#### CLEAN DATA ####\n\n# 1. Baseline correction (-200 to 0 ms)\nbaseline = eeg[eeg[\"time_ms\"] < 0].groupby(\"trial\")[\"voltage\"].mean()\neeg[\"voltage_bc\"] = eeg[\"voltage\"] - eeg[\"trial\"].map(baseline)\n\n# 2. Function: is a trial noisy?\ndef is_noisy(v, threshold=100):\n    return np.max(np.abs(v)) > threshold\n\n# 3. Reject noisy trials\nnoisy = eeg.groupby([\"trial\", \"condition\"])[\"voltage_bc\"].apply(is_noisy).reset_index(name=\"noisy\")\nprint(pd.crosstab(noisy[\"condition\"], noisy[\"noisy\"]))\n\ngood = noisy.loc[~noisy[\"noisy\"], \"trial\"]\nclean = eeg[eeg[\"trial\"].isin(good)]\n\n\n#### ERP ####\n\n# 1. Mean over trials, per condition and time point\nerp = clean.groupby([\"condition\", \"time_ms\"])[\"voltage_bc\"].mean().reset_index()\n\n# 2. Plot both ERPs\nplt.figure()\nfor cond, d in erp.groupby(\"condition\"):\n    plt.plot(d[\"time_ms\"], d[\"voltage_bc\"], label=cond)\nplt.axvline(0, linestyle=\"--\", color=\"grey\")\nplt.title(\"ERP at Pz\")\nplt.xlabel(\"Time (ms)\")\nplt.ylabel(\"Voltage (µV)\")\nplt.legend(title=\"Condition\")\n\n# 3. The largest difference is around 300-450 ms (the P300)\n\n\n#### AMPLITUDE ####\n\n# 1. Mean voltage in 250-500 ms, per trial\nwindow = clean[(clean[\"time_ms\"] >= 250) & (clean[\"time_ms\"] <= 500)]\namp = window.groupby([\"trial\", \"condition\"])[\"voltage_bc\"].mean().reset_index(name=\"amplitude\")\n\n# 2. Compare conditions\nprint(amp.groupby(\"condition\")[\"amplitude\"].agg([\"mean\", \"std\"]))\nodd = amp.loc[amp[\"condition\"] == \"oddball\", \"amplitude\"]\nstd = amp.loc[amp[\"condition\"] == \"standard\", \"amplitude\"]\nprint(stats.ttest_ind(odd, std, equal_var=False))\n# oddball trials are much more positive in 250-500 ms: a P300 effect\n\n\n#### BONUS ####\n\n# 1. Peak latency in 250-500 ms\nwin = erp[(erp[\"time_ms\"] >= 250) & (erp[\"time_ms\"] <= 500)]\npeaks = win.loc[win.groupby(\"condition\")[\"voltage_bc\"].idxmax()]\nprint(peaks)\n\n# 2. Moving average of 5 samples, one trial\none = clean[clean[\"trial\"] == 1].copy()\none[\"smooth\"] = one[\"voltage_bc\"].rolling(5, center=True).mean()\nplt.figure()\nplt.plot(one[\"time_ms\"], one[\"voltage_bc\"], color=\"grey\", label=\"raw\")\nplt.plot(one[\"time_ms\"], one[\"smooth\"], color=\"black\", label=\"smoothed\")\nplt.title(\"Trial 1: raw and smoothed\")\nplt.xlabel(\"Time (ms)\")\nplt.ylabel(\"Voltage (µV)\")\nplt.legend()\nplt.show()\n"
+    "text": "חלק ג: קריאת הסוד מ-.env (נבדק עם מפתח מדומה; מדפיס 14)."
+   },
+   {
+    "code": "#### READ A SECRET FROM .env ####\n\nimport os\nfrom dotenv import load_dotenv  # pip install python-dotenv\n\nload_dotenv()                     # loads the lines of .env as environment variables\nkey = os.environ['MY_API_KEY']    # the key never appears in the script\nprint(len(key))                   # print only its length, never the key itself\n"
    }
   ]
  }

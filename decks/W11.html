@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.2.269">
 
   <meta name="author" content="פרופ׳ ניצן שחר · יסודות התכנות במדע אמפירי · תשפ״ז">
-  <title>בעיות קלסיפיקציה ב: השוואת מסווגים</title>
+  <title>עבודה עם AI א: מהנחיה לקוד בדוק</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,33 +390,127 @@
 <section id="title-slide" class="quarto-title-block center" dir="rtl">
   <img class="tau-title-logo" src="theme/tau-logo.png" alt="אוניברסיטת תל אביב">
   <p class="week-label">שבוע 11</p>
-  <h1 class="title">בעיות קלסיפיקציה ב: השוואת מסווגים</h1>
+  <h1 class="title">עבודה עם AI א: מהנחיה לקוד בדוק</h1>
   <div class="title-rule"></div>
   <p class="author">פרופ׳ ניצן שחר · יסודות התכנות במדע אמפירי · תשפ״ז</p>
 </section>
-<section id="השוואת-מסווגים" class="slide level2">
-<h2>השוואת מסווגים</h2>
+<section id="vibe-coding-בצורה-אחראית" class="slide level2">
+<h2>vibe coding, בצורה אחראית</h2>
 <div class="nbox">
 <p class="nh">
 שבוע 11 · חומר הלימוד
 </p>
-<p>השבוע נשאל את השאלה שכל חוקר שואל בסוף: איזה מודל הכי טוב? נחזור לנתוני מחלת הלב משבוע 9, ונשווה שלושה מסווגים: רגרסיה לוגיסטית, KNN, ו-Random Forest — מודל שמבוסס על „חוכמת ההמונים״ של הרבה עצי החלטה.</p>
-<p>נלמד להשוות בצורה הוגנת: אותו סט אימון, אותו סט בדיקה, ואותם מדדים — דיוק, רגישות, סגוליות ו-AUC. ונשאל גם שאלה שאינה סטטיסטית: מה יקר יותר, לפספס חולה או להתריע לשווא?</p>
-<p>זה השבוע שבו כל מה שלמדנו מתחבר: טבלאות, לולאות, פונקציות, גרפים ומודלים.</p>
+<p>בשבועיים האחרונים של החומר נלמד לעבוד עם כלי בינה מלאכותית שכותבים קוד — vibe coding. בעבודה האמיתית שלכם במחקר תשתמשו בכלים כאלה, ועכשיו, כשאתם יודעים לקרוא ולכתוב קוד בעצמכם, אפשר ללמוד לעבוד איתם נכון.</p>
+<p>השבוע: איך מודל שפה מייצר קוד, מצ’אט לסוכן (Cursor), מפרט לפני קוד, צעדים קטנים, הנחיות קבועות לפרויקט, traceback ושורש הבעיה, ובדיקה של כל קוד לפני שסומכים עליו.</p>
+<p>השבוע, ובשבוע הבא, המטלה נעשית עם AI — בכוונה. מה שנבדק הוא העבודה שלכם איתו: המפרט, הצעדים והבדיקה.</p>
 </div>
 </section>
-<section id="נבדקים-כפולים-ודליפת-מידע" class="slide level2">
-<h2>נבדקים כפולים ודליפת מידע</h2>
+<section id="מה-זה-vibe-coding" class="slide level2">
+<h2>מה זה vibe coding</h2>
+<div class="cards">
+<div class="card ok">
+<h3>
+מה הוא נותן
+</h3>
+<ul>
+<li>מתארים במילים מה הקוד צריך לעשות, והמודל כותב</li>
+<li>מהירות במשימות שגרתיות: קריאת קבצים, ניקוי, גרפים</li>
+<li>היכרות עם פונקציות וחבילות שלא הכרנו</li>
+</ul>
+</div>
+<div class="card warn">
+<h3>
+מה המחיר
+</h3>
+<ul>
+<li>קוד שרץ בלי שגיאה — ומחשב דבר לא נכון</li>
+<li>נבדקים שנמחקים בשקט, ערכים חסרים שמטופלים לא נכון</li>
+<li>המודל לא מריץ את הקוד בראש: הוא מייצר קוד שנראה סביר</li>
+</ul>
+</div>
+</div>
+<p class="take">
+Human-in-the-Loop: הבינה המלאכותית היא עוזרת, ואתם האחראים. כל שורה נקראת ונבדקת לפני שסומכים עליה
+</p>
+</section>
+<section id="מצאט-לסוכן" class="slide level2">
+<h2>מצ’אט לסוכן</h2>
+<div class="tb">
+<div class="tbox">
+<p class="th">
+שלוש רמות עבודה
+</p>
+<p>
+<b>צ’אט</b> — מעתיקים קוד לחלון ובחזרה; המודל לא רואה את הקבצים
+</p>
+<p>
+<b>השלמה אוטומטית</b> — הצעה להמשך השורה בעורך, מאשרים ב-Tab
+</p>
+<p>
+<b>סוכן</b> — קורא קבצים, עורך אותם ומריץ פקודות בעצמו
+</p>
+<p>
+Cursor: עורך שבנוי על VS Code, עם סוכן מובנה
+</p>
+</div>
+<div class="board">
+<p class="lang">
+AGENTS.md · הנחיות קבועות לפרויקט
+</p>
+<pre class="text"><code>This is a psychology research project.
+Analysis in Python with pandas and matplotlib.
+Never modify or delete files in the data folder.
+Use full, readable variable names in English.
+Use #### TITLE #### headers, as in the course.
+Make one small change at a time and explain it.</code></pre>
+</div>
+</div>
+</section>
+<section id="הנחיה-טובה-מפרט-spec" class="slide level2">
+<h2>הנחיה טובה = מפרט (spec)</h2>
+<div class="vs">
+<div class="bad">
+<p class="lbl">
+הנחיה עמומה
+</p>
+<pre class="text"><code>Clean my data and make a plot.</code></pre>
+</div>
+<div class="good">
+<p class="lbl">
+מפרט: קלט · מבנה · כללים · פלט · אילוצים
+</p>
+<pre class="text"><code>Input: data/stroop.csv, one row per trial
+Columns: id (integer), condition
+  (congruent / incongruent), rt (ms)
+Rules: drop trials with rt &lt; 200 or rt &gt; 2000
+Output: mean rt per participant and
+  condition; a plot of the condition means
+Constraints: R with dplyr and ggplot2;
+  do not change the raw file</code></pre>
+</div>
+</div>
+<p class="take">
+ומתקדמים בצעדים קטנים: בקשה קצרה ← קריאת ה-diff ← אישור ← הרצה ← בדיקה ← commit, ורק אז הצעד הבא
+</p>
+</section>
+<section id="כשהקוד-נופל-traceback" class="slide level2">
+<h2>כשהקוד נופל: traceback</h2>
 <div class="tb duo-tb">
 <div class="tbox">
 <p class="th">
-לפני כל מודל: להכיר את הנתונים
+לקרוא את הודעת השגיאה
 </p>
 <p>
-בקובץ 1025 שורות — אבל רק 302 נבדקים: השאר הם כפילויות (זהות בכל העמודות מלבד bs)
+השורה האחרונה: סוג השגיאה וההודעה
 </p>
 <p>
-אם אותו נבדק נמצא גם באימון וגם בבדיקה, המודל „זוכר״ אותו והדיוק מנופח: דליפת מידע (<span class="ltr">data leakage</span>)
+השורות שמעליה: איפה זה קרה
+</p>
+<p>
+לסוכן נותנים את ההודעה המלאה — לא „זה לא עובד״
+</p>
+<p>
+מבקשים להסביר את שורש הבעיה, לפני שמשנים קוד
 </p>
 </div>
 <div class="board">
@@ -425,312 +519,95 @@
 <p class="lang">
 R
 </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### DUPLICATE PATIENTS ####</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'heart.csv'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>target)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># identical on all columns except bs</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'restbps'</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">'chol'</span>, <span class="st">'maxhr'</span>, <span class="st">'target'</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(df[, cols]))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df[<span class="sc">!</span><span class="fu">duplicated</span>(df[, cols]), ]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'stroop.csv'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>RT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p class="out">
-1025 · 723 · 302
+NA · Warning: argument is not numeric or logical
 </p>
 </div>
 <div class="py">
 <p class="lang">
 Python
 </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#### DUPLICATE PATIENTS ####</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'heart.csv'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'target'</span>].value_counts()</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># identical on all columns except bs</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'restbps'</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'chol'</span>, <span class="st">'maxhr'</span>, <span class="st">'target'</span>]</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df.duplicated(subset<span class="op">=</span>cols).<span class="bu">sum</span>()</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop_duplicates(subset<span class="op">=</span>cols)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'stroop.csv'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'RT'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p class="out">
-1025 · 723 · 302
+KeyError: ‘RT’
 </p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="השוואה-הוגנת-אותה-חלוקה-לכולם" class="slide level2">
-<h2>השוואה הוגנת: אותה חלוקה לכולם</h2>
-<div class="tb duo-tb">
-<div class="tbox">
-<p class="th">
-הכנת הנתונים
-</p>
-<p>
-seed — כדי שהתוצאות יהיו שחזוריות
-</p>
-<p>
-סט אימון (70%) וסט בדיקה (30%) — אחד, לכל המודלים
-</p>
-<p>
-תקנון לפי סט האימון בלבד: סט הבדיקה מדמה נבדקים שעוד לא ראינו
-</p>
-</div>
-<div class="board tight">
-<div class="duo">
-<div class="r">
-<p class="lang">
-R
-</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### SAME SPLIT FOR ALL ####</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x_cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'restbps'</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">'chol'</span>, <span class="st">'bs'</span>, <span class="st">'maxhr'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">round</span>(<span class="fl">0.7</span> <span class="sc">*</span> <span class="fu">nrow</span>(df)))</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> df[rows, ]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>test <span class="ot">=</span> df[<span class="sc">-</span>rows, ]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># standardize by the training set only</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">colMeans</span>(train[, x_cols])</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="fu">apply</span>(train[, x_cols], <span class="dv">2</span>, sd)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>train[, x_cols] <span class="ot">=</span> <span class="fu">scale</span>(train[, x_cols], m, s)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>test[, x_cols] <span class="ot">=</span> <span class="fu">scale</span>(test[, x_cols], m, s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="py">
-<p class="lang">
-Python
-</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#### SAME SPLIT FOR ALL ####</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>x_cols <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'restbps'</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">'chol'</span>, <span class="st">'bs'</span>, <span class="st">'maxhr'</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    df, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># standardize by the training set only</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>scaler.fit(train[x_cols])</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>x_train <span class="op">=</span> scaler.transform(train[x_cols])</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> scaler.transform(test[x_cols])</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[<span class="st">'target'</span>]</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[<span class="st">'target'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="שלושה-מודלים" class="slide level2">
-<h2>שלושה מודלים</h2>
-<div class="tb duo-tb">
-<div class="tbox">
-<p class="th">
-שלושה מסווגים
-</p>
-<p>
-רגרסיה לוגיסטית — משוואה
-</p>
-<p>
-<span class="ltr">KNN (K=15)</span> — השכנים הקרובים
-</p>
-<p>
-<span class="ltr">Random Forest</span> (500 עצים) — הצבעה של הרבה עצי החלטה
-</p>
-</div>
-<div class="board tight">
-<div class="duo">
-<div class="r">
-<p class="lang">
-R
-</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">#### THREE MODELS ####</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Logistic regression</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>m_log <span class="ot">=</span> <span class="fu">glm</span>(target <span class="sc">~</span> ., <span class="at">data =</span> train,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">family =</span> binomial)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>p_log <span class="ot">=</span> <span class="fu">predict</span>(m_log, test,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">type =</span> <span class="st">'response'</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>pred_log <span class="ot">=</span> <span class="fu">ifelse</span>(p_log <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. KNN</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>pred_knn <span class="ot">=</span> <span class="fu">knn</span>(train[, x_cols],</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>               test[, x_cols],</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">cl =</span> train<span class="sc">$</span>target, <span class="at">k =</span> <span class="dv">15</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Random Forest</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>m_rf <span class="ot">=</span> <span class="fu">randomForest</span>(<span class="fu">factor</span>(target) <span class="sc">~</span> .,</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> train, <span class="at">ntree =</span> <span class="dv">500</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>pred_rf <span class="ot">=</span> <span class="fu">predict</span>(m_rf, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="py">
-<p class="lang">
-Python
-</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#### THREE MODELS ####</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> {</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'logistic'</span>: LogisticRegression(),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'knn'</span>: KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">15</span>),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'forest'</span>: RandomForestClassifier(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        n_estimators<span class="op">=</span><span class="dv">500</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> {}</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> models:</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    models[name].fit(x_train, y_train)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    pred[name] <span class="op">=</span> models[name].predict(x_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="מדדי-ביצועים" class="slide level2">
-<h2>מדדי ביצועים</h2>
-<div class="cards">
-<div class="card py">
-<h3>
-Confusion matrix
-</h3>
-
-<table class="df" style="font-size:.85em;margin:.4em auto">
-<tbody><tr>
-<th>
-</th>
-<th>
-observed = 1
-</th>
-<th>
-observed = 0
-</th>
-</tr>
-<tr>
-<td>
-<b>predicted = 1</b>
-</td>
-<td style="color:#1f7a52">
-TP
-</td>
-<td style="color:#b3541e">
-FP · התרעת שווא
-</td>
-</tr>
-<tr>
-<td>
-<b>predicted = 0</b>
-</td>
-<td style="color:#b3541e">
-FN · חולה שפוספס
-</td>
-<td style="color:#1f7a52">
-TN
-</td>
-</tr>
-
-</tbody></table>
-</div>
-<div class="card">
-<h3>
-ארבעה מדדים
-</h3>
-<ul>
-<li><strong>דיוק (accuracy)</strong> — כמה מכל הסיווגים נכונים</li>
-<li><strong>רגישות (sensitivity)</strong> — <span class="ltr">TP / (TP + FN)</span>: כמה מהחולים זיהינו</li>
-<li><strong>סגוליות (specificity)</strong> — <span class="ltr">TN / (TN + FP)</span>: כמה מהבריאים זיהינו</li>
-<li><strong>AUC</strong> — השטח מתחת לעקומת ה-ROC, לכל הספים יחד</li>
-</ul>
-</div>
-</div>
-<p class="take">
-דיוק גבוה לא מספיק: אם רק 10% חולים, מודל שאומר תמיד „בריא״ צודק ב-90% — ולא מזהה אף חולה. מה יקר יותר אצלכם: FN או FP?
-</p>
-</section>
-<section id="פונקציה-אחת-לכל-המודלים" class="slide level2">
-<h2>פונקציה אחת לכל המודלים</h2>
-<div class="tb duo-tb">
-<div class="tbox">
-<p class="th">
-הערכת ביצועים והשוואת מודלים
-</p>
-<p>
-פונקציה שמחזירה דיוק, רגישות וסגוליות
-</p>
-<p>
-טבלה אחת: שורה לכל מודל, עמודה לכל מדד
-</p>
-<p>
-גרף עמודות של הדיוק
-</p>
-</div>
-<div class="board tight">
-<div class="duo">
-<div class="r">
-<p class="lang">
-R
-</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### COMPARE ####</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="ot">=</span> <span class="cf">function</span>(observed, predicted) {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  tp <span class="ot">=</span> <span class="fu">sum</span>(predicted <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> observed <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  tn <span class="ot">=</span> <span class="fu">sum</span>(predicted <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> observed <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">accuracy =</span> <span class="fu">mean</span>(predicted <span class="sc">==</span> observed),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sensitivity =</span> tp <span class="sc">/</span> <span class="fu">sum</span>(observed <span class="sc">==</span> <span class="dv">1</span>),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">specificity =</span> tn <span class="sc">/</span> <span class="fu">sum</span>(observed <span class="sc">==</span> <span class="dv">0</span>))</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">rbind</span>(</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">logistic =</span> <span class="fu">metrics</span>(test<span class="sc">$</span>target, pred_log),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">knn =</span> <span class="fu">metrics</span>(test<span class="sc">$</span>target, pred_knn),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">forest =</span> <span class="fu">metrics</span>(test<span class="sc">$</span>target, pred_rf))</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(results[, <span class="st">'accuracy'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="py">
-<p class="lang">
-Python
-</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### COMPARE ####</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> metrics(observed, predicted):</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    tp <span class="op">=</span> <span class="bu">sum</span>((predicted <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (observed <span class="op">==</span> <span class="dv">1</span>))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    tn <span class="op">=</span> <span class="bu">sum</span>((predicted <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (observed <span class="op">==</span> <span class="dv">0</span>))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'accuracy'</span>: (predicted <span class="op">==</span> observed).mean(),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'sensitivity'</span>: tp <span class="op">/</span> <span class="bu">sum</span>(observed <span class="op">==</span> <span class="dv">1</span>),</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'specificity'</span>: tn <span class="op">/</span> <span class="bu">sum</span>(observed <span class="op">==</span> <span class="dv">0</span>)}</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> pred:</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    rows.append(metrics(y_test, pred[name]))</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.DataFrame(rows, index<span class="op">=</span><span class="bu">list</span>(pred))</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>results[<span class="st">'accuracy'</span>].plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="bnote">
-אחרי הסרת הכפילויות שלושת המודלים קרובים (כ-70% דיוק), והדירוג משתנה בין זרעים — מה שחשוב הוא השוואה הוגנת, לא „מי ניצח״
+שורש הבעיה: העמודה נקראת rt, לא RT. ב-R זו טעות „שקטה״ — רק אזהרה, והתוצאה NA
+</p>
+</div>
+</div>
+</section>
+<section id="לבדוק-קוד-שכתב-מודל" class="slide level2">
+<h2>לבדוק קוד שכתב מודל</h2>
+<div class="tb duo-tb">
+<div class="tbox">
+<p class="th">
+לבדוק לפני שסומכים
+</p>
+<p>
+להריץ, ולקרוא כל שורה: האם אני מבין מה היא עושה?
+</p>
+<p>
+הזיות: פונקציה או ארגומנט שלא קיימים — בודקים בתיעוד
+</p>
+<p>
+לבדוק על נתונים זעירים שאני יודע את התשובה שלהם
+</p>
+<p>
+„רץ בלי שגיאות״ ≠ „נכון״
+</p>
+</div>
+<div class="board">
+<div class="duo">
+<div class="r">
+<p class="lang">
+R
+</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### CHECK THE AI'S CODE ####</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. A tiny example I can solve</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">400</span>, <span class="dv">600</span>, <span class="cn">NA</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(rt)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(rt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Did the filter do what I asked?</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+NA · 500
+</p>
+</div>
+<div class="py">
+<p class="lang">
+Python
+</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#### CHECK THE AI'S CODE ####</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. A tiny example I can solve</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> pd.Series([<span class="dv">400</span>, <span class="dv">600</span>, np.nan])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>rt.mean()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>np.mean(rt.to_numpy())</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Did the filter do what I asked?</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+500.0 · nan
+</p>
+</div>
+</div>
+<p class="bnote">
+אותה שאלה, תשובות שונות: מודל שמתרגם קוד בין השפות עלול „להעלים״ ערכים חסרים בשקט
 </p>
 </div>
 </div>
@@ -738,10 +615,11 @@ Python
 <section id="מטלה-שבועית" class="slide level2">
 <h2>מטלה שבועית</h2>
 <div class="hwbox">
-<p><strong>המטלה השבועית (שבוע 11)</strong> — חוזרים לקובץ heart.csv משבוע 9. המטרה: להשוות שלושה מודלים שמסווגים מי עבר אירוע לבבי.</p>
-<p><strong>חלק א:</strong> מימדים ומספר הנבדקים בכל ערך של target; הסרת נבדקים כפולים (זהים בכל העמודות מלבד bs) והדפסת מספר הנבדקים שנשארו, ובהערה: מה זו דליפת מידע (<span class="ltr">data leakage</span>)?; seed וחלוקה ל-70% אימון ו-30% בדיקה; תקנון לפי סט האימון בלבד (ובהערה: למה?).</p>
-<p><strong>חלק ב:</strong> רגרסיה לוגיסטית (הסתברויות חזויות), KNN עם K=15, ו-Random Forest עם 500 עצים — כולם על אותה חלוקה. <strong>חלק ג:</strong> confusion matrix, דיוק, רגישות וסגוליות לכל מודל (סף 0.5) בעזרת פונקציה שכתבתם; טבלה אחת של כל המדדים; גרף עמודות של הדיוק; ובהערה — איזה מודל עדיף, ומה עוד צריך לדעת. <strong>בונוס:</strong> AUC ושתי עקומות ROC; חזרה עם 5 זרעים בלולאה.</p>
-<p><strong>שפה:</strong> R או פייתון · <strong>הגשה:</strong> PDF עם הקוד, בלי עזרה של AI.</p>
+<p><strong>המטלה השבועית (שבוע 11)</strong> — עם AI, על heart.csv משבוע 9. נבדקים המפרט, הצעדים והבדיקה.</p>
+<p><strong>חלק א – בלי AI:</strong> מפרט בחמשת החלקים (כפילויות; לכל target ו-sex: מספר נבדקים, גיל וכולסטרול ממוצעים; גרף עמודות), וטבלת בדיקה זעירה עם שורה כפולה וערך חסר — והתוצאה הצפויה, מחושבת ביד.</p>
+<p><strong>חלק ב – עם AI:</strong> צעד אחר צעד: טעינה, כפילויות, טבלה מסכמת, גרף; הרצה ובדיקה אחרי כל צעד; ההנחיות נשמרות להגשה. <strong>חלק ג:</strong> הרצה על הטבלה הזעירה והשוואה; הטיפול בערך החסר; הערה במילים שלכם מעל כל שורה; פונקציה אחת שנבדקה בתיעוד.</p>
+<p><strong>חלק ד:</strong> chol ← Chol, ההודעה המלאה, ושורש הבעיה במילים שלכם. <strong>בונוס:</strong> קובץ הנחיות קבוע לפרויקט.</p>
+<p><strong>שפה:</strong> R או פייתון · <strong>הגשה:</strong> PDF עם המפרט, ההנחיות, הקוד וההערות.</p>
 <p class="due">
 להגשה עד יום ראשון, 3.1.2027, בשעה 12:00
 </p>

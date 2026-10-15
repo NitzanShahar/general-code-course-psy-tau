@@ -429,7 +429,7 @@ def week_page(w, c, avail, book, depth, staff):
     main = f"""<main class="card">
 <section class="hero"><p class="eyebrow">{esc(when)}</p><h1>{esc(w['title'])}</h1>{''.join(f'<p class="intro">{inline(p)}</p>' for p in c['intro'].split(chr(10) + chr(10)) if p.strip())}</section>
 <section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media">{''.join(deck)}</div></section>
-<section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div>{chooser}{''.join(units)}
+<section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div>{chooser}{''.join(units) or '<p class="nounits">השבוע אין יחידות חדשות: חוזרים על החומר של הקורס לקראת הבחינה.</p>'}
 {('<p class="sub">קריאה מומלצת</p>' + reading) if reading else ''}</section>
 {f'<section class="sec"><div class="ch"><h2>סרטוני עזר</h2></div><div class="media">{"".join(videos)}</div></section>' if videos else ''}
 <section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div>{hw_html}{solution_html(c, staff)}</section>

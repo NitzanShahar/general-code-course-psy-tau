@@ -1,30 +1,59 @@
 ---
-title: "ניתוח נתונים פיזיולוגיים"
+title: "עבודה עם AI ב: סוכנים, Git ופרטיות"
 course-week: "שבוע 12"
 ---
 
-## נתונים פיזיולוגיים
+## סוכן בפרויקט אמיתי
 
 ::: {.nbox}
 <p class="nh">שבוע 12 · חומר הלימוד</p>
 
-השבוע נעבוד עם סוג נתונים חדש: אות פיזיולוגי שנמדד לאורך זמן — כמו EEG, דופק או מוליכות עור. נתונים כאלה נראים אחרת מטבלת שאלונים: מאות דגימות בשנייה, הרבה ניסיונות, ורעש.
+השבוע נעבוד עם סוכן קוד כמו בפרויקט מחקר אמיתי — וכל מה שלמדנו על Git מקבל משמעות חדשה: הוא הופך לרשת הביטחון.
 
-נעבוד עם נתוני EEG (מדומים) מניסוי oddball קלאסי, שבו נבדק שומע צלילים רגילים ומדי פעם צליל חריג. נלמד לצייר את האות, לתקן קו בסיס, לזהות ולהוציא ניסיונות רועשים, ולמצע על פני ניסיונות כדי לחשוף את התגובה של המוח — ה-ERP. בסוף נשווה את התגובה לצליל החריג ולצליל הרגיל, ונגלה את גל ה-P300.
+נכיר את המושגים API ו-JSON, שדרכם הכלים האלה מדברים עם מודל השפה; נלמד לשמור מפתחות וסודות מחוץ לקוד; ונדבר על פרטיות הנבדקים, כללי האתיקה ושקיפות בדיווח על שימוש ב-AI.
 
-שימו לב כמה כלים מהסמסטר נפגשים כאן: מטריצות (ניסיונות × זמן), לולאות ותנאים, סיכום לפי קבוצות, וגרפים.
+הפרק נסגר בתרגול של המושגים ובהתנסות מודרכת בפרויקט קטן עם סוכן — כדאי לעשות אותה לפני המטלה.
 :::
 
-## אות לאורך זמן
+## Git כרשת ביטחון
+
+::: {.tb}
+::: {.tbox}
+<p class="th">סוכן עורך את הקבצים שלכם</p>
+<p>לפני כל צעד של הסוכן — commit</p>
+<p>אחרי — לראות בדיוק מה השתנה, ולהחליט</p>
+<p>בלגן? לא מתקנים ביד: חוזרים ל-commit האחרון</p>
+<p>קבצים חדשים שהסוכן יצר — מוחקים</p>
+:::
+
+::: {.board}
+<p class="lang">bash</p>
+
+```bash
+#### BEFORE THE AGENT STARTS ####
+git status
+git add analysis.py
+git commit -m "Load the data and print its shape"
+
+#### AFTER: WHAT CHANGED? ####
+git diff                     # line by line (q to quit)
+git restore analysis.py      # undo, back to the commit
+rm plot_all.py               # a new file the agent made
+git status                   # working tree clean
+git log --oneline            # the history
+```
+:::
+:::
+
+## API ו-JSON
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">הנתונים: eeg_oddball.csv</p>
-<p>אלקטרודה Pz, נבדק אחד</p>
-<p>קצב דגימה 250 הרץ = דגימה כל 4 מילישניות</p>
-<p>100 ניסיונות (epochs): 80 standard ו-20 oddball</p>
-<p>כל ניסיון: מ-200- עד 796 מילישניות סביב הצליל (זמן 0)</p>
-<p>פורמט ארוך: שורה לכל דגימה</p>
+<p class="th">איך תוכנות מדברות</p>
+<p><b>API</b> — „שקע״ מוסכם: שולחים בקשה בפורמט מוגדר, ומקבלים תשובה</p>
+<p>כך גם Cursor שולח את ההודעות שלכם למודל</p>
+<p><b>JSON</b> — טקסט של זוגות מפתח וערך, שעובר בין מערכות</p>
+<p>מפתח API מזהה אתכם — ולפעמים עולה כסף</p>
 :::
 
 ::: {.board}
@@ -33,109 +62,47 @@ course-week: "שבוע 12"
 <p class="lang">R</p>
 
 ```r
-#### LOAD ####
+library(jsonlite)
 
-df = read.csv('eeg_oddball.csv')
-head(df)
-nrow(df)
-range(df$time_ms)
-length(unique(df$time_ms))
-table(df$condition) / 250
+txt = '{"id": 7, "condition": "incongruent",
+        "rt": [512, 640]}'
+rec = fromJSON(txt)
+
+rec$condition
+mean(rec$rt)
 ```
+<p class="out">"incongruent" · 576</p>
 :::
 
 ::: {.py}
 <p class="lang">Python</p>
 
 ```python
-import pandas as pd
+import json
 
-#### LOAD ####
+txt = '{"id": 7, "condition": "incongruent", "rt": [512, 640]}'
+rec = json.loads(txt)
 
-df = pd.read_csv('eeg_oddball.csv')
-df.head()
-df.shape
-df['time_ms'].min(), df['time_ms'].max()
-df['time_ms'].nunique()
-df.groupby('condition')['trial'].nunique()
+print(rec['condition'])
+print(sum(rec['rt']) / len(rec['rt']))
 ```
+<p class="out">incongruent · 576.0</p>
 :::
 :::
 
-<svg width="520" height="150" viewBox="0 0 520 150" aria-label="one epoch">
-<line x1="20" y1="80" x2="500" y2="80" stroke="#b5bfc4"/>
-<line x1="116" y1="10" x2="116" y2="140" stroke="#0e2233" stroke-dasharray="5 4"/>
-<polyline fill="none" stroke="#2b6597" stroke-width="1.6" points="20,78 30,72 40,85 50,76 60,90 70,74 80,83 90,70 100,86 110,77 120,82 130,95 140,100 150,84 160,66 170,74 180,62 190,70 200,58 210,54 220,48 230,42 240,46 250,38 260,44 270,40 280,50 290,48 300,58 310,56 320,66 330,62 340,72 350,70 360,78 370,74 380,84 390,76 400,82 410,72 420,86 430,78 440,74 450,88 460,76 470,82 480,72 490,84 500,78"/>
-<text x="116" y="148" text-anchor="middle" font-size="12" fill="#536373" font-family="JetBrains Mono">0 ms</text>
-<text x="20" y="148" font-size="12" fill="#536373" font-family="JetBrains Mono">-200</text>
-<text x="500" y="148" text-anchor="end" font-size="12" fill="#536373" font-family="JetBrains Mono">796</text>
-</svg>
+<p class="bnote">JSON נקרא בקלות לרשימה (R) או למילון (פייתון)</p>
 :::
 :::
 
-## תיקון קו בסיס ודחיית ניסיונות רועשים
+## סודות ומשתני סביבה
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">ניקוי האות</p>
-<p>תיקון קו בסיס (baseline): מחסירים מכל ניסיון את הממוצע שלו לפני הצליל</p>
-<p>דחיית ניסיונות (<span class="ltr">artifact rejection</span>): ניסיון שבו המתח עובר 100 מיקרו-וולט — החוצה (למשל מצמוץ)</p>
-:::
-
-::: {.board .tight}
-::: {.duo}
-::: {.r}
-<p class="lang">R · dplyr</p>
-
-```r
-library(dplyr)
-
-#### BASELINE ####
-df = df |>
-  group_by(trial) |>
-  mutate(baseline = mean(voltage[time_ms < 0]),
-         voltage_bc = voltage - baseline) |>
-  ungroup()
-
-#### ARTIFACTS ####
-trial_max = df |>
-  group_by(trial) |>
-  summarise(max_abs = max(abs(voltage_bc)))
-bad = trial_max$trial[trial_max$max_abs > 100]
-df_clean = df |> filter(!trial %in% bad)
-```
-:::
-
-::: {.py}
-<p class="lang">Python · pandas</p>
-
-```python
-#### BASELINE ####
-before = df[df['time_ms'] < 0]
-baseline = before.groupby('trial')['voltage'].mean()
-df['voltage_bc'] = (df['voltage'] -
-                    df['trial'].map(baseline))
-
-#### ARTIFACTS ####
-df['abs_v'] = df['voltage_bc'].abs()
-max_abs = df.groupby('trial')['abs_v'].max()
-bad = max_abs[max_abs > 100].index
-df_clean = df[~df['trial'].isin(bad)]
-```
-:::
-:::
-:::
-:::
-
-## ERP: ממוצע על פני ניסיונות
-
-::: {.tb .duo-tb}
-::: {.tbox}
-<p class="th">ERP והשוואת תנאים</p>
-<p>ממוצע לכל נקודת זמן, בנפרד לכל תנאי</p>
-<p>הרעש מתבטל, והתגובה של המוח נשארת</p>
-<p>P300: גל חיובי סביב 300–500 מילישניות, גדול יותר לצליל החריג</p>
-<p>אמפליטודה בחלון זמן, והשוואה סטטיסטית</p>
+<p class="th">מפתח הוא כמו סיסמה</p>
+<p>לא כותבים אותו בסקריפט: commit ו-push = ציבורי לתמיד</p>
+<p>שומרים בקובץ .env, וקוראים כמשתנה סביבה</p>
+<p>‎.gitignore‎ מוציא את .env ואת הנתונים מהמעקב</p>
+<p>דלף? מבטלים את המפתח ומייצרים חדש</p>
 :::
 
 ::: {.board}
@@ -144,66 +111,95 @@ df_clean = df[~df['trial'].isin(bad)]
 <p class="lang">R</p>
 
 ```r
-library(ggplot2)
+#### READ A SECRET FROM .env ####
 
-#### ERP ####
-erp = df_clean |>
-  group_by(condition, time_ms) |>
-  summarise(voltage = mean(voltage_bc),
-            .groups = 'drop')
-
-ggplot(erp, aes(x = time_ms, y = voltage,
-                color = condition)) +
-  geom_line() +
-  geom_vline(xintercept = 0)
+readRenviron('.env')
+key = Sys.getenv('MY_API_KEY')
+nchar(key)
 ```
+<p class="out">14</p>
 :::
 
 ::: {.py}
 <p class="lang">Python</p>
 
 ```python
-import seaborn as sns
-import matplotlib.pyplot as plt
+#### READ A SECRET FROM .env ####
 
-#### ERP ####
-erp = (df_clean
-       .groupby(['condition', 'time_ms'])
-       ['voltage_bc'].mean()
-       .reset_index())
+import os
+from dotenv import load_dotenv
 
-sns.lineplot(data=erp, x='time_ms',
-             y='voltage_bc', hue='condition')
-plt.axvline(0, color='black')
-plt.show()
+load_dotenv()
+key = os.environ['MY_API_KEY']
+print(len(key))
 ```
+<p class="out">14</p>
 :::
 :::
 
-<svg width="440" height="150" viewBox="0 0 440 150" aria-label="ERP">
-<line x1="20" y1="110" x2="420" y2="110" stroke="#b5bfc4"/>
-<line x1="100" y1="10" x2="100" y2="140" stroke="#0e2233" stroke-dasharray="5 4"/>
-<path d="M20 110 C 60 108, 90 112, 100 110 S 125 125, 140 120 S 170 100, 185 104 S 230 108, 260 107 S 360 110, 420 110" fill="none" stroke="#536373" stroke-width="2"/>
-<path d="M20 110 C 60 108, 90 112, 100 110 S 125 126, 140 121 S 170 98, 185 100 S 220 40, 260 32 S 330 80, 360 100 S 400 110, 420 110" fill="none" stroke="#9a6a00" stroke-width="3"/>
-<text x="262" y="24" text-anchor="middle" font-size="13" fill="#9a6a00" font-family="JetBrains Mono" font-weight="600">P300 · oddball</text>
-<text x="380" y="128" text-anchor="middle" font-size="12" fill="#536373" font-family="JetBrains Mono">standard</text>
-<text x="100" y="148" text-anchor="middle" font-size="12" fill="#536373" font-family="JetBrains Mono">0 ms</text>
-</svg>
+<p class="bnote">‎.env‎: השורה MY_API_KEY=not-a-real-key · ‎.gitignore‎: השורות data/ ו-.env</p>
+:::
+:::
+
+## פרטיות, אתיקה ושקיפות
+
+::: {.cards}
+::: {.card .warn}
+<h3>לא נותנים לכלי AI בענן</h3>
+
+- נתונים מזהים של נבדקים (שמות, ת״ז, תאריכי לידה, הקלטות)
+- נתונים שהתחייבתם בוועדת האתיקה לשמור אצלכם
+- סיסמאות ומפתחות (API keys)
+:::
+
+::: {.card .ok}
+<h3>כן עושים</h3>
+
+- מתארים את מבנה הקובץ, או עובדים עם נתונים מדומים
+- נתונים אמיתיים לא נמצאים בתיקייה שהסוכן רואה
+- בודקים את מדיניות המוסד, ומצהירים על שימוש ב-AI
+- זוכרים: האחריות על הקוד והתוצאות — שלכם
+:::
+:::
+
+## פרויקט קטן עם סוכן
+
+::: {.tb}
+::: {.tbox}
+<p class="th">ההתנסות, צעד אחר צעד</p>
+<p>1 · תיקייה, git init, קובץ נתונים קטן, commit</p>
+<p>2 · מפרט ב-spec.txt, והתוצאה הצפויה — ביד</p>
+<p>3–4 · צעד קטן לסוכן: diff, הרצה, בדיקה, commit</p>
+<p>5 · שגיאה: traceback לסוכן — הסבר, בלי תיקון</p>
+<p>6 · שינוי מיותר ← git restore ← working tree clean</p>
+:::
+
+::: {.board}
+<p class="lang">git log --oneline</p>
+
+```text
+c41e2a9 Mean rt per condition
+8b07d13 Load the data and print its shape
+5f2c6e0 Spec and agent rules
+1a9d4b2 Stroop data, first commit
+```
+
+<p class="bnote">היסטוריה טובה: commit לכל צעד, והודעה שאומרת מה השתנה</p>
 :::
 :::
 
 ## מטלה שבועית
 
 ::: {.hwbox}
-**המטלה השבועית (שבוע 12)** — קובץ הנתונים: eeg_oddball.csv (EEG מדומה, נבדק אחד, אלקטרודה Pz: 80 צלילים רגילים ו-20 חריגים).
+**המטלה השבועית (שבוע 12)** — סוכן קוד בתוך מאגר Git, על הניתוח של heart.csv משבוע 11.
 
-**חלק א – היכרות:** מימדים ומספר הניסיונות בכל תנאי; קצב הדגימה, מחושב מהנתונים; ציור של ניסיון אחד עם קו אנכי בזמן 0.
+**חלק א – הכנה:** תיקייה עם data, git init; ‎.gitignore‎ שמוציא את data ואת .env (ולמה); spec.txt משבוע 11 וקובץ הנחיות לסוכן עם לפחות ארבעה כללים; commit.
 
-**חלק ב – ניקוי:** תיקון קו בסיס לכל ניסיון (הממוצע מ-200- עד 0 מילישניות) לעמודה חדשה; פונקציה שמחזירה TRUE לניסיון שהערך המוחלט המרבי שלו מעל 100 מיקרו-וולט; הפעלתה על כל ניסיון, הוצאת הניסיונות הרועשים, וכמה נדחו בכל תנאי.
+**חלק ב – עבודה עם הסוכן:** צעד אחר צעד, diff לפני כל אישור ו-commit אחרי כל צעד; שינוי גדול ומיותר ← status, diff, restore ← working tree clean; העלאה ל-GitHub, בלי data ו-.env.
 
-**חלק ג – ERP:** ממוצע לכל תנאי ולכל נקודת זמן; שני ה-ERP באותו גרף (קו בזמן 0, כותרת, צירים ומקרא); באיזה טווח ההבדל הכי גדול? **חלק ד:** מתח ממוצע בחלון 250–500 מילישניות לכל ניסיון, ממוצע וס״ת לכל תנאי, ומבחן t (או רגרסיה). **בונוס:** latency של השיא; החלקה בממוצע נע.
+**חלק ג – סודות ופרטיות:** מפתח מדומה ב-.env, קוד שמדפיס רק את האורך שלו; אילו נתונים אסור לתת לסוכן, ואיך עובדים איתו בכל זאת. **בונוס:** פנייה למודל שפה מתוך פייתון דרך API.
 
-**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+**הגשה:** PDF עם הקישור למאגר, git log --oneline, git status, קובץ ההנחיות, הקוד והתשובות.
 
 <p class="due">להגשה עד יום ראשון, 10.1.2027, בשעה 12:00</p>
 :::

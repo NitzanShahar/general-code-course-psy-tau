@@ -126,6 +126,7 @@ a.row:hover .rt{color:var(--u)}
 .hw .ctx ol,.hw .ctx ul{margin:4px 0;padding:0 20px 0 0}
 .hw p.sm{font-size:14.5px}
 .hw p.none{margin:0;font-size:16px;color:var(--mut)}
+.units p.nounits{margin:6px 0 0;font-size:16px;color:var(--mut)}
 .dfiles{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 0!important;font-size:14.5px}
 .dfile{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--u);direction:ltr}
 .dfile svg{width:15px;height:15px}
