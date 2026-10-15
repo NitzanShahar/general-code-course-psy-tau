@@ -122,7 +122,7 @@ def load_weeks():
 LINK = re.compile(r"\[([^\]]*)\]\(([^)\s]+)\)|(https?://(?:[^\s<>()\]]|\([^\s<>()]*\))+(?:[^\s<>()\].,;:!?'\"]|\([^\s<>()]*\)))")  # bare URLs may hold (…), as Wikipedia's do
 
 
-LATIN_RUN = re.compile(r"(?<![&#A-Za-z0-9_])[A-Za-z0-9](?:[A-Za-z0-9_.+#/-]|:(?=\d))*(?: [A-Za-z0-9](?:[A-Za-z0-9_.+#/-]|:(?=\d))*)*")  # 12:00 is one run
+LATIN_RUN = re.compile(r"(?<![&#A-Za-z0-9_])[A-Za-z0-9](?:[A-Za-z0-9_+#/-]|[.:](?=[A-Za-z0-9]))*(?: [A-Za-z0-9](?:[A-Za-z0-9_+#/-]|[.:](?=[A-Za-z0-9]))*)*")  # 12:00 and file.py are one run; a final "." is not
 
 
 def hx(s):
@@ -157,12 +157,24 @@ def inline(s):
         out.append(f'<a href="{esc(url)}" target="_blank" rel="noopener"{cls}>{esc(label)}</a>')
         pos = m.end()
     out.append(_marks(esc(s[pos:])))
-    return "".join(out)
+    return iso("".join(out))
 
 
 def _marks(s):
     s = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
     return re.sub(r"`([^`\n]+)`", r'<code class="ltr">\1</code>', s)
+
+
+ISO_SKIP = re.compile(r"(<code\b.*?</code>|<[^>]+>|&[#\w]+;)", re.S)
+
+
+def iso(h):
+    """In Hebrew text, isolate each English run (<bdi>) so the punctuation between runs keeps the Hebrew order.
+    Text with no Hebrew letter is left as it is."""
+    if not re.search(r"[֐-׿]", h):
+        return h
+    return "".join(p if ISO_SKIP.fullmatch(p or "x") else LATIN_RUN.sub(lambda m: f"<bdi>{m.group(0)}</bdi>", p)
+                   for p in ISO_SKIP.split(h))
 
 
 CODE_LINE = re.compile(r"^[\x20-\x7E—–“”]+$")
@@ -466,12 +478,12 @@ def week_page(w, c, avail, book, depth, staff):
 
 
 def solution_html(c, staff):
-    """Staff site only: the solutions (R and Python), after the assignment (released to students later)."""
+    """Staff site only: the solutions (model answers to open questions; terminal, R and Python code), after the assignment."""
     sol = c.get("solution")
     if not staff or not sol:
         return ""
     out = []
-    for lang, label in (("sh", "· הטרמינל"), ("r", "ב-R"), ("py", "בפייתון")):
+    for lang, label in (("answers", "· תשובות לדוגמה"), ("sh", "· הטרמינל"), ("r", "ב-R"), ("py", "בפייתון")):
         parts = []
         for blk in sol.get(lang, []):
             if blk.get("code") is not None:
