@@ -176,8 +176,11 @@ a.row:hover .rt{color:var(--u)}
 .lbl{display:flex;align-items:center;gap:8px;margin:14px 0 6px;font-size:13.5px;font-weight:700;color:var(--u)}
 .lbl svg{width:17px;height:17px}
 .prompt{position:relative;background:#f6f8fa;border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 96px;font-size:15.5px;line-height:1.6;color:#253542}
-.prompt .cl{direction:ltr;text-align:left;white-space:pre-wrap;font-family:'JetBrains Mono',monospace;font-size:13.5px;color:#123a5a}
+.prompt .cl{direction:ltr;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;font-family:'JetBrains Mono',monospace;font-size:13.5px;color:#123a5a}
 .prompt code{font-family:'JetBrains Mono',monospace;font-size:13.5px;background:#e8edf2;border-radius:5px;padding:0 4px}
+.prompt .st{margin-top:14px}
+.prompt .pt{overflow-wrap:anywhere}
+.links li{overflow-wrap:anywhere}
 .copy{position:absolute;top:10px;left:10px;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #cdd6df;border-radius:10px;background:#fff;font:inherit;font-size:13.5px;color:var(--ink);cursor:pointer}
 .copy:hover{border-color:var(--ink)}
 .copy svg{width:15px;height:15px}

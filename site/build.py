@@ -16,6 +16,7 @@ import json
 import re
 import shutil
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "site"
@@ -118,7 +119,18 @@ def load_weeks():
 
 # ---------- text helpers ----------
 
-LINK = re.compile(r"\[([^\]]*)\]\(([^)\s]+)\)|(https?://[^\s<>()\]]+[^\s<>()\].,;:!?'\"])")
+LINK = re.compile(r"\[([^\]]*)\]\(([^)\s]+)\)|(https?://(?:[^\s<>()\]]|\([^\s<>()]*\))+(?:[^\s<>()\].,;:!?'\"]|\([^\s<>()]*\)))")  # bare URLs may hold (…), as Wikipedia's do
+
+
+def url_label(url):
+    """A readable name for a bare URL: "ויקיפדיה: Bash" for Wikipedia, otherwise the site and the decoded path."""
+    p = urlsplit(url)
+    host, path = p.netloc.removeprefix("www."), unquote(p.path).rstrip("/")
+    m = re.match(r"([a-z]+)\.wikipedia\.org$", host)
+    if m and path.startswith("/wiki/"):
+        return ("ויקיפדיה: " if m.group(1) == "he" else "Wikipedia: ") + path[6:].replace("_", " ")
+    label = host + re.sub(r"\.html?$", "", path)
+    return label if len(label) <= 70 else label[:67] + "…"
 
 
 def inline(s):
@@ -130,7 +142,9 @@ def inline(s):
             label, url = m.group(1).strip() or m.group(2), m.group(2)
         else:
             label = url = m.group(3)
-        cls = ' class="ltr"' if label.startswith("http") else ""
+        if label == url:
+            label = url_label(url)
+        cls = "" if re.search(r"[֐-׿]", label) else ' class="ltr"'
         out.append(f'<a href="{esc(url)}" target="_blank" rel="noopener"{cls}>{esc(label)}</a>')
         pos = m.end()
     out.append(_marks(esc(s[pos:])))
@@ -145,15 +159,19 @@ def _marks(s):
 CODE_LINE = re.compile(r"^[\x20-\x7E—–“”]+$")
 
 
-def lines_html(s):
-    """One block per line; ASCII lines that look like code (assignment, call, comment) read left-to-right in mono."""
+def lines_html(s, steps=False):
+    """One block per line; ASCII lines that look like code (assignment, call, comment) read left-to-right in mono.
+    steps: a prompt — space before each numbered step and before the closing instruction, so the steps read apart."""
     out = []
-    for line in s.split("\n"):
+    lines = s.split("\n")
+    last = max((i for i, l in enumerate(lines) if l.strip()), default=-1)
+    for i, line in enumerate(lines):
         t = line.strip()
         if t and CODE_LINE.match(t) and re.search(r"[=(#<\[]|\w\.\w|^\w+$", t) and "http" not in t:
             out.append(f'<div class="cl">{esc(line)}</div>')
         else:
-            out.append(f"<div>{inline(line) if t else '&nbsp;'}</div>")
+            st = ' class="st"' if steps and i and (re.match(r"\d+\.\s", t) or i == last) else ""
+            out.append(f"<div{st}>{inline(line) if t else '&nbsp;'}</div>")
     return "".join(out)
 
 
@@ -514,7 +532,7 @@ def book_section(ch, k, s, wks, in_week=False):
             t = renumber(t)
             blocks.append(f'<p class="lbl">{ICON["chat"]}הנחיה למתרגל AI</p><div class="prompt">'
                           f'<button class="copy" type="button">{ICON["copy"]}<span>העתקה</span></button>'
-                          f'<div class="pt">{lines_html(t)}</div><textarea hidden>{esc(plain(t))}</textarea></div>')
+                          f'<div class="pt">{lines_html(t, steps=True)}</div><textarea hidden>{esc(plain(t))}</textarea></div>')
         elif it["kind"] in ("video", "ref"):
             items = link_lines(t)
             if items:
