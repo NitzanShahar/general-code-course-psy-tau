@@ -18,21 +18,21 @@ course-week: "שבוע 1"
 ## פרק 1: המחשב והטרמינל: <bdi>hardware</bdi>, <bdi>OS</bdi> ו-<bdi>CLI</bdi>
 
 <div class="ulist">
-<div class="u"><span class="n">1.1</span><span class="t">החומרה (<bdi>hardware</bdi>), מערכת ההפעלה (<bdi>OS</bdi>) והתוכנה (<bdi>software</bdi>)</span><span class="k"><bdi>storage</bdi> שומר, <bdi>RAM</bdi> עובד, <bdi>CPU</bdi> מבצע — וה-<bdi>OS</bdi> מנהלת. תוכנה שרצה = <bdi>process</bdi></span></div>
-<div class="u"><span class="n">1.2</span><span class="t">מהו קובץ: <bdi>bits</bdi>, <bdi>bytes</bdi>, <bdi>encoding</bdi> ו-<bdi>plain text</bdi></span><span class="k">כל קובץ הוא רצף של <bdi>bytes</bdi> · <bdi>encoding</bdi> הופך אותם לאותיות · נתונים שומרים כ-<bdi>plain text</bdi></span></div>
-<div class="u"><span class="n">1.3</span><span class="t">טרמינל (<bdi>CLI</bdi>) מול ממשק גרפי (<bdi>GUI</bdi>)</span><span class="k"><bdi>CLI</bdi>: שורת טקסט פנימה, טקסט החוצה — אפשר לשמור ולשחזר · <bdi>bash</bdi> קורא ומבצע · <code dir="ltr">$</code> = <bdi>bash</bdi> מחכה</span></div>
-<div class="u"><span class="n">1.4</span><span class="t">להפעיל תוכנות מהטרמינל: <bdi>PATH</bdi></span><span class="k"><bdi>bash</bdi> מחפש תוכנות בתיקיות של <bdi>PATH</bdi> · לא מצא = <code dir="ltr">command not found</code></span></div>
-<div class="u"><span class="n">1.5</span><span class="t">מערכת הקבצים ותיקיית העבודה (<bdi>working directory</bdi>)</span><span class="k"><bdi>bash</bdi> עומד תמיד בתיקייה אחת, ושם מחפש קבצים · <code dir="ltr">pwd</code> · <code dir="ltr">cd</code></span></div>
+<div class="u fragment"><span class="n">1.1</span><span class="t">החומרה (<bdi>hardware</bdi>), מערכת ההפעלה (<bdi>OS</bdi>) והתוכנה (<bdi>software</bdi>)</span><span class="k">המעבד מבצע, הזיכרון עובד, האחסון שומר — ומערכת ההפעלה מנהלת את כולם.</span></div>
+<div class="u fragment"><span class="n">1.2</span><span class="t">מהו קובץ: <bdi>bits</bdi>, <bdi>bytes</bdi>, <bdi>encoding</bdi> ו-<bdi>plain text</bdi></span><span class="k">כל קובץ הוא רצף של מספרים, והקידוד הופך אותם לאותיות.</span></div>
+<div class="u fragment"><span class="n">1.3</span><span class="t">טרמינל (<bdi>CLI</bdi>) מול ממשק גרפי (<bdi>GUI</bdi>)</span><span class="k">בטרמינל מקלידים פקודה במקום ללחוץ — וכל צעד נשאר כתוב.</span></div>
+<div class="u fragment"><span class="n">1.4</span><span class="t">להפעיל תוכנות מהטרמינל: <bdi>PATH</bdi></span><span class="k">הטרמינל מוצא תוכנה רק אם היא באחת התיקיות שברשימה.</span></div>
+<div class="u fragment"><span class="n">1.5</span><span class="t">מערכת הקבצים ותיקיית העבודה (<bdi>working directory</bdi>)</span><span class="k">הטרמינל תמיד „עומד״ בתיקייה אחת, ושם הוא מחפש קבצים.</span></div>
 </div>
 
 ## פרק 2: שפות תכנות ו-<bdi>interpreters</bdi>: <bdi>R</bdi> ופייתון מהטרמינל
 
 <div class="ulist">
-<div class="u"><span class="n">2.1</span><span class="t">שפות תכנות: <bdi>interpreter</bdi> ו-<bdi>compiler</bdi></span><span class="k">שפה = טקסט עם <bdi>syntax</bdi> · <bdi>interpreter</bdi> קורא שורה ומבצע מיד (<bdi>R</bdi>, <bdi>Python</bdi>, <bdi>bash</bdi>) · <bdi>compiler</bdi> מתרגם מראש</span></div>
-<div class="u"><span class="n">2.2</span><span class="t"><bdi>R</bdi>: התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מוסיפים את <bdi>R</bdi> ל-<bdi>PATH</bdi> · <code dir="ltr">&gt;</code> = <bdi>R</bdi> מקשיב · יציאה <code dir="ltr">q()</code></span></div>
-<div class="u"><span class="n">2.3</span><span class="t">פייתון (<bdi>Python</bdi>): התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מסמנים <bdi>Add python.exe to PATH</bdi> · <code dir="ltr">&gt;&gt;&gt;</code> = <bdi>Python</bdi> מקשיב · יציאה <code dir="ltr">exit()</code></span></div>
-<div class="u"><span class="n">2.4</span><span class="t">השרשרת המלאה: <bdi>script</bdi> מקובץ</span><span class="k"><code dir="ltr">python experiment.py</code> : <bdi>PATH</bdi> ← <bdi>RAM</bdi> ← <bdi>working directory</bdi> ← <bdi>CPU</bdi> ← פלט</span></div>
-<div class="u"><span class="n">2.5</span><span class="t">שאלות פתוחות: מהברזל לקוד</span><span class="k">עונים במילים — ובודקים שההבנה מדויקת</span></div>
+<div class="u fragment"><span class="n">2.1</span><span class="t">שפות תכנות: <bdi>interpreter</bdi> ו-<bdi>compiler</bdi></span><span class="k">שפה היא טקסט עם כללים; המפרש קורא אותו ומבצע, שורה אחר שורה.</span></div>
+<div class="u fragment"><span class="n">2.2</span><span class="t"><bdi>R</bdi>: התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מתקינים את <bdi>R</bdi>, פותחים אותו מהטרמינל ומדברים איתו ישירות.</span></div>
+<div class="u fragment"><span class="n">2.3</span><span class="t">פייתון (<bdi>Python</bdi>): התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">אותו הדבר בפייתון — עם סימון אחד חשוב בהתקנה.</span></div>
+<div class="u fragment"><span class="n">2.4</span><span class="t">השרשרת המלאה: <bdi>script</bdi> מקובץ</span><span class="k">מה קורה בדיוק מהרגע שלוחצים <bdi>Enter</bdi> ועד שמופיעה תוצאה.</span></div>
+<div class="u fragment"><span class="n">2.5</span><span class="t">שאלות פתוחות: מהברזל לקוד</span><span class="k">מסבירים במילים שלכם — הדרך הטובה לבדוק שהבנתם.</span></div>
 </div>
 
 ## מטלה שבועית
