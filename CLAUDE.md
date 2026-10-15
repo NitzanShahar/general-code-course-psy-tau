@@ -22,7 +22,7 @@
   - `site/content/book.json`: היחידות מה-Notion של תשפ״ו
   - `site/content/book_extra_*.json`: יחידות שנכתבו לקורס הזה
   - `site/site.css` ו-`site/syllabus.html`
-  - `site/content/admin.json`: עמוד "מנהלות הקורס" (צוות, מפגשים, הגשה, ציון, מסמכים — כולל הסילבוס הרשמי של האוניברסיטה)
+  - `site/content/admin.json`: עמוד "מנהלות הקורס" (צוות ומסמכים — הסילבוס הרשמי של האוניברסיטה וסילבוס הקורס; פרטי המפגשים, ההגשה והציון נמצאים בסילבוס)
 - **בונים:** `python site/build.py`. הפקודה מייצרת את `index.html`, את `mylab/*.html` ואת `assets/`. לא עורכים את הקבצים האלה ידנית.
 - **שלושת הספרים הפנימיים:** R, פייתון וניהול קוד.
   - הסדר נקבע ב-`book_layout` ב-site.json: מזהה Notion מ-book.json, או `key` מ-book_extra.
