@@ -6,278 +6,39 @@ course-week: "שבוע 1"
 ## ברוכים הבאים
 
 ::: {.nbox}
-<p class="nh">שבוע <bdi>1</bdi> · חומר הלימוד</p>
+<p class="nh">שבוע 1 · חומר הלימוד</p>
 
 ברוכים הבאים לקורס יסודות התכנות במדע אמפירי!
 
-השבוע נפרק את „הקופסה השחורה״ של המחשב — מהברזל ועד הקוד.
+השבוע נפרק את „הקופסה השחורה״ של המחשב: פרק 1 — המחשב והטרמינל; פרק 2 — שפות תכנות ו-<bdi>interpreters</bdi>.
 
-פרק <bdi>1</bdi>: המחשב והטרמינל. פרק <bdi>2</bdi>: שפות תכנות ו-<bdi>interpreters</bdi>.
-
-בסוף השבוע נדע מה קורה מהרגע שלוחצים <bdi>Enter</bdi> ועד שהתוצאה מופיעה על המסך.
+המטרה: לדעת בדיוק מה קורה מהרגע שלוחצים <bdi>Enter</bdi> ועד שהתוצאה מופיעה על המסך.
 :::
 
-## פרק <bdi>1</bdi> {.part-gate}
+## פרק 1: המחשב והטרמינל: <bdi>hardware</bdi>, <bdi>OS</bdi> ו-<bdi>CLI</bdi>
 
-::: {.gate .code}
-<div class="gate-dots"><span class="now"></span><span class="later"></span></div>
-<div class="gate-title">פרק <bdi>1</bdi>: המחשב והטרמינל</div>
-<div class="gate-why">hardware · OS · encoding · CLI · PATH · working directory</div>
-:::
+<div class="ulist">
+<div class="u"><span class="n">1.1</span><span class="t">החומרה (<bdi>hardware</bdi>), מערכת ההפעלה (<bdi>OS</bdi>) והתוכנה (<bdi>software</bdi>)</span><span class="k"><bdi>storage</bdi> שומר, <bdi>RAM</bdi> עובד, <bdi>CPU</bdi> מבצע — וה-<bdi>OS</bdi> מנהלת. תוכנה שרצה = <bdi>process</bdi></span></div>
+<div class="u"><span class="n">1.2</span><span class="t">מהו קובץ: <bdi>bits</bdi>, <bdi>bytes</bdi>, <bdi>encoding</bdi> ו-<bdi>plain text</bdi></span><span class="k">כל קובץ הוא רצף של <bdi>bytes</bdi> · <bdi>encoding</bdi> הופך אותם לאותיות · נתונים שומרים כ-<bdi>plain text</bdi></span></div>
+<div class="u"><span class="n">1.3</span><span class="t">טרמינל (<bdi>CLI</bdi>) מול ממשק גרפי (<bdi>GUI</bdi>)</span><span class="k"><bdi>CLI</bdi>: שורת טקסט פנימה, טקסט החוצה — אפשר לשמור ולשחזר · <bdi>bash</bdi> קורא ומבצע · <code dir="ltr">$</code> = <bdi>bash</bdi> מחכה</span></div>
+<div class="u"><span class="n">1.4</span><span class="t">להפעיל תוכנות מהטרמינל: <bdi>PATH</bdi></span><span class="k"><bdi>bash</bdi> מחפש תוכנות בתיקיות של <bdi>PATH</bdi> · לא מצא = <code dir="ltr">command not found</code></span></div>
+<div class="u"><span class="n">1.5</span><span class="t">מערכת הקבצים ותיקיית העבודה (<bdi>working directory</bdi>)</span><span class="k"><bdi>bash</bdi> עומד תמיד בתיקייה אחת, ושם מחפש קבצים · <code dir="ltr">pwd</code> · <code dir="ltr">cd</code></span></div>
+</div>
 
-## החומרה, מערכת ההפעלה והתוכנה
+## פרק 2: שפות תכנות ו-<bdi>interpreters</bdi>: <bdi>R</bdi> ופייתון מהטרמינל
 
-::: {.flow .f3}
-::: {.step .os}
-<b>storage</b>
-<p class="big">המחסן</p>
-<p>שומר הכול, גם בלי חשמל</p>
-:::
-
-::: {.step}
-<b>RAM</b>
-<p class="big">משטח העבודה</p>
-<p>מהיר, נמחק כשמכבים</p>
-:::
-
-::: {.step .res}
-<b>CPU</b>
-<p class="big">הפועל</p>
-<p>מבצע פעולות פשוטות, מיליארדים בשנייה</p>
-:::
-:::
-
-<p class="take"><bdi>OS</bdi> (מערכת ההפעלה) מנהלת הכול · <bdi>software</bdi> = קובץ של הוראות · <bdi>process</bdi> = תוכנה שרצה ב-<bdi>RAM</bdi></p>
-
-## מהו קובץ
-
-::: {.flow .f3}
-::: {.step .os}
-<b>bit, byte</b>
-<p class="big"><bdi>0</bdi> ו-<bdi>1</bdi></p>
-<p><bdi>byte</bdi> = <bdi>8 bits</bdi>. כל קובץ הוא רצף של <bdi>bytes</bdi></p>
-:::
-
-::: {.step}
-<b>encoding</b>
-<p class="big">המילון</p>
-<p>איזה מספר הוא איזו אות. היום: <bdi>UTF-8</bdi></p>
-:::
-
-::: {.step .res}
-<b>plain text</b>
-<p class="big">רק אותיות</p>
-<p><bdi>csv</bdi> נפתח בכל תוכנה. <bdi>xlsx</bdi> — רק ב-<bdi>Excel</bdi></p>
-:::
-:::
-
-<p class="take">נתונים שומרים כ-<bdi>plain text</bdi>: כל תוכנה תקרא אותם, גם בעוד <bdi>30</bdi> שנה.</p>
-
-## טרמינל: <bdi>CLI</bdi> מול <bdi>GUI</bdi>
-
-::: {.flow .f3}
-::: {.step .os}
-<b>GUI</b>
-<p class="big">עכבר</p>
-<p>קשה לתעד ולשחזר</p>
-:::
-
-::: {.step}
-<b>terminal</b>
-<p class="big">חלון</p>
-<p>טקסט פנימה, טקסט החוצה</p>
-:::
-
-::: {.step .sh}
-<b>bash</b>
-<p class="big">מקשיב</p>
-<p>ה-<bdi>shell</bdi>: קורא כל שורה ומבצע</p>
-:::
-:::
-
-<p class="take"><bdi>CLI</bdi> = עבודה בשורות טקסט: אפשר לשמור, לשתף ולהריץ שוב בדיוק · ב-<bdi>Windows</bdi> מתקינים <bdi>Git Bash</bdi> · <span class="ltr">$</span> = <bdi>bash</bdi> מחכה</p>
-
-## להפעיל תוכנות: <bdi>PATH</bdi>
-
-::: {.tb}
-::: {.tbox}
-<p class="th">PATH</p>
-<p>רשימת התיקיות ש-<bdi>bash</bdi> מחפש בהן תוכנות</p>
-<p>מצא? <bdi>OS</bdi> טוענת אותה ל-<bdi>RAM</bdi></p>
-<p>לא מצא? <span class="ltr">command not found</span></p>
-:::
-
-::: {.board}
-<p class="lang">Git Bash</p>
-
-```bash
-$ calc          # the calculator opens
-$ which calc    # where bash found it
-```
-<p class="out">/c/Windows/system32/calc</p>
-
-```bash
-$ calcc
-```
-<p class="out err">bash: calcc: command not found</p>
-:::
-:::
-
-## working directory
-
-::: {.tb}
-::: {.tbox}
-<p class="th">working directory</p>
-<p>התיקייה ש-<bdi>bash</bdi> „עומד״ בה</p>
-<p>שם הוא מחפש כל קובץ בלי נתיב</p>
-<p>פתיחה חדשה = תיקיית הבית (<span class="ltr">~</span>)</p>
-:::
-
-::: {.board}
-<p class="lang">Git Bash</p>
-
-```bash
-$ pwd                     # where am I?
-$ mkdir my_science_project
-$ cd my_science_project   # move in
-$ cd ..                   # one up
-```
-:::
-:::
-
-## פרק <bdi>2</bdi> {.part-gate}
-
-::: {.gate .code}
-<div class="gate-dots"><span class="done"></span><span class="now"></span></div>
-<div class="gate-title">פרק <bdi>2</bdi>: שפות תכנות ו-<bdi>interpreters</bdi></div>
-<div class="gate-why">interpreter · compiler · R · Python · script</div>
-:::
-
-## <bdi>interpreter</bdi> ו-<bdi>compiler</bdi>
-
-::: {.flow .f3}
-::: {.step}
-<b>שפת תכנות</b>
-<p class="big">טקסט</p>
-<p>מילים ו-<bdi>syntax</bdi>. לבדה לא עושה כלום</p>
-:::
-
-::: {.step .os}
-<b>compiler</b>
-<p class="big">מראש</p>
-<p>מתרגם את כל הקוד לקובץ .<bdi>exe</bdi></p>
-:::
-
-::: {.step .res}
-<b>interpreter</b>
-<p class="big">שורה-שורה</p>
-<p>קורא שורה ומבצע מיד: <bdi>interactive</bdi></p>
-:::
-:::
-
-<p class="take"><bdi>R</bdi>, <bdi>Python</bdi> ו-<bdi>bash</bdi> — כולן עובדות עם <bdi>interpreter</bdi></p>
-
-## <bdi>R</bdi> ו-<bdi>Python</bdi> מהטרמינל
-
-::: {.tb}
-::: {.tbox}
-<p class="th">מי מקשיב?</p>
-<p><code dir="ltr">$</code> bash</p>
-<p><code dir="ltr">&gt;</code> <bdi>R</bdi> · יציאה <code dir="ltr">q()</code></p>
-<p><code dir="ltr">&gt;&gt;&gt;</code> <bdi>Python</bdi> · יציאה <code dir="ltr">exit()</code></p>
-<p class="th" style="margin-top:.4em">PATH</p>
-<p><bdi>R</bdi>: מוסיפים ידנית</p>
-<p>Python: <span class="ltr">Add python.exe to PATH</span></p>
-:::
-
-::: {.board}
-::: {.duo}
-::: {.r}
-<p class="lang">R</p>
-
-```r
-$ R
-> 2 + 2
-```
-<p class="out">[1] 4</p>
-:::
-
-::: {.py}
-<p class="lang">Python</p>
-
-```python
-$ python
->>> 2 + 2
-```
-<p class="out">4</p>
-:::
-:::
-:::
-:::
-
-## script
-
-::: {.tb}
-::: {.tbox}
-<p class="th">script</p>
-<p>קוד שנשמר בקובץ <bdi>plain text</bdi></p>
-<p>מתעד, וכל אחד יכול להריץ שוב</p>
-:::
-
-::: {.board}
-<p class="lang">experiment.py</p>
-
-```python
-a = 5
-b = 10
-print("The result is:", a + b)
-```
-
-```bash
-$ python experiment.py
-```
-<p class="out">The result is: 15</p>
-:::
-:::
-
-## מה קורה כשמקישים <bdi>Enter</bdi>?
-
-::: {.flow}
-::: {.step .sh}
-<b><span class="num">1</span>bash</b>
-<p>מחפש את <bdi>python</bdi> ב-<bdi>PATH</bdi></p>
-:::
-
-::: {.step .os}
-<b><span class="num">2</span>OS</b>
-<p>מעתיקה מ-<bdi>storage</bdi> ל-<bdi>RAM</bdi></p>
-:::
-
-::: {.step .sh}
-<b><span class="num">3</span>working directory</b>
-<p>שם נמצא <bdi>experiment.py</bdi></p>
-:::
-
-::: {.step}
-<b><span class="num">4</span>interpreter</b>
-<p>קורא את הקובץ (<bdi>UTF-8</bdi>)</p>
-:::
-
-::: {.step .res}
-<b><span class="num">5</span>CPU</b>
-<p>מחשב: <bdi>5</bdi> + <bdi>10</bdi></p>
-:::
-
-::: {.step .sh}
-<b><span class="num">6</span><span class="ltr">$</span></b>
-<p>הפלט במסך, ו-<bdi>bash</bdi> מקשיב שוב</p>
-:::
-:::
+<div class="ulist">
+<div class="u"><span class="n">2.1</span><span class="t">שפות תכנות: <bdi>interpreter</bdi> ו-<bdi>compiler</bdi></span><span class="k">שפה = טקסט עם <bdi>syntax</bdi> · <bdi>interpreter</bdi> קורא שורה ומבצע מיד (<bdi>R</bdi>, <bdi>Python</bdi>, <bdi>bash</bdi>) · <bdi>compiler</bdi> מתרגם מראש</span></div>
+<div class="u"><span class="n">2.2</span><span class="t"><bdi>R</bdi>: התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מוסיפים את <bdi>R</bdi> ל-<bdi>PATH</bdi> · <code dir="ltr">&gt;</code> = <bdi>R</bdi> מקשיב · יציאה <code dir="ltr">q()</code></span></div>
+<div class="u"><span class="n">2.3</span><span class="t">פייתון (<bdi>Python</bdi>): התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מסמנים <bdi>Add python.exe to PATH</bdi> · <code dir="ltr">&gt;&gt;&gt;</code> = <bdi>Python</bdi> מקשיב · יציאה <code dir="ltr">exit()</code></span></div>
+<div class="u"><span class="n">2.4</span><span class="t">השרשרת המלאה: <bdi>script</bdi> מקובץ</span><span class="k"><code dir="ltr">python experiment.py</code> : <bdi>PATH</bdi> ← <bdi>RAM</bdi> ← <bdi>working directory</bdi> ← <bdi>CPU</bdi> ← פלט</span></div>
+<div class="u"><span class="n">2.5</span><span class="t">שאלות פתוחות: מהברזל לקוד</span><span class="k">עונים במילים — ובודקים שההבנה מדויקת</span></div>
+</div>
 
 ## מטלה שבועית
 
 ::: {.hwbox}
-**המטלה השבועית (שבוע <bdi>1</bdi>):** עשר שאלות פתוחות על מושגי השבוע, להגשה ב-<bdi>Moodle</bdi>.
+**המטלה השבועית (שבוע 1):** עשר שאלות פתוחות על מושגי השבוע, להגשה ב-<bdi>Moodle</bdi>.
 
 <p class="due">להגשה עד יום ראשון, <bdi>25.10.2026</bdi>, בשעה <bdi>12:00</bdi></p>
 :::

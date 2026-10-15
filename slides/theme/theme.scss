@@ -228,3 +228,11 @@ $presentation-font-size-root: 34px;
 .duo.three > div + div { border-inline-end: 2px dashed var(--rule); padding-inline-end: .5em; }
 .flow.f3 .step:last-child::after { content: none; }
 .reveal code { unicode-bidi: isolate; }
+
+// a chapter on one slide: its units, each with one key line
+.ulist { margin-top: .2em; }
+.ulist .u { display: grid; grid-template-columns: 2.6em 1fr; column-gap: .5em; padding: .45em .1em; border-bottom: 1px solid var(--rule); }
+.ulist .n { grid-row: span 2; font-family: "JetBrains Mono", monospace; font-size: .62em; color: var(--code); direction: ltr; text-align: right; padding-top: .25em; }
+.ulist .t { font-size: .82em; font-weight: 700; color: var(--ink); line-height: 1.25; }
+.ulist .k { font-size: .66em; color: var(--ink-soft); line-height: 1.35; margin-top: .12em; }
+.ulist .k code { font-size: .95em; color: var(--code); background: var(--code-bg); border-radius: 5px; padding: 0 .25em; }

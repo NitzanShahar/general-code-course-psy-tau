@@ -28,70 +28,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #24292e;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -398,368 +334,57 @@
 <h2>ברוכים הבאים</h2>
 <div class="nbox">
 <p class="nh">
-שבוע <bdi>1</bdi> · חומר הלימוד
+שבוע 1 · חומר הלימוד
 </p>
 <p>ברוכים הבאים לקורס יסודות התכנות במדע אמפירי!</p>
-<p>השבוע נפרק את „הקופסה השחורה״ של המחשב — מהברזל ועד הקוד.</p>
-<p>פרק <bdi>1</bdi>: המחשב והטרמינל. פרק <bdi>2</bdi>: שפות תכנות ו-<bdi>interpreters</bdi>.</p>
-<p>בסוף השבוע נדע מה קורה מהרגע שלוחצים <bdi>Enter</bdi> ועד שהתוצאה מופיעה על המסך.</p>
+<p>השבוע נפרק את „הקופסה השחורה״ של המחשב: פרק 1 — המחשב והטרמינל; פרק 2 — שפות תכנות ו-<bdi>interpreters</bdi>.</p>
+<p>המטרה: לדעת בדיוק מה קורה מהרגע שלוחצים <bdi>Enter</bdi> ועד שהתוצאה מופיעה על המסך.</p>
 </div>
 </section>
-<section id="פרק-1" class="slide level2 part-gate">
-<h2>פרק <bdi>1</bdi></h2>
-<div class="gate code">
-<div class="gate-dots">
-<span class="now"></span><span class="later"></span>
+<section id="פרק-1-המחשב-והטרמינל-hardware-os-ו-cli" class="slide level2">
+<h2>פרק 1: המחשב והטרמינל: <bdi>hardware</bdi>, <bdi>OS</bdi> ו-<bdi>CLI</bdi></h2>
+<div class="ulist">
+<div class="u">
+<span class="n">1.1</span><span class="t">החומרה (<bdi>hardware</bdi>), מערכת ההפעלה (<bdi>OS</bdi>) והתוכנה (<bdi>software</bdi>)</span><span class="k"><bdi>storage</bdi> שומר, <bdi>RAM</bdi> עובד, <bdi>CPU</bdi> מבצע — וה-<bdi>OS</bdi> מנהלת. תוכנה שרצה = <bdi>process</bdi></span>
 </div>
-<div class="gate-title">
-פרק <bdi>1</bdi>: המחשב והטרמינל
+<div class="u">
+<span class="n">1.2</span><span class="t">מהו קובץ: <bdi>bits</bdi>, <bdi>bytes</bdi>, <bdi>encoding</bdi> ו-<bdi>plain text</bdi></span><span class="k">כל קובץ הוא רצף של <bdi>bytes</bdi> · <bdi>encoding</bdi> הופך אותם לאותיות · נתונים שומרים כ-<bdi>plain text</bdi></span>
 </div>
-<div class="gate-why">
-hardware · OS · encoding · CLI · PATH · working directory
+<div class="u">
+<span class="n">1.3</span><span class="t">טרמינל (<bdi>CLI</bdi>) מול ממשק גרפי (<bdi>GUI</bdi>)</span><span class="k"><bdi>CLI</bdi>: שורת טקסט פנימה, טקסט החוצה — אפשר לשמור ולשחזר · <bdi>bash</bdi> קורא ומבצע · <code dir="ltr">$</code> = <bdi>bash</bdi> מחכה</span>
 </div>
+<div class="u">
+<span class="n">1.4</span><span class="t">להפעיל תוכנות מהטרמינל: <bdi>PATH</bdi></span><span class="k"><bdi>bash</bdi> מחפש תוכנות בתיקיות של <bdi>PATH</bdi> · לא מצא = <code dir="ltr">command not found</code></span>
 </div>
-</section>
-<section id="החומרה-מערכת-ההפעלה-והתוכנה" class="slide level2">
-<h2>החומרה, מערכת ההפעלה והתוכנה</h2>
-<div class="flow f3">
-<div class="step os">
-<b>storage</b>
-<p class="big">
-המחסן
-</p>
-<p>
-שומר הכול, גם בלי חשמל
-</p>
-</div>
-<div class="step">
-<b>RAM</b>
-<p class="big">
-משטח העבודה
-</p>
-<p>
-מהיר, נמחק כשמכבים
-</p>
-</div>
-<div class="step res">
-<b>CPU</b>
-<p class="big">
-הפועל
-</p>
-<p>
-מבצע פעולות פשוטות, מיליארדים בשנייה
-</p>
-</div>
-</div>
-<p class="take">
-<bdi>OS</bdi> (מערכת ההפעלה) מנהלת הכול · <bdi>software</bdi> = קובץ של הוראות · <bdi>process</bdi> = תוכנה שרצה ב-<bdi>RAM</bdi>
-</p>
-</section>
-<section id="מהו-קובץ" class="slide level2">
-<h2>מהו קובץ</h2>
-<div class="flow f3">
-<div class="step os">
-<b>bit, byte</b>
-<p class="big">
-<bdi>0</bdi> ו-<bdi>1</bdi>
-</p>
-<p>
-<bdi>byte</bdi> = <bdi>8 bits</bdi>. כל קובץ הוא רצף של <bdi>bytes</bdi>
-</p>
-</div>
-<div class="step">
-<b>encoding</b>
-<p class="big">
-המילון
-</p>
-<p>
-איזה מספר הוא איזו אות. היום: <bdi>UTF-8</bdi>
-</p>
-</div>
-<div class="step res">
-<b>plain text</b>
-<p class="big">
-רק אותיות
-</p>
-<p>
-<bdi>csv</bdi> נפתח בכל תוכנה. <bdi>xlsx</bdi> — רק ב-<bdi>Excel</bdi>
-</p>
-</div>
-</div>
-<p class="take">
-נתונים שומרים כ-<bdi>plain text</bdi>: כל תוכנה תקרא אותם, גם בעוד <bdi>30</bdi> שנה.
-</p>
-</section>
-<section id="טרמינל-cli-מול-gui" class="slide level2">
-<h2>טרמינל: <bdi>CLI</bdi> מול <bdi>GUI</bdi></h2>
-<div class="flow f3">
-<div class="step os">
-<b>GUI</b>
-<p class="big">
-עכבר
-</p>
-<p>
-קשה לתעד ולשחזר
-</p>
-</div>
-<div class="step">
-<b>terminal</b>
-<p class="big">
-חלון
-</p>
-<p>
-טקסט פנימה, טקסט החוצה
-</p>
-</div>
-<div class="step sh">
-<b>bash</b>
-<p class="big">
-מקשיב
-</p>
-<p>
-ה-<bdi>shell</bdi>: קורא כל שורה ומבצע
-</p>
-</div>
-</div>
-<p class="take">
-<bdi>CLI</bdi> = עבודה בשורות טקסט: אפשר לשמור, לשתף ולהריץ שוב בדיוק · ב-<bdi>Windows</bdi> מתקינים <bdi>Git Bash</bdi> · <span class="ltr">$</span> = <bdi>bash</bdi> מחכה
-</p>
-</section>
-<section id="להפעיל-תוכנות-path" class="slide level2">
-<h2>להפעיל תוכנות: <bdi>PATH</bdi></h2>
-<div class="tb">
-<div class="tbox">
-<p class="th">
-PATH
-</p>
-<p>
-רשימת התיקיות ש-<bdi>bash</bdi> מחפש בהן תוכנות
-</p>
-<p>
-מצא? <bdi>OS</bdi> טוענת אותה ל-<bdi>RAM</bdi>
-</p>
-<p>
-לא מצא? <span class="ltr">command not found</span>
-</p>
-</div>
-<div class="board">
-<p class="lang">
-Git Bash
-</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> calc          <span class="co"># the calculator opens</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which calc    <span class="co"># where bash found it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-/c/Windows/system32/calc
-</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> calcc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out err">
-bash: calcc: command not found
-</p>
+<div class="u">
+<span class="n">1.5</span><span class="t">מערכת הקבצים ותיקיית העבודה (<bdi>working directory</bdi>)</span><span class="k"><bdi>bash</bdi> עומד תמיד בתיקייה אחת, ושם מחפש קבצים · <code dir="ltr">pwd</code> · <code dir="ltr">cd</code></span>
 </div>
 </div>
 </section>
-<section id="working-directory" class="slide level2">
-<h2>working directory</h2>
-<div class="tb">
-<div class="tbox">
-<p class="th">
-working directory
-</p>
-<p>
-התיקייה ש-<bdi>bash</bdi> „עומד״ בה
-</p>
-<p>
-שם הוא מחפש כל קובץ בלי נתיב
-</p>
-<p>
-פתיחה חדשה = תיקיית הבית (<span class="ltr">~</span>)
-</p>
+<section id="פרק-2-שפות-תכנות-ו-interpreters-r-ופייתון-מהטרמינל" class="slide level2">
+<h2>פרק 2: שפות תכנות ו-<bdi>interpreters</bdi>: <bdi>R</bdi> ופייתון מהטרמינל</h2>
+<div class="ulist">
+<div class="u">
+<span class="n">2.1</span><span class="t">שפות תכנות: <bdi>interpreter</bdi> ו-<bdi>compiler</bdi></span><span class="k">שפה = טקסט עם <bdi>syntax</bdi> · <bdi>interpreter</bdi> קורא שורה ומבצע מיד (<bdi>R</bdi>, <bdi>Python</bdi>, <bdi>bash</bdi>) · <bdi>compiler</bdi> מתרגם מראש</span>
 </div>
-<div class="board">
-<p class="lang">
-Git Bash
-</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd                     <span class="co"># where am I?</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir my_science_project</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd my_science_project   <span class="co"># move in</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ..                   <span class="co"># one up</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="u">
+<span class="n">2.2</span><span class="t"><bdi>R</bdi>: התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מוסיפים את <bdi>R</bdi> ל-<bdi>PATH</bdi> · <code dir="ltr">&gt;</code> = <bdi>R</bdi> מקשיב · יציאה <code dir="ltr">q()</code></span>
 </div>
+<div class="u">
+<span class="n">2.3</span><span class="t">פייתון (<bdi>Python</bdi>): התקנה והרצת ה-<bdi>interpreter</bdi></span><span class="k">מסמנים <bdi>Add python.exe to PATH</bdi> · <code dir="ltr">&gt;&gt;&gt;</code> = <bdi>Python</bdi> מקשיב · יציאה <code dir="ltr">exit()</code></span>
 </div>
-</section>
-<section id="פרק-2" class="slide level2 part-gate">
-<h2>פרק <bdi>2</bdi></h2>
-<div class="gate code">
-<div class="gate-dots">
-<span class="done"></span><span class="now"></span>
+<div class="u">
+<span class="n">2.4</span><span class="t">השרשרת המלאה: <bdi>script</bdi> מקובץ</span><span class="k"><code dir="ltr">python experiment.py</code> : <bdi>PATH</bdi> ← <bdi>RAM</bdi> ← <bdi>working directory</bdi> ← <bdi>CPU</bdi> ← פלט</span>
 </div>
-<div class="gate-title">
-פרק <bdi>2</bdi>: שפות תכנות ו-<bdi>interpreters</bdi>
-</div>
-<div class="gate-why">
-interpreter · compiler · R · Python · script
-</div>
-</div>
-</section>
-<section id="interpreter-ו-compiler" class="slide level2">
-<h2><bdi>interpreter</bdi> ו-<bdi>compiler</bdi></h2>
-<div class="flow f3">
-<div class="step">
-<b>שפת תכנות</b>
-<p class="big">
-טקסט
-</p>
-<p>
-מילים ו-<bdi>syntax</bdi>. לבדה לא עושה כלום
-</p>
-</div>
-<div class="step os">
-<b>compiler</b>
-<p class="big">
-מראש
-</p>
-<p>
-מתרגם את כל הקוד לקובץ .<bdi>exe</bdi>
-</p>
-</div>
-<div class="step res">
-<b>interpreter</b>
-<p class="big">
-שורה-שורה
-</p>
-<p>
-קורא שורה ומבצע מיד: <bdi>interactive</bdi>
-</p>
-</div>
-</div>
-<p class="take">
-<bdi>R</bdi>, <bdi>Python</bdi> ו-<bdi>bash</bdi> — כולן עובדות עם <bdi>interpreter</bdi>
-</p>
-</section>
-<section id="r-ו-python-מהטרמינל" class="slide level2">
-<h2><bdi>R</bdi> ו-<bdi>Python</bdi> מהטרמינל</h2>
-<div class="tb">
-<div class="tbox">
-<p class="th">
-מי מקשיב?
-</p>
-<p>
-<code dir="ltr">$</code> bash
-</p>
-<p>
-<code dir="ltr">&gt;</code> <bdi>R</bdi> · יציאה <code dir="ltr">q()</code>
-</p>
-<p>
-<code dir="ltr">&gt;&gt;&gt;</code> <bdi>Python</bdi> · יציאה <code dir="ltr">exit()</code>
-</p>
-<p class="th" style="margin-top:.4em">
-PATH
-</p>
-<p>
-<bdi>R</bdi>: מוסיפים ידנית
-</p>
-<p>
-Python: <span class="ltr">Add python.exe to PATH</span>
-</p>
-</div>
-<div class="board">
-<div class="duo">
-<div class="r">
-<p class="lang">
-R
-</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> R</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-[1] 4
-</p>
-</div>
-<div class="py">
-<p class="lang">
-Python
-</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>$ python</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-4
-</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="script" class="slide level2">
-<h2>script</h2>
-<div class="tb">
-<div class="tbox">
-<p class="th">
-script
-</p>
-<p>
-קוד שנשמר בקובץ <bdi>plain text</bdi>
-</p>
-<p>
-מתעד, וכל אחד יכול להריץ שוב
-</p>
-</div>
-<div class="board">
-<p class="lang">
-experiment.py
-</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The result is:"</span>, a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python experiment.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out">
-The result is: 15
-</p>
-</div>
-</div>
-</section>
-<section id="מה-קורה-כשמקישים-enter" class="slide level2">
-<h2>מה קורה כשמקישים <bdi>Enter</bdi>?</h2>
-<div class="flow">
-<div class="step sh">
-<b><span class="num">1</span>bash</b>
-<p>
-מחפש את <bdi>python</bdi> ב-<bdi>PATH</bdi>
-</p>
-</div>
-<div class="step os">
-<b><span class="num">2</span>OS</b>
-<p>
-מעתיקה מ-<bdi>storage</bdi> ל-<bdi>RAM</bdi>
-</p>
-</div>
-<div class="step sh">
-<b><span class="num">3</span>working directory</b>
-<p>
-שם נמצא <bdi>experiment.py</bdi>
-</p>
-</div>
-<div class="step">
-<b><span class="num">4</span>interpreter</b>
-<p>
-קורא את הקובץ (<bdi>UTF-8</bdi>)
-</p>
-</div>
-<div class="step res">
-<b><span class="num">5</span>CPU</b>
-<p>
-מחשב: <bdi>5</bdi> + <bdi>10</bdi>
-</p>
-</div>
-<div class="step sh">
-<b><span class="num">6</span><span class="ltr">$</span></b>
-<p>
-הפלט במסך, ו-<bdi>bash</bdi> מקשיב שוב
-</p>
+<div class="u">
+<span class="n">2.5</span><span class="t">שאלות פתוחות: מהברזל לקוד</span><span class="k">עונים במילים — ובודקים שההבנה מדויקת</span>
 </div>
 </div>
 </section>
 <section id="מטלה-שבועית" class="slide level2">
 <h2>מטלה שבועית</h2>
 <div class="hwbox">
-<p><strong>המטלה השבועית (שבוע <bdi>1</bdi>):</strong> עשר שאלות פתוחות על מושגי השבוע, להגשה ב-<bdi>Moodle</bdi>.</p>
+<p><strong>המטלה השבועית (שבוע 1):</strong> עשר שאלות פתוחות על מושגי השבוע, להגשה ב-<bdi>Moodle</bdi>.</p>
 <p class="due">
 להגשה עד יום ראשון, <bdi>25.10.2026</bdi>, בשעה <bdi>12:00</bdi>
 </p>
