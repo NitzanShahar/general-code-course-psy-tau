@@ -7,6 +7,7 @@ Usage: python tools/build_syllabus.py   ->  <staff_dir>/syllabus.pdf
 """
 import html
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -46,7 +47,7 @@ def main():
     page = (page.replace("{schedule}", "\n".join(rows))
                 .replace("{n_hw}", str(n_hw))
                 .replace("{n_full}", str(n_hw - 2))
-                .replace("{tas}", html.escape(cfg.get("syllabus_tas", "")))
+                .replace("{tas}", re.sub(r"(\S+@\S+)", r'<span class="ltr">\1</span>', html.escape(cfg.get("syllabus_tas", ""))))
                 .replace("{logo}", "img/tau-logo.png"))
     tmp = ROOT / "site" / "_syllabus_print.html"
     tmp.write_text(page, encoding="utf-8")
