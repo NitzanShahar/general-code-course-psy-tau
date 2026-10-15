@@ -6,7 +6,7 @@ course-week: "שבוע 1"
 ## ברוכים הבאים
 
 ::: {.nbox}
-<p class="nh">שבוע 1 · חומר הלימוד</p>
+<p class="nh">שבוע <bdi>1</bdi> · חומר הלימוד</p>
 
 ברוכים הבאים לקורס יסודות התכנות במדע אמפירי!
 
@@ -17,7 +17,16 @@ course-week: "שבוע 1"
 מנהל המשימות של Windows יהיה פתוח לידנו לאורך כל היחידות, כדי לראות תוכנות נכנסות לזיכרון ויוצאות ממנו. השבוע בנוי משני פרקים: המחשב והטרמינל, ושפות תכנות ו-interpreters. היחידה האחרונה היא שאלות פתוחות שעונים עליהן במילים. סביבות העבודה הנוחות (RStudio ו-VS Code) יגיעו בשבוע הבא.
 :::
 
-## החומרה (hardware), מערכת ההפעלה (OS) והתוכנה (software)
+## פרק 1 {.part-gate}
+
+::: {.gate .code}
+<div class="gate-dots"><span class="now"></span><span class="later"></span></div>
+<div class="gate-title">פרק 1: המחשב והטרמינל: <bdi>hardware</bdi>, <bdi>OS</bdi> ו-<bdi>CLI</bdi></div>
+<div class="gate-why"><bdi>1.1</bdi> החומרה (<bdi>hardware</bdi>), מערכת ההפעלה (<bdi>OS</bdi>) והתוכנה (<bdi>software</bdi>) · <bdi>1.2</bdi> מהו קובץ: <bdi>bits</bdi>, <bdi>bytes</bdi>, <bdi>encoding</bdi> ו-<bdi>plain text</bdi> · <bdi>1.3</bdi> טרמינל (<bdi>CLI</bdi>) מול ממשק גרפי (<bdi>GUI</bdi>) · <bdi>1.4</bdi> להפעיל תוכנות מהטרמינל: <bdi>PATH</bdi> · <bdi>1.5</bdi> מערכת הקבצים ותיקיית העבודה (<bdi>working directory</bdi>)</div>
+<div class="gate-why">מה יש בתוך המחשב, ואיך מדברים איתו בטקסט</div>
+:::
+
+## החומרה (<bdi>hardware</bdi>), מערכת ההפעלה (<bdi>OS</bdi>) והתוכנה (<bdi>software</bdi>)
 
 ::: {.flow .f3}
 ::: {.step .os}
@@ -30,31 +39,31 @@ course-week: "שבוע 1"
 ::: {.step}
 <b>RAM (זיכרון עבודה)</b>
 <p class="big">משטח העבודה</p>
-<p>„לפתוח תוכנה״ = מערכת ההפעלה מעתיקה אותה מהאחסון ל-RAM. תוכנה שרצה נקראת <b style="display:inline">תהליך</b> (process).</p>
+<p>„לפתוח תוכנה״ = מערכת ההפעלה מעתיקה אותה מהאחסון ל-<bdi>RAM.</bdi> תוכנה שרצה נקראת <b style="display:inline">תהליך</b> (<bdi>process</bdi>).</p>
 <p>נמחק כשמכבים · קטן ומהיר</p>
 :::
 
 ::: {.step .res}
 <b>CPU (מעבד)</b>
 <p class="big">הפועל</p>
-<p>מבצע רק פעולות פשוטות מאוד — חיבור, השוואה, העתקה — בשפת מכונה (machine code: 0 ו-1), מיליארדים בשנייה.</p>
+<p>מבצע רק פעולות פשוטות מאוד — חיבור, השוואה, העתקה — בשפת מכונה (<bdi>machine code</bdi>: <bdi>0</bdi> ו-<bdi>1</bdi>), מיליארדים בשנייה.</p>
 :::
 :::
 
-<p class="take">מערכת ההפעלה (Windows) היא המנכ״לית: מתווכת בין התוכנות לחומרה, מקצה זיכרון וזמן מעבד, וקוראת וכותבת קבצים. רואים הכול במנהל המשימות: <span class="ltr">Ctrl+Shift+Esc</span> — ומשאירים אותו פתוח כל השבוע.</p>
+<p class="take">מערכת ההפעלה (<bdi>Windows</bdi>) היא המנכ״לית: מתווכת בין התוכנות לחומרה, מקצה זיכרון וזמן מעבד, וקוראת וכותבת קבצים. רואים הכול במנהל המשימות: <span class="ltr">Ctrl+Shift+Esc</span> — ומשאירים אותו פתוח כל השבוע.</p>
 
-## מהו קובץ: bits, bytes, encoding ו-plain text
+## מהו קובץ: <bdi>bits</bdi>, <bdi>bytes</bdi>, <bdi>encoding</bdi> ו-<bdi>plain text</bdi>
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
 <p class="th">מאפסים לאותיות</p>
-<p>bit = 0 או 1 · byte = 8 bits (256 ערכים)</p>
-<p>כל קובץ הוא רצף של bytes</p>
-<p>encoding (קידוד) = המילון: ב-ASCII הבייט 65 הוא <span class="ltr">A</span></p>
-<p>UTF-8 = המילון העולמי: עברית, סינית, אימוג׳ים</p>
-<p class="th" style="margin-top:.5em">plain text מול פורמט של תוכנה</p>
-<p>csv, txt, py, R — רק אותיות. כל תוכנה פותחת, גם בעוד 30 שנה</p>
-<p>xlsx, docx — מבנה, עיצוב ודחיסה (zip). רק התוכנה שלו מבינה</p>
+<p><bdi>bit</bdi> = <bdi>0</bdi> או <bdi>1</bdi> · <bdi>byte</bdi> = <bdi>8 bits</bdi> (<bdi>256</bdi> ערכים)</p>
+<p>כל קובץ הוא רצף של <bdi>bytes</bdi></p>
+<p><bdi>encoding</bdi> (קידוד) = המילון: ב-<bdi>ASCII</bdi> הבייט <bdi>65</bdi> הוא <span class="ltr">A</span></p>
+<p><bdi>UTF-8</bdi> = המילון העולמי: עברית, סינית, אימוג׳ים</p>
+<p class="th" style="margin-top:.5em"><bdi>plain text</bdi> מול פורמט של תוכנה</p>
+<p><bdi>csv</bdi>, <bdi>txt</bdi>, <bdi>py</bdi>, <bdi>R</bdi> — רק אותיות. כל תוכנה פותחת, גם בעוד <bdi>30</bdi> שנה</p>
+<p><bdi>xlsx</bdi>, <bdi>docx</bdi> — מבנה, עיצוב ודחיסה (<bdi>zip</bdi>). רק התוכנה שלו מבינה</p>
 :::
 
 ::: {.board}
@@ -80,11 +89,11 @@ PK♥♦  ↑ ☺ ▬ ┐█Ü¥  ►
 :::
 :::
 
-<p class="bnote">אותו נתון, שני קבצים · פנקס הרשימות מתרגם כל בייט לאות לפי UTF-8 · <span class="ltr">PK</span> = החתימה של קובץ zip</p>
+<p class="bnote">אותו נתון, שני קבצים · פנקס הרשימות מתרגם כל בייט לאות לפי <bdi>UTF-8</bdi> · <span class="ltr">PK</span> = החתימה של קובץ <bdi>zip</bdi></p>
 :::
 :::
 
-## טרמינל (CLI) מול ממשק גרפי (GUI)
+## טרמינל (<bdi>CLI</bdi>) מול ממשק גרפי (<bdi>GUI</bdi>)
 
 ::: {.flow .f3}
 ::: {.step .os}
@@ -104,25 +113,25 @@ PK♥♦  ↑ ☺ ▬ ┐█Ü¥  ►
 ::: {.step .sh}
 <b>shell = bash</b>
 <p class="big">מקשיב</p>
-<p>התוכנה שרצה בתוך החלון: קוראת כל שורה כשמקישים Enter, ומבצעת. ה-shell הסטנדרטי בלינוקס, בשרתים ובמחשבי-על (Bourne-Again SHell).</p>
+<p>התוכנה שרצה בתוך החלון: קוראת כל שורה כשמקישים <bdi>Enter</bdi>, ומבצעת. ה-<bdi>shell</bdi> הסטנדרטי בלינוקס, בשרתים ובמחשבי-על (<bdi>Bourne-Again SHell</bdi>).</p>
 :::
 :::
 
-<p class="take">ב-Windows אין bash — מתקינים <b style="display:inline">Git Bash</b> (מ-git-scm.com; Git עצמו יגיע בשבוע 6). הסימן <span class="ltr">$</span> בתחילת השורה = bash מחכה לפקודה. את הסימן לא מקלידים.</p>
+<p class="take">ב-<bdi>Windows</bdi> אין <bdi>bash</bdi> — מתקינים <b style="display:inline"><bdi>Git Bash</bdi></b> (מ-<bdi>git-scm.com</bdi>; <bdi>Git</bdi> עצמו יגיע בשבוע <bdi>6</bdi>). הסימן <span class="ltr">$</span> בתחילת השורה = <bdi>bash</bdi> מחכה לפקודה. את הסימן לא מקלידים.</p>
 
-## להפעיל תוכנות מהטרמינל: PATH
+## להפעיל תוכנות מהטרמינל: <bdi>PATH</bdi>
 
 ::: {.tb}
 ::: {.tbox}
-<p class="th">מה קורה כשמקלידים calc?</p>
-<p>bash מחפש קובץ בשם calc בתיקיות שברשימה PATH, לפי הסדר</p>
-<p>מצא? מבקש ממערכת ההפעלה לטעון אותו ל-RAM ולהריץ</p>
+<p class="th">מה קורה כשמקלידים <bdi>calc</bdi>?</p>
+<p><bdi>bash</bdi> מחפש קובץ בשם <bdi>calc</bdi> בתיקיות שברשימה <bdi>PATH</bdi>, לפי הסדר</p>
+<p>מצא? מבקש ממערכת ההפעלה לטעון אותו ל-<bdi>RAM</bdi> ולהריץ</p>
 <p>במנהל המשימות: המחשבון נכנס לזיכרון</p>
-<p class="th" style="margin-top:.5em">command not found</p>
-<p>bash לא מצא את השם באף תיקייה ב-PATH:</p>
+<p class="th" style="margin-top:.5em"><bdi>command not found</bdi></p>
+<p><bdi>bash</bdi> לא מצא את השם באף תיקייה ב-<bdi>PATH</bdi>:</p>
 <p>• שגיאת הקלדה</p>
 <p>• התוכנה לא מותקנת</p>
-<p>• מותקנת — אבל התיקייה שלה לא ב-PATH</p>
+<p>• מותקנת — אבל התיקייה שלה לא ב-<bdi>PATH</bdi></p>
 :::
 
 ::: {.board}
@@ -146,15 +155,15 @@ $ calcc
 :::
 :::
 
-## מערכת הקבצים ו-working directory
+## מערכת הקבצים ו-<bdi>working directory</bdi>
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">file system, path, working directory</p>
-<p>הקבצים מסודרים בעץ: שורש (C:), תיקיות, קבצים</p>
-<p>home directory (תיקיית הבית): <span class="ltr">C:&#92;Users&#92;dana</span> = <span class="ltr">~</span></p>
-<p>path (נתיב) = הכתובת המלאה של קובץ</p>
-<p><b style="display:inline">working directory</b>: bash תמיד עומד בתיקייה אחת, ושם הוא מחפש כל קובץ שכתבתי בלי נתיב</p>
+<p class="th"><bdi>file system</bdi>, <bdi>path</bdi>, <bdi>working directory</bdi></p>
+<p>הקבצים מסודרים בעץ: שורש (<bdi>C</bdi>:), תיקיות, קבצים</p>
+<p><bdi>home directory</bdi> (תיקיית הבית): <span class="ltr">C:&#92;Users&#92;dana</span> = <span class="ltr">~</span></p>
+<p><bdi>path</bdi> (נתיב) = הכתובת המלאה של קובץ</p>
+<p><b style="display:inline"><bdi>working directory</bdi></b>: <bdi>bash</bdi> תמיד עומד בתיקייה אחת, ושם הוא מחפש כל קובץ שכתבתי בלי נתיב</p>
 <p>שמות: אנגלית, בלי רווחים, עם <span class="ltr">_</span></p>
 :::
 
@@ -186,46 +195,55 @@ $ cd ..                 # .. = one up
 :::
 :::
 
-<p class="bnote">אותו נתיב, שני כתיבים: <span class="ltr">/c/Users/dana/my_science_project/experiment.py</span> · פתיחה חדשה של Git Bash מתחילה תמיד בתיקיית הבית</p>
+<p class="bnote">אותו נתיב, שני כתיבים: <span class="ltr">/c/Users/dana/my_science_project/experiment.py</span> · פתיחה חדשה של <bdi>Git Bash</bdi> מתחילה תמיד בתיקיית הבית</p>
 :::
 :::
 
-## שפות תכנות: interpreter ו-compiler
+## פרק 2 {.part-gate}
+
+::: {.gate .code}
+<div class="gate-dots"><span class="done"></span><span class="now"></span></div>
+<div class="gate-title">פרק 2: שפות תכנות ו-<bdi>interpreters</bdi>: <bdi>R</bdi> ופייתון מהטרמינל</div>
+<div class="gate-why"><bdi>2.1</bdi> שפות תכנות: <bdi>interpreter</bdi> ו-<bdi>compiler</bdi> · <bdi>2.2 R</bdi>: התקנה והרצת ה-<bdi>interpreter</bdi> · <bdi>2.3</bdi> פייתון (<bdi>Python</bdi>): התקנה והרצת ה-<bdi>interpreter</bdi> · <bdi>2.4</bdi> השרשרת המלאה: <bdi>script</bdi> מקובץ · <bdi>2.5</bdi> שאלות פתוחות: מהברזל לקוד</div>
+<div class="gate-why">מה זו שפת תכנות, ואיך ה-interpreter הופך טקסט לפעולה</div>
+:::
+
+## שפות תכנות: <bdi>interpreter</bdi> ו-<bdi>compiler</bdi>
 
 ::: {.flow .f3}
 ::: {.step}
 <b>שפת תכנות</b>
 <p class="big">טקסט</p>
-<p>מילים וחוקי syntax (תחביר), כתובים בקובץ טקסט גולמי. השפה לבדה לא עושה כלום — המעבד מבין רק 0 ו-1.</p>
+<p>מילים וחוקי <bdi>syntax</bdi> (תחביר), כתובים בקובץ טקסט גולמי. השפה לבדה לא עושה כלום — המעבד מבין רק <bdi>0</bdi> ו-<bdi>1.</bdi></p>
 :::
 
 ::: {.step .os}
 <b>compiler (מהדר)</b>
 <p class="big">מתרגם ספרים</p>
-<p>מתרגם מראש את כל הקוד לקובץ תוכנה בשפת מכונה (<span class="ltr">.exe</span>). מהיר מאוד, אבל נוקשה. כך נבנו Excel, calc ו-Windows.</p>
+<p>מתרגם מראש את כל הקוד לקובץ תוכנה בשפת מכונה (<span class="ltr">.exe</span>). מהיר מאוד, אבל נוקשה. כך נבנו <bdi>Excel</bdi>, <bdi>calc</bdi> ו-<bdi>Windows.</bdi></p>
 :::
 
 ::: {.step .res}
 <b>interpreter (מפרש)</b>
 <p class="big">מתורגמן באו״ם</p>
-<p>תוכנה שרצה ב-RAM, קוראת שורה, מבצעת אותה מיד, ומחזירה תשובה. מאפשר עבודה אינטראקטיבית. R ופייתון עובדות כך.</p>
+<p>תוכנה שרצה ב-<bdi>RAM</bdi>, קוראת שורה, מבצעת אותה מיד, ומחזירה תשובה. מאפשר עבודה אינטראקטיבית. <bdi>R</bdi> ופייתון עובדות כך.</p>
 :::
 :::
 
-<p class="take">„python״ = גם השפה וגם ה-interpreter שקורא אותה (וכך גם R). והפתעה: גם bash הוא interpreter — כל שורה שהקלדנו בטרמינל הייתה קוד.</p>
+<p class="take">„<bdi>python</bdi>״ = גם השפה וגם ה-<bdi>interpreter</bdi> שקורא אותה (וכך גם <bdi>R</bdi>). והפתעה: גם <bdi>bash</bdi> הוא <bdi>interpreter</bdi> — כל שורה שהקלדנו בטרמינל הייתה קוד.</p>
 
-## R ופייתון: התקנה והרצת ה-interpreter
+## <bdi>R</bdi> ופייתון: התקנה והרצת ה-<bdi>interpreter</bdi>
 
 ::: {.tb}
 ::: {.tbox}
-<p class="th">R (מ-cran)</p>
-<p>ההתקנה לא מוסיפה את R ל-PATH ← <span class="ltr">command not found</span></p>
-<p>מוסיפים בעצמנו: Edit environment variables for your account ← Path ← New ← <span class="ltr">C:&#92;Program Files&#92;R&#92;R-4.x.x&#92;bin</span></p>
-<p>סוגרים ופותחים את Git Bash (bash קיבל את PATH כשנפתח)</p>
-<p class="th" style="margin-top:.4em">פייתון (מ-python.org)</p>
+<p class="th"><bdi>R</bdi> (מ-<bdi>cran</bdi>)</p>
+<p>ההתקנה לא מוסיפה את <bdi>R</bdi> ל-<bdi>PATH</bdi> ← <span class="ltr">command not found</span></p>
+<p>מוסיפים בעצמנו: <bdi>Edit environment variables for your account</bdi> ← <bdi>Path</bdi> ← <bdi>New</bdi> ← <span class="ltr">C:&#92;Program Files&#92;R&#92;R-4.x.x&#92;bin</span></p>
+<p>סוגרים ופותחים את <bdi>Git Bash</bdi> (<bdi>bash</bdi> קיבל את <bdi>PATH</bdi> כשנפתח)</p>
+<p class="th" style="margin-top:.4em">פייתון (מ-<bdi>python.org</bdi>)</p>
 <p>מסמנים <span class="ltr">Add python.exe to PATH</span> — אותו דבר, אוטומטית</p>
 <p class="th" style="margin-top:.4em">מי מקשיב עכשיו?</p>
-<p><code dir="ltr">$</code> bash · <code dir="ltr">&gt;</code> R (<code dir="ltr">q()</code>) · <code dir="ltr">&gt;&gt;&gt;</code> פייתון (<code dir="ltr">exit()</code>)</p>
+<p><code dir="ltr">$</code> <bdi>bash</bdi> · <code dir="ltr">&gt;</code> <bdi>R</bdi> (<code dir="ltr">q()</code>) · <code dir="ltr">&gt;&gt;&gt;</code> פייתון (<code dir="ltr">exit()</code>)</p>
 :::
 
 ::: {.board}
@@ -271,22 +289,22 @@ $
 :::
 :::
 
-<p class="bnote">במנהל המשימות (Details): <span class="ltr">Rterm.exe</span> ו-<span class="ltr">python.exe</span> נכנסים לזיכרון — ויוצאים ממנו ביציאה</p>
+<p class="bnote">במנהל המשימות (<bdi>Details</bdi>): <span class="ltr">Rterm.exe</span> ו-<span class="ltr">python.exe</span> נכנסים לזיכרון — ויוצאים ממנו ביציאה</p>
 :::
 :::
 
-## השרשרת המלאה: script מקובץ
+## השרשרת המלאה: <bdi>script</bdi> מקובץ
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">interactive מול script</p>
+<p class="th"><bdi>interactive</bdi> מול <bdi>script</bdi></p>
 <p>אינטראקטיבי: שורה, תשובה — ונעלם</p>
-<p>script: קובץ plain text באחסון. מתעד הכול, וכל חוקר יכול להריץ שוב</p>
+<p><bdi>script</bdi>: קובץ <bdi>plain text</bdi> באחסון. מתעד הכול, וכל חוקר יכול להריץ שוב</p>
 <p class="th" style="margin-top:.5em">יוצרים במקום הנכון</p>
 <p><code dir="ltr">cd my_science_project</code></p>
 <p><code dir="ltr">touch experiment.py</code></p>
 <p><code dir="ltr">notepad experiment.py</code></p>
-<p>בשורת המצב של פנקס הרשימות: UTF-8</p>
+<p>בשורת המצב של פנקס הרשימות: <bdi>UTF-8</bdi></p>
 :::
 
 ::: {.board}
@@ -322,41 +340,41 @@ $ python experiment.py
 :::
 :::
 
-<p class="bnote">המילה הראשונה = ה-interpreter · השנייה = קובץ הטקסט שהוא קורא · R פותח שיחה (interactive), Rscript קורא קובץ ומסיים</p>
+<p class="bnote">המילה הראשונה = ה-<bdi>interpreter</bdi> · השנייה = קובץ הטקסט שהוא קורא · <bdi>R</bdi> פותח שיחה (<bdi>interactive</bdi>), <bdi>Rscript</bdi> קורא קובץ ומסיים</p>
 :::
 :::
 
-## המסע של פקודה: מה קורה כשמקישים Enter?
+## המסע של פקודה: מה קורה כשמקישים <bdi>Enter</bdi>?
 
 ::: {.flow}
 ::: {.step .os}
 <b><span class="num">1</span>טרמינל</b>
-<p>מקלידים <code>python experiment.py</code> ו-Enter. החלון מעביר את השורה ל-bash.</p>
+<p>מקלידים <code>python experiment.py</code> ו-<bdi>Enter.</bdi> החלון מעביר את השורה ל-<bdi>bash.</bdi></p>
 :::
 
 ::: {.step .sh}
 <b><span class="num">2</span>bash ו-PATH</b>
-<p>מפרק למילים, ומחפש תוכנה בשם <code>python</code> בתיקיות של PATH.</p>
+<p>מפרק למילים, ומחפש תוכנה בשם <code>python</code> בתיקיות של <bdi>PATH.</bdi></p>
 :::
 
 ::: {.step .os}
 <b><span class="num">3</span>מערכת ההפעלה</b>
-<p>מעתיקה את ה-interpreter מה-storage ל-RAM — נוצר process.</p>
+<p>מעתיקה את ה-<bdi>interpreter</bdi> מה-<bdi>storage</bdi> ל-<bdi>RAM</bdi> — נוצר <bdi>process.</bdi></p>
 :::
 
 ::: {.step .sh}
 <b><span class="num">4</span>working directory</b>
-<p>ה-interpreter מחפש את <code>experiment.py</code> ב-working directory — ומוצא.</p>
+<p>ה-<bdi>interpreter</bdi> מחפש את <code>experiment.py</code> ב-<bdi>working directory</bdi> — ומוצא.</p>
 :::
 
 ::: {.step}
 <b><span class="num">5</span>encoding</b>
-<p>קורא את הקובץ: bytes של plain text, שהופכים לאותיות לפי UTF-8.</p>
+<p>קורא את הקובץ: <bdi>bytes</bdi> של <bdi>plain text</bdi>, שהופכים לאותיות לפי <bdi>UTF-8.</bdi></p>
 :::
 
 ::: {.step}
 <b><span class="num">6</span>interpreter ו-CPU</b>
-<p>בודק את התחביר ומתרגם שורה אחר שורה; החיבור 5 + 10 קורה במעבד.</p>
+<p>בודק את התחביר ומתרגם שורה אחר שורה; החיבור <bdi>5</bdi> + <bdi>10</bdi> קורה במעבד.</p>
 :::
 
 ::: {.step .res}
@@ -366,18 +384,18 @@ $ python experiment.py
 
 ::: {.step .sh}
 <b><span class="num">8</span><span class="ltr">$</span> חוזר</b>
-<p>התהליך מסתיים, הזיכרון משתחרר, ו-bash מקשיב שוב.</p>
+<p>התהליך מסתיים, הזיכרון משתחרר, ו-<bdi>bash</bdi> מקשיב שוב.</p>
 :::
 :::
 
-<p class="take">כל שגיאה בשבוע הזה „גרה״ באחת התחנות: <span class="ltr">command not found</span> — תחנה 2 (PATH); „הקובץ לא נמצא״ — תחנה 4 (working directory); שגיאת syntax — תחנה 6.</p>
+<p class="take">כל שגיאה בשבוע הזה „גרה״ באחת התחנות: <span class="ltr">command not found</span> — תחנה <bdi>2</bdi> (<bdi>PATH</bdi>); „הקובץ לא נמצא״ — תחנה <bdi>4</bdi> (<bdi>working directory</bdi>); שגיאת <bdi>syntax</bdi> — תחנה <bdi>6.</bdi></p>
 
 ## מטלה שבועית
 
 ::: {.hwbox}
 **המטלה השבועית (שבוע 1):** מענה על שאלות פתוחות, להגשה ב-Moodle.
 
-<p class="due">להגשה עד יום ראשון, 25.10.2026, בשעה 12:00</p>
+<p class="due">להגשה עד יום ראשון, <bdi>25.10.2026</bdi>, בשעה <bdi>12:00</bdi></p>
 :::
 
 ## בהצלחה! {.closing}

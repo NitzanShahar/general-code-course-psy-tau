@@ -122,6 +122,15 @@ def load_weeks():
 LINK = re.compile(r"\[([^\]]*)\]\(([^)\s]+)\)|(https?://(?:[^\s<>()\]]|\([^\s<>()]*\))+(?:[^\s<>()\].,;:!?'\"]|\([^\s<>()]*\)))")  # bare URLs may hold (…), as Wikipedia's do
 
 
+LATIN_RUN = re.compile(r"(?<![&#A-Za-z0-9_])[A-Za-z0-9](?:[A-Za-z0-9_.+#/-]|:(?=\d))*(?: [A-Za-z0-9](?:[A-Za-z0-9_.+#/-]|:(?=\d))*)*")  # 12:00 is one run
+
+
+def hx(s):
+    """A heading in Hebrew with English terms: each English run is isolated (<bdi>), so the punctuation between runs
+    follows the Hebrew order ("ו-interpreters: R" stays in place instead of jumping)."""
+    return LATIN_RUN.sub(lambda m: f"<bdi>{m.group(0)}</bdi>", esc(s))
+
+
 def url_label(url):
     """A readable name for a bare URL: "ויקיפדיה: Bash" for Wikipedia, otherwise the site and the decoded path."""
     p = urlsplit(url)
@@ -336,7 +345,7 @@ def rail_weeks(avail, sel):
         if w["n"] == CFG.get("current"):
             cls += " cur"
         now = '<span class="now">השבוע</span>' if w["n"] == CFG.get("current") else ""
-        name = esc(w["title"]) if w["title"] else '<span class="empty">—</span>'
+        name = hx(w["title"]) if w["title"] else '<span class="empty">—</span>'
         inner = f'<span class="c">{w["n"]}</span><span>{name}<small class="wd">{short_date(w.get("date", ""))}</small>{now}</span>'
         if w["n"] in avail:
             items.append(f'<a href="week-{w["n"]}.html" class="{cls}">{inner}</a>')
@@ -378,7 +387,7 @@ def week_page(w, c, avail, book, depth, staff):
     weeks = rail_weeks(avail, n)
     rail = f'<aside class="rail card"><h3>שבועות הקורס</h3>{weeks}</aside>'
     mob = (f'<details class="mweeks card"><summary><span class="c" style="background:var(--ink);color:#fff;border-color:var(--ink)">{n}</span>'
-           f'<span><b>שבוע {n}</b> · {esc(w["title"])}</span><span class="more">כל השבועות ▾</span></summary><div class="list">{weeks}</div></details>')
+           f'<span><b>שבוע {n}</b> · {hx(w["title"])}</span><span class="more">כל השבועות ▾</span></summary><div class="list">{weeks}</div></details>')
 
     deck, videos = [], []
     if c.get("deck"):
@@ -407,7 +416,7 @@ def week_page(w, c, avail, book, depth, staff):
                 if s not in index:
                     print(f"  ! week {n}: section not in {bk} chapter {u['ch']}: {s}")
             secs = "".join(book_section(ch, index[s], ch["secs"][index[s] - 1], [], in_week=True) for s in u["secs"] if s in index)
-            units.append(f'<div class="wch"><span class="num">{ch["n"]}</span><b>{esc(ch["title"])}</b>'
+            units.append(f'<div class="wch"><span class="num">{ch["n"]}</span><b>{hx(ch["title"])}</b>'
                          f'<a class="tobook" href="book.html?w={n}#{bk}{ch["n"]}">הפרק המלא בספר ↗</a></div><div class="wunits">{secs}</div>')
         units.append("</div>")
     langs = {u["book"] for u in c.get("units", [])}
@@ -440,12 +449,12 @@ def week_page(w, c, avail, book, depth, staff):
     prev_n = next((m for m in sorted(avail, reverse=True) if m < n), None)
     next_n = next((m for m in sorted(avail) if m > n), None)
     title_of = {x["n"]: x["title"] for x in CFG["weeks"]}
-    prev = (f'<a href="week-{prev_n}.html">→ שבוע {prev_n}: {esc(title_of[prev_n])}</a>' if prev_n else "<span>→ אין שבוע קודם</span>")
-    nxt = (f'<a href="week-{next_n}.html">שבוע {next_n}: {esc(title_of[next_n])} ←</a>' if next_n else "<span>השבוע הבא בהכנה ←</span>")
+    prev = (f'<a href="week-{prev_n}.html"><span>→ שבוע {prev_n}: {hx(title_of[prev_n])}</span></a>' if prev_n else "<span>→ אין שבוע קודם</span>")
+    nxt = (f'<a href="week-{next_n}.html"><span>שבוע {next_n}: {hx(title_of[next_n])} ←</span></a>' if next_n else "<span>השבוע הבא בהכנה ←</span>")
     when = f"שבוע {n} · יום ראשון {w.get('date', '')}" + (f" · {w['note']}" if w.get("note") else "")
 
     main = f"""<main class="card">
-<section class="hero"><p class="eyebrow">{esc(when)}</p><h1>{esc(w['title'])}</h1>{''.join(f'<p class="intro">{inline(p)}</p>' for p in c['intro'].split(chr(10) + chr(10)) if p.strip())}</section>
+<section class="hero"><p class="eyebrow">{esc(when)}</p><h1>{hx(w['title'])}</h1>{''.join(f'<p class="intro">{inline(p)}</p>' for p in c['intro'].split(chr(10) + chr(10)) if p.strip())}</section>
 <section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media">{''.join(deck)}</div></section>
 <section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div>{chooser}{''.join(units) or '<p class="nounits">השבוע אין יחידות חדשות: חוזרים על החומר של הקורס לקראת הבחינה.</p>'}
 {('<p class="sub">קריאה מומלצת</p>' + reading) if reading else ''}</section>
@@ -492,10 +501,10 @@ def book_page(book, weeks):
         nav.append(f'<h3 class="b-{bk}">{name}</h3>')
         body.append(f'<p class="grp b-{bk}" id="book-{bk}"><span class="btag">{tag}</span>{name}</p>')
         for ch in chs:
-            nav.append(f'<a href="#{bk}{ch["n"]}" class="b-{bk}"><span class="num">{ch["n"]}</span>{esc(ch["title"])}</a>')
+            nav.append(f'<a href="#{bk}{ch["n"]}" class="b-{bk}"><span class="num">{ch["n"]}</span><span>{hx(ch["title"])}</span></a>')
             secs = [book_section(ch, k, s, used.get((bk, ch["idx"], s["h"]), [])) for k, s in enumerate(ch["secs"], 1)]
             body.append(f'<section class="chap b-{bk}" id="{bk}{ch["n"]}"><div class="ch"><span class="num">{ch["n"]}</span>'
-                        f'<h2>{esc(ch["title"])}</h2><span>{len(ch["secs"])} יחידות</span></div>{"".join(secs)}</section>')
+                        f'<h2>{hx(ch["title"])}</h2><span>{len(ch["secs"])} יחידות</span></div>{"".join(secs)}</section>')
 
     rail = f'<aside class="rail card"><h3>שלושת הספרים</h3><nav class="bnav">{"".join(nav)}</nav></aside>'
     mob = (f'<details class="mweeks card"><summary><span class="ic">{ICON["book"]}</span><span><b>ספר היחידות</b></span>'
@@ -546,7 +555,7 @@ def book_section(ch, k, s, wks, in_week=False):
     if in_week:
         blocks.append(f'<p class="bsfoot">יחידה {ch["n"]}.{k} ב{BOOK_NAME[bk]} · <a href="book.html#{uid}">לראות אותה בתוך הפרק ↗</a></p>')
     data = f' data-w="{" ".join(map(str, wks))}"' if wks else ""
-    return (f'<details class="bs b-{bk}" id="{uid}"{data}><summary><span class="un">{BOOK_TAG[bk] if bk != "code" else "קוד"} {ch["n"]}.{k}</span>{esc(fix(s["h"], bk))}</summary>'
+    return (f'<details class="bs b-{bk}" id="{uid}"{data}><summary><span class="un">{BOOK_TAG[bk] if bk != "code" else "קוד"} {ch["n"]}.{k}</span><span>{hx(fix(s["h"], bk))}</span></summary>'
             f'<div class="bsb">{"".join(blocks)}</div></details>')
 
 
