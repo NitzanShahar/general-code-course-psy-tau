@@ -194,6 +194,15 @@ a.row:hover .rt{color:var(--u)}
 .bnav h3{margin:16px 10px 6px;color:var(--bc)}
 .bnav h3:first-child{margin-top:4px}
 
+/* course admin page (admin.html) */
+.vid.guide{min-height:110px;max-width:420px;border-color:var(--u);background:var(--ut)}
+.people{display:flex;flex-direction:column;gap:6px}
+.person{display:grid;grid-template-columns:80px 160px 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--soft)}
+.person b{color:var(--u)}
+.person a{color:var(--u);justify-self:start}
+.adm p{margin:6px 0;font-size:16px;color:#32424f}
+.adm a{color:var(--u);text-decoration:underline;text-underline-offset:3px}
+
 /* public site before publishing: title and a general announcement */
 .solo{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:62vh;padding:60px 24px}
 .solo img{height:76px;margin-bottom:28px}
@@ -248,6 +257,7 @@ a.row:hover .rt{color:var(--u)}
   .nav{flex-direction:column;gap:4px;padding:8px}
   .nav a,.nav span{justify-content:center}
   .foot{justify-content:center;text-align:center}
+  .person{grid-template-columns:1fr;gap:0}
   .solo h1{font-size:38px}
   .ann{padding:18px 18px}
 }

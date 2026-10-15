@@ -1,5 +1,5 @@
 ---
-title: "המחשב, הטרמינל ושפות תכנות"
+title: "מהברזל לקוד: המחשב, הטרמינל ושפות תכנות"
 course-week: "שבוע 1"
 ---
 
@@ -10,123 +10,234 @@ course-week: "שבוע 1"
 
 ברוכים הבאים לקורס יסודות התכנות במדע אמפירי!
 
-השבוע לא נפתח אף תוכנה „נוחה״ — רק את הטרמינל: חלון שבו מדברים עם המחשב בטקסט. כדי להבין מה קורה שם, נתחיל מהמחשב עצמו: ממה הוא בנוי, מה זה בעצם „להריץ״ תוכנה, איך מסודרים קבצים ונתיבים, ולמה קובץ הוא בסך הכול רצף של בייטים.
+השבוע נפרק את „הקופסה השחורה״ של המחשב — מהברזל ועד הקוד. נתחיל בשחקנים: אחסון, זיכרון עבודה ומעבד; מערכת ההפעלה שמנהלת אותם; ומה זה בעצם „לפתוח תוכנה״. נבין מה יש בתוך קובץ, איך אפסים ואחדים הופכים לאותיות, ולמה למדע חשוב לשמור נתונים כטקסט גולמי.
 
-אחר כך ניכנס לטרמינל ונכיר את bash — התוכנה שמקשיבה למה שאנחנו מקלידים, ושהיא בעצמה שפה. נלמד מה זו בכלל „שפת תכנות״, ונראה איך מתוך אותו חלון מדברים עם שלוש שפות שונות: bash, פייתון ו-R. השאלה שתלווה אותנו כל השבוע: כשאני מקיש Enter — לאן הטקסט הולך, ומה הוא מפעיל?
+אחר כך נעבור מהעכבר לטקסט: נתקין טרמינל (Git Bash), נפעיל ממנו תוכנות, ונבין איך הוא מוצא אותן (PATH) ואיפה הוא „עומד״ (תיקיית העבודה). נלמד מהי שפת תכנות ומהו מפרש, נתקין את R ואת פייתון, ונסגור את השבוע בסקריפט ראשון — כשאנחנו יודעים בדיוק מה קורה מהרגע שלוחצים Enter ועד שהתוצאה מופיעה על המסך.
 
-השבוע נתקין רק את מה שצריך: R, פייתון ו-Git Bash. סביבות העבודה הנוחות (RStudio ו-VS Code) יגיעו בשבוע הבא — ואז כבר תדעו מה הן עושות מאחורי הקלעים.
+מנהל המשימות של Windows יהיה פתוח לידנו לאורך כל היחידות, כדי לראות תוכנות נכנסות לזיכרון ויוצאות ממנו. היחידה האחרונה היא שאלות פתוחות שעונים עליהן במילים. סביבות העבודה הנוחות (RStudio ו-VS Code) יגיעו בשבוע הבא.
 :::
 
-## המחשב: חומרה, תוכנה ותהליך
+## החומרה, מערכת ההפעלה והתוכנה
 
 ::: {.flow .f3}
 ::: {.step .os}
-<b>דיסק</b>
-<p class="big">שמירה</p>
-<p>כל הקבצים: מסמכים, נתונים — וגם התוכנות עצמן. תוכנה היא בסך הכול קובץ על הדיסק.</p>
-<p>נשמר גם כשהמחשב כבוי · איטי וגדול</p>
+<b>אחסון (SSD)</b>
+<p class="big">המחסן</p>
+<p>כל הקבצים — מסמכים, נתונים, וגם התוכנות עצמן. תוכנה היא קובץ של הוראות למעבד, שמונח כאן ולא עושה כלום.</p>
+<p>נשמר גם בלי חשמל · גדול ואיטי</p>
 :::
 
 ::: {.step}
-<b>זיכרון (RAM)</b>
-<p class="big">עבודה</p>
-<p>„להריץ״ תוכנה = מערכת ההפעלה מעתיקה אותה מהדיסק לזיכרון. עותק רץ כזה נקרא <b style="display:inline">תהליך</b> (process).</p>
-<p>נמחק כשמכבים · מהיר וקטן</p>
+<b>זיכרון עבודה (RAM)</b>
+<p class="big">משטח העבודה</p>
+<p>„לפתוח תוכנה״ = מערכת ההפעלה מעתיקה אותה מהאחסון ל-RAM. תוכנה שרצה נקראת <b style="display:inline">תהליך</b> (process).</p>
+<p>נמחק כשמכבים · קטן ומהיר</p>
 :::
 
 ::: {.step .res}
 <b>מעבד (CPU)</b>
-<p class="big">ביצוע</p>
-<p>מבצע את ההוראות של התהליך, אחת אחרי השנייה — מיליארדי הוראות פשוטות בשנייה (חיבור, השוואה, העתקה).</p>
+<p class="big">הפועל</p>
+<p>מבצע רק פעולות פשוטות מאוד — חיבור, השוואה, העתקה — בשפת מכונה (0 ו-1), מיליארדים בשנייה.</p>
 :::
 :::
 
-<p class="take">מערכת ההפעלה (אצלנו Windows) היא המנהלת: טוענת תוכנות לזיכרון, מחלקת את המעבד בין התהליכים, ושומרת על הקבצים בדיסק.</p>
+<p class="take">מערכת ההפעלה (Windows) היא המנכ״לית: מתווכת בין התוכנות לחומרה, מקצה זיכרון וזמן מעבד, וקוראת וכותבת קבצים. רואים הכול במנהל המשימות: <span class="ltr">Ctrl+Shift+Esc</span> — ומשאירים אותו פתוח כל השבוע.</p>
 
-## קבצים ונתיבים
+## מהו קובץ: ביטים, קידוד וטקסט גולמי
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">מערכת הקבצים</p>
-<p>עץ של תיקיות וקבצים</p>
-<p>נתיב מלא — מהשורש</p>
-<p>נתיב יחסי — מהמקום שבו אני נמצא</p>
-<p class="th" style="margin-top:.5em">קובץ = רצף של בייטים</p>
-<p>קובץ טקסט (csv, R, py) — בייטים שמייצגים אותיות לפי קידוד (UTF-8)</p>
-<p>קובץ בינארי (xlsx, docx, png) — צריך תוכנה מיוחדת כדי לקרוא</p>
+<p class="th">מאפסים לאותיות</p>
+<p>ביט = 0 או 1 · בייט = 8 ביטים (256 ערכים)</p>
+<p>כל קובץ הוא רצף של בייטים</p>
+<p>קידוד = המילון: ב-ASCII הבייט 65 הוא <span class="ltr">A</span></p>
+<p>UTF-8 = המילון העולמי: עברית, סינית, אימוג׳ים</p>
+<p class="th" style="margin-top:.5em">טקסט גולמי מול פורמט של תוכנה</p>
+<p>csv, txt, py, R — רק אותיות. כל תוכנה פותחת, גם בעוד 30 שנה</p>
+<p>xlsx, docx — מבנה, עיצוב ודחיסה (zip). רק התוכנה שלו מבינה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.sh}
+<p class="lang">one.csv בפנקס הרשימות</p>
+
+```text
+1
+```
+<p class="out">כמה בייטים בודדים</p>
+:::
+
+::: {.os}
+<p class="lang">one.xlsx בפנקס הרשימות</p>
+
+```text
+PK♥♦  ↑ ☺ ▬ ┐█Ü¥  ►
+[Content_Types].xml ¼T╦n
+┬0►╝W·▼æ»(ñ ‼ûúj┴♀...
+```
+<p class="out err">אלפי בייטים — ג׳יבריש</p>
+:::
+:::
+
+<p class="bnote">אותו נתון, שני קבצים · פנקס הרשימות מתרגם כל בייט לאות לפי UTF-8 · <span class="ltr">PK</span> = החתימה של קובץ zip</p>
+:::
+:::
+
+## טרמינל מול ממשק גרפי
+
+::: {.flow .f3}
+::: {.step .os}
+<b>ממשק גרפי (GUI)</b>
+<p class="big">עכבר</p>
+<p>חלונות ואייקונים — שכבה נוחה שהומצאה מאוחר יותר. כל קליק הוא בקשה למערכת ההפעלה.</p>
+<p>קשה לתעד ולשחזר רצף של קליקים</p>
+:::
+
+::: {.step}
+<b>טרמינל</b>
+<p class="big">חלון של טקסט</p>
+<p>כך הופעלו המחשבים הראשונים: טקסט פנימה, טקסט החוצה. החלון עצמו לא מבין כלום — הוא מעביר.</p>
+<p>פקודות אפשר לשמור, לשתף ולהריץ שוב בדיוק</p>
+:::
+
+::: {.step .sh}
+<b>shell = bash</b>
+<p class="big">מקשיב</p>
+<p>התוכנה שרצה בתוך החלון: קוראת כל שורה כשמקישים Enter, ומבצעת. ה-shell הסטנדרטי בלינוקס, בשרתים ובמחשבי-על (Bourne-Again SHell).</p>
+:::
+:::
+
+<p class="take">ב-Windows אין bash — מתקינים <b style="display:inline">Git Bash</b> (מ-git-scm.com; Git עצמו יגיע בשבוע 6). הסימן <span class="ltr">$</span> בתחילת השורה = bash מחכה לפקודה. את הסימן לא מקלידים.</p>
+
+## להפעיל תוכנות מהטרמינל: PATH
+
+::: {.tb}
+::: {.tbox}
+<p class="th">מה קורה כשמקלידים calc?</p>
+<p>bash מחפש קובץ בשם calc בתיקיות שברשימה PATH, לפי הסדר</p>
+<p>מצא? מבקש ממערכת ההפעלה לטעון אותו ל-RAM ולהריץ</p>
+<p>במנהל המשימות: המחשבון נכנס לזיכרון</p>
+<p class="th" style="margin-top:.5em">command not found</p>
+<p>bash לא מצא את השם באף תיקייה ב-PATH:</p>
+<p>• שגיאת הקלדה</p>
+<p>• התוכנה לא מותקנת</p>
+<p>• מותקנת — אבל התיקייה שלה לא ב-PATH</p>
+:::
+
+::: {.board}
+<p class="lang">Git Bash</p>
+
+```bash
+$ calc                  # the calculator opens
+$ which calc            # where did bash find it?
+```
+<p class="out">/c/Windows/system32/calc</p>
+
+```bash
+$ echo $PATH            # the list itself, folders split by :
+```
+<p class="out">/mingw64/bin:/usr/bin:…:/c/Windows/system32:…</p>
+
+```bash
+$ calcc
+```
+<p class="out err">bash: calcc: command not found</p>
+:::
+:::
+
+## מערכת הקבצים ותיקיית העבודה
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">עץ, נתיב, תיקיית עבודה</p>
+<p>הקבצים מסודרים בעץ: שורש (C:), תיקיות, קבצים</p>
+<p>תיקיית הבית: <span class="ltr">C:&#92;Users&#92;dana</span> = <span class="ltr">~</span></p>
+<p>נתיב = הכתובת המלאה של קובץ</p>
+<p><b style="display:inline">תיקיית העבודה</b>: bash תמיד עומד בתיקייה אחת, ושם הוא מחפש כל קובץ שכתבתי בלי נתיב</p>
+<p>שמות: אנגלית, בלי רווחים, עם <span class="ltr">_</span></p>
 :::
 
 ::: {.board}
 ::: {.duo}
 ::: {.os}
-<p class="lang">Windows (Explorer)</p>
+<p class="lang">Windows</p>
 
 ```text
 C:\Users\dana\
-└── yesodot\
-    └── week1\
-        ├── hello.R
-        └── hello.py
+└── my_science_project\
+    └── experiment.py
 
-C:\Users\dana\yesodot\week1\hello.py
+C:\Users\dana\my_science_project\experiment.py
 ```
 :::
 
 ::: {.sh}
 <p class="lang">Git Bash</p>
 
-```text
-/c/Users/dana/
-└── yesodot/
-    └── week1/
-        ├── hello.R
-        └── hello.py
-
-/c/Users/dana/yesodot/week1/hello.py
-~/yesodot/week1/hello.py
+```bash
+$ pwd                   # where am I?
+$ ls                    # what is here?
+$ mkdir my_science_project
+$ cd my_science_project # move in
+$ explorer .            # . = this folder
+$ cd ..                 # .. = one up
 ```
 :::
 :::
 
-<p class="bnote">אותו קובץ, שני כתיבים · <span class="ltr">~</span> = תיקיית הבית · נתיב יחסי מתוך <span class="ltr">yesodot</span>: <span class="ltr">week1/hello.py</span></p>
+<p class="bnote">אותו נתיב, שני כתיבים: <span class="ltr">/c/Users/dana/my_science_project/experiment.py</span> · פתיחה חדשה של Git Bash מתחילה תמיד בתיקיית הבית</p>
 :::
 :::
 
-## מה זו שפת תכנות?
+## שפות תכנות, מפרשים ומהדרים
 
-::: {.tb .duo-tb}
+::: {.flow .f3}
+::: {.step}
+<b>שפת תכנות</b>
+<p class="big">טקסט</p>
+<p>מילים וחוקי תחביר (syntax), כתובים בקובץ טקסט גולמי. השפה לבדה לא עושה כלום — המעבד מבין רק 0 ו-1.</p>
+:::
+
+::: {.step .os}
+<b>מהדר (compiler)</b>
+<p class="big">מתרגם ספרים</p>
+<p>מתרגם מראש את כל הקוד לקובץ תוכנה בשפת מכונה (<span class="ltr">.exe</span>). מהיר מאוד, אבל נוקשה. כך נבנו Excel, calc ו-Windows.</p>
+:::
+
+::: {.step .res}
+<b>מפרש (interpreter)</b>
+<p class="big">מתורגמן באו״ם</p>
+<p>תוכנה שרצה ב-RAM, קוראת שורה, מבצעת אותה מיד, ומחזירה תשובה. מאפשר עבודה אינטראקטיבית. R ופייתון עובדות כך.</p>
+:::
+:::
+
+<p class="take">„python״ = גם השפה וגם המפרש שקורא אותה (וכך גם R). והפתעה: גם bash הוא מפרש — כל שורה שהקלדנו בטרמינל הייתה קוד.</p>
+
+## R ופייתון: התקנה והרצת המפרש
+
+::: {.tb}
 ::: {.tbox}
-<p class="th">שפת תכנות</p>
-<p>המעבד מבין רק הוראות מכונה פשוטות מאוד</p>
-<p>שפה = מילים ודקדוק, כתובים כטקסט</p>
-<p>מתורגמן (interpreter) = תוכנה רגילה שקוראת את הטקסט ופועלת לפיו</p>
-<p>לכל מתורגמן דקדוק משלו: אותה שורה — תוצאות שונות</p>
+<p class="th">R (מ-cran)</p>
+<p>ההתקנה לא מוסיפה את R ל-PATH ← <span class="ltr">command not found</span></p>
+<p>מוסיפים בעצמנו: Edit environment variables for your account ← Path ← New ← <span class="ltr">C:&#92;Program Files&#92;R&#92;R-4.x.x&#92;bin</span></p>
+<p>סוגרים ופותחים את Git Bash (bash קיבל את PATH כשנפתח)</p>
+<p class="th" style="margin-top:.4em">פייתון (מ-python.org)</p>
+<p>מסמנים <span class="ltr">Add python.exe to PATH</span> — אותו דבר, אוטומטית</p>
+<p class="th" style="margin-top:.4em">מי מקשיב עכשיו?</p>
+<p><code dir="ltr">$</code> bash · <code dir="ltr">&gt;</code> R (<code dir="ltr">q()</code>) · <code dir="ltr">&gt;&gt;&gt;</code> פייתון (<code dir="ltr">exit()</code>)</p>
 :::
 
 ::: {.board}
-::: {.duo .three}
-::: {.sh}
-<p class="lang">bash</p>
-
-```bash
-$ 2 + 2
-```
-<p class="out err">bash: 2: command not found</p>
-
-```bash
-$ x=5
-$ echo $x
-```
-<p class="out">5</p>
-
-```bash
-$ x = 5
-```
-<p class="out err">bash: x: command not found</p>
-:::
-
+::: {.duo}
 ::: {.r}
 <p class="lang">R</p>
+
+```r
+$ R
+> print("Hello R")
+```
+<p class="out">[1] "Hello R"</p>
 
 ```r
 > 2 + 2
@@ -134,14 +245,19 @@ $ x = 5
 <p class="out">[1] 4</p>
 
 ```r
-> x = 5
-> x
+> q()
+$
 ```
-<p class="out">[1] 5</p>
 :::
 
 ::: {.py}
 <p class="lang">Python</p>
+
+```python
+$ python
+>>> print("Hello Python")
+```
+<p class="out">Hello Python</p>
 
 ```python
 >>> 2 + 2
@@ -149,118 +265,64 @@ $ x = 5
 <p class="out">4</p>
 
 ```python
->>> x = 5
->>> x
-```
-<p class="out">5</p>
-:::
-:::
-
-<p class="bnote">ב-bash המילה הראשונה היא תמיד שם של פקודה — ולכן <span class="ltr">2</span> ו-<span class="ltr">x</span> „לא נמצאו״, ואסור רווחים סביב =</p>
-:::
-:::
-
-## טרמינל, shell ו-bash
-
-::: {.flow .f3}
-::: {.step .os}
-<b>טרמינל</b>
-<p class="big">חלון</p>
-<p>מעביר טקסט: מה שאני מקליד — הלאה, ומה שחוזר — אל המסך. הוא עצמו לא מבין כלום.</p>
-<p>Git Bash — תוכנה שנותנת ל-Windows טרמינל bash (השם מגיע מ-git, שנפגוש בשבוע 6)</p>
-:::
-
-::: {.step .sh}
-<b>shell = bash</b>
-<p class="big">מקשיב</p>
-<p>קורא את השורה כשאני מקיש Enter, מבין אותה, ופועל: מבצע בעצמו, או מפעיל תוכנה אחרת.</p>
-<p>bash (Bourne-Again SHell, 1989) היא תוכנה — והיא בעצמה שפת תכנות. ה-shell הסטנדרטי בלינוקס, בשרתים ובמחשבי-על</p>
-:::
-
-::: {.step}
-<b>תוכנות</b>
-<p class="big">עושות</p>
-<p><span class="ltr">ls</span>, <span class="ltr">cat</span>, <span class="ltr">python</span>, <span class="ltr">R</span>… כל אחת היא קובץ על הדיסק, ש-bash מפעיל כתהליך.</p>
-:::
-:::
-
-<p class="take">הסימן <span class="ltr">$</span> בתחילת השורה = bash מחכה לפקודה (את הסימן לא מקלידים). ב-Windows אין bash — מתקינים אותו עם Git Bash.</p>
-
-## עבודה ב-bash
-
-::: {.tb}
-::: {.tbox}
-<p class="th">עבודה ב-bash</p>
-<p>איפה אני? pwd, ls ו-cd</p>
-<p>יצירה, העתקה, העברה ומחיקה</p>
-<p>מה קורה כשמקישים Enter: PATH</p>
-<p>לאן הולך הפלט: <span class="ltr">&gt;</span> ו-<span class="ltr">&gt;&gt;</span></p>
-<p>סקריפט bash: nano, cat, bash</p>
-<p style="color:#b3541e">rm מוחק לתמיד — אין סל מחזור!</p>
-:::
-
-::: {.board .small}
-<p class="lang">bash</p>
-
-```bash
-pwd                       # where am I?
-ls                        # what is here?
-cd ~                      # go home
-mkdir yesodot             # new folder
-cd yesodot                # go in   (cd .. = one up)
-
-touch notes.txt           # new empty file
-cp notes.txt copy.txt     # copy
-mv copy.txt old.txt       # move / rename
-rm old.txt                # delete (forever!)
-
-echo 'first line' > notes.txt    # write (replace)
-echo 'second line' >> notes.txt  # add at the end
-cat notes.txt             # show a text file
-nano hello.sh             # edit (Ctrl+O save, Ctrl+X exit)
-bash hello.sh             # run a bash script
-which cat                 # where is this program?
+>>> exit()
+$
 ```
 :::
 :::
 
-## R ופייתון מתוך הטרמינל
+<p class="bnote">במנהל המשימות (Details): <span class="ltr">Rterm.exe</span> ו-<span class="ltr">python.exe</span> נכנסים לזיכרון — ויוצאים ממנו ביציאה</p>
+:::
+:::
 
-::: {.tb}
+## השרשרת המלאה: סקריפט מקובץ
+
+::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">קודם מתקינים</p>
-<p>R (מ-cran) ופייתון (מ-python.org)</p>
-<p>את R מוסיפים ל-PATH בקובץ <code dir="ltr">~/.bashrc</code></p>
-<p class="th" style="margin-top:.4em">מי מקשיב עכשיו?</p>
-<p><code dir="ltr">$</code> — bash</p>
-<p><code dir="ltr">&gt;&gt;&gt;</code> — פייתון (יציאה: <code dir="ltr">exit()</code>)</p>
-<p><code dir="ltr">&gt;</code> — R (יציאה: <code dir="ltr">q()</code>)</p>
-<p class="th" style="margin-top:.4em">שלוש דרכים לדבר איתם</p>
-<p>• להיכנס למתורגמן ולשוחח שורה-שורה</p>
-<p>• לתת לו שורה אחת מ-bash</p>
-<p>• להעביר לו טקסט בצינור (|)</p>
-<p>בשבוע הבא: ה-Console של RStudio הוא בדיוק ה-<code dir="ltr">&gt;</code> הזה</p>
+<p class="th">אינטראקטיבי מול סקריפט</p>
+<p>אינטראקטיבי: שורה, תשובה — ונעלם</p>
+<p>סקריפט: קובץ טקסט באחסון. מתעד הכול, וכל חוקר יכול להריץ שוב</p>
+<p class="th" style="margin-top:.5em">יוצרים במקום הנכון</p>
+<p><code dir="ltr">cd my_science_project</code></p>
+<p><code dir="ltr">touch experiment.py</code></p>
+<p><code dir="ltr">notepad experiment.py</code></p>
+<p>בשורת המצב של פנקס הרשימות: UTF-8</p>
 :::
 
 ::: {.board}
-<p class="lang">bash</p>
+::: {.duo}
+::: {.r}
+<p class="lang">experiment.R</p>
+
+```r
+a = 5
+b = 10
+cat("The result is:", a + b, "\n")
+```
 
 ```bash
-#### 1. Interactive ####
-$ python               # Git Bash stuck? python -i
->>> 2 + 2
->>> exit()
-$ R
-> 2 + 2
-> q()
-
-#### 2. One line from bash ####
-$ python -c "print(2 + 2)"
-$ Rscript -e "2 + 2"
-
-#### 3. A pipe: bash writes, python reads ####
-$ echo 'print(2 + 2)' | python
+$ Rscript experiment.R
 ```
+<p class="out">The result is: 15</p>
+:::
+
+::: {.py}
+<p class="lang">experiment.py</p>
+
+```python
+a = 5
+b = 10
+print("The result is:", a + b)
+```
+
+```bash
+$ python experiment.py
+```
+<p class="out">The result is: 15</p>
+:::
+:::
+
+<p class="bnote">המילה הראשונה = המפרש · השנייה = קובץ הטקסט שהוא קורא · R פותח שיחה, Rscript קורא קובץ ומסיים</p>
 :::
 :::
 
@@ -269,59 +331,59 @@ $ echo 'print(2 + 2)' | python
 ::: {.flow}
 ::: {.step .os}
 <b><span class="num">1</span>טרמינל</b>
-<p>מקלידים <code>python hello.py</code> ו-Enter. החלון מעביר את הטקסט ל-bash.</p>
+<p>מקלידים <code>python experiment.py</code> ו-Enter. החלון מעביר את השורה ל-bash.</p>
 :::
 
 ::: {.step .sh}
-<b><span class="num">2</span>bash מפרק למילים</b>
-<p>המילה הראשונה היא הפקודה: <code>python</code>. השאר הם הקלט שלה: <code>hello.py</code>.</p>
-:::
-
-::: {.step .sh}
-<b><span class="num">3</span>bash מחפש ב-PATH</b>
-<p>עובר על רשימת התיקיות ב-<code>$PATH</code> עד שהוא מוצא קובץ בשם python. בודקים: <code>which python</code></p>
+<b><span class="num">2</span>bash ו-PATH</b>
+<p>מפרק למילים, ומחפש תוכנה בשם <code>python</code> בתיקיות של PATH.</p>
 :::
 
 ::: {.step .os}
-<b><span class="num">4</span>מערכת ההפעלה</b>
-<p>טוענת את python מהדיסק לזיכרון — נוצר תהליך חדש.</p>
+<b><span class="num">3</span>מערכת ההפעלה</b>
+<p>מעתיקה את המפרש מהאחסון ל-RAM — נוצר תהליך.</p>
+:::
+
+::: {.step .sh}
+<b><span class="num">4</span>תיקיית העבודה</b>
+<p>המפרש מחפש את <code>experiment.py</code> בתיקיית העבודה — ומוצא.</p>
 :::
 
 ::: {.step}
-<b><span class="num">5</span>המתורגמן קורא</b>
-<p>python (תוכנה רגילה!) פותח את <code>hello.py</code> — קובץ טקסט בלבד — ומבצע שורה אחר שורה.</p>
+<b><span class="num">5</span>קידוד</b>
+<p>קורא את הקובץ: בייטים של טקסט גולמי, שהופכים לאותיות לפי UTF-8.</p>
+:::
+
+::: {.step}
+<b><span class="num">6</span>המפרש והמעבד</b>
+<p>בודק את התחביר ומתרגם שורה אחר שורה; החיבור 5 + 10 קורה במעבד.</p>
 :::
 
 ::: {.step .res}
-<b><span class="num">6</span>הפלט</b>
-<p>מה ש-print כותב חוזר אל החלון — או אל קובץ: <code>python hello.py &gt; out.txt</code></p>
-:::
-
-::: {.step .os}
-<b><span class="num">7</span>התהליך נגמר</b>
-<p>python מסיים, מערכת ההפעלה מפנה את הזיכרון.</p>
+<b><span class="num">7</span>הפלט</b>
+<p><code>print</code> מעבירה את התוצאה למערכת ההפעלה, שמציגה אותה בחלון.</p>
 :::
 
 ::: {.step .sh}
 <b><span class="num">8</span><span class="ltr">$</span> חוזר</b>
-<p>bash מקשיב שוב ומחכה לשורה הבאה.</p>
+<p>התהליך מסתיים, הזיכרון משתחרר, ו-bash מקשיב שוב.</p>
 :::
 :::
 
-<p class="take">אם bash לא מוצא את התוכנה ב-PATH: <span class="ltr">command not found</span>. זו לא תקלה במחשב — bash פשוט לא יודע איפה התוכנה גרה (<span class="ltr">echo $PATH</span>).</p>
+<p class="take">כל שגיאה בשבוע הזה „גרה״ באחת התחנות: <span class="ltr">command not found</span> — תחנה 2 (PATH); „הקובץ לא נמצא״ — תחנה 4 (תיקיית העבודה); שגיאת תחביר — תחנה 6.</p>
 
 ## מטלה שבועית
 
 ::: {.hwbox}
-**המטלה השבועית (שבוע 1)** — רק בטרמינל (Git Bash), קבצים כותבים עם `nano`, ובשתי השפות.
+**המטלה השבועית (שבוע 1)** — בטרמינל (Git Bash) ובפנקס הרשימות, ובשתי השפות.
 
-**חלק א – תיקיות:** `pwd`; יצירת `yesodot/week1` בתיקיית הבית ומעבר אליה. **חלק ב – מי מקשיב לי?** `type cd`, `type cat`, `which python` — משפט על כל אחד; `echo $PATH` במילים שלכם; `which Rscript` מוצא את R (ב-Windows כנראה צריך להוסיף ל-PATH — תעדו).
+**חלק א – המחשב והקבצים:** צילום של מנהל המשימות (כמה RAM, כמה בשימוש); `one.xlsx` מול `one.csv` — הגודל בבייטים, ולמה רק אחד קריא בפנקס הרשימות. **חלק ב – PATH:** `which calc`, `which R`, `which python` — משפט לכל פלט; `calcc` — מה bash עשה; מה עשיתם בשביל R, ומה עשתה התיבה של פייתון.
 
-**חלק ג – שלוש שפות, שורה אחת:** `2 + 2` ב-bash — מה קרה ולמה?; `2 + 2` בפייתון וב-R מתוך הטרמינל, ויציאה — מה השתנה בתחילת השורה?; `echo 'print(2 + 2)' | python` — מי כתב, מי קרא, מי חישב.
+**חלק ג – תיקיית עבודה:** `yesodot/week1` בתיקיית הבית, מעבר אליה ו-`pwd`. **חלק ד – שני מפרשים:** `2 + 2` ב-R ובפייתון מתוך הטרמינל — מה השתנה בתחילת השורה?
 
-**חלק ד – סקריפטים:** `hello.py` ו-`hello.R` עם `nano` (כותרת, שם וגיל, ימים = גיל × 365, משפט אחד); `cat` לשניהם; הרצה ושמירת שני הפלטים ב-`out.txt` (`>` ו-`>>`). **חלק ה:** המסע של `python hello.py` ב-5–8 שלבים.
+**חלק ה – סקריפטים:** `hello.py` ו-`hello.R` (כותרת, שם וגיל, ימים = גיל × 365, משפט אחד); הרצה ו-`ls`; ומה קורה כשמריצים מתיקיית הבית? **חלק ו:** המסע של `Rscript hello.R` ב-5–8 שלבים.
 
-**הגשה:** PDF אחד עם צילומי מסך לכל חלק, הקוד והתשובות · בלי עזרה של AI.
+**הגשה:** PDF אחד עם צילומי מסך, הקוד והתשובות · בלי עזרה של AI.
 
 <p class="due">להגשה עד יום ראשון, 25.10.2026, בשעה 12:00</p>
 :::

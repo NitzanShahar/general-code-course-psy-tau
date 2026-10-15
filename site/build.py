@@ -5,7 +5,8 @@ Sources (edit these): site/site.json, site/site.css, site/img/, site/content/wee
   The book has three inner books — R, Python and code management ("code"); site.json "book_layout" lists their chapters in order.
 Output (do not edit by hand):
   index.html                  public site: a general announcement while "published" is empty, otherwise the published weeks
-  <staff_dir>/index.html …    staff ("מתרגלים") site: every week that has content + the book of units
+  <staff_dir>/index.html …    staff ("מתרגלים") site: every week that has content + the book of units + the admin page
+                              (admin.html, from site/content/admin.json; on the public site too once weeks are published)
   assets/                     css and images, shared by both
 
 Usage: python site/build.py
@@ -270,9 +271,8 @@ def header(depth, staff, on):
     up = "../" * depth
     nav = ""
     if on is not None:
-        links = [("index.html", "השבועות", "weeks"), ("book.html", "ספר היחידות", "book")]
-        if staff and (ROOT / CFG["staff_dir"] / "syllabus.pdf").exists():  # staff site only, for now
-            links.append(("syllabus.pdf", "סילבוס", "syllabus"))
+        # first = rightmost in RTL; the syllabus is in the admin page's "מסמכים" section
+        links = [("index.html", "השבועות", "weeks"), ("book.html", "ספר היחידות", "book"), ("admin.html", "מנהלות הקורס", "admin")]
         nav = '<nav class="gen">' + "".join(
             f'<a href="{h}" class="{"on" if k == on else ""}">{t}</a>' for h, t, k in links) + "</nav>"
     badge = '<span class="staffbadge">גרסת מתרגלים</span>' if staff else ""
@@ -565,6 +565,36 @@ BOOK_JS = COPY_JS + """
 })();"""
 
 
+# ---------- course admin ----------
+
+def admin_page(prefix, avail, depth):
+    """The admin page (content/admin.json): staff, meetings, submission, grading, documents — as on the R course site."""
+    a = json.loads((SRC / "content" / "admin.json").read_text(encoding="utf-8"))
+    v = a.get("video")  # optional guide to the site (none yet; the R site opens local videos in its own player page)
+    video = (f'<section class="sec"><div class="ch"><h2>איך עובדים עם האתר</h2></div><div class="media">'
+             f'<a {href(v["url"], depth)} class="vid guide"><span class="ic">{ICON["play"]}</span>'
+             f'<span class="vt">{esc(v["title"])}<span class="vs">{esc(v.get("note", ""))}</span></span></a></div></section>' if v else "")
+    people = "".join(f'<div class="person"><b>{esc(p["role"])}</b><span>{esc(p["name"])}</span>'
+                     + (f'<a class="ltr" href="mailto:{esc(p["email"])}">{esc(p["email"])}</a>' if p.get("email") else "")
+                     + "</div>" for p in a["staff"])
+    secs = "".join(f'<section class="sec"><div class="ch"><h2>{esc(x["h"])}</h2></div><div class="adm">{md_lines(x["lines"])}</div></section>'
+                   for x in a["sections"])
+    # external links always; a local file (relative to the site's folder) only if it is there: syllabus.pdf is in the staff folder only
+    links = "".join(f'<a href="{esc(l["url"])}" class="row" target="_blank" rel="noopener"><span class="ic">{ICON["book"]}</span>'
+                    f'<span><span class="rt">{esc(l["title"])}</span><span class="rs">{esc(l.get("note", ""))}</span></span></a>'
+                    for l in a.get("links", []) if re.match(r"https?://", l["url"]) or (ROOT / prefix / l["url"]).exists())
+    weeks = rail_weeks(avail, None)
+    rail = f'<aside class="rail card"><h3>שבועות הקורס</h3>{weeks}</aside>'
+    mob = (f'<details class="mweeks card"><summary><span class="ic">{ICON["book"]}</span><span><b>מנהלות הקורס</b></span>'
+           f'<span class="more">כל השבועות ▾</span></summary><div class="list">{weeks}</div></details>')
+    docs = f'<section class="sec"><div class="ch"><h2>מסמכים</h2></div>{links}</section>' if links else ""
+    main = (f'<main class="card"><section class="hero"><p class="eyebrow">מנהלות הקורס</p><h1>מנהלות הקורס</h1>'
+            f'<p class="intro">{esc(a["intro"])}</p></section>{video}'
+            f'<section class="sec"><div class="ch"><h2>צוות הקורס</h2></div><div class="people">{people}</div></section>'
+            f'{secs}{docs}</main>')
+    return f'{mob}<div class="layout">{rail}{main}</div>'
+
+
 # ---------- build ----------
 
 def write(rel, text):
@@ -587,6 +617,8 @@ def build_site(prefix, staff, avail, weeks, book):
     DEPTH[0] = depth
     body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}) + footer(depth, staff)
     write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + GATE_JS))
+    body = header(depth, staff, "admin") + admin_page(prefix, avail, depth) + footer(depth, staff)
+    write(f"{prefix}admin.html", page(f"מנהלות הקורס · {CFG['title']}", body, depth, staff, GATE_JS))
 
 
 def build_solo():
@@ -610,7 +642,7 @@ def main():
 
     # clear generated pages from previous builds
     for d in (ROOT, ROOT / staff):
-        for f in list(d.glob("week-*.html")) + [d / "book.html"]:
+        for f in list(d.glob("week-*.html")) + [d / "book.html", d / "admin.html"]:
             if f.exists():
                 f.unlink()
 
