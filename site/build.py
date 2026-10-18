@@ -512,7 +512,8 @@ def solution_html(c, staff):
 
 # ---------- book of units ----------
 
-def book_page(book, weeks):
+def book_page(book, weeks, only_used=False):
+    """only_used (public site): just the units of the published weeks, keeping their numbers in the book."""
     # which weeks use each section (to open them from a week's link: book.html?w=N)
     used = {}
     for n, c in weeks.items():
@@ -522,7 +523,9 @@ def book_page(book, weeks):
 
     nav, body, chips = [], [], []
     for bk, tag, name in BOOKS:
-        chs = book[bk]
+        chs = [c for c in book[bk] if not only_used or any((bk, c["idx"], s["h"]) in used for s in c["secs"])]
+        if not chs:
+            continue
         chips.append(f'<a class="bchip b-{bk}" href="#book-{bk}"><span class="btag">{tag}</span><span>{name}<small>{len(chs)} פרקים</small></span></a>')
         nav.append(f'<h3 class="b-{bk}">{name}</h3>')
         body.append(f'<p class="grp b-{bk}" id="book-{bk}"><span class="btag">{tag}</span>{name}</p>')
@@ -530,9 +533,10 @@ def book_page(book, weeks):
             body.append(OS_CHOOSER)  # some units of this book are written per operating system
         for ch in chs:
             nav.append(f'<a href="#{bk}{ch["n"]}" class="b-{bk}"><span class="num">{ch["n"]}</span><span>{hx(ch["title"])}</span></a>')
-            secs = [book_section(ch, k, s, used.get((bk, ch["idx"], s["h"]), [])) for k, s in enumerate(ch["secs"], 1)]
+            secs = [book_section(ch, k, s, used.get((bk, ch["idx"], s["h"]), [])) for k, s in enumerate(ch["secs"], 1)
+                    if not only_used or (bk, ch["idx"], s["h"]) in used]
             body.append(f'<section class="chap b-{bk}" id="{bk}{ch["n"]}"><div class="ch"><span class="num">{ch["n"]}</span>'
-                        f'<h2>{hx(ch["title"])}</h2><span>{len(ch["secs"])} יחידות</span></div>{"".join(secs)}</section>')
+                        f'<h2>{hx(ch["title"])}</h2><span>{len(secs)} יחידות</span></div>{"".join(secs)}</section>')
 
     rail = f'<aside class="rail card"><h3>שלושת הספרים</h3><nav class="bnav">{"".join(nav)}</nav></aside>'
     mob = (f'<details class="mweeks card"><summary><span class="ic">{ICON["book"]}</span><span><b>ספר היחידות</b></span>'
@@ -716,7 +720,7 @@ def build_site(prefix, staff, avail, weeks, book):
     body = header(depth, staff, "weeks") + week_page(title_of[home], weeks[home], avail, book, depth, staff) + footer(depth, staff)
     write(f"{prefix}index.html", page(CFG["title"], body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + OS_JS + "\n" + GATE_JS))
     DEPTH[0] = depth
-    body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}) + footer(depth, staff)
+    body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}, only_used=not staff) + footer(depth, staff)
     write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + OS_JS + "\n" + GATE_JS))
     body = header(depth, staff, "admin") + admin_page(prefix, avail, depth) + footer(depth, staff)
     write(f"{prefix}admin.html", page(f"מנהלות הקורס · {CFG['title']}", body, depth, staff, GATE_JS))

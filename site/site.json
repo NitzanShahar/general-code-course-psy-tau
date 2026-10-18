@@ -3,8 +3,10 @@
   "title": "יסודות התכנות במדע אמפירי",
   "subtitle": "R ופייתון בשילוב כלי בינה מלאכותית · בית הספר למדעי הפסיכולוגיה · אוניברסיטת תל אביב · תשפ״ז",
   "staff_dir": "mylab",
-  "published": [],
-  "current": null,
+  "published": [
+    1
+  ],
+  "current": 1,
   "announcement": {
     "title": "הודעה לסטודנטים",
     "text": [
