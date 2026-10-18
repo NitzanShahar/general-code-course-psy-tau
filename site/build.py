@@ -470,7 +470,9 @@ def week_page(w, c, avail, book, depth, staff):
         dl = "".join(file_link(f, depth) for f in hw.get("files", []))
         dl = f'<p class="dfiles">קובצי נתונים: {dl}</p>' if dl else ""
         hw_html = (f'<div class="hw"><b class="ht">{esc(hw["title"])}</b>{ctx}{dl}<div class="hwb">{body}</div>'
-                   + "".join(f'<p class="sm">{inline(p)}</p>' for p in hw.get("submit", [])) + due + "</div>")
+                   + "".join(f'<p class="sm">{inline(p)}</p>' for p in hw.get("submit", [])) + due
+                   + (f'<a class="hwsubmit" href="{esc(hw["submit_url"])}" target="_blank" rel="noopener">{ICON["spark"]}<span>להגשת המטלה<small>טופס ההגשה נפתח בלשונית חדשה</small></span></a>'
+                      if hw.get("submit_url") else "") + "</div>")
 
     prev_n = next((m for m in sorted(avail, reverse=True) if m < n), None)
     next_n = next((m for m in sorted(avail) if m > n), None)

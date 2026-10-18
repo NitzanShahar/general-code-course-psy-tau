@@ -284,3 +284,9 @@ html[data-os=mac] .osv[data-os=win]{display:none}
 .oschoice button{font:inherit;font-size:18px;font-weight:700;min-width:150px;min-height:54px;padding:0 28px;border:2px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer}
 .oschoice button:hover{box-shadow:0 0 0 3px var(--yel)}
 .oschoice button.on{background:var(--ink);color:#fff;box-shadow:0 0 0 3px var(--yel)}
+
+/* the assignment's submission form: a big button at the end of the assignment */
+.hwsubmit{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 4px;max-width:420px;min-height:64px;padding:12px 26px;border-radius:16px;background:var(--ink);color:#fff;font-size:21px;font-weight:700;text-align:center;box-shadow:0 0 0 4px var(--yel)}
+.hwsubmit:hover{color:#fff;background:#1b3a55}
+.hwsubmit svg{width:24px;height:24px;flex:none}
+.hwsubmit small{display:block;font-size:13px;font-weight:400;opacity:.8;margin-top:2px}
