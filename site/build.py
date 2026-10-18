@@ -656,14 +656,15 @@ BOOK_JS = COPY_JS + """
 def admin_page(prefix, avail, depth):
     """The admin page (content/admin.json): staff, meetings, submission, grading, documents — as on the R course site."""
     a = json.loads((SRC / "content" / "admin.json").read_text(encoding="utf-8"))
-    v = a.get("video")  # optional guide to the site, in the site's player
-    video = (f'<section class="sec"><div class="ch"><h2>איך עובדים עם האתר</h2></div><div class="media">'
-             f'<a {href(v["url"], depth, v["title"])} class="vid guide"><span class="ic">{ICON["play"]}</span>'
-             f'<span class="vt">{esc(v["title"])}<span class="vs">{esc(v.get("note", ""))}</span></span></a></div></section>' if v else "")
-    recs = "".join(f'<a {href(r["url"], depth, r["title"])} class="vid"><span class="ic">{ICON["play"]}</span>'
-                   f'<span class="vt">{esc(r["title"])}<span class="vs">{esc(r.get("note", ""))}</span></span></a>'
-                   for r in a.get("recordings", []))  # Zoom meetings, in the site's player
-    video += f'<section class="sec"><div class="ch"><h2>הקלטות מפגשי זום</h2></div><div class="media">{recs}</div></section>' if recs else ""
+    # the guide to the site and any recorded meeting, side by side, in the site's player
+    v = a.get("video")
+    vids = ([f'<a {href(v["url"], depth, v["title"])} class="vid guide"><span class="ic">{ICON["play"]}</span>'
+             f'<span class="vt">{esc(v["title"])}<span class="vs">{esc(v.get("note", ""))}</span></span></a>'] if v else [])
+    vids += [f'<a {href(r["url"], depth, r["title"])} class="vid"><span class="ic">{ICON["play"]}</span>'
+             f'<span class="vt">{esc(r["title"])}<span class="vs">{esc(r.get("note", ""))}</span></span></a>'
+             for r in a.get("recordings", [])]
+    video = (f'<section class="sec"><div class="ch"><h2>איך עובדים עם האתר</h2></div><div class="media">{"".join(vids)}</div></section>'
+             if vids else "")
     people ="".join(f'<div class="person"><b>{esc(p["role"])}</b><span>{esc(p["name"])}</span>'
                      + (f'<a class="ltr" href="mailto:{esc(p["email"])}">{esc(p["email"])}</a>' if p.get("email") else "")
                      + "</div>" for p in a["staff"])
@@ -679,9 +680,9 @@ def admin_page(prefix, avail, depth):
            f'<span class="more">כל השבועות ▾</span></summary><div class="list">{weeks}</div></details>')
     docs = f'<section class="sec"><div class="ch"><h2>מסמכים</h2></div>{links}</section>' if links else ""
     main = (f'<main class="card"><section class="hero"><p class="eyebrow">מנהלות הקורס</p><h1>מנהלות הקורס</h1>'
-            f'<p class="intro">{esc(a["intro"])}</p></section>{video}'
+            f'<p class="intro">{esc(a["intro"])}</p></section>'
             f'<section class="sec"><div class="ch"><h2>צוות הקורס</h2></div><div class="people">{people}</div></section>'
-            f'{secs}{docs}</main>')
+            f'{video}{secs}{docs}</main>')
     return f'{mob}<div class="layout">{rail}{main}</div>'
 
 
