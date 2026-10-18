@@ -660,7 +660,11 @@ def admin_page(prefix, avail, depth):
     video = (f'<section class="sec"><div class="ch"><h2>איך עובדים עם האתר</h2></div><div class="media">'
              f'<a {href(v["url"], depth, v["title"])} class="vid guide"><span class="ic">{ICON["play"]}</span>'
              f'<span class="vt">{esc(v["title"])}<span class="vs">{esc(v.get("note", ""))}</span></span></a></div></section>' if v else "")
-    people = "".join(f'<div class="person"><b>{esc(p["role"])}</b><span>{esc(p["name"])}</span>'
+    recs = "".join(f'<a {href(r["url"], depth, r["title"])} class="vid"><span class="ic">{ICON["play"]}</span>'
+                   f'<span class="vt">{esc(r["title"])}<span class="vs">{esc(r.get("note", ""))}</span></span></a>'
+                   for r in a.get("recordings", []))  # Zoom meetings, in the site's player
+    video += f'<section class="sec"><div class="ch"><h2>הקלטות מפגשי זום</h2></div><div class="media">{recs}</div></section>' if recs else ""
+    people ="".join(f'<div class="person"><b>{esc(p["role"])}</b><span>{esc(p["name"])}</span>'
                      + (f'<a class="ltr" href="mailto:{esc(p["email"])}">{esc(p["email"])}</a>' if p.get("email") else "")
                      + "</div>" for p in a["staff"])
     secs = "".join(f'<section class="sec"><div class="ch"><h2>{esc(x["h"])}</h2></div><div class="adm">{md_lines(x["lines"])}</div></section>'
@@ -759,6 +763,9 @@ def main():
     print("public site:")
     pub = sorted(n for n in CFG.get("published", []) if n in weeks)
     if pub:
+        syl = ROOT / staff / "syllabus.pdf"  # the detailed syllabus (tools/build_syllabus.py) is public once the course is
+        if syl.exists():
+            shutil.copyfile(syl, ROOT / "syllabus.pdf")
         build_site("", False, pub, weeks, book)
     else:
         build_solo()
