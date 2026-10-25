@@ -29,7 +29,7 @@
   - מספור הפרקים נפרד בכל ספר. מזהה של יחידה: `r3-2`, `py3-2`, `code3-2`.
   - בקובץ שבוע, כל יחידה מוגדרת עם `{"book": "r"|"py"|"code", "ch": N, "secs": [שמות מדויקים]}`.
   - **יחידה לפי מערכת הפעלה:** לפריט ביחידה (prompt או ref) יכול להיות גם `"mac"` — הנוסח ל-Mac, לצד `"text"` של Windows. בשבוע עם `"os_choice": true` (שבוע 1) ובספר מופיע בורר Windows / Mac, שמציג נוסח אחד (נשמר ב-localStorage). נוסח ה-Mac הוא העתק של Windows עם השינויים ההכרחיים בלבד (Terminal ו-zsh, Activity Monitor, Finder/TextEdit, `open`, `python3`).
-  - בדף שבוע הסדר הוא: ניהול קוד, R, פייתון. יש כפתורים להצגת "הכול / R / Python" (נשמר ב-localStorage).
+  - בדף שבוע הסדר הוא: ניהול קוד, R, פייתון. הדף תמיד מציג את כל השפות, בלי כפתורי סינון.
 - **יבוא מ-Notion:**
   - `tools/notion_export.py`: הספר.
   - `tools/notion_weeks.py`: שבועות תשפ״ו, גולמי, ב-`site/content/notion/`.

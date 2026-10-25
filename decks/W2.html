@@ -402,7 +402,7 @@
 </p>
 <p>השבוע מתחילים לכתוב קוד ב-R ובפייתון, ויוצרים קובץ נתונים ראשון — בדיוק כמו גיליון אקסל, אבל בקוד.</p>
 <p>השבוע לא נריץ את הקוד על המחשב שלנו, אלא ב-Google Colab: מחברות שנפתחות בדפדפן, והקוד רץ על מחשב של Google. נפתח מחברת לפייתון ומחברת ל-R, ונבין איפה הקוד רץ ואיפה נשמרים הקבצים.</p>
-<p>נכיר אובייקטים בסיסיים, וקטורים (ובפייתון — רשימות) וטבלת נתונים (data frame), ונשמור אותה כקובץ csv שנפתח באקסל. נלמד גם לכתוב קוד קריא, ומה עושים כשמופיעה הודעת שגיאה.</p>
+<p>נכיר אובייקטים בסיסיים, וקטורים (ובפייתון — רשימות) וטבלת נתונים (data frame), ונשמור אותה כקובץ csv שנפתח באקסל. נלמד גם לכתוב קוד קריא.</p>
 </div>
 </section>
 <section id="google-colab-איפה-הקוד-רץ" class="slide level2">
@@ -679,8 +679,8 @@ female
 </div>
 </div>
 </section>
-<section id="קווים-מנחים-והודעות-שגיאה" class="slide level2">
-<h2>קווים מנחים והודעות שגיאה</h2>
+<section id="קווים-מנחים-בכתיבת-קוד" class="slide level2">
+<h2>קווים מנחים בכתיבת קוד</h2>
 <div class="tb duo-tb">
 <div class="tbox">
 <p class="th">
@@ -699,7 +699,7 @@ female
 לוגיקת תכנות
 </p>
 <p>
-שגיאות הן חלק מהעבודה
+משתנים: שם, ערך וסוג
 </p>
 </div>
 <div class="board">
@@ -715,9 +715,11 @@ R
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Assign values</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">31</span>, <span class="dv">27</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(agee)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out err">
-Error: object 'agee' not found
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Examine</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+27
 </p>
 </div>
 <div class="py">
@@ -731,14 +733,16 @@ Python
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Assign values</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> [<span class="dv">23</span>, <span class="dv">31</span>, <span class="dv">27</span>]</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(agee)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="out err">
-NameError: name 'agee' is not defined
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Examine</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+[23, 31, 27]
 </p>
 </div>
 </div>
 <p class="bnote">
-הודעת שגיאה היא רמז: קוראים אותה, מוצאים את השורה, ומתקנים (כאן — שגיאת כתיב בשם)
+כותרת למסמך · כותרת ראשית עם #### · כותרת משנה ממוספרת עם פועל · שמות מלאים כמו age ו-gender
 </p>
 </div>
 </div>

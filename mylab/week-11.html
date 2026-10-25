@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/site.css?v=f380100a">
+<link rel="stylesheet" href="../assets/site.css?v=9af77c1e">
 <link rel="icon" href="../assets/tau-logo.png">
 </head>
 <body>
@@ -291,18 +291,6 @@ document.querySelectorAll('.copy').forEach(function(b){
     else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy'); ok();}catch(e){} a.remove(); }
   });
 });
-// week page: show both languages, or only R / only Python (remembered in this browser)
-(function(){
-  var box=document.querySelector('.langs[data-kind=lang]'); if(!box) return;
-  function set(l){
-    box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
-    document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
-    try{ localStorage.setItem('yesodot-lang', l); }catch(e){}
-  }
-  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
-  var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
-  if(saved==='r'||saved==='py') set(saved);
-})();
 // units written per operating system: show the Windows or the Mac version (remembered in this browser)
 (function(){
   if(!document.querySelector('.oschoice')) return;

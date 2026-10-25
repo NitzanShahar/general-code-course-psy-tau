@@ -447,14 +447,9 @@ def week_page(w, c, avail, book, depth, staff):
             units.append(f'<div class="wch"><span class="num">{ch["n"]}</span><b>{hx(ch["title"])}</b>'
                          f'<a class="tobook" href="book.html?w={n}#{bk}{ch["n"]}">הפרק המלא בספר ↗</a></div><div class="wunits">{secs}</div>')
         units.append("</div>")
-    langs = {u["book"] for u in c.get("units", [])}
     chooser = ""
     if c.get("os_choice"):  # a week written per operating system (week 1): Windows or Mac
         chooser = OS_CHOOSER
-    elif {"r", "py"} <= langs:
-        chooser = ('<div class="langs" data-kind="lang" role="group" aria-label="איזו שפה להציג"><span>להציג:</span>'
-                   '<button type="button" data-lang="all" class="on">הכול</button><button type="button" data-lang="r">R</button>'
-                   '<button type="button" data-lang="py">Python</button></div>')
     reading = "".join(f'<a href="{esc(r["url"])}" target="_blank" rel="noopener" class="row"><span class="ic">{ICON["book"]}</span>'
                       f'<span><span class="rt ltr" style="display:block;text-align:right">{esc(r["title"])}</span><span class="rs">{esc(r.get("note", ""))}</span></span></a>'
                       for r in c.get("reading", []))
@@ -611,19 +606,6 @@ document.querySelectorAll('.copy').forEach(function(b){
   });
 });"""
 
-LANG_JS = """// week page: show both languages, or only R / only Python (remembered in this browser)
-(function(){
-  var box=document.querySelector('.langs[data-kind=lang]'); if(!box) return;
-  function set(l){
-    box.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
-    document.querySelectorAll('.wbook[data-book=r],.wbook[data-book=py]').forEach(function(d){ d.hidden = (l!=='all' && d.dataset.book!==l); });
-    try{ localStorage.setItem('yesodot-lang', l); }catch(e){}
-  }
-  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) set(b.dataset.lang); });
-  var saved=null; try{ saved=localStorage.getItem('yesodot-lang'); }catch(e){}
-  if(saved==='r'||saved==='py') set(saved);
-})();"""
-
 OS_CHOOSER = ('<div class="oschoice" role="group" aria-label="מערכת הפעלה"><span>על איזה מחשב אתם עובדים?</span><div>'
               '<button type="button" data-os="win" class="on" aria-pressed="true">Windows</button>'
               '<button type="button" data-os="mac" aria-pressed="false">Mac</button></div></div>')
@@ -721,11 +703,11 @@ def build_site(prefix, staff, avail, weeks, book):
     title_of = {w["n"]: w for w in CFG["weeks"]}
     for n in avail:
         body = header(depth, staff, "weeks") + week_page(title_of[n], weeks[n], avail, book, depth, staff) + footer(depth, staff)
-        html_ = page(f"שבוע {n} · {CFG['title']}", body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + OS_JS + "\n" + GATE_JS)
+        html_ = page(f"שבוע {n} · {CFG['title']}", body, depth, staff, COPY_JS + "\n" + OS_JS + "\n" + GATE_JS)
         write(f"{prefix}week-{n}.html", html_)
     home = CFG.get("current") if CFG.get("current") in avail else min(avail)
     body = header(depth, staff, "weeks") + week_page(title_of[home], weeks[home], avail, book, depth, staff) + footer(depth, staff)
-    write(f"{prefix}index.html", page(CFG["title"], body, depth, staff, COPY_JS + "\n" + LANG_JS + "\n" + OS_JS + "\n" + GATE_JS))
+    write(f"{prefix}index.html", page(CFG["title"], body, depth, staff, COPY_JS + "\n" + OS_JS + "\n" + GATE_JS))
     DEPTH[0] = depth
     body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}, only_used=not staff) + footer(depth, staff)
     write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + OS_JS + "\n" + GATE_JS))
