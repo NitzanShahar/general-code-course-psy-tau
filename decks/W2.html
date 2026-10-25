@@ -400,68 +400,67 @@
 <p class="nh">
 שבוע 2 · חומר הלימוד
 </p>
-<p>השבוע מתחילים לעבוד עם נתונים. ניצור קובץ נתונים ראשון — בדיוק כמו גיליון אקסל, אבל בקוד.</p>
-<p>נכיר אובייקטים בסיסיים (מספר ומחרוזת), נבין מהו וקטור (ובפייתון — רשימה), ונאגד כמה וקטורים לטבלת נתונים (data frame). את הטבלה נשמור כקובץ csv ונפתח אותו באקסל.</p>
-<p>במקביל נכיר את סביבת העבודה: ההבדל בין סקריפט לקונסולה, ומחברות (notebooks) ב-Google Colab. נלמד גם לכתוב קוד שאנשים אחרים — ואתם בעוד חודש — יוכלו לקרוא: הערות, כותרות ושמות משתנים טובים. ולבסוף: מה עושים כשמופיעה הודעת שגיאה.</p>
+<p>השבוע מתחילים לכתוב קוד ב-R ובפייתון, ויוצרים קובץ נתונים ראשון — בדיוק כמו גיליון אקסל, אבל בקוד.</p>
+<p>השבוע לא נריץ את הקוד על המחשב שלנו, אלא ב-Google Colab: מחברות שנפתחות בדפדפן, והקוד רץ על מחשב של Google. נפתח מחברת לפייתון ומחברת ל-R, ונבין איפה הקוד רץ ואיפה נשמרים הקבצים.</p>
+<p>נכיר אובייקטים בסיסיים, וקטורים (ובפייתון — רשימות) וטבלת נתונים (data frame), ונשמור אותה כקובץ csv שנפתח באקסל. נלמד גם לכתוב קוד קריא, ומה עושים כשמופיעה הודעת שגיאה.</p>
 </div>
 </section>
-<section id="סקריפט-קונסולה-ומחברת" class="slide level2">
-<h2>סקריפט, קונסולה ומחברת</h2>
+<section id="google-colab-איפה-הקוד-רץ" class="slide level2">
+<h2>Google Colab: איפה הקוד רץ</h2>
 <div class="tb duo-tb">
 <div class="tbox">
 <p class="th">
-סביבת עבודה א: מהטרמינל ל-IDE
+סביבת עבודה: Google Colab
 </p>
 <p>
-RStudio, VS Code ו-Colab — הכול בחלון אחד
+Google Colab: איפה הקוד רץ
 </p>
 <p>
-סקריפט, קונסולה ומחברת
+פתיחת מחברת פייתון ומחברת R
 </p>
 <p>
-RStudio: הממשק וחבילות ראשונות
+תאים (cells) והרצה: Shift+Enter
 </p>
 <p>
-Google Colab ויחידות קוד נפרדות
-</p>
-<p>
-הרצת הסקריפט
+R ופייתון: היסטוריה, חבילות והערות
 </p>
 </div>
 <div class="board">
 <div class="duo">
 <div class="r">
 <p class="lang">
-R · RStudio
+R · Runtime type: R
 </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FIRST STEPS ####</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### WHERE AM I ####</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. In the console</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Which R?</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>R.version.string</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. In a script (Ctrl+Enter)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Working directory</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+‘/content’
+</p>
 </div>
 <div class="py">
 <p class="lang">
 Python · Colab
 </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### FIRST STEPS ####</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### WHERE AM I ####</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. In a notebook cell</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. In a script</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. bash on Google's computer</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pwd</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="out">
+/content &nbsp; sample_data
+</p>
 </div>
 </div>
 <p class="bnote">
-ה-Console של RStudio הוא בדיוק ה-<span class="ltr">&gt;</span> שפגשנו בטרמינל בשבוע שעבר — R שמקשיב
+הדפדפן הוא רק מסך ומקלדת · הקוד רץ על מחשב של Google (Linux, עם CPU, RAM ו-storage משלו)
 </p>
 <p class="bnote">
-סקריפט = הקוד נשמר בקובץ · קונסולה = שורה אחת ונשכחת · מחברת = תאים, והפלט מתחת לכל תא
+המחברת נשמרת ב-Google Drive · קבצים ב-<span class="ltr">/content</span> והמשתנים ב-RAM נמחקים כשה-runtime מתנתק
 </p>
 </div>
 </div>
@@ -674,6 +673,9 @@ female
 </tr>
 
 </tbody></table>
+<p class="bnote">
+ב-Colab הקובץ נשמר ב-<span class="ltr">/content</span> במחשב של Google · חלון הקבצים ← שלוש נקודות ← Download ← פותחים באקסל
+</p>
 </div>
 </div>
 </section>
@@ -744,13 +746,13 @@ NameError: name 'agee' is not defined
 <section id="מטלה-שבועית" class="slide level2">
 <h2>מטלה שבועית</h2>
 <div class="hwbox">
-<p><strong>המטלה השבועית (שבוע 2)</strong> — סקריפט שמייצר קובץ csv ובו 6 נבדקים:</p>
+<p><strong>המטלה השבועית (שבוע 2)</strong> — קוד שמייצר קובץ csv ובו 6 נבדקים, במחברת ב-Google Colab:</p>
 <ol type="1">
 <li>הזינו את המשתנים: מספר נבדק 1 עד 6 (בסדר עולה), מגדר, גיל בין 15 ל-40, ודיכאון (0/1).</li>
 <li>אגדו את המשתנים לתוך מבנה נתונים אחד.</li>
-<li>שמרו את מבנה הנתונים בקובץ csv וודאו שאפשר לפתוח אותו בתוכנה חיצונית (למשל באקסל).</li>
+<li>שמרו את מבנה הנתונים בקובץ csv, הורידו אותו מ-Colab, וודאו שאפשר לפתוח אותו בתוכנה חיצונית (למשל באקסל).</li>
 </ol>
-<p><strong>שפה:</strong> R או פייתון, לבחירתכם · <strong>כותרות</strong> בפורמט הקורס (שם הקורס, השבוע, תעודת זהות ושם) · <strong>הגשה:</strong> קובץ PDF עם הקוד, בלי עזרה של AI.</p>
+<p><strong>שפה:</strong> R או פייתון, לבחירתכם · <strong>כותרות</strong> בפורמט הקורס (שם הקורס, השבוע, תעודת זהות ושם) · <strong>הגשה:</strong> מתרגלים ב-Colab, וכותבים את הקוד בטופס ההגשה, בלי עזרה של AI.</p>
 <p class="due">
 להגשה עד יום ראשון, 1.11.2026, בשעה 12:00
 </p>
