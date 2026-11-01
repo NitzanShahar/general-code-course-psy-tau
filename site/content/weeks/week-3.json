@@ -4,7 +4,12 @@
  "deck": {
   "title": "מצגת שבוע 3",
   "note": "7 שקפים · נפתחת בדפדפן",
-  "url": "decks/W3.html"
+  "url": "decks/W3.html",
+  "recording": {
+   "title": "הקלטת המצגת",
+   "note": "סרטון · 2:02 דקות",
+   "url": "files/recordings/W3-deck.mp4"
+  }
  },
  "videos": [
   {
