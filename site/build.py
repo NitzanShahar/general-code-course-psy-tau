@@ -482,17 +482,20 @@ def week_page(w, c, avail, book, depth, staff):
 <section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div>{chooser}{''.join(units) or '<p class="nounits">השבוע אין יחידות חדשות: חוזרים על החומר של הקורס לקראת הבחינה.</p>'}
 {('<p class="sub">קריאה מומלצת</p>' + reading) if reading else ''}</section>
 {f'<section class="sec"><div class="ch"><h2>סרטוני עזר</h2></div><div class="media">{"".join(videos)}</div></section>' if videos else ''}
-<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div>{hw_html}{solution_html(c, staff)}</section>
+<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div>{hw_html}{solution_html(c, staff, n in CFG.get("solutions_published", []))}</section>
 <nav class="nav">{prev}{nxt}</nav>
 </main>"""
     return f'{mob}<div class="layout">{rail}{main}</div>'
 
 
-def solution_html(c, staff):
-    """Staff site only: the solutions (model answers to open questions; terminal, R and Python code), after the assignment."""
+def solution_html(c, staff, released=False):
+    """The solutions (model answers to open questions; terminal, R and Python code), after the assignment.
+    Always on the staff site; on the public site once the week is in site.json "solutions_published"."""
     sol = c.get("solution")
-    if not staff or not sol:
+    if not sol or not (staff or released):
         return ""
+    note = ("" if not staff else " <span>(פתוח גם לסטודנטים)</span>" if released
+            else " <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span>")
     out = []
     for lang, label in (("answers", "· תשובות לדוגמה"), ("sh", "· הטרמינל"), ("r", "ב-R"), ("py", "בפייתון")):
         parts = []
@@ -502,7 +505,7 @@ def solution_html(c, staff):
             else:
                 parts.append(f'<p>{inline(blk["text"])}</p>')
         if parts:
-            out.append(f'<details class="sol"><summary>{ICON["spark"]}פתרון {label} <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary>'
+            out.append(f'<details class="sol"><summary>{ICON["spark"]}פתרון {label}{note}</summary>'
                        f'<div class="solb">{"".join(parts)}</div></details>')
     return "".join(out)
 
