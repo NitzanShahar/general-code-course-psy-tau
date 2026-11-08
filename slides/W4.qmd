@@ -8,74 +8,18 @@ course-week: "שבוע 4"
 ::: {.nbox}
 <p class="nh">שבוע 4 · חומר הלימוד</p>
 
-השבוע נעמיק בעבודה עם טבלאות נתונים. נלמד לשלוף משתנה בודד או תצפית בודדת, למחוק עמודות ושורות, לשנות תא בודד, ולסנן את הטבלה לפי תנאים — למשל רק נבדקות עם IQ גבוה.
+השבוע ממשיכים לעבוד ב-Google Colab, במחברת R ובמחברת פייתון. את ההתקנות על המחשב שלנו (RStudio ו-VS Code), תיקיית העבודה והנתיבים נעשה בשבוע הבא.
 
-נכיר שני סוגי אובייקטים חדשים: משתנה קטגוריאלי (factor / category) ומשתנה לוגי (אמת/שקר), ונפיק סטטיסטיקה תיאורית לפי קבוצות. ב-R נכיר את חבילת dplyr, ובפייתון את הסינון (masking) של pandas. נסיים בתרשים boxplot.
+נעמיק בעבודה עם טבלאות נתונים, על data.csv מהשבוע שעבר: נשלוף משתנה בודד או תצפית בודדת, נמחק עמודות ושורות, נשנה תא בודד, ונסנן את הטבלה לפי תנאים — למשל רק נבדקות עם IQ גבוה.
 
-בחוט של סביבת העבודה עוברים מ-Colab למחשב שלנו: נכיר מהו IDE, נתקין את RStudio ואת VS Code, ונבין את ההבדל בין קונסולה, סקריפט ומחברת. נכיר את תיקיית העבודה: איך קוראים ושומרים קבצים בנתיב יחסי, ולמה כדאי לעבוד בתיקייה (או פרויקט) אחת לכל עבודה. ונבין לעומק מהן חבילות: מה ההבדל בין התקנה לטעינה, ואיך מתקינים חבילה ב-R ובפייתון.
-:::
-
-## תיקיית העבודה ונתיבים
-
-::: {.tb .duo-tb}
-::: {.tbox}
-<p class="th">סביבת עבודה ב</p>
-<p>מה זה IDE · התקנת RStudio ו-VS Code</p>
-<p>תיקיית העבודה ונתיבים בקוד</p>
-<p>פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה</p>
-:::
-
-::: {.board}
-::: {.duo}
-::: {.r}
-<p class="lang">R</p>
-
-```r
-#### WORKING DIRECTORY ####
-
-# 1. Where am I?
-getwd()
-
-# 2. Relative paths
-df = read.csv('data.csv')
-df = read.csv('data/data.csv')
-
-# 3. Saved next to the script
-write.csv(df, 'data_copy.csv', row.names = FALSE)
-```
-:::
-
-::: {.py}
-<p class="lang">Python</p>
-
-```python
-import os
-import pandas as pd
-
-#### WORKING DIRECTORY ####
-
-# 1. Where am I?
-os.getcwd()
-
-# 2. Relative paths
-df = pd.read_csv('data.csv')
-df = pd.read_csv('data/data.csv')
-
-# 3. Saved next to the script
-df.to_csv('data_copy.csv', index=False)
-```
-:::
-:::
-
-<p class="bnote">תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder</p>
-:::
+נכיר משתנה קטגוריאלי (factor / category) ומשתנה לוגי (אמת/שקר), ונפיק סטטיסטיקה תיאורית לפי קבוצות: ב-R עם dplyr, ובפייתון עם הסינון (masking) של pandas. נסיים בתרשים boxplot, ונבין מהן חבילות: התקנה מול טעינה.
 :::
 
 ## חבילות: התקנה מול טעינה
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">סביבת עבודה ג</p>
+<p class="th">סביבת עבודה · Colab</p>
 <p>חבילות: התקנה מול טעינה</p>
 <p>מהן חבילות (פייתון)</p>
 :::
@@ -88,30 +32,29 @@ df.to_csv('data_copy.csv', index=False)
 ```r
 #### PACKAGES ####
 
-# 1. Install: once per computer
-install.packages('dplyr')
+# 1. Install: in a cell
+install.packages('psych')
 
-# 2. Load: every time, at the top
-library(dplyr)
+# 2. Load: every run, first cell
+library(psych)
 ```
 :::
 
 ::: {.py}
 <p class="lang">Python</p>
 
-```bash
-# 1. Install: once, in the terminal
-pip install pandas
-```
-
 ```python
-# 2. Load: every time, at the top
+# 1. Install: in a cell, with %
+%pip install pandas
+
+# 2. Load: every run, first cell
 import pandas as pd
 ```
 :::
 :::
 
 <p class="bnote">התקנה = להוריד ספר לספרייה בבית · טעינה = להוציא אותו מהמדף ולפתוח על השולחן</p>
+<p class="bnote">ב-Colab מה שהותקן נמחק כשה-runtime מתנתק · dplyr, ggplot2, pandas ו-matplotlib כבר מותקנות: רק טוענים</p>
 :::
 :::
 
@@ -293,13 +236,13 @@ plt.show()
 ## מטלה שבועית
 
 ::: {.hwbox}
-**המטלה השבועית (שבוע 4)** — טוענים את קובץ ה-csv מהשבוע הקודם.
+**המטלה השבועית (שבוע 4)** — ב-Colab: מעלים לחלון הקבצים את data.csv מהשבוע הקודם, וקוראים אותו בשם בלבד.
 
 **חלק א – עריכת הנתונים:** הדפסת משתנה הגיל והשורה החמישית; מחיקת משתנה הדיכאון והשורות 60 ו-72; הדפסה ושינוי של התא בשורה 10 בעמודת הגיל; מימדי הטבלה; משתנה לוגי IQ_group (מעל / מתחת לחציון); מגדר כמשתנה קטגוריאלי ובדיקת רמותיו; מסד נתונים שני של בנות עם IQ גבוה.
 
-**חלק ב – הצגת הנתונים:** סטטיסטיקה תיאורית לגיל עבור IQ גבוה, ובנפרד לכל רמת מגדר (בפקודה אחת); טבלה מסכמת למסד של הבנות; boxplot של החרדה לפי מגדר; שמירה כ-csv.
+**חלק ב – הצגת הנתונים:** סטטיסטיקה תיאורית לגיל עבור IQ גבוה, ובנפרד לכל רמת מגדר (בפקודה אחת); טבלה מסכמת למסד של הבנות; boxplot של החרדה לפי מגדר; שמירה כ-data_updated.csv והורדה למחשב (נמשיך איתו בשבוע הבא).
 
-**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+**שפה:** R או פייתון · **הגשה:** רק בטופס Qualtrics — מקלידים את הקוד בעצמכם, בלי עזרה של AI.
 
 <p class="due">להגשה עד יום ראשון, 15.11.2026, בשעה 12:00</p>
 :::

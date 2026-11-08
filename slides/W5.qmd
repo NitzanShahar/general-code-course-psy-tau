@@ -12,14 +12,70 @@ course-week: "שבוע 5"
 
 לאחר מכן נעשה היכרות ראשונה עם קשר בין שני משתנים רציפים: מתאם, מקדם רגרסיה, ותרשים פיזור עם קו רגרסיה.
 
-זה השבוע האחרון בחוט של סביבת העבודה: נעבור לעבוד בפייתון על המחשב שלנו ב-VS Code (ולא רק ב-Colab), ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.
+בחוט של סביבת העבודה עוברים מ-Colab למחשב שלנו: נתקין את RStudio ואת VS Code, נכיר את תיקיית העבודה ונתיבים בקוד, נריץ פייתון ב-VS Code, ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.
+:::
+
+## תיקיית העבודה ונתיבים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">סביבת עבודה א</p>
+<p>מה זה IDE · התקנת RStudio ו-VS Code</p>
+<p>תיקיית העבודה ונתיבים בקוד</p>
+<p>פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### WORKING DIRECTORY ####
+
+# 1. Where am I?
+getwd()
+
+# 2. Relative paths
+df = read.csv('data.csv')
+df = read.csv('data/data.csv')
+
+# 3. Saved next to the script
+write.csv(df, 'data_copy.csv', row.names = FALSE)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import os
+import pandas as pd
+
+#### WORKING DIRECTORY ####
+
+# 1. Where am I?
+os.getcwd()
+
+# 2. Relative paths
+df = pd.read_csv('data.csv')
+df = pd.read_csv('data/data.csv')
+
+# 3. Saved next to the script
+df.to_csv('data_copy.csv', index=False)
+```
+:::
+:::
+
+<p class="bnote">תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder</p>
+:::
 :::
 
 ## VS Code, ומהקוד ל-PDF
 
 ::: {.tb}
 ::: {.tbox}
-<p class="th">סביבת עבודה ד</p>
+<p class="th">סביבת עבודה ב</p>
 <p>פייתון ב-VS Code</p>
 <p>מחברת מול סקריפט</p>
 <p>מהקוד ל-PDF להגשה</p>
