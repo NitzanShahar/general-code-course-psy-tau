@@ -10,6 +10,8 @@ course-week: "שבוע 6"
 
 השבוע נתמקד בווקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.
 
+בחוט של סביבת העבודה עוברים מ-Colab למחשב שלנו: נתקין את RStudio ואת VS Code, נכיר את תיקיית העבודה ונתיבים בקוד, נריץ פייתון ב-VS Code, ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.
+
 במקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub — כלים שמאפשרים לשמור את ההיסטוריה של הקוד, לחזור לגרסה קודמת כשמשהו נשבר, ולשתף קוד עם אחרים. בשבוע הבא נשתמש בהם במטלה.
 :::
 
@@ -134,6 +136,87 @@ df = pd.DataFrame(m1, columns=['x', 'y'])
 ```
 :::
 :::
+:::
+:::
+
+## תיקיית העבודה ונתיבים
+
+::: {.tb .duo-tb}
+::: {.tbox}
+<p class="th">סביבת עבודה א</p>
+<p>מה זה IDE · התקנת RStudio ו-VS Code</p>
+<p>תיקיית העבודה ונתיבים בקוד</p>
+<p>פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה</p>
+:::
+
+::: {.board}
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
+
+```r
+#### WORKING DIRECTORY ####
+
+# 1. Where am I?
+getwd()
+
+# 2. Relative paths
+df = read.csv('data.csv')
+df = read.csv('data/data.csv')
+
+# 3. Saved next to the script
+write.csv(df, 'data_copy.csv', row.names = FALSE)
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import os
+import pandas as pd
+
+#### WORKING DIRECTORY ####
+
+# 1. Where am I?
+os.getcwd()
+
+# 2. Relative paths
+df = pd.read_csv('data.csv')
+df = pd.read_csv('data/data.csv')
+
+# 3. Saved next to the script
+df.to_csv('data_copy.csv', index=False)
+```
+:::
+:::
+
+<p class="bnote">תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder</p>
+:::
+:::
+
+## VS Code, ומהקוד ל-PDF
+
+::: {.tb}
+::: {.tbox}
+<p class="th">סביבת עבודה ב</p>
+<p>פייתון ב-VS Code</p>
+<p>מחברת מול סקריפט</p>
+<p>מהקוד ל-PDF להגשה</p>
+:::
+
+::: {.board}
+<p class="lang">מהקוד ל-PDF · תמיד מריצים הכול מחדש קודם</p>
+
+<table class="df he" style="font-size:.5em;margin-top:.8em">
+<tr><th>סביבה</th><th>קודם: מריצים הכול מחדש</th><th>אחר כך: מפיקים</th></tr>
+<tr><td>RStudio</td><td>Session › Restart R</td><td>File › Compile Report (Ctrl+Shift+K)</td></tr>
+<tr><td>Colab</td><td>Restart session and run all</td><td>File › Print › Save as PDF</td></tr>
+<tr><td>VS Code</td><td>Restart › Run All</td><td dir="ltr">… › Export › HTML › Print (PDF)</td></tr>
+</table>
+
+<p class="bnote" style="margin-top:1.2em">סקריפט (<span class="ltr">.py</span>) = קובץ שרץ מההתחלה עד הסוף · מחברת (<span class="ltr">.ipynb</span>) = תאים, והפלט נשמר ליד הקוד</p>
+<p class="bnote">ה-PDF מוכיח שהקוד רץ מתחילתו ועד סופו בלי שגיאות — בדקו שהכותרות, הקוד, הפלט והגרפים כולם שם</p>
 :::
 :::
 

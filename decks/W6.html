@@ -401,6 +401,7 @@
 שבוע 6 · חומר הלימוד
 </p>
 <p>השבוע נתמקד בווקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.</p>
+<p>בחוט של סביבת העבודה עוברים מ-Colab למחשב שלנו: נתקין את RStudio ואת VS Code, נכיר את תיקיית העבודה ונתיבים בקוד, נריץ פייתון ב-VS Code, ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.</p>
 <p>במקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub — כלים שמאפשרים לשמור את ההיסטוריה של הקוד, לחזור לגרסה קודמת כשמשהו נשבר, ולשתף קוד עם אחרים. בשבוע הבא נשתמש בהם במטלה.</p>
 </div>
 </section>
@@ -540,6 +541,145 @@ Python
 </div>
 </div>
 </section>
+<section id="תיקיית-העבודה-ונתיבים" class="slide level2">
+<h2>תיקיית העבודה ונתיבים</h2>
+<div class="tb duo-tb">
+<div class="tbox">
+<p class="th">
+סביבת עבודה א
+</p>
+<p>
+מה זה IDE · התקנת RStudio ו-VS Code
+</p>
+<p>
+תיקיית העבודה ונתיבים בקוד
+</p>
+<p>
+פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה
+</p>
+</div>
+<div class="board">
+<div class="duo">
+<div class="r">
+<p class="lang">
+R
+</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### WORKING DIRECTORY ####</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Where am I?</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Relative paths</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'data.csv'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'data/data.csv'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Saved next to the script</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">'data_copy.csv'</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="py">
+<p class="lang">
+Python
+</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#### WORKING DIRECTORY ####</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Where am I?</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Relative paths</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data.csv'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/data.csv'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Saved next to the script</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'data_copy.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p class="bnote">
+תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder
+</p>
+</div>
+</div>
+</section>
+<section id="vs-code-ומהקוד-ל-pdf" class="slide level2">
+<h2>VS Code, ומהקוד ל-PDF</h2>
+<div class="tb">
+<div class="tbox">
+<p class="th">
+סביבת עבודה ב
+</p>
+<p>
+פייתון ב-VS Code
+</p>
+<p>
+מחברת מול סקריפט
+</p>
+<p>
+מהקוד ל-PDF להגשה
+</p>
+</div>
+<div class="board">
+<p class="lang">
+מהקוד ל-PDF · תמיד מריצים הכול מחדש קודם
+</p>
+
+<table class="df he" style="font-size:.5em;margin-top:.8em">
+<tbody><tr>
+<th>
+סביבה
+</th>
+<th>
+קודם: מריצים הכול מחדש
+</th>
+<th>
+אחר כך: מפיקים
+</th>
+</tr>
+<tr>
+<td>
+RStudio
+</td>
+<td>
+Session › Restart R
+</td>
+<td>
+File › Compile Report (Ctrl+Shift+K)
+</td>
+</tr>
+<tr>
+<td>
+Colab
+</td>
+<td>
+Restart session and run all
+</td>
+<td>
+File › Print › Save as PDF
+</td>
+</tr>
+<tr>
+<td>
+VS Code
+</td>
+<td>
+Restart › Run All
+</td>
+<td dir="ltr">
+… › Export › HTML › Print (PDF)
+</td>
+</tr>
+
+</tbody></table>
+<p class="bnote" style="margin-top:1.2em">
+סקריפט (<span class="ltr">.py</span>) = קובץ שרץ מההתחלה עד הסוף · מחברת (<span class="ltr">.ipynb</span>) = תאים, והפלט נשמר ליד הקוד
+</p>
+<p class="bnote">
+ה-PDF מוכיח שהקוד רץ מתחילתו ועד סופו בלי שגיאות — בדקו שהכותרות, הקוד, הפלט והגרפים כולם שם
+</p>
+</div>
+</div>
+</section>
 <section id="ניהול-קוד-למה-git" class="slide level2">
 <h2>ניהול קוד: למה Git?</h2>
 <div class="cards">
@@ -604,9 +744,9 @@ GitHub Desktop (מומלץ להתחלה)
 <p class="lang">
 README.md
 </p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># yesodot-hw</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Assignments for the course</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>"Foundations of programming in empirical science".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># yesodot-hw</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Assignments for the course</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>"Foundations of programming in empirical science".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p class="lang">
 git log –oneline · ההיסטוריה של המאגר
 </p>
