@@ -3,37 +3,248 @@
  "upto": 5,
  "lists": {
   "r": [
-   {"pkg": "base", "cmds": [
-    "R.version.string", "getwd()", "print()", "class()", "c()", "seq()", "rep()", "sample()", "length()", "unique()",
-    "names()", "dim()", "nrow()", "ncol()", "data.frame()", "factor()", "levels()", "as.factor()", "as.numeric()",
-    "is.na()", "na.omit()", "sum()", "mean()", "min()", "max()", "range()", "summary()",
-    "rowSums()", "rowMeans()", "colSums()", "colMeans()", "scale()", "tapply()", "save()", "load()", "library()",
-    "=", "<-", "+  -  *  /", ">  <  ==  !=", "&  |  !", ":", "$", "[ ]", "|>", "NA", "NULL", "TRUE  FALSE"]},
-   {"pkg": "utils", "cmds": ["head()", "tail()", "read.csv()", "write.csv()", "install.packages()", "packageVersion()"]},
-   {"pkg": "stats", "cmds": ["rnorm()", "runif()", "rbinom()", "median()", "sd()", "quantile()", "lm()", "coef()", "cor()"]},
-   {"pkg": "graphics", "cmds": ["hist()", "plot()", "abline()", "boxplot()"]},
-   {"pkg": "dplyr", "load": "library(dplyr)", "cmds": ["select()", "filter()", "arrange()", "mutate()", "summarise()", "group_by()", "slice()", "n()"]},
-   {"pkg": "ggplot2", "load": "library(ggplot2)", "cmds": ["ggplot()", "aes()", "geom_histogram()", "geom_density()", "geom_dotplot()", "geom_boxplot()", "geom_point()", "geom_smooth()", "geom_abline()", "labs()", "xlim()", "ylim()", "theme()", "+"]},
-   {"pkg": "ggpubr", "load": "library(ggpubr)", "cmds": ["ggscatter()"]},
-   {"pkg": "psych", "load": "library(psych)", "cmds": ["describe()"]}
+   {
+    "pkg": "base",
+    "cmds": [
+     "R.version.string",
+     "getwd()",
+     "print()",
+     "class()",
+     "c()",
+     "seq()",
+     "rep()",
+     "sample()",
+     "length()",
+     "unique()",
+     "names()",
+     "dim()",
+     "nrow()",
+     "ncol()",
+     "data.frame()",
+     "factor()",
+     "levels()",
+     "as.numeric()",
+     "is.na()",
+     "na.omit()",
+     "sum()",
+     "mean()",
+     "min()",
+     "max()",
+     "range()",
+     "summary()",
+     "rowSums()",
+     "rowMeans()",
+     "colSums()",
+     "colMeans()",
+     "scale()",
+     "save()",
+     "load()",
+     "library()",
+     "=",
+     "<-",
+     "+  -  *  /",
+     ">  <  ==  !=",
+     "&  !",
+     ":",
+     "$",
+     "[ ]",
+     "|>",
+     "NA",
+     "NULL",
+     "TRUE  FALSE"
+    ]
+   },
+   {
+    "pkg": "utils",
+    "cmds": [
+     "head()",
+     "tail()",
+     "read.csv()",
+     "write.csv()",
+     "install.packages()",
+     "packageVersion()"
+    ]
+   },
+   {
+    "pkg": "stats",
+    "cmds": [
+     "rnorm()",
+     "runif()",
+     "rbinom()",
+     "median()",
+     "sd()",
+     "quantile()",
+     "lm()",
+     "coef()",
+     "cor()"
+    ]
+   },
+   {
+    "pkg": "graphics",
+    "cmds": [
+     "hist()",
+     "plot()",
+     "abline()",
+     "boxplot()"
+    ]
+   },
+   {
+    "pkg": "dplyr",
+    "load": "library(dplyr)",
+    "cmds": [
+     "select()",
+     "filter()",
+     "arrange()",
+     "mutate()",
+     "summarise()",
+     "group_by()",
+     "n()"
+    ]
+   },
+   {
+    "pkg": "ggplot2",
+    "load": "library(ggplot2)",
+    "cmds": [
+     "ggplot()",
+     "aes()",
+     "geom_histogram()",
+     "geom_density()",
+     "geom_dotplot()",
+     "geom_boxplot()",
+     "geom_point()",
+     "geom_smooth()",
+     "xlim()",
+     "ylim()",
+     "theme()",
+     "+"
+    ]
+   },
+   {
+    "pkg": "ggpubr",
+    "load": "library(ggpubr)",
+    "cmds": [
+     "ggscatter()"
+    ]
+   },
+   {
+    "pkg": "psych",
+    "load": "library(psych)",
+    "cmds": [
+     "describe()"
+    ]
+   }
   ],
   "py": [
-   {"pkg": "Python (מובנה)", "cmds": [
-    "print()", "type()", "len()", "int()", "list.append()", "[ ]", "{ }", "+  -  *  /  **", ">  <  ==  !=", "&  |", "True  False", "None"]},
-   {"pkg": "Colab", "cmds": ["!pwd", "!ls", "%pip install"]},
-   {"pkg": "numpy", "load": "import numpy as np", "cmds": [
-    "np.array()", "np.arange()", "np.linspace()", "np.zeros()", "np.ones()", "np.random.normal()", "np.random.uniform()", "np.random.binomial()", "np.random.choice()", "np.nan", ".shape"]},
-   {"pkg": "pandas", "load": "import pandas as pd", "cmds": [
-    "pd.DataFrame()", "pd.Series()", "pd.read_csv()", "pd.Categorical()", "df.to_csv()",
-    "df.columns", "df.shape", "df['col']", "df.iloc[ ]", "df.loc[ ]", "df.drop()", "df.reset_index()",
-    ".astype('category')", ".cat.categories", ".cat.codes", ".groupby()", ".agg()", ".value_counts()",
-    ".mean()", ".std()", ".median()", ".min()", ".max()", ".describe()", ".corr()",
-    ".isna()", ".sum()", ".dropna()", ".fillna()",
-    ".plot.hist()", ".plot.scatter()", ".plot()", ".boxplot()"]},
-   {"pkg": "matplotlib", "load": "import matplotlib.pyplot as plt", "cmds": [
-    "plt.scatter()", "plt.plot()", "plt.xlabel()", "plt.ylabel()", "plt.title()", "plt.suptitle()", "plt.xlim()", "plt.ylim()", "plt.show()", "ax.set_xlabel()"]},
-   {"pkg": "scikit-learn", "load": "from sklearn.linear_model import LinearRegression", "cmds": ["LinearRegression()", ".fit()", ".predict()", ".intercept_", ".coef_"]},
-   {"pkg": "seaborn", "load": "import seaborn as sns", "cmds": ["sns.regplot()"]}
+   {
+    "pkg": "Python (מובנה)",
+    "cmds": [
+     "print()",
+     "type()",
+     "len()",
+     "list.append()",
+     "[ ]",
+     "{ }",
+     "+  -  *  /",
+     ">  <  ==  !=",
+     "&",
+     "True  False",
+     "None"
+    ]
+   },
+   {
+    "pkg": "Colab",
+    "cmds": [
+     "!pwd",
+     "!ls",
+     "%pip install"
+    ]
+   },
+   {
+    "pkg": "numpy",
+    "load": "import numpy as np",
+    "cmds": [
+     "np.array()",
+     "np.arange()",
+     "np.linspace()",
+     "np.zeros()",
+     "np.ones()",
+     "np.random.normal()",
+     "np.random.uniform()",
+     "np.random.binomial()",
+     "np.random.choice()",
+     "np.nan",
+     ".shape"
+    ]
+   },
+   {
+    "pkg": "pandas",
+    "load": "import pandas as pd",
+    "cmds": [
+     "pd.DataFrame()",
+     "pd.Series()",
+     "pd.read_csv()",
+     "pd.Categorical()",
+     "df.to_csv()",
+     "df.columns",
+     "df.shape",
+     "df['col']",
+     "df.iloc[ ]",
+     "df.loc[ ]",
+     "df.drop()",
+     ".astype('category')",
+     ".cat.categories",
+     ".cat.codes",
+     ".groupby()",
+     ".agg()",
+     ".value_counts()",
+     ".mean()",
+     ".std()",
+     ".median()",
+     ".min()",
+     ".max()",
+     ".describe()",
+     ".corr()",
+     ".isna()",
+     ".sum()",
+     ".dropna()",
+     ".fillna()",
+     ".plot.hist()",
+     ".plot.scatter()",
+     ".plot()",
+     ".boxplot()"
+    ]
+   },
+   {
+    "pkg": "matplotlib",
+    "load": "import matplotlib.pyplot as plt",
+    "cmds": [
+     "plt.scatter()",
+     "plt.plot()",
+     "plt.xlabel()",
+     "plt.ylabel()",
+     "plt.title()",
+     "plt.show()",
+     "ax.set_xlabel()"
+    ]
+   },
+   {
+    "pkg": "scikit-learn",
+    "load": "from sklearn.linear_model import LinearRegression",
+    "cmds": [
+     "LinearRegression()",
+     ".fit()",
+     ".predict()",
+     ".intercept_",
+     ".coef_"
+    ]
+   },
+   {
+    "pkg": "seaborn",
+    "load": "import seaborn as sns",
+    "cmds": [
+     "sns.regplot()"
+    ]
+   }
   ]
  }
 }
