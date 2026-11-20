@@ -316,7 +316,10 @@ def header(depth, staff, on):
     nav = ""
     if on is not None:
         # first = rightmost in RTL; the syllabus is in the admin page's "מסמכים" section
-        links = [("index.html", "תוכן הקורס", "weeks"), ("book.html", "ספר היחידות", "book"), ("admin.html", "מנהלות הקורס", "admin")]
+        links = [("index.html", "תוכן הקורס", "weeks"), ("book.html", "ספר היחידות", "book")]
+        if staff:
+            links.append(("commands.html", "רשימת פקודות", "commands"))  # staff site only
+        links.append(("admin.html", "מנהלות הקורס", "admin"))
         nav = '<nav class="gen">' + "".join(
             f'<a href="{h}" class="{"on" if k == on else ""}">{t}</a>' for h, t, k in links) + "</nav>"
     badge = '<span class="staffbadge">גרסת מתרגלים</span>' if staff else ""
@@ -671,6 +674,36 @@ def admin_page(prefix, avail, depth):
     return f'{mob}<div class="layout">{rail}{main}</div>'
 
 
+COMMANDS_CSS = """.layout.one{grid-template-columns:minmax(0,1fr)}
+.cgrps{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-top:6px}
+.cgrp{border:1px solid #e0e7ee;border-radius:14px;padding:14px 16px;background:#fbfcfd}
+.cgrp h3{margin:0 0 8px;font-size:18px;color:var(--bc)}
+.cload{display:block;margin-bottom:10px;padding:5px 9px;border-radius:8px;background:var(--bt);color:var(--bc);font-family:'JetBrains Mono',monospace;font-size:13px;direction:ltr;text-align:left;overflow-wrap:anywhere}
+.cmds{display:flex;flex-wrap:wrap;gap:6px;direction:ltr}
+.cmd{padding:3px 8px;border-radius:7px;background:#fff;border:1px solid #d9e2ea;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--u);white-space:pre}
+@media(max-width:700px){.cgrps{grid-template-columns:1fr}}"""
+
+
+def commands_page():
+    """"רשימת פקודות" (content/commands.json, staff site only): the commands of the weeks so far, per package, no explanations."""
+    c = json.loads((SRC / "content" / "commands.json").read_text(encoding="utf-8"))
+    names = {"r": ("R", "R"), "py": ("Python", "פייתון")}
+    secs = []
+    for k, (tag, name) in names.items():
+        groups = []
+        for g in c["lists"][k]:
+            load = f'<code class="cload ltr">{esc(g["load"])}</code>' if g.get("load") else ""
+            cmds = "".join(f'<code class="cmd ltr">{esc(x)}</code>' for x in g["cmds"])
+            groups.append(f'<div class="cgrp"><h3 dir="auto">{esc(g["pkg"])}</h3>{load}<div class="cmds">{cmds}</div></div>')
+        secs.append(f'<section class="chap b-{k}" id="cmd-{k}"><div class="ch"><span class="btag">{tag}</span><h2>{esc(name)}</h2></div>'
+                    f'<div class="cgrps">{"".join(groups)}</div></section>')
+    hero = (f'<section class="bhero"><p class="eyebrow">רשימת פקודות</p><h1>רשימת פקודות</h1>'
+            f'<p class="intro">הפקודות שנלמדו בשבועות 1 עד {c["upto"]}, לפי חבילות. ב-R ובפייתון.</p>'
+            f'<div class="bchips"><a class="bchip b-r" href="#cmd-r"><span class="btag">R</span><span>R</span></a>'
+            f'<a class="bchip b-py" href="#cmd-py"><span class="btag">Py</span><span>פייתון</span></a></div></section>')
+    return f'<style>{COMMANDS_CSS}</style><div class="layout one"><main class="card">{hero}{"".join(secs)}</main></div>'
+
+
 PLAYER_JS = """// the site's player: a local video, no download button, no right-click menu (makes saving harder, not impossible)
 (function(){
   var q=new URLSearchParams(location.search), v=q.get('v')||'', t=q.get('t')||'';
@@ -714,6 +747,9 @@ def build_site(prefix, staff, avail, weeks, book):
     DEPTH[0] = depth
     body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}, only_used=not staff) + footer(depth, staff)
     write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + OS_JS + "\n" + GATE_JS))
+    if staff:
+        body = header(depth, staff, "commands") + commands_page() + footer(depth, staff)
+        write(f"{prefix}commands.html", page(f"רשימת פקודות · {CFG['title']}", body, depth, staff, GATE_JS))
     body = header(depth, staff, "admin") + admin_page(prefix, avail, depth) + footer(depth, staff)
     write(f"{prefix}admin.html", page(f"מנהלות הקורס · {CFG['title']}", body, depth, staff, GATE_JS))
     write(f"{prefix}play.html", player_page(depth, staff))
@@ -740,7 +776,7 @@ def main():
 
     # clear generated pages from previous builds
     for d in (ROOT, ROOT / staff):
-        for f in list(d.glob("week-*.html")) + [d / "book.html", d / "admin.html", d / "play.html"]:
+        for f in list(d.glob("week-*.html")) + [d / "book.html", d / "admin.html", d / "play.html", d / "commands.html"]:
             if f.exists():
                 f.unlink()
 
