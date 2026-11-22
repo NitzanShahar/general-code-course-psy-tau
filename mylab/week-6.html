@@ -271,7 +271,7 @@ print(multiplication(x1, x2))
 עשה את השלבים האלו אחד אחד לפי הסדר. עצור בסוף כל שלב לראות שהבנתי, ורק אז המשך לשלב הבא.</textarea></div><p class="bsfoot">יחידה 8.2 בספר פייתון · <a href="book.html#py8-2">לראות אותה בתוך הפרק ↗</a></p></div></details></div></div>
 </section>
 
-<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div><div class="hw"><b class="ht">המטלה השבועית (שבוע 6)</b><div class="hwb"><p>השבוע תכתבו קוד שיוצר וקטורים ומטריצה, מחשב עליהם סטטיסטיקה, ומשתמש בלולאות, בתנאים ובפונקציה משלכם. <b>את המטלה פותרים פעמיים: פעם ב-<bdi>R</bdi> ופעם בפייתון</b>, כל אחת במחברת משלה ב-<bdi>Google Colab</bdi> (מחברת <bdi>R</bdi> ומחברת פייתון, כמו בשבועות הקודמים). בשתי השפות עושים את אותם הסעיפים. השבוע אין קובץ נתונים: את כל הנתונים יוצרים בקוד.</p><p class="hp">חלק א - וקטורים ומטריצות</p><ol><li>צרו שני וקטורים, עם <bdi>15</bdi> ערכים בכל אחד:<ul><li><code class="ltr">x1</code>: דגימה מהתפלגות נורמלית עם ממוצע <bdi>50</bdi> וסטיית תקן <bdi>10</bdi>.</li><li><code class="ltr">x2</code>: דגימה מהתפלגות אחידה בין <bdi>0</bdi> ל-<bdi>100</bdi>.</li></ul></li><li>חברו את שני הווקטורים למטריצה בשם <code class="ltr">m</code>, שבה כל וקטור הוא עמודה (<bdi>15</bdi> שורות ו-<bdi>2</bdi> עמודות), והדפיסו אותה.</li><li>צרו מטריצה בשם <code class="ltr">m2</code>, שבה כל ערך של <code class="ltr">m</code> מוכפל ב-<bdi>2</bdi>. הדפיסו את הסכום של שתי המטריצות, <code class="ltr">m + m2</code>.</li><li>הדפיסו את הערך שבשורה <bdi>4</bdi> ובעמודה <bdi>2</bdi> של <code class="ltr">m</code>. שנו אותו ל-<code class="ltr">100</code>, והדפיסו שוב את <code class="ltr">m</code>.</li><li>שמרו את השורה החמישית של <code class="ltr">m</code> בווקטור בשם <code class="ltr">row5</code>, ואת העמודה הראשונה של <code class="ltr">m</code> בווקטור בשם <code class="ltr">col1</code>, והדפיסו את שניהם.</li></ol><p class="hp">חלק ב - סטטיסטיקה במטריצה</p><ol><li>הדפיסו את הממוצע של כל עמודה ב-<code class="ltr">m</code>, ואת הסכום של כל שורה ב-<code class="ltr">m</code>.</li></ol><p class="hp">חלק ג - לולאות ותנאים</p><ol><li>כתבו לולאת <bdi>for</bdi> שעוברת על הערכים של <code class="ltr">x2</code>, ובעזרת תנאי <bdi>if</bdi> סופרת כמה מהם גדולים מ-<bdi>50</bdi>. שמרו את הספירה במשתנה בשם <code class="ltr">n_high</code>, והדפיסו אותו.</li><li>כתבו לולאת <bdi>for</bdi> שעוברת על <bdi>15</bdi> השורות של <code class="ltr">m</code>. בכל שורה, השתמשו ב-<bdi>if</bdi> וב-<bdi>else</bdi> כדי לשמור בווקטור בשם <code class="ltr">row_max</code> את הגדול מבין שני הערכים שבשורה. הדפיסו את <code class="ltr">row_max</code>.</li><li>צרו, בלי לולאה, וקטור בשם <code class="ltr">group</code>, שבו לכל ערך של <code class="ltr">x1</code> כתוב <code class="ltr">&quot;high&quot;</code> אם הוא גדול מ-<bdi>50</bdi>, ו-<code class="ltr">&quot;low&quot;</code> אחרת. הדפיסו את <code class="ltr">group</code>.</li></ol><p class="hp">חלק ד - פונקציה</p><ol><li>כתבו פונקציה בשם <code class="ltr">count_above</code>, שמקבלת שני קלטים: וקטור <code class="ltr">x</code> ומספר <code class="ltr">threshold</code>.<ul><li>הפונקציה עוברת בלולאת <bdi>for</bdi> על הערכים של <code class="ltr">x</code>, וסופרת כמה מהם גדולים מ-<code class="ltr">threshold</code>.</li><li>הפונקציה מחזירה (<bdi>return</bdi>) את הספירה.</li></ul></li><li>הפעילו את <code class="ltr">count_above</code> על <code class="ltr">x2</code> עם הסף <bdi>50</bdi>, והדפיסו את התוצאה. בדקו שהיא זהה ל-<code class="ltr">n_high</code> מחלק ג.</li><li>הפעילו את <code class="ltr">count_above</code> על <code class="ltr">x1</code> עם הסף <bdi>60</bdi>, והדפיסו את התוצאה.</li><li>לפני ההגשה: בכל אחת משתי המחברות בחרו <bdi>Runtime</bdi> &gt; <bdi>Restart session and run all</bdi>, ובדקו שהקוד רץ מההתחלה ועד הסוף בלי שגיאות.</li></ol></div><p class="sm">שפה: <b>מגישים את המטלה גם ב-<bdi>R</bdi> וגם בפייתון</b> — שני קודים מלאים, אחד בכל שפה.</p><p class="sm">כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת כל אחד מהקודים את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.</p><p class="sm">ההגשה: <b>מגישים רק דרך טופס ההגשה ב-<bdi>Qualtrics</bdi></b> (הכפתור בסוף המטלה), ולא ב-<bdi>Colab</bdi>. ב-<bdi>Colab</bdi> רק מתרגלים ובודקים שהקוד רץ. בטופס מקלידים את הקוד בעצמכם: קוד <bdi>R</bdi> בשדה של <bdi>R</bdi>, וקוד פייתון בשדה של פייתון. את המטלה כותבים ומקלידים בלי עזרה של <bdi>AI</bdi> — כהכנה לבחינה.</p><p class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>להגשה עד יום ראשון, 29.11.2026, בשעה 12:00</p></div><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון ב-R <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
+<section class="sec"><div class="ch"><h2>המטלה השבועית</h2></div><div class="hw"><b class="ht">המטלה השבועית (שבוע 6)</b><div class="hwb"><p>השבוע תכתבו קוד שיוצר וקטורים ומטריצה, מחשב עליה סטטיסטיקה, ומשתמש בלולאות, בתנאים ובפונקציה משלכם. <b>את המטלה פותרים פעמיים: פעם ב-<bdi>R</bdi> ופעם בפייתון</b>, כל אחת במחברת משלה ב-<bdi>Google Colab</bdi> (מחברת <bdi>R</bdi> ומחברת פייתון, כמו בשבועות הקודמים). בשתי השפות עושים את אותם הסעיפים. השבוע אין קובץ נתונים: את כל הנתונים יוצרים בקוד.</p><p class="hp">חלק א - וקטורים ומטריצות</p><ol><li>צרו שני וקטורים, עם <bdi>15</bdi> ערכים בכל אחד:<ul><li><code class="ltr">x1</code>: דגימה מהתפלגות נורמלית עם ממוצע <bdi>50</bdi> וסטיית תקן <bdi>10</bdi>.</li><li><code class="ltr">x2</code>: דגימה מהתפלגות אחידה בין <bdi>0</bdi> ל-<bdi>100</bdi>.</li></ul></li><li>חברו את שני הווקטורים למטריצה בשם <code class="ltr">m</code>, שבה כל וקטור הוא עמודה (<bdi>15</bdi> שורות ו-<bdi>2</bdi> עמודות), והדפיסו אותה.</li><li>הדפיסו את הערך שבשורה <bdi>4</bdi> ובעמודה <bdi>2</bdi> של <code class="ltr">m</code>. שנו אותו ל-<code class="ltr">100</code>, והדפיסו שוב את <code class="ltr">m</code>.</li></ol><p class="hp">חלק ב - סטטיסטיקה במטריצה</p><ol><li>הדפיסו את הממוצע של כל עמודה ב-<code class="ltr">m</code>, ואת הסכום של כל שורה ב-<code class="ltr">m</code>.</li></ol><p class="hp">חלק ג - לולאות ותנאים</p><ol><li>כתבו לולאת <bdi>for</bdi> שעוברת על <bdi>15</bdi> השורות של <code class="ltr">m</code>. בכל שורה, השתמשו ב-<bdi>if</bdi> וב-<bdi>else</bdi> כדי לשמור בווקטור בשם <code class="ltr">row_max</code> את הגדול מבין שני הערכים שבשורה. הדפיסו את <code class="ltr">row_max</code>.</li><li>צרו, בלי לולאה, וקטור בשם <code class="ltr">group</code>, שבו לכל ערך של <code class="ltr">x1</code> כתוב <code class="ltr">&quot;high&quot;</code> אם הוא גדול מ-<bdi>50</bdi>, ו-<code class="ltr">&quot;low&quot;</code> אחרת. הדפיסו את <code class="ltr">group</code>.</li></ol><p class="hp">חלק ד - פונקציה</p><ol><li>כתבו פונקציה בשם <code class="ltr">count_above</code>, שמקבלת שני קלטים: וקטור <code class="ltr">x</code> ומספר <code class="ltr">threshold</code>.<ul><li>הפונקציה עוברת בלולאת <bdi>for</bdi> על הערכים של <code class="ltr">x</code>, וסופרת כמה מהם גדולים מ-<code class="ltr">threshold</code>.</li><li>הפונקציה מחזירה (<bdi>return</bdi>) את הספירה.</li></ul></li><li>הפעילו את <code class="ltr">count_above</code> פעמיים, והדפיסו את שתי התוצאות: על <code class="ltr">x2</code> עם הסף <bdi>50</bdi>, ועל <code class="ltr">x1</code> עם הסף <bdi>60</bdi>.</li><li>לפני ההגשה: בכל אחת משתי המחברות בחרו <bdi>Runtime</bdi> &gt; <bdi>Restart session and run all</bdi>, ובדקו שהקוד רץ מההתחלה ועד הסוף בלי שגיאות.</li></ol></div><p class="sm">שפה: <b>מגישים את המטלה גם ב-<bdi>R</bdi> וגם בפייתון</b> — שני קודים מלאים, אחד בכל שפה.</p><p class="sm">כותרות הקוד: השתמשו בפורמט הכותרות של הקורס, וכתבו בתחילת כל אחד מהקודים את שם הקורס, השבוע, מספר תעודת הזהות שלכם ושמכם.</p><p class="sm">ההגשה: <b>מגישים רק דרך טופס ההגשה ב-<bdi>Qualtrics</bdi></b> (הכפתור בסוף המטלה), ולא ב-<bdi>Colab</bdi>. ב-<bdi>Colab</bdi> רק מתרגלים ובודקים שהקוד רץ. בטופס מקלידים את הקוד בעצמכם: קוד <bdi>R</bdi> בשדה של <bdi>R</bdi>, וקוד פייתון בשדה של פייתון. את המטלה כותבים ומקלידים בלי עזרה של <bdi>AI</bdi> — כהכנה לבחינה.</p><p class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>להגשה עד יום ראשון, 29.11.2026, בשעה 12:00</p></div><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון ב-R <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
 # Week 6
 # assignment by &lt; First Name &gt; &lt; Last Name &gt;, id &lt; 123456789 &gt;
 
@@ -286,20 +286,10 @@ x2 = runif(15, min = 0, max = 100)
 m = cbind(x1, x2)
 print(m)
 
-# 3. Multiply by a scalar, and add the two matrices
-m2 = m * 2
-print(m + m2)
-
-# 4. Print and change the value in row 4, column 2
+# 3. Print and change the value in row 4, column 2
 print(m[4, 2])
 m[4, 2] = 100
 print(m)
-
-# 5. Row 5 and column 1
-row5 = m[5, ]
-col1 = m[, 1]
-print(row5)
-print(col1)
 
 
 #### STATISTICS WITH MATRICES ####
@@ -311,16 +301,7 @@ print(rowSums(m))
 
 #### LOOPS AND CONDITIONS ####
 
-# 1. Count the values of x2 above 50
-n_high = 0
-for (value in x2) {
-  if (value &gt; 50) {
-    n_high = n_high + 1
-  }
-}
-print(n_high)
-
-# 2. The larger of the two values in each row of m
+# 1. The larger of the two values in each row of m
 row_max = c()
 for (i in 1:15) {
   if (m[i, 1] &gt; m[i, 2]) {
@@ -331,7 +312,7 @@ for (i in 1:15) {
 }
 print(row_max)
 
-# 3. The same test on a whole vector at once, without a loop
+# 2. The same test on a whole vector at once, without a loop
 group = ifelse(x1 &gt; 50, &quot;high&quot;, &quot;low&quot;)
 print(group)
 
@@ -349,7 +330,7 @@ count_above = function(x, threshold) {
   return(n)
 }
 
-# 2. Use the function (the first result equals n_high)
+# 2. Use the function
 print(count_above(x2, 50))
 print(count_above(x1, 60))
 </code></pre></div></details><details class="sol"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>פתרון בפייתון <span>(באתר המתרגלים בלבד · ישוחרר לסטודנטים אחרי מועד ההגשה)</span></summary><div class="solb"><pre class="solcode ltr"><code># Foundations of programming for empirical science
@@ -369,20 +350,10 @@ x2 = np.random.uniform(low=0, high=100, size=15)
 m = np.column_stack((x1, x2))
 print(m)
 
-# 3. Multiply by a scalar, and add the two matrices
-m2 = m * 2
-print(m + m2)
-
-# 4. Print and change the value in row 4, column 2 (Python counts from 0)
+# 3. Print and change the value in row 4, column 2 (Python counts from 0)
 print(m[3, 1])
 m[3, 1] = 100
 print(m)
-
-# 5. Row 5 and column 1
-row5 = m[4, :]
-col1 = m[:, 0]
-print(row5)
-print(col1)
 
 
 #### STATISTICS WITH MATRICES ####
@@ -394,14 +365,7 @@ print(m.sum(axis=1))
 
 #### LOOPS AND CONDITIONS ####
 
-# 1. Count the values of x2 above 50
-n_high = 0
-for value in x2:
-    if value &gt; 50:
-        n_high = n_high + 1
-print(n_high)
-
-# 2. The larger of the two values in each row of m
+# 1. The larger of the two values in each row of m
 row_max = []
 for i in range(15):
     if m[i, 0] &gt; m[i, 1]:
@@ -411,7 +375,7 @@ for i in range(15):
 row_max = np.array(row_max)
 print(row_max)
 
-# 3. The same test on a whole vector at once, without a loop
+# 2. The same test on a whole vector at once, without a loop
 group = np.where(x1 &gt; 50, &quot;high&quot;, &quot;low&quot;)
 print(group)
 
@@ -426,7 +390,7 @@ def count_above(x, threshold):
             n = n + 1
     return n
 
-# 2. Use the function (the first result equals n_high)
+# 2. Use the function
 print(count_above(x2, 50))
 print(count_above(x1, 60))
 </code></pre></div></details></section>
