@@ -10,6 +10,8 @@ course-week: "שבוע 7"
 
 השבוע עוברים מ-Colab למחשב שלנו: נתקין את RStudio ואת VS Code, נכיר את תיקיית העבודה ונתיבים בקוד, נריץ פייתון ב-VS Code, ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.
 
+נחזור גם ללוגיקה של תכנות: פסאודו-קוד, החלטות וחזרות במילים, והודעות שגיאה ב-R ובפייתון.
+
 על המחשב אפשר לעבוד עם הרבה קבצים: בעזרת לולאת for והפונקציות שלמדנו בשבוע שעבר נטען ונאחד את הקבצים של כל הנבדקים מתיקייה אחת.
 
 במקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub, נעבוד איתם מהטרמינל ומ-RStudio, ובמטלה נעלה את הקוד לראשונה למאגר ב-GitHub.
@@ -104,6 +106,10 @@ df.to_csv('data_copy.csv', index=False)
 <p>ניהול שמות קבצים בתיקיית עבודה</p>
 <p>מבנה נתונים מתיקייה עם קובצי csv</p>
 <p>זיהוי ערכים ייחודיים בעמודה</p>
+<p class="th" style="margin-top:.5em">לוגיקת תכנות</p>
+<p>פירוק בעיה ופסאודו-קוד</p>
+<p>החלטות וחזרות במילים</p>
+<p>שגיאות הן חלק מהעבודה</p>
 :::
 
 ::: {.board}
@@ -114,12 +120,12 @@ df.to_csv('data_copy.csv', index=False)
 ```r
 #### LOAD ALL SUBJECTS ####
 
-files = list.files('stroop_data',
-                   pattern = '.csv')
+folder = 'stroop_data'
+files = list.files(folder, pattern = '.csv')
 
 df = data.frame()
 for (file in files) {
-  path = file.path('stroop_data', file)
+  path = file.path(folder, file)
   df_subject = read.csv(path)
   df = rbind(df, df_subject)
 }
@@ -137,12 +143,13 @@ import pandas as pd
 
 #### LOAD ALL SUBJECTS ####
 
-files = os.listdir('stroop_data')
+folder = 'stroop_data'
+files = os.listdir(folder)
 
 df_list = []
 for file in files:
     if file.endswith('.csv'):
-        path = os.path.join('stroop_data', file)
+        path = os.path.join(folder, file)
         df_subject = pd.read_csv(path)
         df_list.append(df_subject)
 df = pd.concat(df_list)
