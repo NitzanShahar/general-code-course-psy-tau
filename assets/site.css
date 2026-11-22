@@ -284,3 +284,10 @@ html[data-os=mac] .osv[data-os=win]{display:none}
 .hwsubmit:hover{color:#fff;background:#1b3a55}
 .hwsubmit svg{width:24px;height:24px;flex:none}
 .hwsubmit small{display:block;font-size:13px;font-weight:400;opacity:.8;margin-top:2px}
+.hwsubmits{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:660px;margin:20px auto 4px}
+.hwsubmits .hwsubmit{margin:0;max-width:none;justify-content:flex-start;text-align:start;font-size:20px;padding:12px 18px}
+.hwsubmit.r{background:var(--r)}.hwsubmit.r:hover{background:#155a51}
+.hwsubmit.py{background:var(--py)}.hwsubmit.py:hover{background:#1f4f78}
+.hwsubmit .lg{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:13px;background:#fff}
+.hwsubmit .lg svg{width:38px;height:38px}
+@media (max-width:600px){.hwsubmits{grid-template-columns:1fr}}

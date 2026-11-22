@@ -37,6 +37,16 @@ ICON = {
     "spark": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>',
 }
 
+# Language logos for the two submission buttons (hw.submit_urls)
+LOGO = {
+    "r": '<svg viewBox="0 0 100 80" aria-hidden="true"><ellipse cx="47" cy="35" rx="45" ry="31" fill="#a3a7ae"/>'
+         '<ellipse cx="53" cy="39" rx="33" ry="20" fill="#fff"/>'
+         '<path fill="#2165b6" fill-rule="evenodd" d="M34 25H66C78 25 85 32 85 40.5C85 48.5 79 54 71 55L88 79H73L59 56H47V79H34ZM47 35V47H64C69.5 47 72.5 44.6 72.5 41C72.5 37.4 69.5 35 64 35Z"/></svg>',
+    "py": '<svg viewBox="0 0 256 255" aria-hidden="true">'
+          '<path fill="#3776ab" d="M126.9.1C62.1.1 66.1 28.2 66.1 28.2l.1 29.1h61.9V66H41.6S.1 61.4.1 126.8s36.2 63.1 36.2 63.1H58v-30.4s-1.2-36.2 35.6-36.2h61.4s34.5.6 34.5-33.3V34S194.7.1 126.9.1zM92.8 19.7a11.1 11.1 0 1 1 0 22.3 11.1 11.1 0 0 1 0-22.3z"/>'
+          '<path fill="#ffd43b" d="M128.8 254.1c64.8 0 60.8-28.1 60.8-28.1l-.1-29.1h-61.9v-8.7h86.4s41.5 4.7 41.5-60.7c0-65.4-36.2-63.1-36.2-63.1h-21.6v30.4s1.2 36.2-35.6 36.2h-61.4s-34.5-.6-34.5 33.3v56s-5.2 33.9 62.6 33.9zm34.1-19.6a11.1 11.1 0 1 1 0-22.3 11.1 11.1 0 0 1 0 22.3z"/></svg>',
+}
+
 esc = html.escape
 
 
@@ -421,6 +431,14 @@ def file_link(ref, depth):
 WEEK_ORDER = ("code", "r", "py")
 
 
+def submit_buttons(urls):
+    """One submission form per language (hw.submit_urls = {"r": url, "py": url}), each marked by its logo."""
+    btns = "".join(f'<a class="hwsubmit {k}" href="{esc(urls[k])}" target="_blank" rel="noopener"><span class="lg">{LOGO[k]}</span>'
+                   f'<span>להגשה ב{name}<small>טופס ההגשה של {short} נפתח בלשונית חדשה</small></span></a>'
+                   for k, name, short in (("r", "-R", "R"), ("py", "פייתון", "פייתון")) if urls.get(k))
+    return f'<div class="hwsubmits">{btns}</div>' if btns else ""
+
+
 def week_page(w, c, avail, book, depth, staff):
     n = w["n"]
     DEPTH[0] = depth
@@ -483,7 +501,8 @@ def week_page(w, c, avail, book, depth, staff):
         hw_html = (f'<div class="hw"><b class="ht">{esc(hw["title"])}</b>{ctx}{dl}<div class="hwb">{body}</div>'
                    + "".join(f'<p class="sm">{inline(p)}</p>' for p in hw.get("submit", [])) + due
                    + (f'<a class="hwsubmit" href="{esc(hw["submit_url"])}" target="_blank" rel="noopener">{ICON["spark"]}<span>להגשת המטלה<small>טופס ההגשה נפתח בלשונית חדשה</small></span></a>'
-                      if hw.get("submit_url") else "") + "</div>")
+                      if hw.get("submit_url") else "")
+                   + submit_buttons(hw.get("submit_urls") or {}) + "</div>")
 
     prev_n = next((m for m in sorted(avail, reverse=True) if m < n), None)
     next_n = next((m for m in sorted(avail) if m > n), None)

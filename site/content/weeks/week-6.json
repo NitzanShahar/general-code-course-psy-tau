@@ -91,7 +91,11 @@
   ],
   "files": [],
   "submit": [],
-  "due": "יום ראשון, 29.11.2026, בשעה 12:00"
+  "due": "יום ראשון, 29.11.2026, בשעה 12:00",
+  "submit_urls": {
+   "r": "https://socialtau.qualtrics.com/jfe/form/SV_4NGWhLibsceMRTM",
+   "py": "https://socialtau.qualtrics.com/jfe/form/SV_cuXrjlOzIzHba8C"
+  }
  },
  "solution": {
   "r": [

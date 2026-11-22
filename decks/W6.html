@@ -403,6 +403,7 @@
 <p>השבוע שני נושאים. הראשון: וקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.</p>
 <p>השני: לגרום לקוד לעבוד בשבילנו. נכתוב לולאות for כדי לחזור על פעולה לכל ערך, ותנאים (if ו-else) כדי שהקוד יפעל אחרת במצבים שונים. אחר כך נכתוב פונקציות משלנו — עם שם, קלט ופלט — ונלמד למצוא בהן שגיאות (debugging).</p>
 <p>גם השבוע ממשיכים לעבוד ב-Google Colab, במחברת R ובמחברת פייתון. את המעבר למחשב שלנו (RStudio ו-VS Code) ואת Git נעשה בשבוע הבא.</p>
+<p><strong>עברנו חצי סמסטר:</strong> בדף השבוע באתר יש סקר אמצע סמסטר קצר. נשמח שתמלאו אותו.</p>
 </div>
 </section>
 <section id="פעולות-וגישה-לערכים" class="slide level2">
@@ -413,13 +414,13 @@
 וקטורים ומטריצות
 </p>
 <p>
-חיבור ואיחוד וקטורים למטריצה
+איחוד וקטורים למטריצה
 </p>
 <p>
 כפל של וקטור ומטריצה בסקלר
 </p>
 <p>
-פעולות בין מטריצות
+חיבור של שתי מטריצות
 </p>
 <p>
 גישה ושינוי ערכים לפי שורה ועמודה
@@ -440,14 +441,13 @@ R · matrix
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Combine into a matrix</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> <span class="fu">cbind</span>(x, y)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>), <span class="at">nrow =</span> <span class="dv">15</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> m1 <span class="sc">*</span> <span class="dv">2</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">+</span> m2</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">%*%</span> <span class="fu">t</span>(m2)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Row and column</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">4</span>, <span class="dv">2</span>] <span class="ot">=</span> <span class="dv">100</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>m2[<span class="dv">5</span>, ]</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>m2[, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Row and column</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">4</span>, <span class="dv">2</span>] <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">5</span>, ]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>m1[, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="py">
 <p class="lang">
@@ -464,14 +464,13 @@ Python · numpy
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Combine into a matrix</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span> np.column_stack([x, y])</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> np.random.normal(size<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">2</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> m1 <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">+</span> m2</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">@</span> m2.T</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Row and column (from 0!)</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">3</span>, <span class="dv">1</span>] <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>m2[<span class="dv">4</span>, :]</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>m2[:, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Row and column (from 0!)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">3</span>, <span class="dv">1</span>] <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">4</span>, :]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>m1[:, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -485,10 +484,10 @@ Python · numpy
 ניתוח סטטיסטי עם מטריצות
 </p>
 <p>
-ממוצעים, סכומים וס״ת של שורות ועמודות
+ממוצע של כל הערכים במטריצה
 </p>
 <p>
-זיהוי וספירה של ערכים חסרים
+ממוצעים וסכומים של שורות ועמודות
 </p>
 <p class="th" style="margin-top:.5em">
 המרה בין מבני נתונים
@@ -505,17 +504,15 @@ R
 </p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### DESCRIBE A MATRIX ####</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Rows and columns</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(m1)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(m1)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(m1, <span class="dv">2</span>, sd)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Missing values</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>m1[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span>), <span class="dv">1</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(m1))</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Matrix to data frame</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">as.data.frame</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. All the values</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(m1)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Rows and columns</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(m1)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(m1)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Matrix to data frame</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">as.data.frame</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="py">
 <p class="lang">
@@ -525,17 +522,15 @@ Python
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#### DESCRIBE A MATRIX ####</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Rows (axis=1), columns (axis=0)</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>m1.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>m1.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>m1.std(axis<span class="op">=</span><span class="dv">0</span>, ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Missing values</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>m1[[<span class="dv">1</span>, <span class="dv">6</span>], <span class="dv">0</span>] <span class="op">=</span> np.nan</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>np.isnan(m1).<span class="bu">sum</span>()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Matrix to data frame</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(m1, columns<span class="op">=</span>[<span class="st">'x'</span>, <span class="st">'y'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. All the values</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>m1.mean()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Rows (axis=1), columns (axis=0)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>m1.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>m1.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Matrix to data frame</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(m1, columns<span class="op">=</span>[<span class="st">'x'</span>, <span class="st">'y'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -771,6 +766,7 @@ Python
 <p><strong>המטלה השבועית (שבוע 6)</strong> — ב-Colab, בכל אחת משתי המחברות. אין קובץ נתונים: את כל הנתונים יוצרים בקוד.</p>
 <p><strong>חלק א – וקטורים ומטריצות:</strong> x1 (נורמלית, ממוצע 50, ס״ת 10) ו-x2 (אחידה, 0 עד 100), 15 ערכים בכל אחד; מטריצה m שבה כל וקטור הוא עמודה; הדפסה של הערך בשורה 4 ועמודה 2 ושינוי שלו ל-100; ממוצע של כל עמודה וסכום של כל שורה.</p>
 <p><strong>חלק ב – לולאות ותנאים:</strong> row_max — הגדול מבין שני הערכים בכל שורה של m (for, if ו-else); group — high או low לכל ערך של x1, בלי לולאה. <strong>חלק ג – פונקציה:</strong> count_above(x, threshold) סופרת בלולאה כמה ערכים גדולים מהסף; מפעילים אותה על x2 עם הסף 50 ועל x1 עם הסף 60.</p>
+<p><strong>הגשה:</strong> שני טפסים נפרדים, אחד ל-R ואחד לפייתון. הכפתורים נמצאים בדף השבוע באתר.</p>
 <p class="due">
 להגשה עד יום ראשון, 29.11.2026, בשעה 12:00
 </p>
