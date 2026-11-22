@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.2.269">
 
   <meta name="author" content="פרופ׳ ניצן שחר · יסודות התכנות במדע אמפירי · תשפ״ז">
-  <title>בקרת זרימה ופונקציות</title>
+  <title>מ-Colab למחשב: סביבת עבודה ו-Git</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,42 +390,36 @@
 <section id="title-slide" class="quarto-title-block center" dir="rtl">
   <img class="tau-title-logo" src="theme/tau-logo.png" alt="אוניברסיטת תל אביב">
   <p class="week-label">שבוע 7</p>
-  <h1 class="title">בקרת זרימה ופונקציות</h1>
+  <h1 class="title">מ-Colab למחשב: סביבת עבודה ו-Git</h1>
   <div class="title-rule"></div>
   <p class="author">פרופ׳ ניצן שחר · יסודות התכנות במדע אמפירי · תשפ״ז</p>
 </section>
-<section id="בקרת-זרימה-ופונקציות" class="slide level2">
-<h2>בקרת זרימה ופונקציות</h2>
+<section id="סביבת-עבודה-ו-git" class="slide level2">
+<h2>סביבת עבודה ו-Git</h2>
 <div class="nbox">
 <p class="nh">
 שבוע 7 · חומר הלימוד
 </p>
-<p>השבוע נלמד לגרום לקוד לעבוד בשבילנו: בקרת זרימה ופונקציות.</p>
-<p>נכתוב תנאים (if / else) כדי שהקוד יפעל אחרת במצבים שונים, ולולאות (for) כדי לחזור על פעולה על הרבה קבצים או נבדקים. אחר כך נכתוב פונקציות משלנו — עם שם, קלט ופלט — ונלמד לאתר שגיאות (debugging).</p>
-<p>בחוט של ניהול הקוד נעבוד עם Git מתוך הטרמינל ומתוך RStudio, ובמטלה הזו נעלה את הקוד לראשונה למאגר ב-GitHub.</p>
+<p>השבוע עוברים מ-Colab למחשב שלנו: נתקין את RStudio ואת VS Code, נכיר את תיקיית העבודה ונתיבים בקוד, נריץ פייתון ב-VS Code, ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.</p>
+<p>על המחשב אפשר לעבוד עם הרבה קבצים: בעזרת לולאת for והפונקציות שלמדנו בשבוע שעבר נטען ונאחד את הקבצים של כל הנבדקים מתיקייה אחת.</p>
+<p>במקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub, נעבוד איתם מהטרמינל ומ-RStudio, ובמטלה נעלה את הקוד לראשונה למאגר ב-GitHub.</p>
 </div>
 </section>
-<section id="תנאים-ולולאות" class="slide level2">
-<h2>תנאים ולולאות</h2>
+<section id="תיקיית-העבודה-ונתיבים" class="slide level2">
+<h2>תיקיית העבודה ונתיבים</h2>
 <div class="tb duo-tb">
 <div class="tbox">
 <p class="th">
-בקרת זרימה
+מ-Colab למחשב א
 </p>
 <p>
-החלטות וחזרות במילים
+מה זה IDE · התקנת RStudio ו-VS Code
 </p>
 <p>
-תנאי if, else (ו-elif בפייתון)
+תיקיית העבודה ונתיבים בקוד
 </p>
 <p>
-לולאת for ומעקב אחר אינדקס
-</p>
-<p>
-ifelse על וקטור שלם
-</p>
-<p>
-לולאת while (פייתון)
+פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה
 </p>
 </div>
 <div class="board">
@@ -434,51 +428,118 @@ ifelse על וקטור שלם
 <p class="lang">
 R
 </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FLOW CONTROL ####</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### WORKING DIRECTORY ####</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. if-else</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">=</span> <span class="dv">1200</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (rt <span class="sc">&gt;</span> <span class="dv">1000</span>) {</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">'slow'</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">'ok'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. for loop</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>rts <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">450</span>, <span class="dv">1200</span>, <span class="dv">800</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(rts[i])</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. A whole vector at once</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(rts <span class="sc">&gt;</span> <span class="dv">1000</span>, <span class="st">'slow'</span>, <span class="st">'ok'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Where am I?</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Relative paths</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'data.csv'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'data/data.csv'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Saved next to the script</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">'data_copy.csv'</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="py">
 <p class="lang">
 Python
 </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#### FLOW CONTROL ####</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. if-else</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rt <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'slow'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'ok'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. for loop</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>rts <span class="op">=</span> [<span class="dv">450</span>, <span class="dv">1200</span>, <span class="dv">800</span>]</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(rts[i])</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. A whole vector at once</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>np.where(np.array(rts) <span class="op">&gt;</span> <span class="dv">1000</span>, <span class="st">'slow'</span>, <span class="st">'ok'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#### WORKING DIRECTORY ####</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Where am I?</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Relative paths</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data.csv'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/data.csv'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Saved next to the script</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'data_copy.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="bnote">
-R תוחם בלוק בסוגריים מסולסלים <span class="ltr">{ }</span> · פייתון — בנקודתיים ובהזחה
+תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder
+</p>
+</div>
+</div>
+</section>
+<section id="vs-code-ומהקוד-ל-pdf" class="slide level2">
+<h2>VS Code, ומהקוד ל-PDF</h2>
+<div class="tb">
+<div class="tbox">
+<p class="th">
+מ-Colab למחשב ב
+</p>
+<p>
+פייתון ב-VS Code
+</p>
+<p>
+מחברת מול סקריפט
+</p>
+<p>
+מהקוד ל-PDF להגשה
+</p>
+</div>
+<div class="board">
+<p class="lang">
+מהקוד ל-PDF · תמיד מריצים הכול מחדש קודם
+</p>
+
+<table class="df he" style="font-size:.5em;margin-top:.8em">
+<tbody><tr>
+<th>
+סביבה
+</th>
+<th>
+קודם: מריצים הכול מחדש
+</th>
+<th>
+אחר כך: מפיקים
+</th>
+</tr>
+<tr>
+<td>
+RStudio
+</td>
+<td>
+Session › Restart R
+</td>
+<td>
+File › Compile Report (Ctrl+Shift+K)
+</td>
+</tr>
+<tr>
+<td>
+Colab
+</td>
+<td>
+Restart session and run all
+</td>
+<td>
+File › Print › Save as PDF
+</td>
+</tr>
+<tr>
+<td>
+VS Code
+</td>
+<td>
+Restart › Run All
+</td>
+<td dir="ltr">
+… › Export › HTML › Print (PDF)
+</td>
+</tr>
+
+</tbody></table>
+<p class="bnote" style="margin-top:1.2em">
+סקריפט (<span class="ltr">.py</span>) = קובץ שרץ מההתחלה עד הסוף · מחברת (<span class="ltr">.ipynb</span>) = תאים, והפלט נשמר ליד הקוד
+</p>
+<p class="bnote">
+ה-PDF מוכיח שהקוד רץ מתחילתו ועד סופו בלי שגיאות — בדקו שהכותרות, הקוד, הפלט והגרפים כולם שם
 </p>
 </div>
 </div>
@@ -488,13 +549,10 @@ R תוחם בלוק בסוגריים מסולסלים <span class="ltr">{ }</spa
 <div class="tb duo-tb">
 <div class="tbox">
 <p class="th">
-עבודה עם קבצים
+לולאה על קבצים
 </p>
 <p>
 ניהול שמות קבצים בתיקיית עבודה
-</p>
-<p>
-grepl: חיפוש מחרוזת בשם
 </p>
 <p>
 מבנה נתונים מתיקייה עם קובצי csv
@@ -527,89 +585,106 @@ R
 <p class="lang">
 Python
 </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#### LOAD ALL SUBJECTS ####</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> glob.glob(<span class="st">'stroop_data/*.csv'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> os.listdir(<span class="st">'stroop_data'</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df_list <span class="op">=</span> []</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    df_subject <span class="op">=</span> pd.read_csv(<span class="bu">file</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    df_list.append(df_subject)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat(df_list)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'subject'</span>].nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="פונקציות-ואיתור-שגיאות" class="slide level2">
-<h2>פונקציות ואיתור שגיאות</h2>
-<div class="tb duo-tb">
-<div class="tbox">
-<p class="th">
-פונקציות
-</p>
-<p>
-הגדרת פונקציה: שם, קלט ופלט
-</p>
-<p>
-הפעלת פונקציה ושמירת התוצאה
-</p>
-<p class="th" style="margin-top:.5em">
-מציאת שגיאות
-</p>
-<p>
-לעצור בתוך הפונקציה ולבדוק ערכים
-</p>
-</div>
-<div class="board">
-<div class="duo">
-<div class="r">
-<p class="lang">
-R
-</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FUNCTIONS ####</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>standardize <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">=</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">=</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> (x <span class="sc">-</span> m) <span class="sc">/</span> s</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Use and save the result</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>rt_z <span class="ot">=</span> <span class="fu">standardize</span>(df<span class="sc">$</span>rt)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Debug: stop inside</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># browser()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="py">
-<p class="lang">
-Python
-</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### FUNCTIONS ####</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> standardize(x):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> x.mean()    <span class="co"># NaN skipped</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> x.std()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> (x <span class="op">-</span> m) <span class="op">/</span> s</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> z</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Use and save the result</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'rt_z'</span>] <span class="op">=</span> standardize(df[<span class="st">'rt'</span>])</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Debug: stop inside</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># breakpoint()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">'.csv'</span>):</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        path <span class="op">=</span> os.path.join(<span class="st">'stroop_data'</span>, <span class="bu">file</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        df_subject <span class="op">=</span> pd.read_csv(path)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        df_list.append(df_subject)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat(df_list)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'subject'</span>].nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="bnote">
-ב-RStudio וב-VS Code אפשר גם ללחוץ ליד מספר השורה כדי לעצור שם (breakpoint)
+הלולאה וה-if משבוע שעבר, הפעם על שמות הקבצים בתיקייה · התיקייה נמצאת בתוך תיקיית העבודה
+</p>
+</div>
+</div>
+<p>:::</p>
+</section>
+<section id="ניהול-קוד-למה-git" class="slide level2">
+<h2>ניהול קוד: למה Git?</h2>
+<div class="cards">
+<div class="card code">
+<h3>
+האתגרים
+</h3>
+<ul>
+<li><span class="ltr">analysis_final_v2_REALLY_final.R</span></li>
+<li>לחזור לגרסה שעבדה לפני שבוע</li>
+<li>לדעת מי שינה מה, ולמה</li>
+<li>לעבוד כמה אנשים על אותו קוד</li>
+</ul>
+</div>
+<div class="card py">
+<h3>
+הפתרון: ניהול גרסאות
+</h3>
+<ul>
+<li><strong>Git</strong> — תוכנה ששומרת את ההיסטוריה של התיקייה</li>
+<li><strong>GitHub</strong> — אתר שמחזיק עותק של ההיסטוריה בענן</li>
+<li>כל שמירה (commit) היא „נקודת שמירה״ עם הסבר קצר</li>
+</ul>
+</div>
+</div>
+<div class="cards" style="margin-top:.9em">
+<div class="card">
+<h3>
+מושגים בסיסיים
+</h3>
+<p><span class="ltr">repository · commit · push / pull</span><br><span class="ltr">README · .gitignore</span></p>
+</div>
+<div class="card">
+<h3>
+מושגים מתקדמים
+</h3>
+<p><span class="ltr">branch · merge · pull request</span> — כשעובדים כמה אנשים על אותו פרויקט</p>
+</div>
+</div>
+</section>
+<section id="מאגר-ב-github" class="slide level2">
+<h2>מאגר ב-GitHub</h2>
+<div class="tb">
+<div class="tbox">
+<p class="th">
+ניהול קוד א: Git ו-GitHub
+</p>
+<p>
+רקע כללי
+</p>
+<p>
+פקודות בסיסיות ב-GitHub
+</p>
+<p>
+קובץ README
+</p>
+<p>
+GitHub Desktop (מומלץ להתחלה)
+</p>
+</div>
+<div class="board">
+<p class="lang">
+README.md
+</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># yesodot-hw</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Assignments for the course</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>"Foundations of programming in empirical science".</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="lang">
+git log –oneline · ההיסטוריה של המאגר
+</p>
+<pre class="text"><code>a3f9c21  Add outlier function
+7be0d14  Load all stroop files
+1c42e88  First version of week 7</code></pre>
+<p class="bnote">
+עורכים ← commit (שמירה מקומית עם הודעה) ← push (שליחה ל-GitHub)
 </p>
 </div>
 </div>

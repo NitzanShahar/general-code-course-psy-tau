@@ -1,7 +1,8 @@
 """Build the course site (GitHub Pages, served from the repo root).
 
 Sources (edit these): site/site.json, site/site.css, site/img/, site/content/weeks/week-N.json,
-  site/content/book.json (units imported from Notion) and site/content/book_extra_*.json (units written for this course).
+  site/content/book.json (units imported from Notion) and site/content/book_extra_*.json (units written for this course);
+  site/content/book_patch.json rewrites the unit list of some Notion chapters (it survives a re-import of book.json).
   The book has three inner books — R, Python and code management ("code"); site.json "book_layout" lists their chapters in order.
 Output (do not edit by hand):
   index.html                  public site: a general announcement while "published" is empty, otherwise the published weeks
@@ -61,6 +62,19 @@ def load_book():
     for f in sorted(content.glob("book_extra_*.json")):
         for c in json.loads(f.read_text(encoding="utf-8")):
             pool[c["key"]] = c
+    # book_patch.json: Notion chapters whose units were rewritten for this course (kept across a Notion re-import).
+    # "secs" is the chapter's new unit list, in order: a string keeps the Notion unit of that name, an object is a unit written here.
+    patch = content / "book_patch.json"
+    for p in (json.loads(patch.read_text(encoding="utf-8"))["chapters"] if patch.exists() else []):
+        c = pool.get(p["chapter"])
+        if c is None:
+            print(f"  ! book_patch: chapter {p['chapter']} not found")
+            continue
+        old = {s["h"]: s for s in c["secs"]}
+        for s in p["secs"]:
+            if isinstance(s, str) and s not in old:
+                print(f"  ! book_patch: no unit {s} in {c['title']}")
+        pool[p["chapter"]] = dict(c, secs=[old[s] if isinstance(s, str) else s for s in p["secs"] if not isinstance(s, str) or s in old])
     drop = set(CFG.get("book_drop_sections", []))
     names = CFG.get("book_chapter_titles", {})
     book = {}
@@ -477,9 +491,14 @@ def week_page(w, c, avail, book, depth, staff):
     prev = (f'<a href="week-{prev_n}.html"><span>→ שבוע {prev_n}: {hx(title_of[prev_n])}</span></a>' if prev_n else "<span>→ אין שבוע קודם</span>")
     nxt = (f'<a href="week-{next_n}.html"><span>שבוע {next_n}: {hx(title_of[next_n])} ←</span></a>' if next_n else "<span>השבוע הבא בהכנה ←</span>")
     when = f"שבוע {n} · יום ראשון {w.get('date', '')}" + (f" · {w['note']}" if w.get("note") else "")
+    sv = c.get("survey")  # a course survey (e.g. mid-semester feedback), right after the week's intro
+    survey = (f'<section class="sec survey"><div class="ch"><h2>{esc(sv["title"])}</h2></div>'
+              + (f'<p>{inline(sv["text"])}</p>' if sv.get("text") else "")
+              + f'<a class="hwsubmit" href="{esc(sv["url"])}" target="_blank" rel="noopener">{ICON["spark"]}<span>{esc(sv.get("button", "למילוי הסקר"))}<small>הטופס נפתח בלשונית חדשה</small></span></a></section>'
+              if sv else "")
 
     main = f"""<main class="card">
-<section class="hero"><p class="eyebrow">{esc(when)}</p><h1>{hx(w['title'])}</h1>{''.join(f'<p class="intro">{inline(p)}</p>' for p in c['intro'].split(chr(10) + chr(10)) if p.strip())}</section>
+<section class="hero"><p class="eyebrow">{esc(when)}</p><h1>{hx(w['title'])}</h1>{''.join(f'<p class="intro">{inline(p)}</p>' for p in c['intro'].split(chr(10) + chr(10)) if p.strip())}</section>{survey}
 <section class="sec"><div class="ch"><h2>מצגת</h2></div><div class="media">{''.join(deck)}</div></section>
 <section class="sec units"><div class="ch"><h2>מה לומדים השבוע</h2><span>יחידות מספר היחידות · לחצו על יחידה כדי לפתוח אותה</span></div>{chooser}{''.join(units) or '<p class="nounits">השבוע אין יחידות חדשות: חוזרים על החומר של הקורס לקראת הבחינה.</p>'}
 {('<p class="sub">קריאה מומלצת</p>' + reading) if reading else ''}</section>

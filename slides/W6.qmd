@@ -1,18 +1,18 @@
 ---
-title: "מטריצות, וקטורים ומבנים כלליים"
+title: "מטריצות, בקרת זרימה ופונקציות"
 course-week: "שבוע 6"
 ---
 
-## מטריצות ווקטורים
+## מטריצות, לולאות ופונקציות
 
 ::: {.nbox}
 <p class="nh">שבוע 6 · חומר הלימוד</p>
 
-השבוע נתמקד בווקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.
+השבוע שני נושאים. הראשון: וקטורים ומטריצות — המבנים שעליהם בנוי כמעט כל חישוב מדעי, מנתוני שאלונים ועד אותות מוח. נבצע פעולות חשבון על וקטורים ומטריצות, נגיע לערכים לפי שורה ועמודה, ונחשב סטטיסטיקה תיאורית לשורות ולעמודות. ב-R נעבוד עם matrix, ובפייתון עם numpy.
 
-בחוט של סביבת העבודה עוברים מ-Colab למחשב שלנו: נתקין את RStudio ואת VS Code, נכיר את תיקיית העבודה ונתיבים בקוד, נריץ פייתון ב-VS Code, ונלמד איך מפיקים מהקוד קובץ PDF מסודר להגשה.
+השני: לגרום לקוד לעבוד בשבילנו. נכתוב לולאות for כדי לחזור על פעולה לכל ערך, ותנאים (if ו-else) כדי שהקוד יפעל אחרת במצבים שונים. אחר כך נכתוב פונקציות משלנו — עם שם, קלט ופלט — ונלמד למצוא בהן שגיאות (debugging).
 
-במקביל מתחיל החוט של ניהול קוד: נכיר את Git ו-GitHub — כלים שמאפשרים לשמור את ההיסטוריה של הקוד, לחזור לגרסה קודמת כשמשהו נשבר, ולשתף קוד עם אחרים. בשבוע הבא נשתמש בהם במטלה.
+גם השבוע ממשיכים לעבוד ב-Google Colab, במחברת R ובמחברת פייתון. את המעבר למחשב שלנו (RStudio ו-VS Code) ואת Git נעשה בשבוע הבא.
 :::
 
 ## פעולות וגישה לערכים
@@ -139,14 +139,15 @@ df = pd.DataFrame(m1, columns=['x', 'y'])
 :::
 :::
 
-## תיקיית העבודה ונתיבים
+## לולאת for
 
 ::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">סביבת עבודה א</p>
-<p>מה זה IDE · התקנת RStudio ו-VS Code</p>
-<p>תיקיית העבודה ונתיבים בקוד</p>
-<p>פתיחת פרויקט כאמצעי לשלוט על תיקיית העבודה</p>
+<p class="th">בקרת זרימה א</p>
+<p>פירוק בעיה ופסאודו-קוד</p>
+<p>לולאת for: אותה פעולה לכל ערך</p>
+<p>סכום בעזרת לולאה</p>
+<p>שמירת תוצאה לכל מיקום</p>
 :::
 
 ::: {.board}
@@ -155,17 +156,25 @@ df = pd.DataFrame(m1, columns=['x', 'y'])
 <p class="lang">R</p>
 
 ```r
-#### WORKING DIRECTORY ####
+#### FOR LOOPS ####
 
-# 1. Where am I?
-getwd()
+# 1. Once for each value
+rts = c(450, 1200, 800)
+for (rt in rts) {
+  print(rt)
+}
 
-# 2. Relative paths
-df = read.csv('data.csv')
-df = read.csv('data/data.csv')
+# 2. Add up
+total = 0
+for (rt in rts) {
+  total = total + rt
+}
 
-# 3. Saved next to the script
-write.csv(df, 'data_copy.csv', row.names = FALSE)
+# 3. Save a result for each position
+rt_sec = c()
+for (i in 1:length(rts)) {
+  rt_sec[i] = rts[i] / 1000
+}
 ```
 :::
 
@@ -173,130 +182,181 @@ write.csv(df, 'data_copy.csv', row.names = FALSE)
 <p class="lang">Python</p>
 
 ```python
-import os
-import pandas as pd
+#### FOR LOOPS ####
 
-#### WORKING DIRECTORY ####
+# 1. Once for each value
+rts = [450, 1200, 800]
+for rt in rts:
+    print(rt)
 
-# 1. Where am I?
-os.getcwd()
+# 2. Add up
+total = 0
+for rt in rts:
+    total = total + rt
 
-# 2. Relative paths
-df = pd.read_csv('data.csv')
-df = pd.read_csv('data/data.csv')
-
-# 3. Saved next to the script
-df.to_csv('data_copy.csv', index=False)
+# 3. Save a result for each position
+rt_sec = []
+for i in range(len(rts)):
+    rt_sec.append(rts[i] / 1000)
 ```
 :::
 :::
 
-<p class="bnote">תיקיית העבודה היא ה-<span class="ltr">pwd</span> של הקוד · ב-RStudio: Project · ב-VS Code: Open Folder</p>
+<p class="bnote">R תוחם את הפקודות שחוזרות בסוגריים מסולסלים <span class="ltr">{ }</span> · פייתון — בנקודתיים ובהזחה · <span class="ltr">range(len(rts))</span> מתחיל מ-0</p>
 :::
 :::
 
-## VS Code, ומהקוד ל-PDF
+## תנאים: if ו-else
 
-::: {.tb}
+::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">סביבת עבודה ב</p>
-<p>פייתון ב-VS Code</p>
-<p>מחברת מול סקריפט</p>
-<p>מהקוד ל-PDF להגשה</p>
+<p class="th">בקרת זרימה ב</p>
+<p>החלטות וחזרות במילים</p>
+<p>תנאי if ו-else</p>
+<p>תנאי בתוך לולאה</p>
+<p>אותה בדיקה על וקטור שלם: <span class="ltr">ifelse</span> ו-<span class="ltr">np.where</span></p>
 :::
 
 ::: {.board}
-<p class="lang">מהקוד ל-PDF · תמיד מריצים הכול מחדש קודם</p>
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
 
-<table class="df he" style="font-size:.5em;margin-top:.8em">
-<tr><th>סביבה</th><th>קודם: מריצים הכול מחדש</th><th>אחר כך: מפיקים</th></tr>
-<tr><td>RStudio</td><td>Session › Restart R</td><td>File › Compile Report (Ctrl+Shift+K)</td></tr>
-<tr><td>Colab</td><td>Restart session and run all</td><td>File › Print › Save as PDF</td></tr>
-<tr><td>VS Code</td><td>Restart › Run All</td><td dir="ltr">… › Export › HTML › Print (PDF)</td></tr>
-</table>
+```r
+#### CONDITIONS ####
 
-<p class="bnote" style="margin-top:1.2em">סקריפט (<span class="ltr">.py</span>) = קובץ שרץ מההתחלה עד הסוף · מחברת (<span class="ltr">.ipynb</span>) = תאים, והפלט נשמר ליד הקוד</p>
-<p class="bnote">ה-PDF מוכיח שהקוד רץ מתחילתו ועד סופו בלי שגיאות — בדקו שהכותרות, הקוד, הפלט והגרפים כולם שם</p>
+# 1. if-else
+rt = 1200
+if (rt > 1000) {
+  print('slow')
+} else {
+  print('ok')
+}
+
+# 2. Inside a loop
+rts = c(450, 1200, 800)
+for (rt in rts) {
+  if (rt > 1000) {
+    print('slow')
+  } else {
+    print('ok')
+  }
+}
+
+# 3. A whole vector at once
+ifelse(rts > 1000, 'slow', 'ok')
+```
+:::
+
+::: {.py}
+<p class="lang">Python</p>
+
+```python
+import numpy as np
+
+#### CONDITIONS ####
+
+# 1. if-else
+rt = 1200
+if rt > 1000:
+    print('slow')
+else:
+    print('ok')
+
+# 2. Inside a loop
+rts = [450, 1200, 800]
+for rt in rts:
+    if rt > 1000:
+        print('slow')
+    else:
+        print('ok')
+
+# 3. A whole vector at once
+np.where(np.array(rts) > 1000, 'slow', 'ok')
+```
+:::
+:::
 :::
 :::
 
-## ניהול קוד: למה Git?
+## פונקציות ומציאת שגיאות
 
-::: {.cards}
-::: {.card .code}
-<h3>האתגרים</h3>
-
-- <span class="ltr">analysis_final_v2_REALLY_final.R</span>
-- לחזור לגרסה שעבדה לפני שבוע
-- לדעת מי שינה מה, ולמה
-- לעבוד כמה אנשים על אותו קוד
-:::
-
-::: {.card .py}
-<h3>הפתרון: ניהול גרסאות</h3>
-
-- **Git** — תוכנה ששומרת את ההיסטוריה של התיקייה
-- **GitHub** — אתר שמחזיק עותק של ההיסטוריה בענן
-- כל שמירה (commit) היא „נקודת שמירה״ עם הסבר קצר
-:::
-:::
-
-::: {.cards style="margin-top:.9em"}
-::: {.card}
-<h3>מושגים בסיסיים</h3>
-
-<span class="ltr">repository · commit · push / pull</span><br><span class="ltr">README · .gitignore</span>
-:::
-
-::: {.card}
-<h3>מושגים מתקדמים</h3>
-
-<span class="ltr">branch · merge · pull request</span> — כשעובדים כמה אנשים על אותו פרויקט
-:::
-:::
-
-## מאגר ב-GitHub
-
-::: {.tb}
+::: {.tb .duo-tb}
 ::: {.tbox}
-<p class="th">ניהול קוד א: Git ו-GitHub</p>
-<p>רקע כללי</p>
-<p>פקודות בסיסיות ב-GitHub</p>
-<p>קובץ README</p>
-<p>GitHub Desktop (מומלץ להתחלה)</p>
+<p class="th">פונקציות</p>
+<p>הגדרת פונקציה: שם, קלט ופלט</p>
+<p>תנאי בתוך פונקציה, ופונקציה בתוך לולאה</p>
+<p class="th" style="margin-top:.5em">מציאת שגיאות</p>
+<p>לקרוא את הודעת השגיאה</p>
+<p>print בתוך הפונקציה</p>
 :::
 
 ::: {.board}
-<p class="lang">README.md</p>
+::: {.duo}
+::: {.r}
+<p class="lang">R</p>
 
-```markdown
-# yesodot-hw
-Assignments for the course
-"Foundations of programming in empirical science".
+```r
+#### FUNCTIONS ####
+
+# 1. Define
+label_rt = function(rt, cutoff) {
+  if (rt > cutoff) {
+    label = 'slow'
+  } else {
+    label = 'ok'
+  }
+  return(label)
+}
+
+# 2. Use it, also inside a loop
+label_rt(1200, 1000)
+rts = c(450, 1200, 800)
+labels = c()
+for (i in 1:length(rts)) {
+  labels[i] = label_rt(rts[i], 1000)
+}
 ```
+:::
 
-<p class="lang">git log --oneline · ההיסטוריה של המאגר</p>
+::: {.py}
+<p class="lang">Python</p>
 
-```text
-a3f9c21  Add matrix statistics
-7be0d14  Fix column names
-1c42e88  First version of week 6
+```python
+#### FUNCTIONS ####
+
+# 1. Define
+def label_rt(rt, cutoff):
+    if rt > cutoff:
+        label = 'slow'
+    else:
+        label = 'ok'
+    return label
+
+# 2. Use it, also inside a loop
+label_rt(1200, 1000)
+rts = [450, 1200, 800]
+labels = []
+for i in range(len(rts)):
+    labels.append(label_rt(rts[i], 1000))
 ```
+:::
+:::
 
-<p class="bnote">עורכים ← commit (שמירה מקומית עם הודעה) ← push (שליחה ל-GitHub)</p>
+<p class="bnote">המשתנים שבתוך הפונקציה פנימיים: כדי לראות אותם מוסיפים <span class="ltr">print(label)</span> בתוך הפונקציה, ומוחקים אחרי שמצאנו את הטעות</p>
 :::
 :::
 
 ## מטלה שבועית
 
 ::: {.hwbox}
-**המטלה השבועית (שבוע 6)** — סקריפט שמדגים שימוש בווקטורים ובמטריצות.
+**המטלה השבועית (שבוע 6)** — ב-Colab, בכל אחת משתי המחברות. אין קובץ נתונים: את כל הנתונים יוצרים בקוד.
 
-**חלק א:** שני וקטורים (לפחות 15 ערכים, מדגימה) ומטריצה שבה כל וקטור הוא עמודה. **חלק ב:** חיבור, חיסור, כפל וחילוק בסקלר על וקטור; מטריצה שנייה באותו גודל — חיבור, חיסור וכפל בין המטריצות.
+**חלק א – וקטורים ומטריצות:** x1 (נורמלית, ממוצע 50, ס״ת 10) ו-x2 (אחידה, 0 עד 100), 15 ערכים בכל אחד; מטריצה m שבה כל וקטור הוא עמודה; m2 = m כפול 2, והדפסת m + m2; הדפסה של הערך בשורה 4 ועמודה 2 ושינוי שלו ל-100; השורה החמישית (row5) והעמודה הראשונה (col1). **חלק ב:** ממוצע של כל עמודה וסכום של כל שורה.
 
-**חלק ג:** הדפסה ושינוי של הערך בשורה 4 ועמודה 2; חילוץ השורה החמישית והעמודה הראשונה של המטריצה השנייה. **חלק ד:** ממוצעים וסכומים של שורות ועמודות; עד 4 ערכים חסרים — ספירה (בונוס: סכום הסטיות בריבוע לכל עמודה). **חלק ה:** המרת המטריצה למבנה נתונים.
+**חלק ג – לולאות ותנאים:** n_high — כמה ערכים של x2 גדולים מ-50 (for ו-if); row_max — הגדול מבין שני הערכים בכל שורה של m (for, if ו-else); group — high או low לכל ערך של x1, בלי לולאה. **חלק ד – פונקציה:** count_above(x, threshold) סופרת בלולאה כמה ערכים גדולים מהסף; מפעילים אותה על x2 עם 50 ועל x1 עם 60.
 
-**שפה:** R או פייתון · **הגשה:** PDF עם הקוד, בלי עזרה של AI.
+**שפה:** גם R וגם פייתון, כל אחת במחברת Colab משלה · **הגשה:** רק בטופס Qualtrics — מקלידים את שני הקודים בעצמכם, בלי עזרה של AI.
 
 <p class="due">להגשה עד יום ראשון, 29.11.2026, בשעה 12:00</p>
 :::
