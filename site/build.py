@@ -317,8 +317,7 @@ def header(depth, staff, on):
     if on is not None:
         # first = rightmost in RTL; the syllabus is in the admin page's "מסמכים" section
         links = [("index.html", "תוכן הקורס", "weeks"), ("book.html", "ספר היחידות", "book")]
-        if staff:
-            links.append(("commands.html", "רשימת פקודות", "commands"))  # staff site only
+        links.append(("commands.html", "רשימת פקודות", "commands"))
         links.append(("admin.html", "מנהלות הקורס", "admin"))
         nav = '<nav class="gen">' + "".join(
             f'<a href="{h}" class="{"on" if k == on else ""}">{t}</a>' for h, t, k in links) + "</nav>"
@@ -685,7 +684,7 @@ COMMANDS_CSS = """.layout.one{grid-template-columns:minmax(0,1fr)}
 
 
 def commands_page():
-    """"רשימת פקודות" (content/commands.json, staff site only): the commands of the weeks so far, per package, no explanations."""
+    """"רשימת פקודות" (content/commands.json): the commands of the weeks so far, per package, no explanations."""
     c = json.loads((SRC / "content" / "commands.json").read_text(encoding="utf-8"))
     names = {"r": ("R", "R"), "py": ("Python", "פייתון")}
     secs = []
@@ -747,7 +746,7 @@ def build_site(prefix, staff, avail, weeks, book):
     DEPTH[0] = depth
     body = header(depth, staff, "book") + book_page(book, {n: weeks[n] for n in avail}, only_used=not staff) + footer(depth, staff)
     write(f"{prefix}book.html", page(f"ספר היחידות · {CFG['title']}", body, depth, staff, BOOK_JS + "\n" + OS_JS + "\n" + GATE_JS))
-    if staff:
+    if True:
         body = header(depth, staff, "commands") + commands_page() + footer(depth, staff)
         write(f"{prefix}commands.html", page(f"רשימת פקודות · {CFG['title']}", body, depth, staff, GATE_JS))
     body = header(depth, staff, "admin") + admin_page(prefix, avail, depth) + footer(depth, staff)

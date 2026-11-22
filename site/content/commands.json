@@ -197,6 +197,8 @@
      ".groupby()",
      ".agg()",
      ".value_counts()",
+     ".unique()",
+     ".pop()",
      ".mean()",
      ".std()",
      ".median()",
@@ -223,6 +225,8 @@
      "plt.xlabel()",
      "plt.ylabel()",
      "plt.title()",
+     "plt.xlim()",
+     "plt.ylim()",
      "plt.show()",
      "ax.set_xlabel()"
     ]
