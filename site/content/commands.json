@@ -1,6 +1,6 @@
 {
- "_הסבר": "עמוד 'רשימת פקודות' (אתר המתרגלים בלבד): הפקודות שנלמדו בשבועות 1–5, לפי חבילות, בלי הסברים. lists = שתי הרשימות (r ו-py); בכל אחת groups, וכל group הוא חבילה (pkg), שורת הטעינה שלה (load, לא חובה) והפקודות (cmds). בעת הוספת שבוע מוסיפים פקודות ל-groups ומעדכנים את upto.",
- "upto": 5,
+ "_הסבר": "עמוד 'רשימת פקודות' (אתר המתרגלים בלבד): הפקודות שנלמדו בשבועות 1–6, לפי חבילות, בלי הסברים. lists = שתי הרשימות (r ו-py); בכל אחת groups, וכל group הוא חבילה (pkg), שורת הטעינה שלה (load, לא חובה) והפקודות (cmds). בעת הוספת שבוע מוסיפים פקודות ל-groups ומעדכנים את upto.",
+ "upto": 6,
  "lists": {
   "r": [
    {
@@ -36,6 +36,14 @@
      "rowMeans()",
      "colSums()",
      "colMeans()",
+     "cbind()",
+     "rbind()",
+     "as.data.frame()",
+     "ifelse()",
+     "for (x in v) { }",
+     "if ( ) { } else { }",
+     "function( ) { }",
+     "return()",
      "scale()",
      "save()",
      "load()",
@@ -44,7 +52,7 @@
      "<-",
      "+  -  *  /",
      ">  <  ==  !=",
-     "&  !",
+     "&  |  !",
      ":",
      "$",
      "[ ]",
@@ -142,11 +150,16 @@
      "type()",
      "len()",
      "list.append()",
+     "range()",
+     "for x in v:",
+     "if :  else:",
+     "def f( ):",
+     "return",
      "[ ]",
      "{ }",
      "+  -  *  /",
      ">  <  ==  !=",
-     "&",
+     "&  and  or",
      "True  False",
      "None"
     ]
@@ -172,8 +185,11 @@
      "np.random.uniform()",
      "np.random.binomial()",
      "np.random.choice()",
+     "np.column_stack()",
+     "np.where()",
      "np.nan",
-     ".shape"
+     ".shape",
+     "axis=0  axis=1"
     ]
    },
    {
